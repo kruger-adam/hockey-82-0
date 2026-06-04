@@ -5,7 +5,7 @@ export default function HowToPlay() {
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-b from-background via-card to-background">
       <header className="w-full flex flex-col items-center py-8 px-4">
-        <h1 className="text-3xl font-black text-foreground tracking-tight">How to Play 82-0</h1>
+        <h1 className="text-3xl font-black text-foreground tracking-tight">How It Works</h1>
         <p className="text-muted-foreground mt-2 text-center max-w-sm">
           Build the ultimate NHL all-time team and see if you can go 82-0!
         </p>

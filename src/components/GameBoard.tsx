@@ -179,24 +179,33 @@ export default function GameBoard() {
   const [teamRespinUsed,   setTeamRespinUsed]   = useState(false);
   const [displayedTeam,    setDisplayedTeam]    = useState<string | null>(null);
   const [displayedDecade,  setDisplayedDecade]  = useState<string | null>(null);
+  const [lockedCard,       setLockedCard]        = useState<"team" | "decade" | null>(null);
   const spinIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const filledCount = Object.values(roster).filter(Boolean).length;
 
-  function runSpinAnimation(finalCombo: { decade: string; team: string }, afterSettle: () => void) {
+  function runSpinAnimation(
+    finalCombo: { decade: string; team: string },
+    locked: "team" | "decade" | null,
+    afterSettle: () => void
+  ) {
     if (spinIntervalRef.current) clearInterval(spinIntervalRef.current);
+    setLockedCard(locked);
+    if (locked === "team")   setDisplayedTeam(finalCombo.team);
+    if (locked === "decade") setDisplayedDecade(finalCombo.decade);
     const allCombos = getAllTeamDecadeCombos();
     let count = 0;
     const total = 22;
     spinIntervalRef.current = setInterval(() => {
       const r = allCombos[Math.floor(Math.random() * allCombos.length)];
-      setDisplayedTeam(r.team);
-      setDisplayedDecade(r.decade);
+      if (locked !== "team")   setDisplayedTeam(r.team);
+      if (locked !== "decade") setDisplayedDecade(r.decade);
       count++;
       if (count >= total) {
         clearInterval(spinIntervalRef.current!);
         setDisplayedTeam(finalCombo.team);
         setDisplayedDecade(finalCombo.decade);
+        setLockedCard(null);
         afterSettle();
       }
     }, 80);
@@ -206,7 +215,7 @@ export default function GameBoard() {
     const combo = pickRandomCombo(currentRoster);
     if (!combo) return;
     setPhase("spinning");
-    runSpinAnimation(combo, () => {
+    runSpinAnimation(combo, null, () => {
       const players = getPlayersForTeamDecade(combo.decade, combo.team).filter(
         (p) => !isDrafted(p, currentRoster)
       );
@@ -223,7 +232,7 @@ export default function GameBoard() {
     if (!newDecade) return;
     const combo = { decade: newDecade, team: spunCombo.team };
     setPhase("spinning");
-    runSpinAnimation(combo, () => {
+    runSpinAnimation(combo, "team", () => {
       setSpunCombo(combo);
       setAvailable(getPlayersForTeamDecade(newDecade, spunCombo.team).filter(p => !isDrafted(p, roster)));
       setPhase("picking");
@@ -237,7 +246,7 @@ export default function GameBoard() {
     if (!newTeam) return;
     const combo = { decade: spunCombo.decade, team: newTeam };
     setPhase("spinning");
-    runSpinAnimation(combo, () => {
+    runSpinAnimation(combo, "decade", () => {
       setSpunCombo(combo);
       setAvailable(getPlayersForTeamDecade(combo.decade, newTeam).filter(p => !isDrafted(p, roster)));
       setPhase("picking");
@@ -494,7 +503,12 @@ export default function GameBoard() {
       <div className="flex gap-4 justify-center mt-2">
         {/* Team card — orange border */}
         <div className="flex flex-col items-center gap-1 flex-1">
-          <div className="w-full aspect-square rounded-xl border-4 border-orange-500 bg-card flex flex-col items-center justify-center shadow-lg">
+          <div className={`w-full aspect-square rounded-xl border-4 bg-card flex flex-col items-center justify-center shadow-lg relative transition-opacity ${
+            lockedCard === "team" ? "border-orange-500 opacity-100" : lockedCard === "decade" ? "border-orange-500 opacity-40" : "border-orange-500"
+          }`}>
+            {lockedCard === "team" && (
+              <span className="absolute top-2 right-2 text-xs text-orange-400">🔒</span>
+            )}
             <p className="text-xs font-bold text-orange-500 tracking-widest uppercase mb-1">Team</p>
             <p className="text-3xl font-black text-foreground tabular-nums">{teamAbbr(shownTeam)}</p>
           </div>
@@ -502,7 +516,12 @@ export default function GameBoard() {
         </div>
         {/* Decade card — purple border */}
         <div className="flex flex-col items-center gap-1 flex-1">
-          <div className="w-full aspect-square rounded-xl border-4 border-purple-500 bg-card flex flex-col items-center justify-center shadow-lg">
+          <div className={`w-full aspect-square rounded-xl border-4 bg-card flex flex-col items-center justify-center shadow-lg relative transition-opacity ${
+            lockedCard === "decade" ? "border-purple-500 opacity-100" : lockedCard === "team" ? "border-purple-500 opacity-40" : "border-purple-500"
+          }`}>
+            {lockedCard === "decade" && (
+              <span className="absolute top-2 right-2 text-xs text-purple-400">🔒</span>
+            )}
             <p className="text-xs font-bold text-purple-400 tracking-widest uppercase mb-1">Era</p>
             <p className="text-3xl font-black text-foreground tabular-nums">{decadeShort(shownDecade)}</p>
           </div>

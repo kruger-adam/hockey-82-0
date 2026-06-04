@@ -11,8 +11,8 @@ export default function Home() {
         <p className="text-muted-foreground mt-2 text-center max-w-sm">
           Spin through NHL history, draft your all-time roster, and simulate a perfect season.
         </p>
-        <Link href="/how-to-play" className="mt-3 text-xs text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2">
-          How to Play
+        <Link href="/how-it-works" className="mt-3 text-xs text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2">
+          How It Works
         </Link>
       </header>
 
