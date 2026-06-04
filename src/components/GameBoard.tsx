@@ -316,10 +316,11 @@ export default function GameBoard() {
                 <div key={slot} className="flex items-center gap-3 text-sm">
                   <span className="text-muted-foreground text-xs uppercase tracking-wide w-16 shrink-0">{label}</span>
                   {player ? (
-                    <>
-                      <span className="font-medium flex-1">{player.name}</span>
-                      <span className="text-xs text-muted-foreground">{statLine(player)}</span>
-                    </>
+                    <div className="flex flex-col min-w-0">
+                      <span className="font-medium">{player.name}</span>
+                      <span className="text-xs text-muted-foreground/70">{statLine(player)}</span>
+                      <span className="text-xs text-muted-foreground/40">{player.decade} · {player.team}</span>
+                    </div>
                   ) : <span className="text-muted-foreground/40">Empty</span>}
                 </div>
               );
@@ -350,6 +351,7 @@ export default function GameBoard() {
                 <div className="flex flex-col min-w-0">
                   <span className="font-medium">{player.name}</span>
                   <span className="text-xs text-muted-foreground/70">{statLine(player)}</span>
+                  <span className="text-xs text-muted-foreground/40">{player.decade} · {player.team}</span>
                 </div>
               ) : <span className="text-muted-foreground/30 text-xs">—</span>}
             </div>
