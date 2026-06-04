@@ -19,6 +19,7 @@ export const DECADES: Record<string, number[]> = {
   "1990s": [1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
   "2000s": [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009],
   "2010s": [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+  "2020s": [2020, 2021, 2022, 2023, 2024, 2025],
 };
 
 // All franchises to include. Key = the canonical tricode used for API calls
@@ -94,11 +95,11 @@ export const TRICODE_BY_ERA: Record<string, Partial<Record<string, string>>> = {
   "Calgary Flames": { "1970s": "ATF", "1980s": "CGY", "1990s": "CGY", "2000s": "CGY", "2010s": "CGY" },
 
   // Winnipeg Jets (current) were Atlanta Thrashers through 2010-11
-  "Winnipeg Jets": { "2000s": "ATL", "2010s": "WPG" },
+  "Winnipeg Jets": { "2000s": "ATL", "2010s": "WPG", "2020s": "WPG" },
 
   // Utah Hockey Club were Arizona Coyotes (2014-24) / Phoenix Coyotes (1996-2014)
   // Original Winnipeg Jets → Phoenix 1996. For historical data use WPO for old Jets.
-  "Utah Hockey Club": { "2010s": "ARI", "2000s": "PHX" },
+  "Utah Hockey Club": { "2020s": "UTA", "2010s": "ARI", "2000s": "PHX" },
 
   // Original Winnipeg Jets only existed 1979-96 (use separate WPO entry)
   "Winnipeg Jets (Orig)": { "1980s": "WPG", "1990s": "WPG" },
@@ -119,16 +120,16 @@ export const TRICODE_BY_ERA: Record<string, Partial<Record<string, string>>> = {
   "Quebec Nordiques": { "1970s": "QUE", "1980s": "QUE", "1990s": "QUE" },
 
   // Newer expansions — don't try decades before they existed
-  "Anaheim Ducks":      { "1990s": "ANA", "2000s": "ANA", "2010s": "ANA" },
-  "Columbus Blue Jackets": { "2000s": "CBJ", "2010s": "CBJ" },
-  "Florida Panthers":   { "1990s": "FLA", "2000s": "FLA", "2010s": "FLA" },
-  "Minnesota Wild":     { "2000s": "MIN", "2010s": "MIN" },
-  "Nashville Predators":{ "1990s": "NSH", "2000s": "NSH", "2010s": "NSH" },
-  "Ottawa Senators":    { "1990s": "OTT", "2000s": "OTT", "2010s": "OTT" },
-  "San Jose Sharks":    { "1990s": "SJS", "2000s": "SJS", "2010s": "SJS" },
-  "Seattle Kraken":     { "2010s": "SEA" },
-  "Tampa Bay Lightning":{ "1990s": "TBL", "2000s": "TBL", "2010s": "TBL" },
-  "Vegas Golden Knights":{ "2010s": "VGK" },
+  "Anaheim Ducks":      { "1990s": "ANA", "2000s": "ANA", "2010s": "ANA", "2020s": "ANA" },
+  "Columbus Blue Jackets": { "2000s": "CBJ", "2010s": "CBJ", "2020s": "CBJ" },
+  "Florida Panthers":   { "1990s": "FLA", "2000s": "FLA", "2010s": "FLA", "2020s": "FLA" },
+  "Minnesota Wild":     { "2000s": "MIN", "2010s": "MIN", "2020s": "MIN" },
+  "Nashville Predators":{ "1990s": "NSH", "2000s": "NSH", "2010s": "NSH", "2020s": "NSH" },
+  "Ottawa Senators":    { "1990s": "OTT", "2000s": "OTT", "2010s": "OTT", "2020s": "OTT" },
+  "San Jose Sharks":    { "1990s": "SJS", "2000s": "SJS", "2010s": "SJS", "2020s": "SJS" },
+  "Seattle Kraken":     { "2010s": "SEA", "2020s": "SEA" },
+  "Tampa Bay Lightning":{ "1990s": "TBL", "2000s": "TBL", "2010s": "TBL", "2020s": "TBL" },
+  "Vegas Golden Knights":{ "2010s": "VGK", "2020s": "VGK" },
 };
 
 // Minimum total GP with the franchise that decade to be included at all.
@@ -153,6 +154,7 @@ export const SEASON_GPG: Record<number, number> = {
   2005: 6.2, 2006: 5.9, 2007: 5.7, 2008: 5.9, 2009: 5.6,
   2010: 5.7, 2011: 5.5, 2012: 5.6, 2013: 5.5, 2014: 5.3,
   2015: 5.5, 2016: 5.8, 2017: 5.9, 2018: 6.0, 2019: 6.1,
+  2020: 5.9, 2021: 6.1, 2022: 6.2, 2023: 6.4, 2024: 6.3, 2025: 6.3,
 };
 
 // ── Types ─────────────────────────────────────────────────────────────────────

@@ -40,6 +40,7 @@ const DECADE_GPG: Record<string, number> = {
   "1990s": 6.7,
   "2000s": 5.5,
   "2010s": 5.6,
+  "2020s": 6.2,
 };
 
 // Goalie league-average SV%, reference GAA, and SV% sensitivity multiplier by decade.
@@ -52,6 +53,7 @@ const GOALIE_BASELINE: Record<string, { avgSv: number; refGaa: number; svMult: n
   "1990s": { avgSv: 0.895, refGaa: 3.0, svMult: 1500 },
   "2000s": { avgSv: 0.902, refGaa: 2.6, svMult: 2000 },
   "2010s": { avgSv: 0.907, refGaa: 2.6, svMult: 2000 },
+  "2020s": { avgSv: 0.906, refGaa: 2.9, svMult: 2000 },
 };
 
 type PartialPlayer = Omit<Player, "rating" | "bestRating">;
