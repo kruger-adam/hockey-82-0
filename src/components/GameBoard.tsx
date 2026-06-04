@@ -202,6 +202,7 @@ export default function GameBoard() {
   const [teamRespinUsed,   setTeamRespinUsed]   = useState(false);
   const [statsMode, setStatsMode] = useState<"avg" | "best">("avg");
   const [displayedTeam,    setDisplayedTeam]    = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
   const [displayedDecade,  setDisplayedDecade]  = useState<string | null>(null);
   const [lockedCard,       setLockedCard]        = useState<"team" | "decade" | null>(null);
   const spinIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -326,6 +327,23 @@ export default function GameBoard() {
   }
 
   // ── RESULT ────────────────────────────────────────────────────
+  function buildShareText(): string {
+    const slotLabels: Record<string, string> = { C: "C", LW: "LW", RW: "RW", D1: "D", D2: "D", G: "G" };
+    const lines = ROSTER_SLOTS.map(({ slot }) => {
+      const p = roster[slot];
+      if (!p) return null;
+      return `${slotLabels[slot]}: ${p.name} (${p.team} · ${p.decade})`;
+    }).filter(Boolean);
+    return `🏒 Hockey 82-0 — ${result!.record}\n\n${lines.join("\n")}\n\nCan you beat it? → hockey-82-0.vercel.app`;
+  }
+
+  function handleShare() {
+    navigator.clipboard.writeText(buildShareText()).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
+
   if (phase === "result" && result) {
     const message =
       result.wins === 82 ? "PERFECT SEASON — you did it!" :
@@ -371,6 +389,11 @@ export default function GameBoard() {
           <a href="/history" className="flex-1 inline-flex items-center justify-center rounded-md border border-border bg-transparent px-4 py-2 text-sm font-medium hover:bg-accent transition-colors">
             View History
           </a>
+        </div>
+        <div className="relative">
+          <Button onClick={handleShare} variant="outline" className="w-full">
+            {copied ? "✓ Copied to clipboard!" : "Share Result"}
+          </Button>
         </div>
       </div>
     );
