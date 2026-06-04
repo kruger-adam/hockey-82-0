@@ -7,13 +7,23 @@ export interface Player {
   position: Position[];
   team: string;
   decade: string;
-  bestSeasonYear?: number;
+  // Decade average (per 82 games)
   goals?: number;
   assists?: number;
   plusMinus?: number;
   savePercentage?: number;
   gaa?: number;
+  // Best single season (actual totals)
+  bestGoals?: number;
+  bestAssists?: number;
+  bestPlusMinus?: number;
+  bestGP?: number;
+  bestYear?: number;
+  bestSavePercentage?: number;
+  bestGaa?: number;
+  // Ratings
   rating: number;
+  bestRating: number;
 }
 
 // ── Rating formula ────────────────────────────────────────────────────────────
@@ -44,12 +54,28 @@ const GOALIE_BASELINE: Record<string, { avgSv: number; refGaa: number; svMult: n
   "2010s": { avgSv: 0.907, refGaa: 2.6, svMult: 2000 },
 };
 
-function computeRating(p: Omit<Player, "rating">): number {
+type PartialPlayer = Omit<Player, "rating" | "bestRating">;
+
+function computeRating(p: PartialPlayer): number {
   if (p.position.includes("G")) return goalieRating(p);
   return skaterRating(p);
 }
 
-function skaterRating(p: Omit<Player, "rating">): number {
+function computeBestRating(p: PartialPlayer): number {
+  if (p.position.includes("G")) {
+    if (!p.bestSavePercentage) return computeRating(p);
+    return goalieRating({ ...p, savePercentage: p.bestSavePercentage, gaa: p.bestGaa });
+  }
+  if (p.bestGoals == null || p.bestGP == null) return computeRating(p);
+  return skaterRating({
+    ...p,
+    goals:     Math.round((p.bestGoals     / p.bestGP) * 82),
+    assists:   Math.round(((p.bestAssists ?? 0) / p.bestGP) * 82),
+    plusMinus: Math.round(((p.bestPlusMinus ?? 0) / p.bestGP) * 82),
+  });
+}
+
+function skaterRating(p: PartialPlayer): number {
   const eraFactor = NEUTRAL_GPG / (DECADE_GPG[p.decade] ?? NEUTRAL_GPG);
   const ptsP82 = (p.goals ?? 0) + (p.assists ?? 0);
   const eraAdjPts = ptsP82 * eraFactor;
@@ -64,7 +90,7 @@ function skaterRating(p: Omit<Player, "rating">): number {
   return Math.round(Math.min(100, Math.max(20, 35 + (score / 120) * 65)));
 }
 
-function goalieRating(p: Omit<Player, "rating">): number {
+function goalieRating(p: PartialPlayer): number {
   const { avgSv, refGaa, svMult } = GOALIE_BASELINE[p.decade] ?? GOALIE_BASELINE["2010s"];
   const svPct = p.savePercentage ?? avgSv;
   const gaa = p.gaa ?? refGaa;
@@ -74,7 +100,7 @@ function goalieRating(p: Omit<Player, "rating">): number {
 
 // ── Data loading ──────────────────────────────────────────────────────────────
 
-type RawPlayer = Omit<Player, "rating"> & { rating?: number };
+type RawPlayer = Omit<Player, "rating" | "bestRating"> & { rating?: number; bestRating?: number };
 
 export const PLAYER_POOL: Record<string, Record<string, Player[]>> = Object.fromEntries(
   Object.entries(rawData as Record<string, Record<string, RawPlayer[]>>).map(
@@ -83,7 +109,7 @@ export const PLAYER_POOL: Record<string, Record<string, Player[]>> = Object.from
       Object.fromEntries(
         Object.entries(teams).map(([team, players]) => [
           team,
-          players.map((p) => ({ ...p, rating: computeRating(p) })),
+          players.map((p) => ({ ...p, rating: computeRating(p), bestRating: computeBestRating(p) })),
         ])
       ),
     ]

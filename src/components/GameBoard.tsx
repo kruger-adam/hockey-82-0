@@ -47,16 +47,39 @@ function gPerGame(p: Player)   { return ((p.goals   ?? 0) / 82); }
 function aPerGame(p: Player)   { return ((p.assists ?? 0) / 82); }
 function ptsPerGame(p: Player) { return gPerGame(p) + aPerGame(p); }
 
-function skaterStatLine(p: Player): string {
+function seasonLabel(year: number): string {
+  return `${String(year).slice(2)}-${String(year + 1).slice(2)}`;
+}
+
+function skaterStatLine(p: Player, mode: "avg" | "best"): string {
+  if (mode === "best" && p.bestGoals != null && p.bestYear != null) {
+    return `${p.bestGoals}G · ${p.bestAssists ?? 0}A · ${seasonLabel(p.bestYear)}`;
+  }
   return `${gPerGame(p).toFixed(2)} G/gm · ${aPerGame(p).toFixed(2)} A/gm · ${ptsPerGame(p).toFixed(2)} PTS/gm`;
 }
 
-function goalieStatLine(p: Player): string {
+function goalieStatLine(p: Player, mode: "avg" | "best"): string {
+  if (mode === "best" && p.bestSavePercentage != null && p.bestYear != null) {
+    return `.${Math.round(p.bestSavePercentage * 1000)} SV% · ${p.bestGaa?.toFixed(2)} GAA · ${seasonLabel(p.bestYear)}`;
+  }
   return `.${Math.round((p.savePercentage ?? 0) * 1000)} SV% · ${p.gaa?.toFixed(2)} GAA`;
 }
 
-function statLine(p: Player): string {
-  return p.position.includes("G") ? goalieStatLine(p) : skaterStatLine(p);
+function statLine(p: Player, mode: "avg" | "best" = "avg"): string {
+  return p.position.includes("G") ? goalieStatLine(p, mode) : skaterStatLine(p, mode);
+}
+
+function effectiveRating(p: Player, mode: "avg" | "best"): number {
+  return mode === "best" ? p.bestRating : p.rating;
+}
+
+function effectivePts(p: Player, mode: "avg" | "best"): number {
+  if (mode === "best") {
+    if (p.position.includes("G")) return p.bestSavePercentage ?? p.savePercentage ?? 0;
+    if (p.bestGoals != null && p.bestGP != null)
+      return (p.bestGoals + (p.bestAssists ?? 0)) / p.bestGP;
+  }
+  return ptsPerGame(p);
 }
 
 function getEligibleSlots(player: Player, roster: Roster): RosterSlot[] {
@@ -125,10 +148,10 @@ function pickRandomTeamInDecade(decade: string, roster: Roster, excludeTeam: str
 }
 
 // Group and sort players into forwards / D / goalies
-function groupPlayers(players: Player[]) {
-  const forwards  = players.filter(p => p.position.some(pos => ["C","LW","RW"].includes(pos)) && !p.position.includes("G")).sort((a,b) => ptsPerGame(b) - ptsPerGame(a));
-  const defense   = players.filter(p => p.position.includes("D") && !p.position.some(pos => ["C","LW","RW"].includes(pos))).sort((a,b) => ptsPerGame(b) - ptsPerGame(a));
-  const goalies   = players.filter(p => p.position.includes("G")).sort((a,b) => (b.savePercentage ?? 0) - (a.savePercentage ?? 0));
+function groupPlayers(players: Player[], mode: "avg" | "best") {
+  const forwards  = players.filter(p => p.position.some(pos => ["C","LW","RW"].includes(pos)) && !p.position.includes("G")).sort((a,b) => effectivePts(b, mode) - effectivePts(a, mode));
+  const defense   = players.filter(p => p.position.includes("D") && !p.position.some(pos => ["C","LW","RW"].includes(pos))).sort((a,b) => effectivePts(b, mode) - effectivePts(a, mode));
+  const goalies   = players.filter(p => p.position.includes("G")).sort((a,b) => effectivePts(b, mode) - effectivePts(a, mode));
   return { forwards, defense, goalies };
 }
 
@@ -177,6 +200,7 @@ export default function GameBoard() {
   const [result, setResult]             = useState<SimulationResult | null>(null);
   const [decadeRespinUsed, setDecadeRespinUsed] = useState(false);
   const [teamRespinUsed,   setTeamRespinUsed]   = useState(false);
+  const [statsMode, setStatsMode] = useState<"avg" | "best">("avg");
   const [displayedTeam,    setDisplayedTeam]    = useState<string | null>(null);
   const [displayedDecade,  setDisplayedDecade]  = useState<string | null>(null);
   const [lockedCard,       setLockedCard]        = useState<"team" | "decade" | null>(null);
@@ -276,7 +300,7 @@ export default function GameBoard() {
   async function simulate() {
     setPhase("simulating");
     await new Promise((r) => setTimeout(r, 900));
-    const result = simulateSeason(roster);
+    const result = simulateSeason(roster, statsMode);
     setResult(result);
     setPhase("result");
 
@@ -327,7 +351,7 @@ export default function GameBoard() {
                   {player ? (
                     <div className="flex flex-col min-w-0">
                       <span className="font-medium">{player.name}</span>
-                      <span className="text-xs text-muted-foreground/70">{statLine(player)}</span>
+                      <span className="text-xs text-muted-foreground/70">{statLine(player, statsMode)}</span>
                       <span className="text-xs text-muted-foreground/40">{player.decade} · {player.team}</span>
                     </div>
                   ) : <span className="text-muted-foreground/40">Empty</span>}
@@ -364,7 +388,7 @@ export default function GameBoard() {
               {player ? (
                 <div className="flex flex-col min-w-0">
                   <span className="font-medium">{player.name}</span>
-                  <span className="text-xs text-muted-foreground/70">{statLine(player)}</span>
+                  <span className="text-xs text-muted-foreground/70">{statLine(player, statsMode)}</span>
                   <span className="text-xs text-muted-foreground/40">{player.decade} · {player.team}</span>
                 </div>
               ) : <span className="text-muted-foreground/30 text-xs">—</span>}
@@ -396,12 +420,13 @@ export default function GameBoard() {
   }
 
   // ── PLAYER COLUMN ────────────────────────────────────────────
-  function PlayerColumn({ title, players, openPos, keyStatLabel }: {
+  function PlayerColumn({ title, players, openPos, mode }: {
     title: string;
     players: Player[];
     openPos: Set<Position>;
-    keyStatLabel: string;
+    mode: "avg" | "best";
   }) {
+    const keyStatLabel = mode === "best" ? "Season" : (title === "Goalies" ? "SV%" : "PTS/gm");
     return (
       <div className="flex flex-col gap-1 flex-1 min-w-0">
         {/* Column header */}
@@ -415,9 +440,11 @@ export default function GameBoard() {
         {players.map((player) => {
           const eligible = player.position.some((pos) => openPos.has(pos));
           const isGoalie = player.position.includes("G");
-          const keyStat = isGoalie
-            ? `.${Math.round((player.savePercentage ?? 0) * 1000)}`
-            : ptsPerGame(player).toFixed(2);
+          const keyStat = mode === "best"
+            ? (player.bestYear ? seasonLabel(player.bestYear) : "—")
+            : isGoalie
+              ? `.${Math.round((player.savePercentage ?? 0) * 1000)}`
+              : ptsPerGame(player).toFixed(2);
 
           return (
             <button
@@ -456,7 +483,7 @@ export default function GameBoard() {
   if (phase === "picking" && spunCombo) {
     const openPos = getOpenPositions(roster);
     const undrafted = availablePlayers.filter(p => !isDrafted(p, roster));
-    const { forwards, defense, goalies } = groupPlayers(undrafted);
+    const { forwards, defense, goalies } = groupPlayers(undrafted, statsMode);
     const canRespinTeam = !teamRespinUsed && pickRandomTeamInDecade(spunCombo.decade, roster, spunCombo.team) !== null;
 
     return (
@@ -466,6 +493,17 @@ export default function GameBoard() {
           <div className="flex items-center justify-between mb-1">
             <p className="text-xs text-muted-foreground uppercase tracking-widest">Round {round} of 6</p>
             <div className="flex gap-2">
+              {/* Stats mode toggle */}
+              <div className="flex rounded border border-border overflow-hidden text-xs">
+                <button onClick={() => setStatsMode("avg")}
+                  className={`px-2 py-1 transition-colors ${statsMode === "avg" ? "bg-blue-600 text-white" : "text-muted-foreground hover:text-foreground"}`}>
+                  Avg
+                </button>
+                <button onClick={() => setStatsMode("best")}
+                  className={`px-2 py-1 transition-colors ${statsMode === "best" ? "bg-blue-600 text-white" : "text-muted-foreground hover:text-foreground"}`}>
+                  Best Season
+                </button>
+              </div>
               <button onClick={respinTeam} disabled={!canRespinTeam}
                 className={`text-xs px-2 py-1 rounded border transition-colors ${canRespinTeam ? "border-border text-muted-foreground hover:border-blue-500/60 hover:text-blue-400" : "border-border/30 text-muted-foreground/30 cursor-not-allowed"}`}>
                 Respin Team {teamRespinUsed ? "✓" : ""}
@@ -479,9 +517,9 @@ export default function GameBoard() {
           <p className="text-base font-semibold text-foreground mb-3">{spunCombo.decade} · {spunCombo.team}</p>
           {/* Three columns side by side */}
           <div className="flex gap-3">
-            <PlayerColumn title="Forwards" players={forwards} openPos={openPos} keyStatLabel="PTS/gm" />
-            <PlayerColumn title="Defence"  players={defense}  openPos={openPos} keyStatLabel="PTS/gm" />
-            <PlayerColumn title="Goalies"  players={goalies}  openPos={openPos} keyStatLabel="SV%" />
+            <PlayerColumn title="Forwards" players={forwards} openPos={openPos} mode={statsMode} />
+            <PlayerColumn title="Defence"  players={defense}  openPos={openPos} mode={statsMode} />
+            <PlayerColumn title="Goalies"  players={goalies}  openPos={openPos} mode={statsMode} />
           </div>
         </div>
       </div>

@@ -192,6 +192,13 @@ interface AccSkater {
   totalAssists: number;
   totalPlusMinus: number;
   totalGP: number;
+  // Best single season tracking
+  bestGoals: number;
+  bestAssists: number;
+  bestPlusMinus: number;
+  bestGP: number;
+  bestYear: number;
+  bestEraAdjPts: number; // comparison key only
 }
 
 // Weighted average accumulator for goalies (weighted by games played)
@@ -200,6 +207,11 @@ interface AccGoalie {
   weightedSvPct: number; // sum(svPct * gp)
   weightedGaa: number;   // sum(gaa * gp)
   totalGP: number;
+  // Best single season tracking (by SV%)
+  bestSvPct: number;
+  bestGaa: number;
+  bestGP: number;
+  bestYear: number;
 }
 
 // Output format — stats are per-82-game pace; rating computed dynamically in players.ts
@@ -208,11 +220,20 @@ export interface PlayerData {
   position: string[];
   team: string;
   decade: string;
-  goals?: number;       // per 82 games
-  assists?: number;     // per 82 games
-  plusMinus?: number;   // per 82 games
+  // Decade average (per 82 games)
+  goals?: number;
+  assists?: number;
+  plusMinus?: number;
   savePercentage?: number;
   gaa?: number;
+  // Best single season (actual totals)
+  bestGoals?: number;
+  bestAssists?: number;
+  bestPlusMinus?: number;
+  bestGP?: number;
+  bestYear?: number;
+  bestSavePercentage?: number;
+  bestGaa?: number;
   rating: number;       // placeholder — overridden by players.ts at runtime
 }
 
@@ -290,35 +311,68 @@ function renderProgress(done: number, total: number, current: string, startMs: n
 
 // ── Accumulation ──────────────────────────────────────────────────────────────
 
+const MIN_GP_BEST_SKATER = 20; // min games in a season to qualify as "best season"
+const MIN_GP_BEST_GOALIE = 20;
+
 function accumulateSeason(
   stats: NHLSeasonStats,
   skaterMap: Map<number, AccSkater>,
-  goalieMap: Map<number, AccGoalie>
+  goalieMap: Map<number, AccGoalie>,
+  year: number
 ) {
+  const gpg = SEASON_GPG[year] ?? NEUTRAL_GPG;
+  const eraFactor = NEUTRAL_GPG / gpg;
+
   for (const s of stats.skaters) {
     if (s.gamesPlayed < 1) continue;
     const name = `${s.firstName.default} ${s.lastName.default}`;
     const pos = nhlPositionToOurs(s.positionCode);
     if (!skaterMap.has(s.playerId)) {
-      skaterMap.set(s.playerId, { name, position: pos, totalGoals: 0, totalAssists: 0, totalPlusMinus: 0, totalGP: 0 });
+      skaterMap.set(s.playerId, {
+        name, position: pos,
+        totalGoals: 0, totalAssists: 0, totalPlusMinus: 0, totalGP: 0,
+        bestGoals: 0, bestAssists: 0, bestPlusMinus: 0, bestGP: 0, bestYear: year, bestEraAdjPts: -1,
+      });
     }
     const acc = skaterMap.get(s.playerId)!;
     acc.totalGoals     += s.goals;
     acc.totalAssists   += s.assists;
     acc.totalPlusMinus += s.plusMinus;
     acc.totalGP        += s.gamesPlayed;
+
+    if (s.gamesPlayed >= MIN_GP_BEST_SKATER) {
+      const eraAdjPts = (s.goals + s.assists) * eraFactor;
+      if (eraAdjPts > acc.bestEraAdjPts) {
+        acc.bestEraAdjPts  = eraAdjPts;
+        acc.bestGoals      = s.goals;
+        acc.bestAssists    = s.assists;
+        acc.bestPlusMinus  = s.plusMinus;
+        acc.bestGP         = s.gamesPlayed;
+        acc.bestYear       = year;
+      }
+    }
   }
 
   for (const g of stats.goalies) {
     if (g.gamesPlayed < 1 || !g.savePercentage) continue;
     const name = `${g.firstName.default} ${g.lastName.default}`;
     if (!goalieMap.has(g.playerId)) {
-      goalieMap.set(g.playerId, { name, weightedSvPct: 0, weightedGaa: 0, totalGP: 0 });
+      goalieMap.set(g.playerId, {
+        name, weightedSvPct: 0, weightedGaa: 0, totalGP: 0,
+        bestSvPct: 0, bestGaa: 0, bestGP: 0, bestYear: year,
+      });
     }
     const acc = goalieMap.get(g.playerId)!;
     acc.weightedSvPct += g.savePercentage * g.gamesPlayed;
     acc.weightedGaa   += (g.goalsAgainstAverage ?? 0) * g.gamesPlayed;
     acc.totalGP       += g.gamesPlayed;
+
+    if (g.gamesPlayed >= MIN_GP_BEST_GOALIE && g.savePercentage > acc.bestSvPct) {
+      acc.bestSvPct = g.savePercentage;
+      acc.bestGaa   = g.goalsAgainstAverage ?? 0;
+      acc.bestGP    = g.gamesPlayed;
+      acc.bestYear  = year;
+    }
   }
 }
 
@@ -340,7 +394,12 @@ function buildPlayers(
       goals:     Math.round((acc.totalGoals     / acc.totalGP) * 82),
       assists:   Math.round((acc.totalAssists   / acc.totalGP) * 82),
       plusMinus: Math.round((acc.totalPlusMinus / acc.totalGP) * 82),
-      rating: 0, // computed at runtime in players.ts
+      bestGoals:     acc.bestEraAdjPts >= 0 ? acc.bestGoals     : undefined,
+      bestAssists:   acc.bestEraAdjPts >= 0 ? acc.bestAssists   : undefined,
+      bestPlusMinus: acc.bestEraAdjPts >= 0 ? acc.bestPlusMinus : undefined,
+      bestGP:        acc.bestEraAdjPts >= 0 ? acc.bestGP        : undefined,
+      bestYear:      acc.bestEraAdjPts >= 0 ? acc.bestYear      : undefined,
+      rating: 0,
     });
   }
 
@@ -355,6 +414,10 @@ function buildPlayers(
       decade,
       savePercentage: Math.round(svPct * 1000) / 1000,
       gaa:            Math.round(gaa   * 100)  / 100,
+      bestSavePercentage: acc.bestSvPct > 0 ? Math.round(acc.bestSvPct * 1000) / 1000 : undefined,
+      bestGaa:            acc.bestSvPct > 0 ? Math.round(acc.bestGaa   * 100)  / 100  : undefined,
+      bestGP:             acc.bestSvPct > 0 ? acc.bestGP   : undefined,
+      bestYear:           acc.bestSvPct > 0 ? acc.bestYear : undefined,
       rating: 0,
     });
   }
@@ -402,7 +465,7 @@ async function main() {
     if (!grouped.has(key)) {
       grouped.set(key, { displayName: req.displayName, decade: req.decade, skaterMap: new Map(), goalieMap: new Map() });
     }
-    if (stats) accumulateSeason(stats, grouped.get(key)!.skaterMap, grouped.get(key)!.goalieMap);
+    if (stats) accumulateSeason(stats, grouped.get(key)!.skaterMap, grouped.get(key)!.goalieMap, req.year);
 
     const label = `${req.decade} ${req.displayName}`;
     renderProgress(done, total, label, start);

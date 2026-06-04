@@ -34,17 +34,20 @@ export function getRosterRating(roster: Roster): number {
 // League-average opponent is rating 65. k=0.1 means:
 //   rating 75 → ~73% win rate (~60W), rating 85 → ~88% (~72W),
 //   rating 92 → ~94% (~77W), making 82-0 genuinely rare but possible.
-function simulateGame(roster: Roster): boolean {
+function getRating(p: Player, mode: "avg" | "best"): number {
+  return mode === "best" ? p.bestRating : p.rating;
+}
+
+function simulateGame(roster: Roster, mode: "avg" | "best"): boolean {
   const skaters = [roster.C, roster.LW, roster.RW, roster.D1, roster.D2].filter(
     (p): p is Player => p !== null
   );
   const goalie = roster.G;
 
   const skaterRating =
-    skaters.length > 0 ? skaters.reduce((s, p) => s + p.rating, 0) / skaters.length : 65;
-  const goalieRating = goalie ? goalie.rating : 65;
+    skaters.length > 0 ? skaters.reduce((s, p) => s + getRating(p, mode), 0) / skaters.length : 65;
+  const goalieRating = goalie ? getRating(goalie, mode) : 65;
 
-  // Goalies carry outsized weight in hockey (~30%)
   const teamRating = skaterRating * 0.7 + goalieRating * 0.3;
   const ratingDiff = teamRating - 65;
   const winProb = 1 / (1 + Math.exp(-ratingDiff * 0.1));
@@ -57,14 +60,15 @@ export interface SimulationResult {
   losses: number;
   record: string;
   gameLog: boolean[];
+  mode: "avg" | "best";
 }
 
-export function simulateSeason(roster: Roster): SimulationResult {
+export function simulateSeason(roster: Roster, mode: "avg" | "best" = "avg"): SimulationResult {
   const gameLog: boolean[] = [];
   for (let i = 0; i < 82; i++) {
-    gameLog.push(simulateGame(roster));
+    gameLog.push(simulateGame(roster, mode));
   }
   const wins = gameLog.filter(Boolean).length;
   const losses = 82 - wins;
-  return { wins, losses, record: `${wins}-${losses}`, gameLog };
+  return { wins, losses, record: `${wins}-${losses}`, gameLog, mode };
 }
