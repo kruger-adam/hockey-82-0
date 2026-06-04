@@ -20,8 +20,20 @@ export default function Home() {
         <GameBoard />
       </div>
 
-      <footer className="w-full text-center py-6 text-xs text-muted-foreground/50 border-t border-border/30">
-        82-0 Hockey is an independent fan project, not affiliated with the NHL.
+      <footer className="w-full text-center py-6 text-xs text-muted-foreground/50 border-t border-border/30 flex flex-col gap-1">
+        <p>
+          Enjoying the game?{" "}
+          <a href="https://ko-fi.com/hockey82and0" target="_blank" rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2">
+            Help support us
+          </a>
+          {" "}|{" "}
+          <a href="https://forms.gle/Xums9NeZYGMtGsA97" target="_blank" rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2">
+            Share feedback
+          </a>
+        </p>
+        <p>82-0 Hockey is an independent fan project, not affiliated with the NHL.</p>
       </footer>
     </main>
   );
