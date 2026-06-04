@@ -12,7 +12,7 @@ import * as path from "path";
 
 // ── Config ────────────────────────────────────────────────────────────────────
 
-const DECADES: Record<string, number[]> = {
+export const DECADES: Record<string, number[]> = {
   "1960s": [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969],
   "1970s": [1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979],
   "1980s": [1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989],
@@ -25,7 +25,7 @@ const DECADES: Record<string, number[]> = {
 // when no era override applies. Value = display name shown in the game.
 //
 // Current 32 NHL teams + notable defunct/relocated franchises with rich histories.
-const TEAMS: Record<string, string> = {
+export const TEAMS: Record<string, string> = {
   // ── Original Six ──────────────────────────────────────────────
   BOS: "Boston Bruins",
   CHI: "Chicago Blackhawks",
@@ -74,7 +74,7 @@ const TEAMS: Record<string, string> = {
 // Per-decade tricode overrides: some current franchises existed under a
 // different tricode (or didn't exist yet). Omitting a decade means the
 // franchise didn't exist / has no data for that era.
-const TRICODE_BY_ERA: Record<string, Partial<Record<string, string>>> = {
+export const TRICODE_BY_ERA: Record<string, Partial<Record<string, string>>> = {
   // Carolina Hurricanes only existed from 1997-98 onward — no override needed,
   // the default CAR tricode naturally returns empty for pre-1997 seasons.
   // Hartford Whalers (separate entry below) covers the HFD era.
@@ -133,14 +133,14 @@ const TRICODE_BY_ERA: Record<string, Partial<Record<string, string>>> = {
 
 // Minimum total GP with the franchise that decade to be included at all.
 // Keeps out cup-of-coffee callups while weighted averaging handles partial seasons.
-const MIN_TOTAL_GP_SKATER = 10;
-const MIN_TOTAL_GP_GOALIE = 10;
+export const MIN_TOTAL_GP_SKATER = 10;
+export const MIN_TOTAL_GP_GOALIE = 10;
 
 // Era adjustment: neutral baseline and goals-per-game by season start year.
 // Scores are adjusted so a player's points reflect what they'd produce in a
 // neutral ~6.0 GPG environment. Source: NHL historical records.
-const NEUTRAL_GPG = 6.0;
-const SEASON_GPG: Record<number, number> = {
+export const NEUTRAL_GPG = 6.0;
+export const SEASON_GPG: Record<number, number> = {
   1960: 5.8, 1961: 5.8, 1962: 5.8, 1963: 5.9, 1964: 5.9,
   1965: 6.3, 1966: 6.2, 1967: 5.7, 1968: 5.9, 1969: 5.7,
   1970: 6.2, 1971: 6.2, 1972: 6.6, 1973: 6.6, 1974: 6.9,
@@ -502,4 +502,7 @@ async function main() {
   console.log(`  ${totalPlayers} players across ${Object.values(output).flatMap(Object.keys).length} team-decade combos`);
 }
 
-main().catch(console.error);
+// Only run when executed directly, not when imported
+if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split('/').pop()!)) {
+  main().catch(console.error);
+}

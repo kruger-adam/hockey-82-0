@@ -461,10 +461,10 @@ export default function GameBoard() {
                 <span className={`font-semibold text-xs leading-tight ${eligible ? "group-hover:text-blue-300 transition-colors" : ""}`}>
                   {player.name}
                 </span>
-                <span className="text-xs font-bold tabular-nums text-muted-foreground shrink-0 ml-1">
-                  {keyStat}
-                </span>
               </div>
+              <span className="text-xs text-muted-foreground/70 leading-tight mt-0.5">
+                {statLine(player, mode)}
+              </span>
               <div className="flex gap-1 mt-0.5">
                 {player.position.map((pos) => (
                   <span key={pos} className={`text-xs px-1 py-0 rounded border leading-4 ${POSITION_COLORS[pos]}`}>
