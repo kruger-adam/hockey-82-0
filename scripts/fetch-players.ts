@@ -264,21 +264,30 @@ class Semaphore {
   }
 }
 
-const MAX_CONCURRENT = 15;
-const sem = new Semaphore(MAX_CONCURRENT);
+const MAX_CONCURRENT = 10;
+let sem = new Semaphore(MAX_CONCURRENT);
 
-async function fetchSeasonStats(tricode: string, year: number, retries = 2): Promise<NHLSeasonStats | null> {
+async function fetchSeasonStats(
+  tricode: string,
+  year: number,
+  maxRetries = 5,
+  initialBackoffMs = 2000,
+): Promise<NHLSeasonStats | null> {
   const url = `https://api-web.nhle.com/v1/club-stats/${tricode}/${seasonString(year)}/2`;
   await sem.acquire();
   try {
-    for (let attempt = 0; attempt <= retries; attempt++) {
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
         const res = await fetch(url);
-        if (res.status === 429) { await sleep(2000 * (attempt + 1)); continue; }
-        if (!res.ok) return null;
+        if (res.status === 429) {
+          const delay = initialBackoffMs * Math.pow(2, attempt);
+          await sleep(delay);
+          continue;
+        }
+        if (!res.ok) return null; // 404 etc — team didn't exist that season
         return await res.json() as NHLSeasonStats;
       } catch {
-        if (attempt < retries) await sleep(300);
+        if (attempt < maxRetries) await sleep(500 * (attempt + 1));
       }
     }
     return null;
@@ -449,7 +458,7 @@ async function main() {
 
   const total = requests.length;
   const progressPath = path.join(process.cwd(), "scrape-progress.json");
-  console.log(`\nFetching ${total} season requests across ${total / 10} team-decade combos`);
+  console.log(`\nFetching ${total} season requests across ${Object.keys(DECADES).length * Object.keys(TEAMS).length} team-decade combos (max)`);
   console.log(`Concurrency: ${MAX_CONCURRENT} | Writing progress to scrape-progress.json\n`);
 
   const start = Date.now();
@@ -458,8 +467,10 @@ async function main() {
   // Group results: key = "decade|displayName"
   const grouped = new Map<string, { displayName: string; decade: string; skaterMap: Map<number, AccSkater>; goalieMap: Map<number, AccGoalie> }>();
 
-  // Fire all requests concurrently through the semaphore
-  await Promise.all(requests.map(async (req) => {
+  // Track requests that permanently failed after all retries
+  const failed: FetchRequest[] = [];
+
+  async function runRequest(req: FetchRequest) {
     const stats = await fetchSeasonStats(req.tricode, req.year);
     done++;
 
@@ -467,12 +478,15 @@ async function main() {
     if (!grouped.has(key)) {
       grouped.set(key, { displayName: req.displayName, decade: req.decade, skaterMap: new Map(), goalieMap: new Map() });
     }
-    if (stats) accumulateSeason(stats, grouped.get(key)!.skaterMap, grouped.get(key)!.goalieMap, req.year);
+    if (stats) {
+      accumulateSeason(stats, grouped.get(key)!.skaterMap, grouped.get(key)!.goalieMap, req.year);
+    } else {
+      failed.push(req);
+    }
 
     const label = `${req.decade} ${req.displayName}`;
     renderProgress(done, total, label, start);
 
-    // Write progress file every 20 requests
     if (done % 20 === 0 || done === total) {
       const elapsed = (Date.now() - start) / 1000;
       const eta = done > 0 ? (elapsed / done) * (total - done) : 0;
@@ -482,9 +496,45 @@ async function main() {
         current: label,
       }));
     }
-  }));
+  }
 
-  console.log(`\n\nDone in ${((Date.now() - start) / 1000).toFixed(1)}s`);
+  // Main pass
+  await Promise.all(requests.map(runRequest));
+  console.log(`\n\nMain pass done in ${((Date.now() - start) / 1000).toFixed(1)}s`);
+
+  // Retry pass — failed requests get a second chance at lower concurrency + longer backoff
+  if (failed.length > 0) {
+    console.log(`\nRetrying ${failed.length} failed requests at concurrency=3 with longer backoff...`);
+    sem = new Semaphore(3);
+    done = 0;
+    const retryFailed: FetchRequest[] = [];
+    await Promise.all(failed.map(async (req) => {
+      const stats = await fetchSeasonStats(req.tricode, req.year, 5, 5000);
+      done++;
+      process.stdout.write(`\r  Retry ${done}/${failed.length}: ${req.decade} ${req.displayName} ${req.year}  `);
+      const key = `${req.decade}|${req.displayName}`;
+      if (!grouped.has(key)) {
+        grouped.set(key, { displayName: req.displayName, decade: req.decade, skaterMap: new Map(), goalieMap: new Map() });
+      }
+      if (stats) {
+        accumulateSeason(stats, grouped.get(key)!.skaterMap, grouped.get(key)!.goalieMap, req.year);
+      } else {
+        retryFailed.push(req);
+      }
+    }));
+    console.log();
+
+    if (retryFailed.length > 0) {
+      console.log(`\n⚠ ${retryFailed.length} requests permanently failed (likely 404 — team didn't exist that season):`);
+      for (const r of retryFailed) {
+        console.log(`  ${r.decade} ${r.displayName} (${r.tricode}) ${r.year}-${r.year + 1}`);
+      }
+    } else {
+      console.log(`✓ All retries succeeded.`);
+    }
+  }
+
+  console.log(`\nTotal time: ${((Date.now() - start) / 1000).toFixed(1)}s`);
 
   // Assemble output
   const output: Record<string, Record<string, PlayerData[]>> = {};
