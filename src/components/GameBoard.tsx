@@ -276,8 +276,14 @@ export default function GameBoard() {
   async function simulate() {
     setPhase("simulating");
     await new Promise((r) => setTimeout(r, 900));
-    setResult(simulateSeason(roster));
+    const result = simulateSeason(roster);
+    setResult(result);
     setPhase("result");
+    fetch("/api/log-result", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ wins: result.wins, losses: result.losses, roster }),
+    }).catch(() => {});
   }
 
   function reset() {

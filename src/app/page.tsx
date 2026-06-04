@@ -11,9 +11,14 @@ export default function Home() {
         <p className="text-muted-foreground mt-2 text-center max-w-sm">
           Spin through NHL history, draft your all-time roster, and simulate a perfect season.
         </p>
-        <Link href="/how-it-works" className="mt-3 text-xs text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2">
-          How It Works
-        </Link>
+        <div className="flex gap-4 mt-3">
+          <Link href="/how-it-works" className="text-xs text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2">
+            How It Works
+          </Link>
+          <Link href="/stats" className="text-xs text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2">
+            Stats
+          </Link>
+        </div>
       </header>
 
       <div className="flex-1 flex flex-col items-center px-4 pb-12">
