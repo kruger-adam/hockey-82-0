@@ -11,24 +11,24 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "invalid" }, { status: 400 });
     }
 
-    // Always increment total games
-    await redis.incr("games:total");
-
-    const record = `${wins}-${losses}`;
     const entry = JSON.stringify({ wins, losses, roster, playedAt: new Date().toISOString() });
 
+    const pipeline = redis.pipeline();
+    pipeline.incr("games:total");
+    pipeline.lpush("results:all", entry);
+
     if (wins === 82) {
-      await redis.incr("games:perfect");
-      await redis.lpush("rosters:perfect", entry);
+      pipeline.incr("games:perfect");
+      pipeline.lpush("rosters:perfect", entry);
     }
-
     if (losses === 82) {
-      await redis.incr("games:winless");
-      await redis.lpush("rosters:winless", entry);
+      pipeline.incr("games:winless");
+      pipeline.lpush("rosters:winless", entry);
     }
 
-    console.log(`[game] ${record}`);
+    await pipeline.exec();
 
+    console.log(`[game] ${wins}-${losses}`);
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[log-result] error:", err);
