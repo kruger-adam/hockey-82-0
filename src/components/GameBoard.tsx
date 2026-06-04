@@ -510,7 +510,7 @@ export default function GameBoard() {
       {/* Two slot-machine cards */}
       <div className="flex gap-4 justify-center mt-2">
         {/* Team card — orange border */}
-        <div className="flex flex-col items-center gap-1 flex-1">
+        <div className="flex-1">
           <div className={`w-full aspect-square rounded-xl border-4 bg-card flex flex-col items-center justify-center shadow-lg relative transition-opacity ${
             lockedCard === "team" ? "border-orange-500 opacity-100" : lockedCard === "decade" ? "border-orange-500 opacity-40" : "border-orange-500"
           }`}>
@@ -520,10 +520,9 @@ export default function GameBoard() {
             <p className="text-xs font-bold text-orange-500 tracking-widest uppercase mb-1">Team</p>
             <p className="text-3xl font-black text-foreground tabular-nums">{teamAbbr(shownTeam)}</p>
           </div>
-          <p className="text-xs text-muted-foreground">{isSpinning ? shownTeam : (displayedTeam ?? "—")}</p>
         </div>
         {/* Decade card — purple border */}
-        <div className="flex flex-col items-center gap-1 flex-1">
+        <div className="flex-1">
           <div className={`w-full aspect-square rounded-xl border-4 bg-card flex flex-col items-center justify-center shadow-lg relative transition-opacity ${
             lockedCard === "decade" ? "border-purple-500 opacity-100" : lockedCard === "team" ? "border-purple-500 opacity-40" : "border-purple-500"
           }`}>
@@ -533,7 +532,6 @@ export default function GameBoard() {
             <p className="text-xs font-bold text-purple-400 tracking-widest uppercase mb-1">Era</p>
             <p className="text-3xl font-black text-foreground tabular-nums">{decadeShort(shownDecade)}</p>
           </div>
-          <p className="text-xs text-muted-foreground">{isSpinning ? shownDecade : (displayedDecade ?? "—")}</p>
         </div>
       </div>
 
