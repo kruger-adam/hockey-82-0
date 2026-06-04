@@ -322,8 +322,8 @@ function renderProgress(done: number, total: number, current: string, startMs: n
 
 // ── Accumulation ──────────────────────────────────────────────────────────────
 
-const MIN_GP_BEST_SKATER = 20; // min games in a season to qualify as "best season"
-const MIN_GP_BEST_GOALIE = 20;
+const MIN_GP_BEST_SKATER = 1;
+const MIN_GP_BEST_GOALIE = 1;
 
 function accumulateSeason(
   stats: NHLSeasonStats,

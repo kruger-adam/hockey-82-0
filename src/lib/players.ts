@@ -111,7 +111,8 @@ export const PLAYER_POOL: Record<string, Record<string, Player[]>> = Object.from
       Object.fromEntries(
         Object.entries(teams).map(([team, players]) => [
           team,
-          players.map((p) => ({ ...p, rating: computeRating(p), bestRating: computeBestRating(p) })),
+          players.filter((p) => p.position.includes("G") ? p.savePercentage != null : p.bestGoals != null)
+                 .map((p) => ({ ...p, rating: computeRating(p), bestRating: computeBestRating(p) })),
         ])
       ),
     ]

@@ -30,8 +30,8 @@ console.log(`\nFound ${missing.length} missing team-decade combos. Fetching with
 
 // ── Helpers (duplicated from fetch-players.ts) ────────────────────────────────
 
-const MIN_GP_BEST_SKATER = 20;
-const MIN_GP_BEST_GOALIE = 20;
+const MIN_GP_BEST_SKATER = 1;
+const MIN_GP_BEST_GOALIE = 1;
 
 class Semaphore {
   private slots: number;
