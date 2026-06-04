@@ -5,13 +5,13 @@ const redis = Redis.fromEnv();
 
 export async function POST(req: NextRequest) {
   try {
-    const { wins, losses, roster } = await req.json();
+    const { wins, losses, roster, mode } = await req.json();
 
     if (typeof wins !== "number" || typeof losses !== "number") {
       return NextResponse.json({ error: "invalid" }, { status: 400 });
     }
 
-    const entry = JSON.stringify({ wins, losses, roster, playedAt: new Date().toISOString() });
+    const entry = JSON.stringify({ wins, losses, roster, mode: mode ?? "avg", playedAt: new Date().toISOString() });
 
     const pipeline = redis.pipeline();
     pipeline.incr("games:total");

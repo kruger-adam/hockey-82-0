@@ -9,6 +9,7 @@ interface HistoryEntry {
   wins: number;
   losses: number;
   playedAt: string;
+  mode?: "avg" | "best";
   roster: Record<string, { name: string; team: string; decade: string; position: string[] } | null>;
 }
 
@@ -75,6 +76,9 @@ export default function HistoryPage() {
                 <div className="flex items-center gap-3">
                   <span className={`text-xl font-black tabular-nums ${getRecordColor(entry.wins)}`}>
                     {entry.wins}-{entry.losses}
+                  </span>
+                  <span className={`text-xs px-1.5 py-0.5 rounded border ${entry.mode === "best" ? "border-blue-500/40 text-blue-400" : "border-border/40 text-muted-foreground"}`}>
+                    {entry.mode === "best" ? "Best Season" : "Avg"}
                   </span>
                   <span className="text-xs text-muted-foreground">
                     {new Date(entry.playedAt).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}

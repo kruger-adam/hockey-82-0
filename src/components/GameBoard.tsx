@@ -306,7 +306,7 @@ export default function GameBoard() {
 
     // Save to local history
     try {
-      const entry = { wins: result.wins, losses: result.losses, roster, playedAt: new Date().toISOString() };
+      const entry = { wins: result.wins, losses: result.losses, roster, mode: statsMode, playedAt: new Date().toISOString() };
       const existing = JSON.parse(localStorage.getItem("hockey-history") ?? "[]");
       existing.unshift(entry);
       localStorage.setItem("hockey-history", JSON.stringify(existing));
@@ -315,7 +315,7 @@ export default function GameBoard() {
     fetch("/api/log-result", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ wins: result.wins, losses: result.losses, roster }),
+      body: JSON.stringify({ wins: result.wins, losses: result.losses, roster, mode: statsMode }),
     }).catch(() => {});
   }
 
@@ -493,18 +493,7 @@ export default function GameBoard() {
           <div className="flex items-center justify-between mb-1">
             <p className="text-xs text-muted-foreground uppercase tracking-widest">Round {round} of 6</p>
             <div className="flex gap-2">
-              {/* Stats mode toggle */}
-              <div className="flex rounded border border-border overflow-hidden text-xs">
-                <button onClick={() => setStatsMode("avg")}
-                  className={`px-2 py-1 transition-colors ${statsMode === "avg" ? "bg-blue-600 text-white" : "text-muted-foreground hover:text-foreground"}`}>
-                  Avg
-                </button>
-                <button onClick={() => setStatsMode("best")}
-                  className={`px-2 py-1 transition-colors ${statsMode === "best" ? "bg-blue-600 text-white" : "text-muted-foreground hover:text-foreground"}`}>
-                  Best Season
-                </button>
-              </div>
-              <button onClick={respinTeam} disabled={!canRespinTeam}
+<button onClick={respinTeam} disabled={!canRespinTeam}
                 className={`text-xs px-2 py-1 rounded border transition-colors ${canRespinTeam ? "border-border text-muted-foreground hover:border-blue-500/60 hover:text-blue-400" : "border-border/30 text-muted-foreground/30 cursor-not-allowed"}`}>
                 Respin Team {teamRespinUsed ? "✓" : ""}
               </button>
@@ -596,10 +585,29 @@ export default function GameBoard() {
         ) : (
           <>
             {filledCount === 0 && (
-              <p className="text-muted-foreground mb-4 text-sm">
-                6 rounds — one random NHL franchise per pick.<br />
-                You get one Respin Team and one Respin Era per game.
-              </p>
+              <>
+                <p className="text-muted-foreground mb-4 text-sm">
+                  6 rounds — one random NHL franchise per pick.<br />
+                  You get one Respin Team and one Respin Era per game.
+                </p>
+                {/* Mode picker — only shown before game starts */}
+                <div className="flex flex-col gap-2 mb-4">
+                  <p className="text-xs text-muted-foreground uppercase tracking-widest">Stats mode</p>
+                  <div className="flex rounded-lg border border-border overflow-hidden">
+                    <button onClick={() => setStatsMode("avg")}
+                      className={`flex-1 px-4 py-3 text-sm font-semibold transition-colors ${statsMode === "avg" ? "bg-blue-600 text-white" : "text-muted-foreground hover:text-foreground"}`}>
+                      Decade Avg
+                    </button>
+                    <button onClick={() => setStatsMode("best")}
+                      className={`flex-1 px-4 py-3 text-sm font-semibold transition-colors border-l border-border ${statsMode === "best" ? "bg-blue-600 text-white" : "text-muted-foreground hover:text-foreground"}`}>
+                      Best Season
+                    </button>
+                  </div>
+                  <p className="text-xs text-muted-foreground/60 text-center">
+                    {statsMode === "avg" ? "Player stats averaged across their decade with that team" : "Player stats from their single best season that decade"}
+                  </p>
+                </div>
+              </>
             )}
             {filledCount > 0 && (
               <p className="text-muted-foreground mb-3 text-sm">
