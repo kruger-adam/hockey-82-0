@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -132,6 +132,39 @@ function groupPlayers(players: Player[]) {
   return { forwards, defense, goalies };
 }
 
+const TEAM_ABBR: Record<string, string> = {
+  "Anaheim Ducks": "ANA", "Mighty Ducks of Anaheim": "ANA",
+  "Atlanta Thrashers": "ATL", "Atlanta Flames": "ATL",
+  "Arizona Coyotes": "ARI", "Phoenix Coyotes": "PHX",
+  "Boston Bruins": "BOS", "Buffalo Sabres": "BUF",
+  "Calgary Flames": "CGY", "Carolina Hurricanes": "CAR",
+  "Chicago Blackhawks": "CHI", "Colorado Avalanche": "COL",
+  "Columbus Blue Jackets": "CBJ", "Dallas Stars": "DAL",
+  "Detroit Red Wings": "DET", "Edmonton Oilers": "EDM",
+  "Florida Panthers": "FLA", "Hartford Whalers": "HFD",
+  "Los Angeles Kings": "LAK", "Minnesota Wild": "MIN",
+  "Minnesota North Stars": "MIN", "Montreal Canadiens": "MTL",
+  "Nashville Predators": "NSH", "New Jersey Devils": "NJD",
+  "New York Islanders": "NYI", "New York Rangers": "NYR",
+  "Ottawa Senators": "OTT", "Philadelphia Flyers": "PHI",
+  "Pittsburgh Penguins": "PIT", "Quebec Nordiques": "QUE",
+  "San Jose Sharks": "SJS", "Seattle Kraken": "SEA",
+  "St. Louis Blues": "STL", "Tampa Bay Lightning": "TBL",
+  "Toronto Maple Leafs": "TOR", "Utah Hockey Club": "UTA",
+  "Vancouver Canucks": "VAN", "Vegas Golden Knights": "VGK",
+  "Washington Capitals": "WSH", "Winnipeg Jets": "WPG",
+  "Kansas City Scouts": "KCS", "Cleveland Barons": "CLE",
+};
+
+function teamAbbr(team: string): string {
+  return TEAM_ABBR[team] ?? team.substring(0, 3).toUpperCase();
+}
+
+function decadeShort(decade: string): string {
+  const m = decade.match(/\d{2}(\d{2})s/);
+  return m ? `${m[1]}'s` : decade;
+}
+
 const EMPTY_ROSTER: Roster = { C: null, LW: null, RW: null, D1: null, D2: null, G: null };
 
 export default function GameBoard() {
@@ -144,51 +177,71 @@ export default function GameBoard() {
   const [result, setResult]             = useState<SimulationResult | null>(null);
   const [decadeRespinUsed, setDecadeRespinUsed] = useState(false);
   const [teamRespinUsed,   setTeamRespinUsed]   = useState(false);
+  const [displayedTeam,    setDisplayedTeam]    = useState<string | null>(null);
+  const [displayedDecade,  setDisplayedDecade]  = useState<string | null>(null);
+  const spinIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const filledCount = Object.values(roster).filter(Boolean).length;
 
+  function runSpinAnimation(finalCombo: { decade: string; team: string }, afterSettle: () => void) {
+    if (spinIntervalRef.current) clearInterval(spinIntervalRef.current);
+    const allCombos = getAllTeamDecadeCombos();
+    let count = 0;
+    const total = 22;
+    spinIntervalRef.current = setInterval(() => {
+      const r = allCombos[Math.floor(Math.random() * allCombos.length)];
+      setDisplayedTeam(r.team);
+      setDisplayedDecade(r.decade);
+      count++;
+      if (count >= total) {
+        clearInterval(spinIntervalRef.current!);
+        setDisplayedTeam(finalCombo.team);
+        setDisplayedDecade(finalCombo.decade);
+        afterSettle();
+      }
+    }, 80);
+  }
+
   function spin(currentRoster = roster) {
+    const combo = pickRandomCombo(currentRoster);
+    if (!combo) return;
     setPhase("spinning");
-    setTimeout(() => {
-      const combo = pickRandomCombo(currentRoster);
-      if (!combo) return;
-      const openPos = getOpenPositions(currentRoster);
+    runSpinAnimation(combo, () => {
       const players = getPlayersForTeamDecade(combo.decade, combo.team).filter(
         (p) => !isDrafted(p, currentRoster)
       );
-      // Mark ineligibility but include all — handled in render
       setSpunCombo(combo);
       setAvailable(players);
       setPhase("picking");
-    }, 500);
+    });
   }
 
   function respinDecade() {
     if (decadeRespinUsed || !spunCombo) return;
     setDecadeRespinUsed(true);
+    const newDecade = pickRandomDecadeForTeam(spunCombo.team, roster, spunCombo.decade);
+    if (!newDecade) return;
+    const combo = { decade: newDecade, team: spunCombo.team };
     setPhase("spinning");
-    setTimeout(() => {
-      const newDecade = pickRandomDecadeForTeam(spunCombo.team, roster, spunCombo.decade);
-      if (!newDecade) return;
-      const combo = { decade: newDecade, team: spunCombo.team };
+    runSpinAnimation(combo, () => {
       setSpunCombo(combo);
       setAvailable(getPlayersForTeamDecade(newDecade, spunCombo.team).filter(p => !isDrafted(p, roster)));
       setPhase("picking");
-    }, 500);
+    });
   }
 
   function respinTeam() {
     if (teamRespinUsed || !spunCombo) return;
     setTeamRespinUsed(true);
+    const newTeam = pickRandomTeamInDecade(spunCombo.decade, roster, spunCombo.team);
+    if (!newTeam) return;
+    const combo = { decade: spunCombo.decade, team: newTeam };
     setPhase("spinning");
-    setTimeout(() => {
-      const newTeam = pickRandomTeamInDecade(spunCombo.decade, roster, spunCombo.team);
-      if (!newTeam) return;
-      const combo = { decade: spunCombo.decade, team: newTeam };
+    runSpinAnimation(combo, () => {
       setSpunCombo(combo);
       setAvailable(getPlayersForTeamDecade(combo.decade, newTeam).filter(p => !isDrafted(p, roster)));
       setPhase("picking");
-    }, 500);
+    });
   }
 
   function selectPlayer(player: Player) {
@@ -404,15 +457,13 @@ export default function GameBoard() {
     );
   }
 
-  // ── SPINNING / SIMULATING ─────────────────────────────────────
-  if (phase === "spinning" || phase === "simulating") {
+  // ── SIMULATING ────────────────────────────────────────────────
+  if (phase === "simulating") {
     return (
       <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
-        {filledCount > 0 && rosterPanel}
+        {rosterPanel}
         <div className="text-center py-8">
-          <p className="text-muted-foreground animate-pulse text-lg">
-            {phase === "spinning" ? "Spinning…" : "Simulating 82 games…"}
-          </p>
+          <p className="text-muted-foreground animate-pulse text-lg">Simulating 82 games…</p>
         </div>
       </div>
     );
@@ -430,25 +481,59 @@ export default function GameBoard() {
     );
   }
 
-  // ── START / BETWEEN ROUNDS ────────────────────────────────────
+  // ── SPIN CARDS (start + spinning phases) ──────────────────────
+  const isSpinning = phase === "spinning";
+  const shownTeam   = displayedTeam   ?? "???";
+  const shownDecade = displayedDecade ?? "???";
+
   return (
     <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
       {filledCount > 0 && rosterPanel}
-      <div className="text-center py-4">
-        {filledCount === 0 && (
-          <p className="text-muted-foreground mb-6 text-sm">
-            You'll get 6 spins — one random NHL franchise per round.<br />
-            Each game you get one respin of the decade and one respin of the team.
+
+      {/* Two slot-machine cards */}
+      <div className="flex gap-4 justify-center mt-2">
+        {/* Team card — orange border */}
+        <div className="flex flex-col items-center gap-1 flex-1">
+          <div className="w-full aspect-square rounded-xl border-4 border-orange-500 bg-card flex flex-col items-center justify-center shadow-lg">
+            <p className="text-xs font-bold text-orange-500 tracking-widest uppercase mb-1">Team</p>
+            <p className="text-3xl font-black text-foreground tabular-nums">{teamAbbr(shownTeam)}</p>
+          </div>
+          <p className="text-xs text-muted-foreground">{isSpinning ? shownTeam : (displayedTeam ?? "—")}</p>
+        </div>
+        {/* Decade card — purple border */}
+        <div className="flex flex-col items-center gap-1 flex-1">
+          <div className="w-full aspect-square rounded-xl border-4 border-purple-500 bg-card flex flex-col items-center justify-center shadow-lg">
+            <p className="text-xs font-bold text-purple-400 tracking-widest uppercase mb-1">Era</p>
+            <p className="text-3xl font-black text-foreground tabular-nums">{decadeShort(shownDecade)}</p>
+          </div>
+          <p className="text-xs text-muted-foreground">{isSpinning ? shownDecade : (displayedDecade ?? "—")}</p>
+        </div>
+      </div>
+
+      {/* Button / status */}
+      <div className="text-center">
+        {isSpinning ? (
+          <p className="text-sm font-semibold text-muted-foreground tracking-widest uppercase animate-pulse">
+            Spinning…
           </p>
+        ) : (
+          <>
+            {filledCount === 0 && (
+              <p className="text-muted-foreground mb-4 text-sm">
+                6 rounds — one random NHL franchise per pick.<br />
+                You get one Respin Team and one Respin Era per game.
+              </p>
+            )}
+            {filledCount > 0 && (
+              <p className="text-muted-foreground mb-3 text-sm">
+                Round {round} of 6 · {6 - filledCount} slot{6 - filledCount !== 1 ? "s" : ""} remaining
+              </p>
+            )}
+            <Button className="w-full bg-orange-500 hover:bg-orange-400 text-white font-black py-6 text-lg tracking-widest uppercase" onClick={() => spin()}>
+              Spin
+            </Button>
+          </>
         )}
-        {filledCount > 0 && (
-          <p className="text-muted-foreground mb-4 text-sm">
-            Round {round} of 6 · {6 - filledCount} slot{6 - filledCount !== 1 ? "s" : ""} remaining
-          </p>
-        )}
-        <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-6 text-base" onClick={() => spin()}>
-          {filledCount === 0 ? "Spin to Start" : "Spin for Next Player"}
-        </Button>
       </div>
     </div>
   );
