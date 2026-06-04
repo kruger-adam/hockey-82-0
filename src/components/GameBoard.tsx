@@ -151,7 +151,7 @@ function pickRandomTeamInDecade(decade: string, roster: Roster, excludeTeam: str
 function groupPlayers(players: Player[], mode: "avg" | "best") {
   const forwards  = players.filter(p => p.position.some(pos => ["C","LW","RW"].includes(pos)) && !p.position.includes("G")).sort((a,b) => effectivePts(b, mode) - effectivePts(a, mode));
   const defense   = players.filter(p => p.position.includes("D") && !p.position.some(pos => ["C","LW","RW"].includes(pos))).sort((a,b) => effectivePts(b, mode) - effectivePts(a, mode));
-  const goalies   = players.filter(p => p.position.includes("G")).sort((a,b) => effectivePts(b, mode) - effectivePts(a, mode));
+  const goalies   = players.filter(p => p.position.includes("G")).sort((a,b) => effectiveRating(b, mode) - effectiveRating(a, mode));
   return { forwards, defense, goalies };
 }
 
