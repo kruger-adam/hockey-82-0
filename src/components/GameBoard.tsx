@@ -328,11 +328,27 @@ export default function GameBoard() {
 
   // ── RESULT ────────────────────────────────────────────────────
   function buildShareText(): string {
+    const SHORT_TEAM: Record<string, string> = {
+      "Boston Bruins": "Bruins", "Chicago Blackhawks": "Blackhawks", "Detroit Red Wings": "Red Wings",
+      "Montreal Canadiens": "Canadiens", "New York Rangers": "NY Rangers", "Toronto Maple Leafs": "Maple Leafs",
+      "Anaheim Ducks": "Ducks", "Buffalo Sabres": "Sabres", "Carolina Hurricanes": "Hurricanes",
+      "Columbus Blue Jackets": "Blue Jackets", "Calgary Flames": "Flames", "Colorado Avalanche": "Avalanche",
+      "Dallas Stars": "Stars", "Edmonton Oilers": "Oilers", "Florida Panthers": "Panthers",
+      "Los Angeles Kings": "LA Kings", "Minnesota Wild": "Wild", "New Jersey Devils": "NJ Devils",
+      "Nashville Predators": "Predators", "New York Islanders": "NY Islanders", "Ottawa Senators": "Senators",
+      "Philadelphia Flyers": "Flyers", "Pittsburgh Penguins": "Penguins", "Seattle Kraken": "Kraken",
+      "San Jose Sharks": "Sharks", "St. Louis Blues": "Blues", "Tampa Bay Lightning": "TB Lightning",
+      "Utah Hockey Club": "Utah HC", "Vancouver Canucks": "Canucks", "Vegas Golden Knights": "Golden Knights",
+      "Washington Capitals": "Capitals", "Winnipeg Jets": "Jets", "Atlanta Thrashers": "Thrashers",
+      "Hartford Whalers": "Whalers", "Minnesota North Stars": "North Stars", "Quebec Nordiques": "Nordiques",
+      "Atlanta Flames": "Atl. Flames", "Winnipeg Jets (Orig)": "Jets (Orig)",
+    };
     const slotLabels: Record<string, string> = { C: "C", LW: "LW", RW: "RW", D1: "D", D2: "D", G: "G" };
     const lines = ROSTER_SLOTS.map(({ slot }) => {
       const p = roster[slot];
       if (!p) return null;
-      return `${slotLabels[slot]}: ${p.name} (${p.team} · ${p.decade})`;
+      const team = SHORT_TEAM[p.team] ?? p.team;
+      return `${slotLabels[slot]}: ${p.name} (${team} · ${p.decade})`;
     }).filter(Boolean);
     return `🏒 Hockey 82-0 — ${result!.record}\n\n${lines.join("\n")}\n\nCan you beat it? → hockey-82-0.vercel.app`;
   }
