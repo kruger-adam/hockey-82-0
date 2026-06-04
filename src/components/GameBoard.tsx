@@ -279,6 +279,15 @@ export default function GameBoard() {
     const result = simulateSeason(roster);
     setResult(result);
     setPhase("result");
+
+    // Save to local history
+    try {
+      const entry = { wins: result.wins, losses: result.losses, roster, playedAt: new Date().toISOString() };
+      const existing = JSON.parse(localStorage.getItem("hockey-history") ?? "[]");
+      existing.unshift(entry);
+      localStorage.setItem("hockey-history", JSON.stringify(existing));
+    } catch {}
+
     fetch("/api/log-result", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -333,7 +342,12 @@ export default function GameBoard() {
               className={`w-3 h-3 rounded-sm ${win ? "bg-green-500" : "bg-red-500/50"}`} />
           ))}
         </div>
-        <Button onClick={reset} variant="outline" className="w-full">Try Again</Button>
+        <div className="flex gap-3">
+          <Button onClick={reset} variant="outline" className="flex-1">Try Again</Button>
+          <a href="/history" className="flex-1 inline-flex items-center justify-center rounded-md border border-border bg-transparent px-4 py-2 text-sm font-medium hover:bg-accent transition-colors">
+            View History
+          </a>
+        </div>
       </div>
     );
   }
