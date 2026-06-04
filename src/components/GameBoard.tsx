@@ -279,10 +279,10 @@ export default function GameBoard() {
             <div key={slot} className={`flex items-center gap-3 px-2 py-1.5 rounded-md text-sm ${!player ? "border border-dashed border-border/40" : ""}`}>
               <span className="text-xs text-muted-foreground uppercase tracking-wide w-16 shrink-0">{label}</span>
               {player ? (
-                <>
-                  <span className="font-medium flex-1 truncate">{player.name}</span>
-                  <span className="text-xs text-muted-foreground/70 shrink-0">{statLine(player)}</span>
-                </>
+                <div className="flex flex-col min-w-0">
+                  <span className="font-medium">{player.name}</span>
+                  <span className="text-xs text-muted-foreground/70">{statLine(player)}</span>
+                </div>
               ) : <span className="text-muted-foreground/30 text-xs">—</span>}
             </div>
           );
