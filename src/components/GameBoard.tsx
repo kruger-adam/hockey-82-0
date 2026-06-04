@@ -350,7 +350,7 @@ export default function GameBoard() {
       const team = SHORT_TEAM[p.team] ?? p.team;
       return `${slotLabels[slot]}: ${p.name} (${team} · ${p.decade})`;
     }).filter(Boolean);
-    return `🏒 Hockey 82-0 — ${result!.record}\n\n${lines.join("\n")}\n\nCan you beat it? → 82-0-nhl.vercel.app`;
+    return `🏒 Hockey 82-0 — ${result!.record}\n\n${lines.join("\n")}\n\nCan you beat it? → 82and0hockey.com`;
   }
 
   function handleShare() {
