@@ -37,7 +37,16 @@ export async function POST(req: NextRequest) {
     await pipeline.exec();
 
     if (isValidUserId(userId)) {
-      await redis.zincrby("users:by_games", 1, userId);
+      const dedupKey = `stats:dau:seen:${date}`;
+      const userPipeline = redis.pipeline();
+      userPipeline.zincrby("users:by_games", 1, userId);
+      userPipeline.sadd(dedupKey, userId);
+      userPipeline.expire(dedupKey, 172800); // 48h TTL — auto-cleans after the day rolls over
+      const userResults = await userPipeline.exec();
+      const isNewToday = (userResults[1] as number) === 1;
+      if (isNewToday) {
+        await redis.hincrby("stats:dau", date, 1);
+      }
     }
 
     console.log(`[game] ${wins}-${losses}${isValidUserId(userId) ? ` user=${userId.slice(0, 8)}` : ""}`);
