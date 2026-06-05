@@ -30,13 +30,21 @@ export async function POST(req: NextRequest) {
       pipeline.lpush("rosters:winless", entry);
     }
 
+    const date = new Date().toISOString().slice(0, 10);
+    pipeline.hincrby("stats:win_histogram", String(wins), 1);
+    pipeline.incr(`stats:games:${date}`);
+
     await pipeline.exec();
 
     if (isValidUserId(userId)) {
+      const now = new Date().toISOString();
       const userPipeline = redis.pipeline();
       userPipeline.zincrby("users:by_games", 1, userId);
       userPipeline.sadd(`user:${userId}:records`, wins);
       userPipeline.scard(`user:${userId}:records`);
+      userPipeline.sadd(`stats:dau:${date}`, userId);
+      userPipeline.set(`user:${userId}:first_seen`, now, { nx: true });
+      userPipeline.set(`user:${userId}:last_seen`, now);
       const userResults = await userPipeline.exec();
       const recordCount = userResults[2] as number;
       if (recordCount === 83) {
