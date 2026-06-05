@@ -190,6 +190,19 @@ function decadeShort(decade: string): string {
 
 const EMPTY_ROSTER: Roster = { C: null, LW: null, RW: null, D1: null, D2: null, G: null };
 
+function getOrCreateUserId(): string {
+  try {
+    let id = localStorage.getItem("hockey-user-id");
+    if (!id) {
+      id = crypto.randomUUID();
+      localStorage.setItem("hockey-user-id", id);
+    }
+    return id;
+  } catch {
+    return crypto.randomUUID();
+  }
+}
+
 export default function GameBoard() {
   const [phase, setPhase]               = useState<Phase>("start");
   const [roster, setRoster]             = useState<Roster>(EMPTY_ROSTER);
@@ -316,7 +329,7 @@ export default function GameBoard() {
     fetch("/api/log-result", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ wins: result.wins, losses: result.losses, roster, mode: statsMode }),
+      body: JSON.stringify({ wins: result.wins, losses: result.losses, roster, mode: statsMode, userId: getOrCreateUserId() }),
     }).catch(() => {});
   }
 
