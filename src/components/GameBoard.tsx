@@ -462,7 +462,7 @@ export default function GameBoard() {
                   <span className="font-black tabular-nums leading-none text-sm">
                     {achieved ? count : "·"}
                   </span>
-                  <span className="text-[8px] leading-none opacity-40 mt-0.5">{wins}</span>
+                  <span className="text-[8px] leading-none opacity-40 mt-0.5">{wins}-{82 - wins}</span>
                 </div>
               );
             })}
