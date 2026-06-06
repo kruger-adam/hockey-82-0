@@ -771,7 +771,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
                 disabled={!eligible || isAnimating}
                 className={`flex flex-col px-2 py-2 rounded-lg border transition-all text-left group w-full ${
                   eligible && !isAnimating
-                    ? "border-border hover:border-blue-500/60 hover:bg-blue-500/5 cursor-pointer"
+                    ? "border-border hover:border-blue-500/60 hover:bg-blue-500/5 active:scale-95 active:bg-blue-500/15 active:border-blue-500/60 cursor-pointer"
                     : "border-border/20 opacity-30 cursor-not-allowed"
                 }`}
               >
