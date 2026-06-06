@@ -214,6 +214,7 @@ function SeriesResultScreen({
   onDeclineRematch: () => void;
 }) {
   const [copied, setCopied] = useState(false);
+  const shareCardRef = useRef<HTMLDivElement>(null);
   const iWon =
     myRole === null ? null : result.seriesWinner === myRole;
 
@@ -266,18 +267,68 @@ function SeriesResultScreen({
       "82and0hockey.com/versus",
     ].join("\n");
 
-    if (navigator.share) {
-      navigator.share({ text }).catch(() => {});
-    } else {
-      navigator.clipboard.writeText(text).then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      });
+    async function doShare() {
+      if (navigator.share && shareCardRef.current) {
+        try {
+          const html2canvas = (await import("html2canvas")).default;
+          const canvas = await html2canvas(shareCardRef.current, { backgroundColor: "#0a0a0a", scale: 2 });
+          const blob = await new Promise<Blob>((res) => canvas.toBlob((b) => res(b!), "image/png"));
+          const file = new File([blob], "result.png", { type: "image/png" });
+          if (navigator.canShare?.({ files: [file] })) {
+            await navigator.share({ files: [file], text });
+            return;
+          }
+        } catch { /* fall through */ }
+        navigator.share({ text }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(text).then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        });
+      }
     }
+    doShare();
   }
+
+  // Hidden share card captured by html2canvas
+  const myStats    = [...result[myRole === "p2" ? "p2Stats" : "p1Stats"]].sort((a, b) => b.points - a.points);
+  const theirStats = [...result[myRole === "p2" ? "p1Stats" : "p2Stats"]].sort((a, b) => b.points - a.points);
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-lg mx-auto">
+      {/* Hidden share card */}
+      <div
+        ref={shareCardRef}
+        className="absolute -left-[9999px] top-0 w-[400px] bg-[#0a0a0a] p-6 rounded-xl"
+        aria-hidden="true"
+      >
+        <p className="text-white font-black text-lg mb-1">{headline}</p>
+        <p className="text-yellow-400 text-xs mb-4">MVP: {result.mvp}</p>
+        <div className="flex gap-6">
+          <div className="flex-1">
+            <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-2">You</p>
+            {myStats.map(s => (
+              <p key={s.name} className="text-white text-xs leading-5">
+                {s.position.includes("G")
+                  ? `${s.name}: ${s.svPct != null ? `.${Math.round(s.svPct * 1000)} SV%` : "—"}`
+                  : `${s.name}: ${s.goals}G ${s.assists}A`}
+              </p>
+            ))}
+          </div>
+          <div className="flex-1">
+            <p className="text-orange-400 text-xs font-bold uppercase tracking-widest mb-2">{vsBot ? "Bot" : "Them"}</p>
+            {theirStats.map(s => (
+              <p key={s.name} className="text-white/70 text-xs leading-5">
+                {s.position.includes("G")
+                  ? `${s.name}: ${s.svPct != null ? `.${Math.round(s.svPct * 1000)} SV%` : "—"}`
+                  : `${s.name}: ${s.goals}G ${s.assists}A`}
+              </p>
+            ))}
+          </div>
+        </div>
+        <p className="text-white/30 text-xs mt-4">82and0hockey.com/versus</p>
+      </div>
+
       {/* Headline */}
       <div className="text-center">
         <p className={`text-2xl font-black ${iWon ? "text-yellow-400" : iWon === false ? "text-red-400" : "text-foreground"}`}>
