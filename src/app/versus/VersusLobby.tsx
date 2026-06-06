@@ -47,8 +47,11 @@ export default function VersusLobby() {
         body: JSON.stringify({ playerId: getOrCreateUserId(), statsMode }),
       });
       const data = await res.json();
-      if (data.roomCode) router.push(`/versus/${data.roomCode}`);
-      else setError("Failed to create game.");
+      if (data.roomCode) {
+        router.push(`/versus/${data.roomCode}`);
+        return; // stay in loading state until navigation takes over
+      }
+      setError("Failed to create game.");
     } catch {
       setError("Network error.");
     }
