@@ -606,8 +606,19 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     if (!res.ok || !data.combo) return;
     const combo = data.combo as { decade: string; team: string };
     const locked = type === "team" ? "decade" : "team";
-    // Reset deadline optimistically so the countdown restarts at 10
-    setGame({ ...game, currentSpin: combo, turnDeadline: Date.now() + 12_000 });
+    // Optimistically update combo, deadline, and respin-used flag so UI reflects instantly
+    const ps = myRole ? game[myRole] : null;
+    const updatedPs = ps ? {
+      ...ps,
+      respinTeamUsed: type === "team" ? true : ps.respinTeamUsed,
+      respinDecadeUsed: type === "decade" ? true : ps.respinDecadeUsed,
+    } : null;
+    setGame({
+      ...game,
+      currentSpin: combo,
+      turnDeadline: Date.now() + 12_000,
+      ...(myRole && updatedPs ? { [myRole]: updatedPs } : {}),
+    });
     setPhase("spinning");
     runSpinAnimation(combo, locked, () => {
       const players = getPlayersForTeamDecade(combo.decade, combo.team)
