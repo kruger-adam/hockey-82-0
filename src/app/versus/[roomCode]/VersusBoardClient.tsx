@@ -126,7 +126,7 @@ function RosterPanel({
           const p = roster[slot];
           return (
             <div key={slot} className="flex items-center gap-2 py-1 text-xs">
-              <span className="text-muted-foreground/50 uppercase tracking-wide w-12 shrink-0">{slotLabel}</span>
+              <span className="text-muted-foreground/50 uppercase tracking-wide w-16 shrink-0">{slotLabel}</span>
               {p ? (
                 <div className="flex flex-col min-w-0">
                   <span className="font-medium text-sm leading-tight">{p.name}</span>
@@ -319,6 +319,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const myRoleRef = useRef<"p1" | "p2" | null>(null);
   const phaseRef = useRef<UIPhase>("loading");
   const spinComboRef = useRef<{ decade: string; team: string } | null>(null);
+  const pickInFlightRef = useRef(false);
 
   // Keep refs in sync
   useEffect(() => { myRoleRef.current = myRole; }, [myRole]);
@@ -362,7 +363,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     // It's our turn
     if (currentPhase === "picking" || currentPhase === "positioning" || currentPhase === "spinning") return;
 
-    if (g.currentSpin && !spinComboRef.current) {
+    if (g.currentSpin && !spinComboRef.current && !pickInFlightRef.current) {
       // Recover spin from server (page refresh mid-pick)
       const players = getPlayersForTeamDecade(g.currentSpin.decade, g.currentSpin.team)
         .filter((p) => !g.draftedNames.includes(p.name));
@@ -438,6 +439,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
           g.currentTurn === myRoleRef.current &&
           g.currentSpin &&
           !spinComboRef.current &&
+          !pickInFlightRef.current &&
           phaseRef.current === "my_turn"
         ) {
           const players = getPlayersForTeamDecade(g.currentSpin.decade, g.currentSpin.team)
@@ -545,6 +547,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   async function assignSlot(player: Player, slot: RosterSlot) {
     const userId = getOrCreateUserId();
+    pickInFlightRef.current = true;
     setPhase("opponent_turn");
     setSpinCombo(null);
     setAvailablePlayers([]);
@@ -552,11 +555,15 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     // Clear currentSpin locally so the opponent-turn view doesn't flash the
     // just-picked combo while the pick API call is still in flight
     if (game) setGame({ ...game, currentSpin: null });
-    await fetch(`/api/game/${roomCode}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "pick", playerId: userId, playerName: player.name, slot }),
-    });
+    try {
+      await fetch(`/api/game/${roomCode}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "pick", playerId: userId, playerName: player.name, slot }),
+      });
+    } finally {
+      pickInFlightRef.current = false;
+    }
     // Poll will pick up the new state
   }
 
