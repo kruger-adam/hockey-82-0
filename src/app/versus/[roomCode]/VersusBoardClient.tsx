@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { GameSession, PlayerSeriesStats, SeriesResult } from "@/lib/versus-types";
@@ -196,11 +197,21 @@ function SeriesResultScreen({
   myRole,
   roomCode,
   vsBot,
+  rematchStatus,
+  rematchCountdown,
+  onRematch,
+  onAcceptRematch,
+  onDeclineRematch,
 }: {
   result: SeriesResult;
   myRole: "p1" | "p2" | null;
   roomCode: string;
   vsBot: boolean;
+  rematchStatus: "idle" | "requesting" | "incoming";
+  rematchCountdown: number | null;
+  onRematch: () => void;
+  onAcceptRematch: () => void;
+  onDeclineRematch: () => void;
 }) {
   const [copied, setCopied] = useState(false);
   const iWon =
@@ -272,12 +283,46 @@ function SeriesResultScreen({
         title={myRole === "p2" ? "Your Team" : myRole === "p1" ? (vsBot ? "Bot" : "Opponent") : "Player 2"}
       />
 
+      {/* Rematch */}
+      {myRole && (
+        <div className="flex flex-col gap-2">
+          {vsBot ? (
+            <Button onClick={onRematch} className="w-full bg-orange-500 hover:bg-orange-400 text-white font-bold py-5">
+              Rematch vs Bot
+            </Button>
+          ) : rematchStatus === "idle" ? (
+            <Button onClick={onRematch} variant="outline" className="w-full py-5 font-bold">
+              Rematch
+            </Button>
+          ) : rematchStatus === "requesting" ? (
+            <div className="w-full text-center py-3 text-sm text-muted-foreground">
+              Waiting for opponent to accept… <span className="tabular-nums font-bold text-foreground">{rematchCountdown ?? "—"}s</span>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center gap-2 py-2">
+              <p className="text-sm font-bold">Opponent wants a rematch!</p>
+              <p className="text-xs text-muted-foreground">
+                Respond within <span className="tabular-nums font-bold text-foreground">{rematchCountdown ?? "—"}s</span>
+              </p>
+              <div className="flex gap-2 w-full">
+                <Button onClick={onAcceptRematch} className="flex-1 bg-green-600 hover:bg-green-500 text-white font-bold">
+                  Accept
+                </Button>
+                <Button onClick={onDeclineRematch} variant="outline" className="flex-1">
+                  Decline
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       <div className="flex gap-3">
         <a
           href="/versus"
           className="flex-1 inline-flex items-center justify-center rounded-md border border-border bg-transparent px-4 py-2 text-sm font-medium hover:bg-accent transition-colors"
         >
-          Play Again
+          New Game
         </a>
         <Button onClick={share} variant="outline" className="flex-1">
           {copied ? "✓ Copied!" : "Share Result"}
@@ -301,6 +346,7 @@ type UIPhase =
   | "complete";
 
 export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
+  const router = useRouter();
   const [game, setGame] = useState<GameSession | null>(null);
   const [myRole, setMyRole] = useState<"p1" | "p2" | null>(null);
   const [phase, setPhase] = useState<UIPhase>("loading");
@@ -320,11 +366,25 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const phaseRef = useRef<UIPhase>("loading");
   const spinComboRef = useRef<{ decade: string; team: string } | null>(null);
   const pickInFlightRef = useRef(false);
+  const [rematchStatus, setRematchStatus] = useState<"idle" | "requesting" | "incoming">("idle");
+  const [rematchCountdown, setRematchCountdown] = useState<number | null>(null);
+  const rematchStatusRef = useRef<"idle" | "requesting" | "incoming">("idle");
 
   // Keep refs in sync
   useEffect(() => { myRoleRef.current = myRole; }, [myRole]);
   useEffect(() => { phaseRef.current = phase; }, [phase]);
   useEffect(() => { spinComboRef.current = spinCombo; }, [spinCombo]);
+  useEffect(() => { rematchStatusRef.current = rematchStatus; }, [rematchStatus]);
+
+  // Rematch countdown
+  useEffect(() => {
+    if (!game?.rematchDeadline || rematchStatus === "idle") { setRematchCountdown(null); return; }
+    const d = game.rematchDeadline;
+    function tick() { setRematchCountdown(Math.max(0, Math.ceil((d - Date.now()) / 1000))); }
+    tick();
+    const id = setInterval(tick, 200);
+    return () => clearInterval(id);
+  }, [game?.rematchDeadline, rematchStatus]);
 
   // Countdown timer — ready_check window or turn deadline
   useEffect(() => {
@@ -452,6 +512,20 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
           return;
         }
 
+        // Rematch detection (complete games only)
+        if (g.status === "complete" && myRoleRef.current) {
+          if (g.rematchRoomCode) {
+            router.push(`/versus/${g.rematchRoomCode}`);
+            return;
+          }
+          const otherRole = myRoleRef.current === "p1" ? "p2" : "p1";
+          if (g.rematchRequestedBy === otherRole && rematchStatusRef.current !== "incoming") {
+            setRematchStatus("incoming");
+          } else if (!g.rematchRequestedBy && rematchStatusRef.current === "incoming") {
+            setRematchStatus("idle");
+          }
+        }
+
         applyGameState(g, myRoleRef.current);
       } catch { /* ignore */ }
     }, 1500);
@@ -577,6 +651,40 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     // Poll will pick up the updated ready flags
   }
 
+  async function doRematch() {
+    if (game?.botRole) {
+      // Bot rematch: instant, no coordination needed
+      const res = await fetch("/api/game/bot", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ playerId: getOrCreateUserId() }),
+      });
+      const data = await res.json();
+      if (data.roomCode) router.push(`/versus/${data.roomCode}`);
+      return;
+    }
+    setRematchStatus("requesting");
+    await fetch(`/api/game/${roomCode}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "rematch_request", playerId: getOrCreateUserId() }),
+    });
+  }
+
+  async function doAcceptRematch() {
+    const res = await fetch(`/api/game/${roomCode}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "rematch_accept", playerId: getOrCreateUserId() }),
+    });
+    const data = await res.json();
+    if (data.roomCode) router.push(`/versus/${data.roomCode}`);
+  }
+
+  function doDeclineRematch() {
+    setRematchStatus("idle");
+  }
+
   function shareRoomCode() {
     const url = `${window.location.origin}/versus/${roomCode}`;
     const text = `See if you can draft a better team than me and beat me in a best of seven 🏒\n${url}`;
@@ -612,6 +720,11 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
         myRole={myRole}
         roomCode={roomCode}
         vsBot={!!game.botRole}
+        rematchStatus={rematchStatus}
+        rematchCountdown={rematchCountdown}
+        onRematch={doRematch}
+        onAcceptRematch={doAcceptRematch}
+        onDeclineRematch={doDeclineRematch}
       />
     );
   }

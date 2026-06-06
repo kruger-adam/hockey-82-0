@@ -40,6 +40,9 @@ export async function POST(req: NextRequest) {
       readyDeadline: null,
       lastRespin: null,
       botRole: "p2",
+      rematchRequestedBy: null,
+      rematchRoomCode: null,
+      rematchDeadline: null,
     };
 
     await redis.set(`game:${roomCode}`, JSON.stringify(session), { ex: 14400 });

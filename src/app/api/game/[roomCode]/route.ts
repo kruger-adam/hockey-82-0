@@ -5,6 +5,8 @@ import {
   pickRandomCombo,
   pickNewDecadeForTeam,
   pickNewTeamInDecade,
+  generateRoomCode,
+  EMPTY_ROSTER,
 } from "@/lib/versus-utils";
 import { getPlayersForTeamDecade } from "@/lib/players";
 import { isRosterComplete, ROSTER_SLOTS } from "@/lib/simulation";
@@ -99,6 +101,18 @@ export async function GET(
   const session = await getSession(roomCode.toUpperCase());
   if (!session) return Response.json({ error: "not_found" }, { status: 404 });
 
+  // Normalize fields missing from old sessions
+  session.rematchRequestedBy ??= null;
+  session.rematchRoomCode ??= null;
+  session.rematchDeadline ??= null;
+
+  // Clear expired rematch requests
+  if (session.rematchRequestedBy && session.rematchDeadline && Date.now() > session.rematchDeadline && !session.rematchRoomCode) {
+    session.rematchRequestedBy = null;
+    session.rematchDeadline = null;
+    await saveSession(session);
+  }
+
   // Reset ready flags if the 30s ready-check window expired
   if (
     session.status === "ready_check" &&
@@ -152,7 +166,9 @@ export async function POST(
 
     const session = await getSession(roomCode.toUpperCase());
     if (!session) return Response.json({ error: "not_found" }, { status: 404 });
-    if (session.status === "complete") return Response.json({ error: "game_over" }, { status: 400 });
+    if (session.status === "complete" && action !== "rematch_request" && action !== "rematch_accept") {
+      return Response.json({ error: "game_over" }, { status: 400 });
+    }
 
     const role =
       session.p1.id === playerId ? "p1" : session.p2?.id === playerId ? "p2" : null;
@@ -309,6 +325,62 @@ export async function POST(
 
       await saveSession(session);
       return Response.json({ ok: true });
+    }
+
+    if (action === "rematch_request") {
+      if (session.status !== "complete") return Response.json({ error: "not_complete" }, { status: 400 });
+      if (!session.rematchRequestedBy) {
+        session.rematchRequestedBy = role;
+        session.rematchDeadline = Date.now() + 10_000;
+        await saveSession(session);
+      }
+      return Response.json({ ok: true });
+    }
+
+    if (action === "rematch_accept") {
+      if (session.status !== "complete") return Response.json({ error: "not_complete" }, { status: 400 });
+      if (!session.rematchRequestedBy || session.rematchRequestedBy === role)
+        return Response.json({ error: "invalid" }, { status: 400 });
+      if (session.rematchDeadline && Date.now() > session.rematchDeadline) {
+        session.rematchRequestedBy = null;
+        session.rematchDeadline = null;
+        await saveSession(session);
+        return Response.json({ error: "expired" }, { status: 400 });
+      }
+
+      const newCode = generateRoomCode();
+      const firstTurn: "p1" | "p2" = Math.random() < 0.5 ? "p1" : "p2";
+      const newSession: GameSession = {
+        id: newCode,
+        status: "drafting",
+        p1: { id: session.p1.id, roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false, ready: false },
+        p2: { id: session.p2!.id, roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false, ready: false },
+        currentTurn: firstTurn,
+        pickNumber: 0,
+        currentSpin: null,
+        draftedNames: [],
+        statsMode: session.statsMode,
+        result: null,
+        createdAt: Date.now(),
+        turnDeadline: Date.now() + TURN_LIMIT_MS,
+        readyDeadline: null,
+        lastRespin: null,
+        botRole: null,
+        rematchRequestedBy: null,
+        rematchRoomCode: null,
+        rematchDeadline: null,
+      };
+      await redis.set(`game:${newCode}`, JSON.stringify(newSession), { ex: 14400 });
+      session.rematchRoomCode = newCode;
+      await saveSession(session);
+
+      const date = new Date().toISOString().slice(0, 10);
+      const pipeline = redis.pipeline();
+      pipeline.incr("versus:rematches");
+      pipeline.hincrby("versus:rematches:by_date", date, 1);
+      await pipeline.exec();
+
+      return Response.json({ ok: true, roomCode: newCode });
     }
 
     return Response.json({ error: "unknown_action" }, { status: 400 });

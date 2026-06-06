@@ -31,6 +31,9 @@ export interface GameSession {
   readyDeadline: number | null;
   lastRespin: "team" | "decade" | null;
   botRole: "p1" | "p2" | null;
+  rematchRequestedBy: "p1" | "p2" | null;
+  rematchRoomCode: string | null;
+  rematchDeadline: number | null;
 }
 
 export interface SeriesResult {
