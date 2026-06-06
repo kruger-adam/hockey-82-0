@@ -27,6 +27,23 @@ export default function Home() {
       </header>
 
       <div className="flex-1 flex flex-col items-center px-4 pb-12">
+        <Link
+          href="/versus"
+          className="w-full max-w-lg mb-6 flex items-center justify-between gap-4 rounded-xl border border-blue-500/30 bg-blue-500/5 hover:bg-blue-500/10 hover:border-blue-500/50 transition-all px-4 py-3 group"
+        >
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="shrink-0 text-xs font-bold uppercase tracking-widest text-blue-400 border border-blue-500/40 rounded px-1.5 py-0.5">
+              New
+            </span>
+            <div className="min-w-0">
+              <p className="font-bold text-sm text-foreground leading-tight">Head-to-Head Mode</p>
+              <p className="text-xs text-muted-foreground leading-tight mt-0.5">
+                Draft a team and compete with friends or strangers in a best-of-7 series.
+              </p>
+            </div>
+          </div>
+          <span className="shrink-0 text-blue-400 group-hover:translate-x-0.5 transition-transform">→</span>
+        </Link>
         <GameBoard />
       </div>
 
