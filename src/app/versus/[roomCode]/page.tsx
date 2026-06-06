@@ -18,7 +18,6 @@ export default async function VersusRoomPage({
           ← Lobby
         </Link>
         <h1 className="text-2xl font-black text-foreground tracking-tight">Head-to-Head</h1>
-        <p className="text-xs text-muted-foreground/50 mt-1 font-mono tracking-widest">{roomCode}</p>
       </header>
       <div className="flex-1 flex flex-col items-center px-4 pb-12">
         <VersusBoardClient roomCode={roomCode} />
