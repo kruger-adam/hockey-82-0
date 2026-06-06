@@ -579,7 +579,8 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   function shareRoomCode() {
     const url = `${window.location.origin}/versus/${roomCode}`;
-    navigator.clipboard.writeText(url).then(() => {
+    const text = `See if you can draft a better team than me and beat me in a best of seven 🏒\n${url}`;
+    navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
