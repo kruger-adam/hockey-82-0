@@ -228,10 +228,44 @@ function SeriesResultScreen({
       : `You lose the series ${seriesLabel}`;
 
   function share() {
-    const gameLines = result.games
-      .map((g, i) => `G${i + 1}: ${g.p1Goals}-${g.p2Goals}${g.overtime ? " OT" : ""}`)
-      .join("  ");
-    const text = `🏒 Hockey 82-0 Head-to-Head\n${headline}\n\n${gameLines}\n\nMVP: ${result.mvp}\n\n82and0hockey.com/versus/${roomCode}`;
+    const winnerWins = result.seriesWinner === "p1" ? result.p1Wins : result.p2Wins;
+    const loserWins  = result.seriesWinner === "p1" ? result.p2Wins : result.p1Wins;
+    const iWon = myRole ? result.seriesWinner === myRole : true;
+    const seriesDesc = loserWins === 0
+      ? `${winnerWins}-0 sweep`
+      : `${winnerWins}-${loserWins} series ${iWon ? "win" : "loss"}`;
+    const shareHeadline = `🏒 Head-to-Head: ${seriesDesc}${iWon ? " 🏆" : ""}`;
+
+    const lastName = (name: string) => name.split(" ").pop() ?? name;
+    const sorted = (stats: PlayerSeriesStats[]) => [
+      ...stats.filter(s => !s.position.includes("G")).sort((a, b) => b.points - a.points),
+      ...stats.filter(s => s.position.includes("G")),
+    ];
+    const formatPlayer = (s: PlayerSeriesStats) => {
+      const tag = s.name === result.mvp ? " (MVP)" : "";
+      if (s.position.includes("G")) {
+        const sv = s.svPct != null ? `.${Math.round(s.svPct * 1000)} SV%` : "—";
+        return `${lastName(s.name)}${tag}: ${sv}`;
+      }
+      return `${lastName(s.name)}${tag}: ${s.goals}G ${s.assists}A`;
+    };
+
+    const myStats    = sorted(myRole === "p2" ? result.p2Stats : result.p1Stats);
+    const theirStats = sorted(myRole === "p2" ? result.p1Stats : result.p2Stats);
+    const themLabel  = vsBot ? "BOT" : "THEM";
+
+    const text = [
+      shareHeadline,
+      "",
+      "YOU",
+      ...myStats.map(formatPlayer),
+      "",
+      themLabel,
+      ...theirStats.map(formatPlayer),
+      "",
+      "82and0hockey.com/versus",
+    ].join("\n");
+
     if (navigator.share) {
       navigator.share({ text }).catch(() => {});
     } else {
