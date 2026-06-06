@@ -206,7 +206,9 @@ function SeriesResultScreen({
   const iWon =
     myRole === null ? null : result.seriesWinner === myRole;
 
-  const seriesLabel = `${result.p1Wins}-${result.p2Wins}`;
+  const winnerWins = result.seriesWinner === "p1" ? result.p1Wins : result.p2Wins;
+  const loserWins = result.seriesWinner === "p1" ? result.p2Wins : result.p1Wins;
+  const seriesLabel = `${winnerWins}-${loserWins}`;
   const headline =
     iWon === null
       ? `Series: ${seriesLabel}`
