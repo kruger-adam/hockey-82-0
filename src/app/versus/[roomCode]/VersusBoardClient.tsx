@@ -1009,7 +1009,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
             </div>
           </div>
           <div className="flex-1">
-            <div className="w-full aspect-square rounded-xl border-4 border-purple-500 bg-card flex flex-col items-center justify-center shadow-lg">
+            <div className="w-full py-5 rounded-xl border-4 border-purple-500 bg-card flex flex-col items-center justify-center shadow-lg">
               <p className="text-xs font-bold text-purple-400 tracking-widest uppercase mb-1">Era</p>
               <p className="text-2xl font-black text-foreground">???</p>
             </div>
@@ -1041,7 +1041,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
             </div>
           </div>
           <div className="flex-1">
-            <div className="w-full aspect-square rounded-xl border-4 border-purple-500 bg-card flex flex-col items-center justify-center shadow-lg">
+            <div className="w-full py-5 rounded-xl border-4 border-purple-500 bg-card flex flex-col items-center justify-center shadow-lg">
               <p className="text-xs font-bold text-purple-400 tracking-widest uppercase mb-1">Era</p>
               <p className="text-2xl font-black text-muted-foreground animate-pulse">···</p>
             </div>
