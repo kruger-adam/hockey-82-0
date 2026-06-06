@@ -368,10 +368,15 @@ export default function GameBoard() {
   }
 
   function handleShare() {
-    navigator.clipboard.writeText(buildShareText()).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+    const text = buildShareText();
+    if (navigator.share) {
+      navigator.share({ text }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      });
+    }
   }
 
   if (phase === "result" && result) {

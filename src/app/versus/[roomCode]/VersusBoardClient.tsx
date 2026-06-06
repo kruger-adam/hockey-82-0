@@ -232,10 +232,14 @@ function SeriesResultScreen({
       .map((g, i) => `G${i + 1}: ${g.p1Goals}-${g.p2Goals}${g.overtime ? " OT" : ""}`)
       .join("  ");
     const text = `🏒 Hockey 82-0 Head-to-Head\n${headline}\n\n${gameLines}\n\nMVP: ${result.mvp}\n\n82and0hockey.com/versus/${roomCode}`;
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+    if (navigator.share) {
+      navigator.share({ text }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      });
+    }
   }
 
   return (
