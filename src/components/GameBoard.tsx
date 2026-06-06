@@ -363,7 +363,8 @@ export default function GameBoard() {
       const team = SHORT_TEAM[p.team] ?? p.team;
       return `${slotLabels[slot]}: ${p.name} (${team} · ${decadeShort(p.decade)})`;
     }).filter(Boolean);
-    return `🏒 I just went ${result!.record} with:\n\n${lines.join("\n")}\n\nCan you beat it? → 82and0hockey.com`;
+    const cta = result!.record === "82-0" ? "Can you go 82-0?" : "Can you beat it?";
+    return `🏒 I just went ${result!.record} with:\n\n${lines.join("\n")}\n\n${cta} → 82and0hockey.com`;
   }
 
   function handleShare() {
