@@ -807,41 +807,45 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
               <p className="text-xs text-muted-foreground uppercase tracking-widest">
                 Pick {game.pickNumber + 1} of 12
               </p>
-              <CountdownBadge max={10} />
+              {!isAnimating && <CountdownBadge max={10} />}
             </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => doRespin("team")}
-                disabled={!canRespinTeam || isAnimating}
-                className={`text-xs px-2 py-1 rounded border transition-colors ${
-                  canRespinTeam && !isAnimating
-                    ? "border-border text-muted-foreground hover:border-blue-500/60 hover:text-blue-400"
-                    : "border-border/30 text-muted-foreground/30 cursor-not-allowed"
-                }`}
-              >
-                Respin Team {myState?.respinTeamUsed ? "✓" : ""}
-              </button>
-              <button
-                onClick={() => doRespin("decade")}
-                disabled={!canRespinDecade || isAnimating}
-                className={`text-xs px-2 py-1 rounded border transition-colors ${
-                  canRespinDecade && !isAnimating
-                    ? "border-border text-muted-foreground hover:border-blue-500/60 hover:text-blue-400"
-                    : "border-border/30 text-muted-foreground/30 cursor-not-allowed"
-                }`}
-              >
-                Respin Era {myState?.respinDecadeUsed ? "✓" : ""}
-              </button>
-            </div>
+            {!isAnimating && (
+              <div className="flex gap-2">
+                <button
+                  onClick={() => doRespin("team")}
+                  disabled={!canRespinTeam}
+                  className={`text-xs px-2 py-1 rounded border transition-colors ${
+                    canRespinTeam
+                      ? "border-border text-muted-foreground hover:border-blue-500/60 hover:text-blue-400"
+                      : "border-border/30 text-muted-foreground/30 cursor-not-allowed"
+                  }`}
+                >
+                  Respin Team {myState?.respinTeamUsed ? "✓" : ""}
+                </button>
+                <button
+                  onClick={() => doRespin("decade")}
+                  disabled={!canRespinDecade}
+                  className={`text-xs px-2 py-1 rounded border transition-colors ${
+                    canRespinDecade
+                      ? "border-border text-muted-foreground hover:border-blue-500/60 hover:text-blue-400"
+                      : "border-border/30 text-muted-foreground/30 cursor-not-allowed"
+                  }`}
+                >
+                  Respin Era {myState?.respinDecadeUsed ? "✓" : ""}
+                </button>
+              </div>
+            )}
           </div>
           <p className={`text-base font-semibold mb-3 ${isAnimating ? "text-muted-foreground animate-pulse" : "text-foreground"}`}>
             {displayedDecade} · {displayedTeam}
           </p>
-          <div className="flex gap-3">
-            <PlayerColumn title="Forwards" players={fwd} />
-            <PlayerColumn title="Defence" players={def} />
-            <PlayerColumn title="Goalies" players={goa} />
-          </div>
+          {!isAnimating && (
+            <div className="flex gap-3">
+              <PlayerColumn title="Forwards" players={fwd} />
+              <PlayerColumn title="Defence" players={def} />
+              <PlayerColumn title="Goalies" players={goa} />
+            </div>
+          )}
         </div>
       </div>
     );
