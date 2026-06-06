@@ -407,25 +407,29 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   }, [game?.readyDeadline, game?.turnDeadline, game?.status, game?.currentTurn, myRole]);
 
   const applyGameState = useCallback((g: GameSession, role: "p1" | "p2" | null) => {
-    setGame(g);
     const currentPhase = phaseRef.current;
+    // Skip re-renders during active player interaction — polling setGame() mid-tap drops clicks on mobile
+    const isInteracting = currentPhase === "picking" || currentPhase === "positioning" || currentPhase === "spinning";
 
-    if (g.status === "complete") { setPhase("complete"); return; }
-    if (g.status === "waiting") { setPhase("waiting_for_opponent"); return; }
-    if (g.status === "ready_check") { setPhase("ready_check"); return; }
+    if (g.status === "complete") { setGame(g); setPhase("complete"); return; }
+    if (g.status === "waiting") { setGame(g); setPhase("waiting_for_opponent"); return; }
+    if (g.status === "ready_check") { setGame(g); setPhase("ready_check"); return; }
 
-    if (!role) return;
+    if (!role) { setGame(g); return; }
 
     if (g.currentTurn !== role) {
       // Don't override picking/positioning if we just picked and the turn hasn't flipped yet
       if (currentPhase !== "picking" && currentPhase !== "positioning") {
+        setGame(g);
         setPhase("opponent_turn");
       }
       return;
     }
 
-    // It's our turn
-    if (currentPhase === "picking" || currentPhase === "positioning" || currentPhase === "spinning") return;
+    // It's our turn — don't update game state while user is actively interacting
+    if (isInteracting) return;
+
+    setGame(g);
 
     if (g.currentSpin && !spinComboRef.current && !pickInFlightRef.current) {
       // Recover spin from server (page refresh mid-pick)
