@@ -636,9 +636,15 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     setSpinCombo(null);
     setAvailablePlayers([]);
     setSelectedPlayer(null);
-    // Clear currentSpin locally so the opponent-turn view doesn't flash the
-    // just-picked combo while the pick API call is still in flight
-    if (game) setGame({ ...game, currentSpin: null });
+    // Optimistically update roster and clear spin so the UI reflects the pick instantly
+    if (game && myRole) {
+      const ps = game[myRole];
+      if (ps) setGame({
+        ...game,
+        currentSpin: null,
+        [myRole]: { ...ps, roster: { ...ps.roster, [slot]: player } },
+      });
+    }
     try {
       await fetch(`/api/game/${roomCode}`, {
         method: "POST",
