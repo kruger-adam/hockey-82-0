@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     const session: GameSession = {
       id: roomCode,
       status: "waiting",
-      p1: { id: playerId, roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false },
+      p1: { id: playerId, roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false, ready: false },
       p2: null,
       currentTurn: "p1",
       pickNumber: 0,
@@ -32,11 +32,19 @@ export async function POST(req: NextRequest) {
       result: null,
       createdAt: Date.now(),
       turnDeadline: null,
+      readyDeadline: null,
       lastRespin: null,
       botRole: null,
     };
 
     await redis.set(`game:${roomCode}`, JSON.stringify(session), { ex: 14400 });
+
+    const date = new Date().toISOString().slice(0, 10);
+    const pipeline = redis.pipeline();
+    pipeline.incr("versus:friend_created");
+    pipeline.hincrby("versus:friend_created:by_date", date, 1);
+    await pipeline.exec();
+
     return Response.json({ roomCode });
   } catch (err) {
     console.error("[game/create]", err);

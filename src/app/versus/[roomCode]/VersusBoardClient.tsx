@@ -292,6 +292,7 @@ function SeriesResultScreen({
 type UIPhase =
   | "loading"
   | "waiting_for_opponent"
+  | "ready_check"
   | "my_turn"
   | "spinning"
   | "picking"
@@ -324,20 +325,21 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   useEffect(() => { phaseRef.current = phase; }, [phase]);
   useEffect(() => { spinComboRef.current = spinCombo; }, [spinCombo]);
 
-  // Countdown timer for turn deadline
+  // Countdown timer — ready_check window or turn deadline
   useEffect(() => {
-    if (!game?.turnDeadline || game.status !== "drafting" || game.currentTurn !== myRole) {
-      setSecondsLeft(null);
-      return;
+    let deadline: number | null = null;
+    if (game?.status === "ready_check" && game?.readyDeadline) {
+      deadline = game.readyDeadline;
+    } else if (game?.status === "drafting" && game?.currentTurn === myRole && game?.turnDeadline) {
+      deadline = game.turnDeadline;
     }
-    const deadline = game.turnDeadline;
-    function tick() {
-      setSecondsLeft(Math.max(0, Math.ceil((deadline - Date.now()) / 1000)));
-    }
+    if (!deadline) { setSecondsLeft(null); return; }
+    const d = deadline;
+    function tick() { setSecondsLeft(Math.max(0, Math.ceil((d - Date.now()) / 1000))); }
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, [game?.turnDeadline, game?.status, game?.currentTurn, myRole]);
+  }, [game?.readyDeadline, game?.turnDeadline, game?.status, game?.currentTurn, myRole]);
 
   const applyGameState = useCallback((g: GameSession, role: "p1" | "p2" | null) => {
     setGame(g);
@@ -345,6 +347,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
     if (g.status === "complete") { setPhase("complete"); return; }
     if (g.status === "waiting") { setPhase("waiting_for_opponent"); return; }
+    if (g.status === "ready_check") { setPhase("ready_check"); return; }
 
     if (!role) return;
 
@@ -557,6 +560,16 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     // Poll will pick up the new state
   }
 
+  async function doReady() {
+    const userId = getOrCreateUserId();
+    await fetch(`/api/game/${roomCode}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "ready", playerId: userId }),
+    });
+    // Poll will pick up the updated ready flags
+  }
+
   function shareRoomCode() {
     const url = `${window.location.origin}/versus/${roomCode}`;
     navigator.clipboard.writeText(url).then(() => {
@@ -642,6 +655,69 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
           <p className="text-xs text-muted-foreground uppercase tracking-widest">Your Roster</p>
           <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
         </div>
+      </div>
+    );
+  }
+
+  // ── Ready check ───────────────────────────────────────────────────────────
+  if (phase === "ready_check" && myRole) {
+    const myReady = getPS(game, myRole).ready;
+    const theirReady = myRole === "p1" ? (game.p2?.ready ?? false) : game.p1.ready;
+    const deadlineActive = !!game.readyDeadline;
+    const timedOut = deadlineActive && secondsLeft === 0;
+
+    return (
+      <div className="flex flex-col gap-6 w-full max-w-sm mx-auto text-center">
+        <div>
+          <p className="text-xl font-black">Your friend accepted the challenge!</p>
+          <p className="text-muted-foreground text-sm mt-1">
+            Both players need to confirm they&apos;re ready.
+          </p>
+        </div>
+
+        <div className="flex gap-4 justify-center">
+          <div className={`flex flex-col items-center gap-1 px-5 py-3 rounded-lg border ${myReady ? "border-green-500/40 bg-green-500/5" : "border-border"}`}>
+            <span className="text-xs text-muted-foreground">You</span>
+            <span className={`text-sm font-bold ${myReady ? "text-green-400" : "text-muted-foreground/60"}`}>
+              {myReady ? "Ready ✓" : "Not ready"}
+            </span>
+          </div>
+          <div className={`flex flex-col items-center gap-1 px-5 py-3 rounded-lg border ${theirReady ? "border-green-500/40 bg-green-500/5" : "border-border"}`}>
+            <span className="text-xs text-muted-foreground">Opponent</span>
+            <span className={`text-sm font-bold ${theirReady ? "text-green-400" : "text-muted-foreground/60"}`}>
+              {theirReady ? "Ready ✓" : "Not ready"}
+            </span>
+          </div>
+        </div>
+
+        {deadlineActive && !timedOut && (
+          <p className="text-xs text-muted-foreground">
+            {theirReady ? "You have" : "Your opponent has"}{" "}
+            <span className={`tabular-nums font-bold ${(secondsLeft ?? 30) <= 10 ? "text-yellow-400" : "text-foreground"}`}>
+              {secondsLeft ?? 30}s
+            </span>{" "}
+            to ready up
+          </p>
+        )}
+
+        {timedOut && (
+          <p className="text-xs text-yellow-400">
+            Time&apos;s up — click Ready to try again
+          </p>
+        )}
+
+        {!myReady ? (
+          <Button
+            onClick={doReady}
+            className="w-full bg-green-600 hover:bg-green-500 text-white font-black py-6 text-lg"
+          >
+            Ready to Play
+          </Button>
+        ) : (
+          <p className="text-sm text-muted-foreground animate-pulse">
+            Waiting for your opponent…
+          </p>
+        )}
       </div>
     );
   }

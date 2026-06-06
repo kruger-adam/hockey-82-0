@@ -26,8 +26,8 @@ export async function POST(req: NextRequest) {
     const session: GameSession = {
       id: roomCode,
       status: "drafting",
-      p1: { id: playerId, roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false },
-      p2: { id: "bot", roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false },
+      p1: { id: playerId, roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false, ready: false },
+      p2: { id: "bot", roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false, ready: false },
       currentTurn: firstTurn,
       pickNumber: 0,
       currentSpin: null,
@@ -37,6 +37,7 @@ export async function POST(req: NextRequest) {
       createdAt: Date.now(),
       // Bot is always p2; if human goes first, start their deadline
       turnDeadline: firstTurn === "p1" ? Date.now() + TURN_LIMIT_MS : null,
+      readyDeadline: null,
       lastRespin: null,
       botRole: "p2",
     };

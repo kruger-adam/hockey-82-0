@@ -5,6 +5,7 @@ export interface VsPlayerState {
   roster: Roster;
   respinTeamUsed: boolean;
   respinDecadeUsed: boolean;
+  ready: boolean;
 }
 
 export interface SpinState {
@@ -12,7 +13,7 @@ export interface SpinState {
   team: string;
 }
 
-export type GameStatus = "waiting" | "drafting" | "complete";
+export type GameStatus = "waiting" | "ready_check" | "drafting" | "complete";
 
 export interface GameSession {
   id: string;
@@ -27,6 +28,7 @@ export interface GameSession {
   result: SeriesResult | null;
   createdAt: number;
   turnDeadline: number | null;
+  readyDeadline: number | null;
   lastRespin: "team" | "decade" | null;
   botRole: "p1" | "p2" | null;
 }

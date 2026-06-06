@@ -99,6 +99,20 @@ export async function GET(
   const session = await getSession(roomCode.toUpperCase());
   if (!session) return Response.json({ error: "not_found" }, { status: 404 });
 
+  // Reset ready flags if the 30s ready-check window expired
+  if (
+    session.status === "ready_check" &&
+    session.readyDeadline &&
+    Date.now() > session.readyDeadline
+  ) {
+    session.p1.ready = false;
+    if (session.p2) session.p2.ready = false;
+    session.readyDeadline = null;
+    await saveSession(session);
+    const updated = await getSession(roomCode.toUpperCase());
+    return Response.json(updated ?? session);
+  }
+
   if (session.status === "drafting") {
     const isBotTurn = session.botRole && session.botRole === session.currentTurn;
     const isTimedOut = session.turnDeadline && Date.now() > session.turnDeadline;
@@ -146,6 +160,36 @@ export async function POST(
 
     // p2 is guaranteed non-null here since role was matched by ID
     const getState = (r: "p1" | "p2") => (r === "p1" ? session.p1 : session.p2!);
+
+    if (action === "ready") {
+      if (session.status !== "ready_check")
+        return Response.json({ error: "not_ready_check" }, { status: 400 });
+
+      getState(role).ready = true;
+
+      if (session.p1.ready && session.p2!.ready) {
+        // Both confirmed live — start the draft
+        const firstTurn: "p1" | "p2" = Math.random() < 0.5 ? "p1" : "p2";
+        session.status = "drafting";
+        session.currentTurn = firstTurn;
+        session.turnDeadline = Date.now() + TURN_LIMIT_MS;
+        session.readyDeadline = null;
+
+        const date = new Date().toISOString().slice(0, 10);
+        const pipeline = redis.pipeline();
+        pipeline.incr("versus:started");
+        pipeline.hincrby("versus:started:by_date", date, 1);
+        pipeline.incr("versus:friend_games");
+        pipeline.hincrby("versus:friend_games:by_date", date, 1);
+        await pipeline.exec();
+      } else {
+        // First player to ready — start the 30s window
+        session.readyDeadline = Date.now() + 30_000;
+      }
+
+      await saveSession(session);
+      return Response.json({ ok: true });
+    }
 
     if (action === "spin") {
       if (session.status !== "drafting")

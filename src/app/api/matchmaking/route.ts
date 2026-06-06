@@ -39,8 +39,8 @@ export async function POST(req: NextRequest) {
       const session: GameSession = {
         id: roomCode,
         status: "drafting",
-        p1: { id: waiting.id, roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false },
-        p2: { id: playerId, roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false },
+        p1: { id: waiting.id, roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false, ready: false },
+        p2: { id: playerId, roster: EMPTY_ROSTER, respinTeamUsed: false, respinDecadeUsed: false, ready: false },
         currentTurn: firstTurn,
         pickNumber: 0,
         currentSpin: null,
@@ -49,6 +49,7 @@ export async function POST(req: NextRequest) {
         result: null,
         createdAt: Date.now(),
         turnDeadline: Date.now() + 5_000,
+        readyDeadline: null,
         lastRespin: null,
         botRole: null,
       };
