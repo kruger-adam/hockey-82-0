@@ -202,16 +202,18 @@ function SeriesResultScreen({
   onRematch,
   onAcceptRematch,
   onDeclineRematch,
+  onTryAgainRematch,
 }: {
   result: SeriesResult;
   myRole: "p1" | "p2" | null;
   roomCode: string;
   vsBot: boolean;
-  rematchStatus: "idle" | "requesting" | "incoming";
+  rematchStatus: "idle" | "requesting" | "incoming" | "expired";
   rematchCountdown: number | null;
   onRematch: () => void;
   onAcceptRematch: () => void;
   onDeclineRematch: () => void;
+  onTryAgainRematch: () => void;
 }) {
   const [copied, setCopied] = useState(false);
   const iWon =
@@ -298,6 +300,10 @@ function SeriesResultScreen({
             <div className="w-full text-center py-3 text-sm text-muted-foreground">
               Waiting for opponent to accept… <span className="tabular-nums font-bold text-foreground">{rematchCountdown ?? "—"}s</span>
             </div>
+          ) : rematchStatus === "expired" ? (
+            <div className="w-full text-center py-3 text-sm text-muted-foreground">
+              They didn't accept. <button onClick={onTryAgainRematch} className="underline hover:text-foreground transition-colors">Try again?</button>
+            </div>
           ) : (
             <div className="flex flex-col items-center gap-2 py-2">
               <p className="text-sm font-bold">Opponent wants a rematch!</p>
@@ -366,9 +372,9 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const phaseRef = useRef<UIPhase>("loading");
   const spinComboRef = useRef<{ decade: string; team: string } | null>(null);
   const pickInFlightRef = useRef(false);
-  const [rematchStatus, setRematchStatus] = useState<"idle" | "requesting" | "incoming">("idle");
+  const [rematchStatus, setRematchStatus] = useState<"idle" | "requesting" | "incoming" | "expired">("idle");
   const [rematchCountdown, setRematchCountdown] = useState<number | null>(null);
-  const rematchStatusRef = useRef<"idle" | "requesting" | "incoming">("idle");
+  const rematchStatusRef = useRef<"idle" | "requesting" | "incoming" | "expired">("idle");
 
   // Keep refs in sync
   useEffect(() => { myRoleRef.current = myRole; }, [myRole]);
@@ -521,8 +527,9 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
           const otherRole = myRoleRef.current === "p1" ? "p2" : "p1";
           if (g.rematchRequestedBy === otherRole && rematchStatusRef.current !== "incoming") {
             setRematchStatus("incoming");
-          } else if (!g.rematchRequestedBy && rematchStatusRef.current === "incoming") {
-            setRematchStatus("idle");
+          } else if (!g.rematchRequestedBy && (rematchStatusRef.current === "incoming" || rematchStatusRef.current === "requesting")) {
+            setRematchStatus("expired");
+            setTimeout(() => setRematchStatus("idle"), 3000);
           }
         }
 
@@ -725,6 +732,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
         onRematch={doRematch}
         onAcceptRematch={doAcceptRematch}
         onDeclineRematch={doDeclineRematch}
+        onTryAgainRematch={() => setRematchStatus("idle")}
       />
     );
   }
