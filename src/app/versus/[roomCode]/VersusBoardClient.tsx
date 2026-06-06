@@ -202,7 +202,6 @@ function SeriesResultScreen({
   onRematch,
   onAcceptRematch,
   onDeclineRematch,
-  onTryAgainRematch,
 }: {
   result: SeriesResult;
   myRole: "p1" | "p2" | null;
@@ -213,7 +212,6 @@ function SeriesResultScreen({
   onRematch: () => void;
   onAcceptRematch: () => void;
   onDeclineRematch: () => void;
-  onTryAgainRematch: () => void;
 }) {
   const [copied, setCopied] = useState(false);
   const iWon =
@@ -302,7 +300,7 @@ function SeriesResultScreen({
             </div>
           ) : rematchStatus === "expired" ? (
             <div className="w-full text-center py-3 text-sm text-muted-foreground">
-              They didn't accept. <button onClick={onTryAgainRematch} className="underline hover:text-foreground transition-colors">Try again?</button>
+              They didn't accept the rematch.
             </div>
           ) : (
             <div className="flex flex-col items-center gap-2 py-2">
@@ -529,7 +527,6 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
             setRematchStatus("incoming");
           } else if (!g.rematchRequestedBy && (rematchStatusRef.current === "incoming" || rematchStatusRef.current === "requesting")) {
             setRematchStatus("expired");
-            setTimeout(() => setRematchStatus("idle"), 3000);
           }
         }
 
@@ -732,7 +729,6 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
         onRematch={doRematch}
         onAcceptRematch={doAcceptRematch}
         onDeclineRematch={doDeclineRematch}
-        onTryAgainRematch={() => setRematchStatus("idle")}
       />
     );
   }
