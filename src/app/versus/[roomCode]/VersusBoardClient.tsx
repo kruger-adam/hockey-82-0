@@ -608,11 +608,13 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const locked = type === "team" ? "decade" : "team";
     // Reset deadline optimistically so the countdown restarts at 10
     setGame({ ...game, currentSpin: combo, turnDeadline: Date.now() + 12_000 });
+    setPhase("spinning");
     runSpinAnimation(combo, locked, () => {
       const players = getPlayersForTeamDecade(combo.decade, combo.team)
         .filter((p) => !game.draftedNames.includes(p.name));
       setSpinCombo(combo);
       setAvailablePlayers(players);
+      setPhase("picking");
     });
   }
 
@@ -945,7 +947,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
                   disabled={!canRespinTeam}
                   className={`text-xs px-2 py-1 rounded border transition-colors ${
                     canRespinTeam
-                      ? "border-border text-muted-foreground hover:border-blue-500/60 hover:text-blue-400"
+                      ? "border-border text-muted-foreground hover:border-blue-500/60 hover:text-blue-400 active:border-blue-500/60 active:bg-blue-500/15 active:text-blue-400"
                       : "border-border/30 text-muted-foreground/30 cursor-not-allowed"
                   }`}
                 >
@@ -956,7 +958,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
                   disabled={!canRespinDecade}
                   className={`text-xs px-2 py-1 rounded border transition-colors ${
                     canRespinDecade
-                      ? "border-border text-muted-foreground hover:border-blue-500/60 hover:text-blue-400"
+                      ? "border-border text-muted-foreground hover:border-blue-500/60 hover:text-blue-400 active:border-blue-500/60 active:bg-blue-500/15 active:text-blue-400"
                       : "border-border/30 text-muted-foreground/30 cursor-not-allowed"
                   }`}
                 >
