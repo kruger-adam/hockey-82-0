@@ -1017,7 +1017,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
         </div>
         <Button
           onClick={doSpin}
-          className="w-full bg-orange-500 hover:bg-orange-400 text-white font-black py-6 text-lg tracking-widest uppercase"
+          className="w-full bg-orange-500 hover:bg-orange-400 active:bg-orange-600 active:scale-95 text-white font-black py-6 text-lg tracking-widest uppercase transition-transform"
         >
           Spin
         </Button>
