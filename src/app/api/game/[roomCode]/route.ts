@@ -1,5 +1,6 @@
 import { Redis } from "@upstash/redis";
 import { NextRequest } from "next/server";
+import { waitUntil } from "@vercel/functions";
 import type { GameSession } from "@/lib/versus-types";
 import {
   pickRandomCombo,
@@ -166,8 +167,11 @@ export async function GET(
       if (!session.currentSpin) {
         // Spin deadline expired — auto-spin and give them time to pick
         await autoSpin(session);
+      } else if (session.botRole) {
+        // Bot game: pick deadline expired — auto-pick (no forfeit against a bot)
+        await autoPick(session);
       } else {
-        // Pick deadline expired — forfeit, don't auto-pick
+        // Human vs human: pick deadline expired — forfeit
         const timedOutRole = session.currentTurn;
         const opponentId = timedOutRole === "p1" ? session.p2?.id ?? null : session.p1.id;
         const forfeiterId = timedOutRole === "p1" ? session.p1.id : session.p2!.id;
@@ -238,10 +242,9 @@ export async function POST(
 
       await saveSession(session);
 
-      // If draft just started and bot goes first, run it immediately
+      // Run bot turn after responding so the ready response returns instantly
       if (session.status === "drafting" && session.botRole && session.currentTurn === session.botRole) {
-        await autoSpin(session);
-        await autoPick(session);
+        waitUntil((async () => { await autoSpin(session); await autoPick(session); })());
       }
 
       return Response.json({ ok: true });
@@ -368,10 +371,9 @@ export async function POST(
 
       await saveSession(session);
 
-      // If it's now the bot's turn, run it immediately so Ably pushes the result
+      // Run bot turn after responding so the pick response returns instantly
       if (session.status === "drafting" && session.botRole && session.currentTurn === session.botRole) {
-        await autoSpin(session);
-        await autoPick(session);
+        waitUntil((async () => { await autoSpin(session); await autoPick(session); })());
       }
 
       return Response.json({ ok: true });

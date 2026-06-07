@@ -340,9 +340,12 @@ function SeriesResultScreen({
       {myRole && (
         <div className="flex flex-col gap-2">
           {vsBot ? (
-            <Button onClick={onRematch} className="w-full bg-orange-500 hover:bg-orange-400 text-white font-bold py-5">
-              Rematch vs Bot
-            </Button>
+            <a
+              href="/versus"
+              className="inline-flex items-center justify-center rounded-md bg-orange-500 hover:bg-orange-400 text-white font-bold py-5 w-full transition-colors"
+            >
+              Play Again
+            </a>
           ) : rematchStatus === "idle" ? (
             <Button onClick={onRematch} variant="outline" className="w-full py-5 font-bold">
               Rematch
