@@ -479,6 +479,10 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
         .then((r) => r.json())
         .then(setPlayerStats)
         .catch(() => {});
+      // Stop polling 30s after game ends — covers the rematch window
+      setTimeout(() => {
+        if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; }
+      }, 30_000);
       return;
     }
     if (g.status === "abandoned") {
@@ -489,6 +493,10 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
         .then((r) => r.json())
         .then(setPlayerStats)
         .catch(() => {});
+      // No rematch for abandoned games — stop polling sooner
+      setTimeout(() => {
+        if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; }
+      }, 5_000);
       return;
     }
     if (g.status === "waiting") { setGame(g); setPhase("waiting_for_opponent"); return; }
