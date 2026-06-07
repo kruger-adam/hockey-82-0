@@ -643,14 +643,14 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
       } catch { /* ignore */ }
     });
 
-    // 10s fallback poll — triggers server-side bot logic and expiry checks
+    // 2s fallback poll — catches Ably drops and triggers bot/expiry checks
     pollRef.current = setInterval(async () => {
       if (document.visibilityState === "hidden") return;
       try {
         const res = await fetch(`/api/game/${roomCode}`);
         if (res.ok) handleGameState(await res.json());
       } catch { /* ignore */ }
-    }, 10000);
+    }, 2000);
 
     return () => {
       if (pollRef.current) clearInterval(pollRef.current);
