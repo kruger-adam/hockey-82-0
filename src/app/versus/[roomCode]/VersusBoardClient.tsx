@@ -428,6 +428,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const phaseRef = useRef<UIPhase>("loading");
   const spinComboRef = useRef<{ decade: string; team: string } | null>(null);
   const pickInFlightRef = useRef(false);
+  const lastSubmittedPickNumberRef = useRef<number | null>(null);
   const [rematchStatus, setRematchStatus] = useState<"idle" | "requesting" | "incoming" | "expired">("idle");
   const [rematchCountdown, setRematchCountdown] = useState<number | null>(null);
   const rematchStatusRef = useRef<"idle" | "requesting" | "incoming" | "expired">("idle");
@@ -512,10 +513,16 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
       return;
     }
 
-    // Stale poll: we already submitted a pick (phase is opponent_turn) but the server
-    // still echoes our old spin — ignore it so we don't overwrite the optimistic roster
-    // or trigger the spin-recovery path back to "picking".
-    if (currentPhase === "opponent_turn" && g.currentSpin) return;
+    // Stale poll: same pickNumber means our pick wasn't processed yet — ignore to
+    // avoid overwriting the optimistic roster or re-triggering the spin recovery path.
+    // A higher pickNumber means real new turns happened (e.g. auto-spin after Ably drop)
+    // and must be applied even if we're still showing opponent_turn.
+    if (
+      currentPhase === "opponent_turn" &&
+      g.currentSpin &&
+      lastSubmittedPickNumberRef.current !== null &&
+      g.pickNumber === lastSubmittedPickNumberRef.current
+    ) return;
 
     setGame(g);
 
@@ -754,6 +761,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   async function assignSlot(player: Player, slot: RosterSlot) {
     const userId = getOrCreateUserId();
+    lastSubmittedPickNumberRef.current = game?.pickNumber ?? null;
     pickInFlightRef.current = true;
     setPhase("opponent_turn");
     setSpinCombo(null);
