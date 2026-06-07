@@ -9,6 +9,7 @@ import type { Player, Position } from "@/lib/players";
 import type { RosterSlot } from "@/lib/simulation";
 import { ROSTER_SLOTS } from "@/lib/simulation";
 import { getPlayersForTeamDecade, getAllTeamDecadeCombos } from "@/lib/players";
+import Ably from "ably";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -199,6 +200,7 @@ function SeriesResultScreen({
   vsBot,
   rematchStatus,
   rematchCountdown,
+  playerStats,
   onRematch,
   onAcceptRematch,
   onDeclineRematch,
@@ -209,6 +211,7 @@ function SeriesResultScreen({
   vsBot: boolean;
   rematchStatus: "idle" | "requesting" | "incoming" | "expired";
   rematchCountdown: number | null;
+  playerStats: { wins: number; losses: number; rank: number | null; totalPlayers: number } | null;
   onRematch: () => void;
   onAcceptRematch: () => void;
   onDeclineRematch: () => void;
@@ -284,6 +287,18 @@ function SeriesResultScreen({
           {headline}
         </p>
         <p className="text-xs text-muted-foreground mt-1">Series MVP: {result.mvp}</p>
+        {myRole && playerStats && (
+          <div className="mt-2 flex items-center justify-center gap-2">
+            <span className="text-sm font-bold text-foreground tabular-nums">
+              {playerStats.wins}W – {playerStats.losses}L
+            </span>
+            {playerStats.rank !== null && (
+              <span className="text-xs text-muted-foreground/70">
+                · Rank #{playerStats.rank.toLocaleString()} of {playerStats.totalPlayers.toLocaleString()}
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Game-by-game scores */}
@@ -404,6 +419,8 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   const spinIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const ablyRef = useRef<Ably.Realtime | null>(null);
+  const pendingStateRef = useRef<GameSession | null>(null);
   const myRoleRef = useRef<"p1" | "p2" | null>(null);
   const phaseRef = useRef<UIPhase>("loading");
   const spinComboRef = useRef<{ decade: string; team: string } | null>(null);
@@ -411,6 +428,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const [rematchStatus, setRematchStatus] = useState<"idle" | "requesting" | "incoming" | "expired">("idle");
   const [rematchCountdown, setRematchCountdown] = useState<number | null>(null);
   const rematchStatusRef = useRef<"idle" | "requesting" | "incoming" | "expired">("idle");
+  const [playerStats, setPlayerStats] = useState<{ wins: number; losses: number; rank: number | null; totalPlayers: number } | null>(null);
 
   // Keep refs in sync
   useEffect(() => { myRoleRef.current = myRole; }, [myRole]);
@@ -449,23 +467,52 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     // Skip re-renders during active player interaction — polling setGame() mid-tap drops clicks on mobile
     const isInteracting = currentPhase === "picking" || currentPhase === "positioning" || currentPhase === "spinning";
 
-    if (g.status === "complete") { setGame(g); setPhase("complete"); return; }
+    if (g.status === "complete") {
+      setGame(g);
+      setPhase("complete");
+      const userId = getOrCreateUserId();
+      fetch(`/api/player/stats?playerId=${userId}`)
+        .then((r) => r.json())
+        .then(setPlayerStats)
+        .catch(() => {});
+      return;
+    }
+    if (g.status === "abandoned") {
+      setGame(g);
+      setPhase("complete");
+      const userId = getOrCreateUserId();
+      fetch(`/api/player/stats?playerId=${userId}`)
+        .then((r) => r.json())
+        .then(setPlayerStats)
+        .catch(() => {});
+      return;
+    }
     if (g.status === "waiting") { setGame(g); setPhase("waiting_for_opponent"); return; }
     if (g.status === "ready_check") { setGame(g); setPhase("ready_check"); return; }
 
     if (!role) { setGame(g); return; }
 
     if (g.currentTurn !== role) {
-      // Don't override picking/positioning if we just picked and the turn hasn't flipped yet
-      if (currentPhase !== "picking" && currentPhase !== "positioning") {
-        setGame(g);
-        setPhase("opponent_turn");
+      if (currentPhase === "picking" || currentPhase === "positioning") {
+        // phaseRef may lag behind actual phase if a pick is in flight — save for when it clears
+        if (pickInFlightRef.current) pendingStateRef.current = g;
+        return;
       }
+      setGame(g);
+      setPhase("opponent_turn");
       return;
     }
 
-    // It's our turn — don't update game state while user is actively interacting
-    if (isInteracting) return;
+    // It's our turn — don't update game state while user is actively interacting or a pick is in flight
+    if (isInteracting || pickInFlightRef.current) {
+      pendingStateRef.current = g;
+      return;
+    }
+
+    // Stale poll: we already submitted a pick (phase is opponent_turn) but the server
+    // still echoes our old spin — ignore it so we don't overwrite the optimistic roster
+    // or trigger the spin-recovery path back to "picking".
+    if (currentPhase === "opponent_turn" && g.currentSpin) return;
 
     setGame(g);
 
@@ -532,50 +579,74 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     init();
   }, [roomCode, applyGameState]);
 
-  // Polling
+  // Real-time sync via Ably (push) + 10s fallback poll for bot/expiry triggers
   useEffect(() => {
-    pollRef.current = setInterval(async () => {
-      try {
-        const res = await fetch(`/api/game/${roomCode}`);
-        if (!res.ok) return;
-        const g: GameSession = await res.json();
+    function handleGameState(g: GameSession) {
+      // Detect server-side auto-spin
+      if (
+        g.currentTurn === myRoleRef.current &&
+        g.currentSpin &&
+        !spinComboRef.current &&
+        !pickInFlightRef.current &&
+        phaseRef.current === "my_turn"
+      ) {
+        const players = getPlayersForTeamDecade(g.currentSpin.decade, g.currentSpin.team)
+          .filter((p) => !g.draftedNames.includes(p.name));
+        setGame(g);
+        setSpinCombo(g.currentSpin);
+        setAvailablePlayers(players);
+        setPhase("spinning");
+        runSpinAnimation(g.currentSpin, null, () => setPhase("picking"));
+        return;
+      }
 
-        // Detect server-side auto-spin: it's our turn, a combo appeared, but we never spun
-        if (
-          g.currentTurn === myRoleRef.current &&
-          g.currentSpin &&
-          !spinComboRef.current &&
-          !pickInFlightRef.current &&
-          phaseRef.current === "my_turn"
-        ) {
-          const players = getPlayersForTeamDecade(g.currentSpin.decade, g.currentSpin.team)
-            .filter((p) => !g.draftedNames.includes(p.name));
-          setGame(g);
-          setSpinCombo(g.currentSpin);
-          setAvailablePlayers(players);
-          setPhase("spinning");
-          runSpinAnimation(g.currentSpin, null, () => setPhase("picking"));
+      // Rematch detection
+      if (g.status === "complete" && myRoleRef.current) {
+        if (g.rematchRoomCode) {
+          router.push(`/versus/${g.rematchRoomCode}`);
           return;
         }
-
-        // Rematch detection (complete games only)
-        if (g.status === "complete" && myRoleRef.current) {
-          if (g.rematchRoomCode) {
-            router.push(`/versus/${g.rematchRoomCode}`);
-            return;
-          }
-          const otherRole = myRoleRef.current === "p1" ? "p2" : "p1";
-          if (g.rematchRequestedBy === otherRole && rematchStatusRef.current !== "incoming") {
-            setRematchStatus("incoming");
-          } else if (!g.rematchRequestedBy && (rematchStatusRef.current === "incoming" || rematchStatusRef.current === "requesting")) {
-            setRematchStatus("expired");
-          }
+        const otherRole = myRoleRef.current === "p1" ? "p2" : "p1";
+        if (g.rematchRequestedBy === otherRole && rematchStatusRef.current !== "incoming") {
+          setRematchStatus("incoming");
+        } else if (!g.rematchRequestedBy && (rematchStatusRef.current === "incoming" || rematchStatusRef.current === "requesting")) {
+          setRematchStatus("expired");
         }
+      }
 
-        applyGameState(g, myRoleRef.current);
+      applyGameState(g, myRoleRef.current);
+    }
+
+    // Ably subscription
+    const ably = new Ably.Realtime({ authUrl: "/api/ably-token", authMethod: "GET" });
+    ablyRef.current = ably;
+    const channel = ably.channels.get(`game:${roomCode}`);
+    channel.subscribe("state", (msg) => handleGameState(msg.data as GameSession));
+
+    // On reconnect, fetch current state to catch anything missed while disconnected
+    let hasConnected = false;
+    ably.connection.on("connected", async () => {
+      if (!hasConnected) { hasConnected = true; return; }
+      try {
+        const res = await fetch(`/api/game/${roomCode}`);
+        if (res.ok) handleGameState(await res.json());
       } catch { /* ignore */ }
-    }, 1500);
-    return () => { if (pollRef.current) clearInterval(pollRef.current); };
+    });
+
+    // 10s fallback poll — triggers server-side bot logic and expiry checks
+    pollRef.current = setInterval(async () => {
+      if (document.visibilityState === "hidden") return;
+      try {
+        const res = await fetch(`/api/game/${roomCode}`);
+        if (res.ok) handleGameState(await res.json());
+      } catch { /* ignore */ }
+    }, 10000);
+
+    return () => {
+      if (pollRef.current) clearInterval(pollRef.current);
+      channel.unsubscribe();
+      ably.close();
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomCode, applyGameState]);
 
@@ -702,8 +773,12 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
       });
     } finally {
       pickInFlightRef.current = false;
+      const pending = pendingStateRef.current;
+      if (pending) {
+        pendingStateRef.current = null;
+        applyGameState(pending, myRoleRef.current);
+      }
     }
-    // Poll will pick up the new state
   }
 
   async function doReady() {
@@ -761,6 +836,32 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   // ── Render ────────────────────────────────────────────────────────────────
 
+  function LobbyLink() {
+    const isActive = game && game.status !== "complete" && game.status !== "abandoned";
+    async function handleClick(e: React.MouseEvent) {
+      if (!isActive) return;
+      e.preventDefault();
+      if (confirm("Leave this game? You won't be able to re-enter.")) {
+        const userId = getOrCreateUserId();
+        await fetch(`/api/game/${roomCode}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "forfeit", playerId: userId }),
+        }).catch(() => {});
+        router.push("/versus");
+      }
+    }
+    return (
+      <a
+        href="/versus"
+        onClick={handleClick}
+        className="text-xs text-muted-foreground/60 hover:text-muted-foreground mb-3 transition-colors self-start"
+      >
+        ← Lobby
+      </a>
+    );
+  }
+
   if (fetchError) {
     return (
       <div className="flex flex-col items-center gap-4 py-12 text-center">
@@ -772,14 +873,61 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   if (phase === "loading" || !game) {
     return (
-      <div className="flex flex-col items-center gap-4 py-12">
+      <div className="flex flex-col items-center gap-4 py-12 w-full">
+        <LobbyLink />
         <p className="text-muted-foreground animate-pulse">Loading game…</p>
+      </div>
+    );
+  }
+
+  if (phase === "complete" && game.status === "abandoned") {
+    const iForfeited = game.abandonedBy === myRole;
+    const timedOut = iForfeited && game.abandonedReason === "timeout";
+    return (
+      <div className="flex flex-col gap-6 w-full max-w-sm mx-auto text-center py-12">
+        {iForfeited ? (
+          <p className="text-xl font-black text-muted-foreground">
+            {timedOut ? "You ran out of time." : "You left the game."}
+          </p>
+        ) : (
+          <>
+            <div>
+              <p className="text-2xl font-black text-foreground">Opponent left the game.</p>
+              <p className="text-sm text-muted-foreground mt-1">Counts as a win for you.</p>
+            </div>
+            {playerStats && (
+              <p className="text-sm font-bold tabular-nums">
+                {playerStats.wins}W – {playerStats.losses}L
+                {playerStats.rank !== null && (
+                  <span className="text-xs font-normal text-muted-foreground/70 ml-2">
+                    · Rank #{playerStats.rank.toLocaleString()} of {playerStats.totalPlayers.toLocaleString()}
+                  </span>
+                )}
+              </p>
+            )}
+          </>
+        )}
+        <div className="flex flex-col gap-2">
+          <a
+            href="/versus"
+            className="inline-flex items-center justify-center rounded-md bg-orange-500 hover:bg-orange-400 text-white font-bold px-4 py-3 text-sm transition-colors"
+          >
+            Play Again
+          </a>
+          {iForfeited && (
+            <a href="/versus" className="text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors">
+              Back to Lobby
+            </a>
+          )}
+        </div>
       </div>
     );
   }
 
   if (phase === "complete" && game.result) {
     return (
+      <div className="flex flex-col w-full">
+        <LobbyLink />
       <SeriesResultScreen
         result={game.result}
         myRole={myRole}
@@ -787,10 +935,12 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
         vsBot={!!game.botRole}
         rematchStatus={rematchStatus}
         rematchCountdown={rematchCountdown}
+        playerStats={playerStats}
         onRematch={doRematch}
         onAcceptRematch={doAcceptRematch}
         onDeclineRematch={doDeclineRematch}
       />
+      </div>
     );
   }
 
@@ -821,6 +971,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   if (phase === "waiting_for_opponent") {
     return (
       <div className="flex flex-col gap-6 w-full max-w-lg mx-auto">
+        <LobbyLink />
         <div className="text-center">
           <p className="text-xl font-bold">Room Created</p>
           <p className="text-muted-foreground text-sm mt-1">Share this code with your opponent:</p>
@@ -854,6 +1005,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
     return (
       <div className="flex flex-col gap-6 w-full max-w-sm mx-auto text-center">
+        <LobbyLink />
         <div>
           <p className="text-xl font-black">Your friend accepted the challenge!</p>
           <p className="text-muted-foreground text-sm mt-1">
@@ -913,6 +1065,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const eligible = getEligibleSlots(selectedPlayer, getPS(game, myRole).roster);
     return (
       <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
+        <LobbyLink />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={game.statsMode} label="Opponent" />}
@@ -944,6 +1097,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const isAnimating = phase === "spinning";
 
     function PlayerColumn({ title, players }: { title: string; players: Player[] }) {
+
       return (
         <div className="flex flex-col gap-1 flex-1 min-w-0">
           <p className="text-xs text-muted-foreground/60 uppercase tracking-widest font-semibold px-1 mb-1">{title}</p>
@@ -983,6 +1137,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
     return (
       <div className="flex flex-col gap-4 w-full max-w-2xl mx-auto">
+        <LobbyLink />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={game.statsMode} label="Opponent" />}
@@ -1042,6 +1197,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const pickNum = game.pickNumber + 1;
     return (
       <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
+        <LobbyLink />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={game.statsMode} label="Opponent" />}
@@ -1078,6 +1234,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   if (phase === "spinning" && !spinCombo) {
     return (
       <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
+        <LobbyLink />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={statsMode} label="Opponent" />}
@@ -1107,6 +1264,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const opponentSpin = game.currentSpin;
   return (
     <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
+      <LobbyLink />
       <div className="flex gap-3">
         <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
         {theirRoster && (

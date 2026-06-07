@@ -62,14 +62,30 @@ export default function HowToPlay() {
           </ul>
         </Section>
 
-        <Link href="/" className="w-full">
-          <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-5">
-            Play Now
-          </Button>
-        </Link>
+        <Section title="Head-to-Head">
+          <ul className="flex flex-col gap-2 text-sm text-muted-foreground list-disc list-inside">
+            <li>Challenge a friend with an invite link, get matched with a stranger, or play against a bot</li>
+            <li>You and your opponent take turns drafting — one pick per spin, same respin rules apply</li>
+            <li>After both rosters are complete, your teams play a best-of-seven series</li>
+            <li>Series MVP is awarded to the top performer across all games</li>
+          </ul>
+        </Section>
+
+        <div className="flex gap-3 w-full">
+          <Link href="/" className="flex-1">
+            <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-5">
+              Play Solo
+            </Button>
+          </Link>
+          <Link href="/versus" className="flex-1">
+            <Button className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-5">
+              Play Head-to-Head
+            </Button>
+          </Link>
+        </div>
       </div>
 
-      <footer className="w-full text-center py-6 text-xs text-muted-foreground/50 border-t border-border/30">
+      <footer className="w-full text-center py-6 px-4 text-xs text-muted-foreground/50 border-t border-border/30">
         82-0 Hockey is an independent fan project, not affiliated with the NHL.
       </footer>
     </main>

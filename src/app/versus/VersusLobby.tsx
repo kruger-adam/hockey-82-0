@@ -24,6 +24,15 @@ export default function VersusLobby() {
   const [joinCode, setJoinCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [record, setRecord] = useState<{ wins: number; losses: number; rank: number | null; totalPlayers: number } | null>(null);
+
+  useEffect(() => {
+    const playerId = getOrCreateUserId();
+    fetch(`/api/player/stats?playerId=${playerId}`)
+      .then((r) => r.json())
+      .then((d) => { if (d.wins > 0 || d.losses > 0) setRecord(d); })
+      .catch(() => {});
+  }, []);
   const [matchStatus, setMatchStatus] = useState<"searching" | "found_human" | "found_bot">("searching");
   const [countdown, setCountdown] = useState(10);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -253,6 +262,16 @@ export default function VersusLobby() {
 
   return (
     <div className="flex flex-col gap-4 w-full max-w-sm mx-auto">
+      {record && (
+        <div className="text-center py-2">
+          <span className="text-sm font-bold tabular-nums">{record.wins}W – {record.losses}L</span>
+          {record.rank !== null && (
+            <span className="text-xs text-muted-foreground/70 ml-2">
+              · Rank #{record.rank.toLocaleString()} of {record.totalPlayers.toLocaleString()}
+            </span>
+          )}
+        </div>
+      )}
       {error && <p className="text-red-400 text-sm text-center">{error}</p>}
       <Button
         onClick={createGame}
@@ -263,10 +282,10 @@ export default function VersusLobby() {
       </Button>
       <Button
         onClick={findMatch}
-        variant="outline"
-        className="w-full py-6 text-base font-bold"
+        disabled={loading}
+        className="w-full bg-purple-600 hover:bg-purple-500 text-white font-black py-6 text-base tracking-widest uppercase"
       >
-        Play vs Random
+        {loading ? "Searching…" : "Play vs Random"}
       </Button>
       <div className="text-center mt-1">
         <button

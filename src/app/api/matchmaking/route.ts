@@ -12,11 +12,19 @@ export async function POST(req: NextRequest) {
       return Response.json({ error: "invalid" }, { status: 400 });
     }
 
-    // Already matched?
+    // Already matched? Verify the game is still active before returning it
     const existingMatch = await redis.get<string>(`matchmaking:matched:${playerId}`);
     if (existingMatch) {
       const data = typeof existingMatch === "string" ? JSON.parse(existingMatch) : existingMatch;
-      return Response.json({ matched: true, ...data });
+      const existingGame = await redis.get<string>(`game:${data.roomCode}`);
+      const game = existingGame
+        ? (typeof existingGame === "string" ? JSON.parse(existingGame) : existingGame)
+        : null;
+      if (game && game.status !== "complete" && game.status !== "abandoned") {
+        return Response.json({ matched: true, ...data });
+      }
+      // Game is gone or complete — clear the stale key and find a fresh match
+      await redis.del(`matchmaking:matched:${playerId}`);
     }
 
     // Try to pop a valid waiting player
@@ -48,12 +56,14 @@ export async function POST(req: NextRequest) {
         statsMode: "best",
         result: null,
         createdAt: Date.now(),
-        turnDeadline: Date.now() + 5_000,
+        turnDeadline: Date.now() + 12_000, // extra buffer for matchmaking nav/load lag
         readyDeadline: null,
         lastRespin: null,
         botRole: null,
         rematchRequestedBy: null,
         rematchRoomCode: null,
+        abandonedBy: null,
+        abandonedReason: null,
         rematchDeadline: null,
       };
 
@@ -116,7 +126,10 @@ export async function DELETE(req: NextRequest) {
   try {
     const playerId = req.nextUrl.searchParams.get("playerId");
     if (!playerId) return Response.json({ error: "invalid" }, { status: 400 });
-    await redis.del(`matchmaking:queued:${playerId}`);
+    await Promise.all([
+      redis.del(`matchmaking:queued:${playerId}`),
+      redis.del(`matchmaking:matched:${playerId}`),
+    ]);
     return Response.json({ ok: true });
   } catch {
     return Response.json({ error: "internal" }, { status: 500 });

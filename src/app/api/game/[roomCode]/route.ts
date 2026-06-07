@@ -11,6 +11,7 @@ import {
 import { getPlayersForTeamDecade } from "@/lib/players";
 import { isRosterComplete, ROSTER_SLOTS } from "@/lib/simulation";
 import { simulateSeries } from "@/lib/versus-simulation";
+import { publishGameState } from "@/lib/ably-server";
 
 const redis = Redis.fromEnv();
 
@@ -21,7 +22,24 @@ async function getSession(code: string): Promise<GameSession | null> {
 }
 
 async function saveSession(session: GameSession): Promise<void> {
-  await redis.set(`game:${session.id}`, JSON.stringify(session), { ex: 14400 });
+  await Promise.all([
+    redis.set(`game:${session.id}`, JSON.stringify(session), { ex: 14400 }),
+    publishGameState(session),
+  ]);
+}
+
+async function updateRecords(session: GameSession, winnerId: string | null, loserId: string | null): Promise<void> {
+  const pipeline = redis.pipeline();
+  const botId = session.botRole === "p1" ? session.p1.id : session.botRole === "p2" ? session.p2?.id : null;
+  if (winnerId && winnerId !== botId) {
+    pipeline.hincrby(`player:record:${winnerId}`, "wins", 1);
+    pipeline.zincrby("player:rankings", 1, winnerId);
+  }
+  if (loserId && loserId !== botId) {
+    pipeline.hincrby(`player:record:${loserId}`, "losses", 1);
+    pipeline.zincrby("player:rankings", -1, loserId);
+  }
+  await pipeline.exec();
 }
 
 const TURN_LIMIT_MS = 7_000; // 5s effective spin time + ~2s for page load
@@ -79,6 +97,9 @@ async function autoPick(session: GameSession): Promise<void> {
         pipeline.incr("versus:completed");
         pipeline.hincrby("versus:completed:by_date", date, 1);
         await pipeline.exec();
+        const winnerId = session.result.seriesWinner === "p1" ? session.p1.id : session.p2!.id;
+        const loserId = session.result.seriesWinner === "p1" ? session.p2!.id : session.p1.id;
+        await updateRecords(session, winnerId, loserId);
       } else {
         session.turnDeadline = Date.now() + TURN_LIMIT_MS;
       }
@@ -105,6 +126,8 @@ export async function GET(
   session.rematchRequestedBy ??= null;
   session.rematchRoomCode ??= null;
   session.rematchDeadline ??= null;
+  session.abandonedBy ??= null;
+  session.abandonedReason ??= null;
 
   // Clear expired rematch requests
   if (session.rematchRequestedBy && session.rematchDeadline && Date.now() > session.rematchDeadline && !session.rematchRoomCode) {
@@ -144,8 +167,18 @@ export async function GET(
         // Spin deadline expired — auto-spin and give them time to pick
         await autoSpin(session);
       } else {
-        // Pick deadline expired — auto-pick
-        await autoPick(session);
+        // Pick deadline expired — forfeit, don't auto-pick
+        const timedOutRole = session.currentTurn;
+        const opponentId = timedOutRole === "p1" ? session.p2?.id ?? null : session.p1.id;
+        const forfeiterId = timedOutRole === "p1" ? session.p1.id : session.p2!.id;
+        session.status = "abandoned";
+        session.abandonedBy = timedOutRole;
+        session.abandonedReason = "timeout";
+        session.turnDeadline = null;
+        await Promise.all([
+          saveSession(session),
+          updateRecords(session, opponentId, forfeiterId),
+        ]);
       }
       const updated = await getSession(roomCode.toUpperCase());
       return Response.json(updated ?? session);
@@ -204,6 +237,13 @@ export async function POST(
       }
 
       await saveSession(session);
+
+      // If draft just started and bot goes first, run it immediately
+      if (session.status === "drafting" && session.botRole && session.currentTurn === session.botRole) {
+        await autoSpin(session);
+        await autoPick(session);
+      }
+
       return Response.json({ ok: true });
     }
 
@@ -321,9 +361,34 @@ export async function POST(
         pipeline.incr("versus:completed");
         pipeline.hincrby("versus:completed:by_date", date, 1);
         await pipeline.exec();
+        const winnerId = session.result.seriesWinner === "p1" ? session.p1.id : session.p2!.id;
+        const loserId = session.result.seriesWinner === "p1" ? session.p2!.id : session.p1.id;
+        await updateRecords(session, winnerId, loserId);
       }
 
       await saveSession(session);
+
+      // If it's now the bot's turn, run it immediately so Ably pushes the result
+      if (session.status === "drafting" && session.botRole && session.currentTurn === session.botRole) {
+        await autoSpin(session);
+        await autoPick(session);
+      }
+
+      return Response.json({ ok: true });
+    }
+
+    if (action === "forfeit") {
+      if (session.status !== "drafting" && session.status !== "ready_check" && session.status !== "waiting")
+        return Response.json({ error: "not_active" }, { status: 400 });
+      session.status = "abandoned";
+      session.abandonedBy = role;
+      session.abandonedReason = "forfeit";
+      const forfeiterId = role === "p1" ? session.p1.id : session.p2!.id;
+      const opponentId = role === "p1" ? session.p2?.id ?? null : session.p1.id;
+      await Promise.all([
+        saveSession(session),
+        updateRecords(session, opponentId, forfeiterId),
+      ]);
       return Response.json({ ok: true });
     }
 
@@ -369,6 +434,8 @@ export async function POST(
         rematchRequestedBy: null,
         rematchRoomCode: null,
         rematchDeadline: null,
+        abandonedBy: null,
+        abandonedReason: null,
       };
       await redis.set(`game:${newCode}`, JSON.stringify(newSession), { ex: 14400 });
       session.rematchRoomCode = newCode;

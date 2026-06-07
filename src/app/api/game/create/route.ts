@@ -37,6 +37,8 @@ export async function POST(req: NextRequest) {
       botRole: null,
       rematchRequestedBy: null,
       rematchRoomCode: null,
+        abandonedBy: null,
+        abandonedReason: null,
       rematchDeadline: null,
     };
 

@@ -19,7 +19,7 @@ export default function VersusPage() {
       <div className="flex-1 flex flex-col items-center px-4 pb-12">
         <VersusLobby />
       </div>
-      <footer className="w-full text-center py-6 text-xs text-muted-foreground/50 border-t border-border/30">
+      <footer className="w-full text-center py-6 px-4 text-xs text-muted-foreground/50 border-t border-border/30">
         82-0 Hockey is an independent fan project, not affiliated with the NHL.
       </footer>
     </main>

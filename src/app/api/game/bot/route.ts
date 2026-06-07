@@ -42,6 +42,8 @@ export async function POST(req: NextRequest) {
       botRole: "p2",
       rematchRequestedBy: null,
       rematchRoomCode: null,
+        abandonedBy: null,
+        abandonedReason: null,
       rematchDeadline: null,
     };
 

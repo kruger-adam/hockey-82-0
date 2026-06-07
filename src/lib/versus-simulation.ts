@@ -214,10 +214,11 @@ export function simulateSeries(
   const p2Stats = finalizeStats(stats2);
 
   const skaters = [...p1Stats, ...p2Stats].filter((s) => !s.position.includes("G"));
-  const mvp = skaters.reduce(
-    (best, s) => (s.points > best.points ? s : best),
-    skaters[0] ?? { name: "N/A", points: 0 }
-  );
+  const mvp = skaters.reduce((best, s) => {
+    if (s.points !== best.points) return s.points > best.points ? s : best;
+    if (s.goals !== best.goals) return s.goals > best.goals ? s : best;
+    return s.plusMinus > best.plusMinus ? s : best;
+  }, skaters[0] ?? { name: "N/A", points: 0, goals: 0, plusMinus: 0 });
 
   return {
     p1Wins,

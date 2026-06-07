@@ -13,7 +13,7 @@ export interface SpinState {
   team: string;
 }
 
-export type GameStatus = "waiting" | "ready_check" | "drafting" | "complete";
+export type GameStatus = "waiting" | "ready_check" | "drafting" | "complete" | "abandoned";
 
 export interface GameSession {
   id: string;
@@ -34,6 +34,8 @@ export interface GameSession {
   rematchRequestedBy: "p1" | "p2" | null;
   rematchRoomCode: string | null;
   rematchDeadline: number | null;
+  abandonedBy: "p1" | "p2" | null;
+  abandonedReason: "forfeit" | "timeout" | null;
 }
 
 export interface SeriesResult {
