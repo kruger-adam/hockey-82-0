@@ -25,6 +25,9 @@ export default function VersusLobby() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [record, setRecord] = useState<{ wins: number; losses: number; rank: number | null; totalPlayers: number } | null>(null);
+  const [username, setUsername] = useState("");
+  const [editingName, setEditingName] = useState(false);
+  const [nameDraft, setNameDraft] = useState("");
 
   useEffect(() => {
     const playerId = getOrCreateUserId();
@@ -32,7 +35,25 @@ export default function VersusLobby() {
       .then((r) => r.json())
       .then((d) => { if (d.wins > 0 || d.losses > 0) setRecord(d); })
       .catch(() => {});
+    try {
+      const saved = localStorage.getItem("hockey-user-name");
+      if (saved) setUsername(saved);
+    } catch { /* ignore */ }
   }, []);
+
+  async function saveName(name: string) {
+    const trimmed = name.trim().slice(0, 20);
+    if (!trimmed) { setEditingName(false); return; }
+    setUsername(trimmed);
+    setEditingName(false);
+    try { localStorage.setItem("hockey-user-name", trimmed); } catch { /* ignore */ }
+    const playerId = getOrCreateUserId();
+    await fetch("/api/player/name", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ playerId, name: trimmed }),
+    }).catch(() => {});
+  }
   const [matchStatus, setMatchStatus] = useState<"searching" | "found_human" | "found_bot">("searching");
   const [countdown, setCountdown] = useState(10);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -272,6 +293,33 @@ export default function VersusLobby() {
           )}
         </div>
       )}
+      {/* Username */}
+      <div className="text-center">
+        {editingName ? (
+          <div className="flex items-center justify-center gap-2">
+            <input
+              autoFocus
+              value={nameDraft}
+              onChange={(e) => setNameDraft(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") saveName(nameDraft);
+                if (e.key === "Escape") setEditingName(false);
+              }}
+              onBlur={() => saveName(nameDraft)}
+              maxLength={20}
+              placeholder="Your name"
+              className="px-2 py-1 rounded border border-border bg-card text-foreground text-sm text-center focus:outline-none focus:border-blue-500/60 w-36"
+            />
+          </div>
+        ) : (
+          <button
+            onClick={() => { setNameDraft(username); setEditingName(true); }}
+            className="text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+          >
+            {username ? `Playing as ${username} · edit` : "Set a display name"}
+          </button>
+        )}
+      </div>
       {error && <p className="text-red-400 text-sm text-center">{error}</p>}
       <Button
         onClick={createGame}

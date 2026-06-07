@@ -211,7 +211,13 @@ function SeriesResultScreen({
   vsBot: boolean;
   rematchStatus: "idle" | "requesting" | "incoming" | "expired";
   rematchCountdown: number | null;
-  playerStats: { wins: number; losses: number; rank: number | null; totalPlayers: number } | null;
+  playerStats: {
+    wins: number;
+    losses: number;
+    rank: number | null;
+    totalPlayers: number;
+    neighbors: { rank: number; wins: number; losses: number; differential: number; isMe: boolean; name?: string }[];
+  } | null;
   onRematch: () => void;
   onAcceptRematch: () => void;
   onDeclineRematch: () => void;
@@ -288,14 +294,58 @@ function SeriesResultScreen({
         </p>
         <p className="text-xs text-muted-foreground mt-1">Series MVP: {result.mvp}</p>
         {myRole && playerStats && (
-          <div className="mt-2 flex items-center justify-center gap-2">
-            <span className="text-sm font-bold text-foreground tabular-nums">
-              {playerStats.wins}W – {playerStats.losses}L
-            </span>
-            {playerStats.rank !== null && (
-              <span className="text-xs text-muted-foreground/70">
-                · Rank #{playerStats.rank.toLocaleString()} of {playerStats.totalPlayers.toLocaleString()}
-              </span>
+          <div className="mt-3">
+            {playerStats.neighbors.length > 0 ? (
+              <div className="inline-block text-left mx-auto min-w-[220px]">
+                {playerStats.neighbors.map((n, i) => {
+                  const prev = i > 0 ? playerStats.neighbors[i - 1] : null;
+                  const hasGapBefore = prev !== null && n.rank - prev.rank > 1;
+                  const showDividerBefore = n.isMe;
+                  const showDividerAfter = n.isMe;
+                  return (
+                    <div key={i}>
+                      {hasGapBefore && (
+                        <div className="text-center text-muted-foreground/30 text-xs leading-none py-0.5">···</div>
+                      )}
+                      {showDividerBefore && <div className="border-t border-border/40 my-1" />}
+                      <div className={`flex items-center gap-3 px-2 py-0.5 rounded ${n.isMe ? "bg-blue-500/10" : ""}`}>
+                        <span className={`text-xs tabular-nums w-8 text-right ${n.isMe ? "text-blue-400 font-bold" : "text-muted-foreground/40"}`}>
+                          #{n.rank}
+                        </span>
+                        {n.name && (
+                          <span className={`text-xs truncate max-w-[80px] ${n.isMe ? "text-foreground font-bold" : "text-muted-foreground/60"}`}>
+                            {n.name}
+                          </span>
+                        )}
+                        <span className={`text-xs tabular-nums ${n.isMe ? "text-foreground font-bold" : "text-muted-foreground/70"}`}>
+                          {n.wins}W–{n.losses}L
+                        </span>
+                        <span className={`text-xs tabular-nums ${n.differential >= 0 ? "text-green-400/60" : "text-red-400/60"}`}>
+                          {n.differential >= 0 ? "+" : ""}{n.differential}
+                        </span>
+                        {n.isMe && <span className="text-xs text-blue-400">← you</span>}
+                      </div>
+                      {showDividerAfter && <div className="border-t border-border/40 my-1" />}
+                    </div>
+                  );
+                })}
+                {playerStats.totalPlayers > 0 && (
+                  <p className="text-xs text-muted-foreground/30 text-center mt-1">
+                    of {playerStats.totalPlayers.toLocaleString()} players
+                  </p>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-sm font-bold text-foreground tabular-nums">
+                  {playerStats.wins}W – {playerStats.losses}L
+                </span>
+                {playerStats.rank !== null && (
+                  <span className="text-xs text-muted-foreground/70">
+                    · Rank #{playerStats.rank.toLocaleString()} of {playerStats.totalPlayers.toLocaleString()}
+                  </span>
+                )}
+              </div>
             )}
           </div>
         )}
@@ -432,7 +482,13 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const [rematchStatus, setRematchStatus] = useState<"idle" | "requesting" | "incoming" | "expired">("idle");
   const [rematchCountdown, setRematchCountdown] = useState<number | null>(null);
   const rematchStatusRef = useRef<"idle" | "requesting" | "incoming" | "expired">("idle");
-  const [playerStats, setPlayerStats] = useState<{ wins: number; losses: number; rank: number | null; totalPlayers: number } | null>(null);
+  const [playerStats, setPlayerStats] = useState<{
+    wins: number;
+    losses: number;
+    rank: number | null;
+    totalPlayers: number;
+    neighbors: { rank: number; wins: number; losses: number; differential: number; isMe: boolean; name?: string }[];
+  } | null>(null);
 
   // Keep refs in sync
   useEffect(() => { myRoleRef.current = myRole; }, [myRole]);

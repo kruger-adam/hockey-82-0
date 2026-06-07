@@ -75,7 +75,7 @@ async function autoSpinAndPick(session: GameSession): Promise<void> {
     const eligible = players.filter((p) => p.position.some((pos) => positions.includes(pos)));
     if (!eligible.length) continue;
 
-    const picked = eligible[0];
+    const picked = eligible.sort((a, b) => b.rating - a.rating)[0];
     (ps.roster as unknown as Record<string, unknown>)[slot] = picked;
     session.draftedNames.push(picked.name);
     session.currentSpin = null;
@@ -126,7 +126,7 @@ async function autoPick(session: GameSession): Promise<void> {
       const eligible = players.filter((p) => p.position.some((pos) => positions.includes(pos)));
       if (!eligible.length) continue;
 
-      const picked = eligible[0];
+      const picked = eligible.sort((a, b) => b.rating - a.rating)[0];
       (ps.roster as unknown as Record<string, unknown>)[slot] = picked;
       session.draftedNames.push(picked.name);
       session.currentSpin = null;
