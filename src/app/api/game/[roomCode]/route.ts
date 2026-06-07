@@ -59,6 +59,55 @@ async function autoSpin(session: GameSession): Promise<void> {
   await saveSession(session);
 }
 
+// Combined spin+pick in one saveSession — used for bot turns to minimise
+// Redis/Ably round trips and keep the player's next-turn deadline fresh.
+async function autoSpinAndPick(session: GameSession): Promise<void> {
+  const role = session.currentTurn;
+  const ps = role === "p1" ? session.p1 : session.p2!;
+  const combo = pickRandomCombo(ps.roster, session.draftedNames);
+  if (!combo) { session.turnDeadline = Date.now() + 30_000; await saveSession(session); return; }
+
+  const players = getPlayersForTeamDecade(combo.decade, combo.team)
+    .filter((p) => !session.draftedNames.includes(p.name));
+
+  for (const { slot, positions } of ROSTER_SLOTS) {
+    if ((ps.roster as unknown as Record<string, unknown>)[slot] !== null) continue;
+    const eligible = players.filter((p) => p.position.some((pos) => positions.includes(pos)));
+    if (!eligible.length) continue;
+
+    const picked = eligible[0];
+    (ps.roster as unknown as Record<string, unknown>)[slot] = picked;
+    session.draftedNames.push(picked.name);
+    session.currentSpin = null;
+    session.lastRespin = null;
+    session.pickNumber++;
+    session.currentTurn = role === "p1" ? "p2" : "p1";
+
+    if (isRosterComplete(session.p1.roster) && session.p2 && isRosterComplete(session.p2.roster)) {
+      session.status = "complete";
+      session.result = simulateSeries(session.p1.roster, session.p2.roster, session.statsMode);
+      session.turnDeadline = null;
+      const date = new Date().toISOString().slice(0, 10);
+      const pipeline = redis.pipeline();
+      pipeline.incr("versus:completed");
+      pipeline.hincrby("versus:completed:by_date", date, 1);
+      await pipeline.exec();
+      const winnerId = session.result.seriesWinner === "p1" ? session.p1.id : session.p2!.id;
+      const loserId = session.result.seriesWinner === "p1" ? session.p2!.id : session.p1.id;
+      await updateRecords(session, winnerId, loserId);
+    } else {
+      // Use PICK_LIMIT_MS so the player has ample time even if async bot processing was slow
+      session.turnDeadline = Date.now() + PICK_LIMIT_MS;
+    }
+
+    await saveSession(session);
+    return;
+  }
+
+  session.turnDeadline = Date.now() + 30_000;
+  await saveSession(session);
+}
+
 async function autoPick(session: GameSession): Promise<void> {
   const role = session.currentTurn;
   const ps = role === "p1" ? session.p1 : session.p2!;
@@ -156,9 +205,7 @@ export async function GET(
     const isTimedOut = session.turnDeadline && Date.now() > session.turnDeadline;
 
     if (isBotTurn) {
-      // Bot always spins + picks in one go
-      if (!session.currentSpin) await autoSpin(session);
-      await autoPick(session);
+      await autoSpinAndPick(session);
       const updated = await getSession(roomCode.toUpperCase());
       return Response.json(updated ?? session);
     }
@@ -244,7 +291,7 @@ export async function POST(
 
       // Run bot turn after responding so the ready response returns instantly
       if (session.status === "drafting" && session.botRole && session.currentTurn === session.botRole) {
-        waitUntil((async () => { await autoSpin(session); await autoPick(session); })());
+        waitUntil(autoSpinAndPick(session));
       }
 
       return Response.json({ ok: true });
@@ -373,7 +420,7 @@ export async function POST(
 
       // Run bot turn after responding so the pick response returns instantly
       if (session.status === "drafting" && session.botRole && session.currentTurn === session.botRole) {
-        waitUntil((async () => { await autoSpin(session); await autoPick(session); })());
+        waitUntil(autoSpinAndPick(session));
       }
 
       return Response.json({ ok: true });
