@@ -313,7 +313,7 @@ function SeriesResultScreen({
                           #{n.rank}
                         </span>
                         {n.name && (
-                          <span className={`text-xs truncate max-w-[80px] ${n.isMe ? "text-foreground font-bold" : "text-muted-foreground/60"}`}>
+                          <span className={`text-xs ${n.isMe ? "text-foreground font-bold" : "text-muted-foreground/60"}`}>
                             {n.name}
                           </span>
                         )}

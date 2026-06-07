@@ -308,7 +308,7 @@ export default function VersusLobby() {
               onBlur={() => saveName(nameDraft)}
               maxLength={20}
               placeholder="Your name"
-              className="px-2 py-1 rounded border border-border bg-card text-foreground text-sm text-center focus:outline-none focus:border-blue-500/60 w-36"
+              className="px-2 py-1 rounded border border-border bg-card text-foreground text-sm text-center focus:outline-none focus:border-blue-500/60 w-36 text-[16px]"
             />
           </div>
         ) : (
