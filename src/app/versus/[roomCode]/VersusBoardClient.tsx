@@ -391,7 +391,7 @@ function SeriesResultScreen({
           {vsBot ? (
             <a
               href="/versus"
-              className="inline-flex items-center justify-center rounded-md bg-orange-500 hover:bg-orange-400 text-white font-bold py-5 w-full transition-colors"
+              className="inline-flex items-center justify-center rounded-md bg-orange-500 hover:bg-orange-400 active:bg-orange-600 active:scale-95 text-white font-bold py-5 w-full transition-colors"
             >
               Play Again
             </a>
@@ -984,7 +984,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
         <div className="flex flex-col gap-2">
           <a
             href="/versus"
-            className="inline-flex items-center justify-center rounded-md bg-orange-500 hover:bg-orange-400 text-white font-bold px-4 py-3 text-sm transition-colors"
+            className="inline-flex items-center justify-center rounded-md bg-orange-500 hover:bg-orange-400 active:bg-orange-600 active:scale-95 text-white font-bold px-4 py-3 text-sm transition-colors"
           >
             Play Again
           </a>
