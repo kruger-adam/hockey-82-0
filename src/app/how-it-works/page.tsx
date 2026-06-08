@@ -36,6 +36,7 @@ export default function HowToPlay() {
             <li><strong className="text-foreground">Skaters:</strong> Goals/gm, Assists/gm, Points/gm — all projected per game</li>
             <li><strong className="text-foreground">Goalies:</strong> Save percentage (SV%) and Goals Against Average (GAA)</li>
             <li>A player who played 80 games contributes 80× more weight to their average than a player who played 1 game in a season — small samples don&apos;t inflate stats</li>
+            <li><strong className="text-foreground">Best season</strong> is the single season where a player&apos;s <strong className="text-foreground">3 × goals + 2 × assists</strong> was highest with that franchise in that decade — goals are weighted more heavily since they&apos;re roughly 1.7× rarer than assists in the NHL</li>
           </ul>
         </Section>
 
