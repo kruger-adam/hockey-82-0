@@ -1279,7 +1279,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
         </div>
         <div className="flex items-center justify-center gap-2">
           <p className="text-xs text-muted-foreground">Pick {pickNum} of 12 · Your turn</p>
-          <CountdownBadge max={5} />
+          <CountdownBadge max={10} />
         </div>
         <div className="flex gap-4 justify-center mt-2">
           <div className="flex-1">
