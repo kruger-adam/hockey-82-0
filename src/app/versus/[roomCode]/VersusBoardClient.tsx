@@ -799,7 +799,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     setGame({
       ...game,
       currentSpin: combo,
-      turnDeadline: Date.now() + 12_000,
+      turnDeadline: Date.now() + 22_000,
       ...(myRole && updatedPs ? { [myRole]: updatedPs } : {}),
     });
     setPhase("spinning");
@@ -1223,7 +1223,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
               <p className="text-xs text-muted-foreground uppercase tracking-widest">
                 Pick {game.pickNumber + 1} of 12
               </p>
-              {!isAnimating && <CountdownBadge max={10} />}
+              {!isAnimating && <CountdownBadge max={20} />}
             </div>
             {!isAnimating && (
               <div className="flex gap-2">
