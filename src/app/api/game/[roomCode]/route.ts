@@ -201,7 +201,7 @@ export async function GET(
 
   if (session.status === "drafting") {
     const isBotTurn = session.botRole && session.botRole === session.currentTurn;
-    const isTimedOut = session.turnDeadline && Date.now() > session.turnDeadline;
+    const isTimedOut = session.turnDeadline && Date.now() > session.turnDeadline + 1500;
 
     if (isBotTurn) {
       await autoSpinAndPick(session);
