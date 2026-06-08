@@ -71,8 +71,7 @@ function statLine(p: Player, mode: "avg" | "best"): string {
 function ptsPerGame(p: Player, mode: "avg" | "best"): number {
   if (mode === "best") {
     if (p.position.includes("G")) return p.bestSavePercentage ?? p.savePercentage ?? 0;
-    if (p.bestGoals != null && p.bestGP != null)
-      return (p.bestGoals + (p.bestAssists ?? 0)) / p.bestGP;
+    if (p.bestGoals != null) return p.bestGoals + (p.bestAssists ?? 0);
   }
   return ((p.goals ?? 0) + (p.assists ?? 0)) / 82;
 }
