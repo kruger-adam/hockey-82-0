@@ -213,11 +213,8 @@ export async function GET(
       if (!session.currentSpin) {
         // Spin deadline expired — auto-spin and give them time to pick
         await autoSpin(session);
-      } else if (session.botRole) {
-        // Bot game: pick deadline expired — auto-pick (no forfeit against a bot)
-        await autoPick(session);
       } else {
-        // Human vs human: pick deadline expired — forfeit
+        // Pick deadline expired — forfeit
         const timedOutRole = session.currentTurn;
         const opponentId = timedOutRole === "p1" ? session.p2?.id ?? null : session.p1.id;
         const forfeiterId = timedOutRole === "p1" ? session.p1.id : session.p2!.id;
