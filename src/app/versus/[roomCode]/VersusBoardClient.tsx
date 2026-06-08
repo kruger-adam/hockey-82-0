@@ -771,7 +771,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     setSpinCombo(combo);
     setAvailablePlayers(players);
     // Optimistically update deadline so the countdown doesn't flash the leftover spin seconds
-    if (game) setGame({ ...game, currentSpin: combo, turnDeadline: Date.now() + 12_000 });
+    if (game) setGame({ ...game, currentSpin: combo, turnDeadline: Date.now() + 24_000 });
     runSpinAnimation(combo, null, () => {
       setPhase("picking");
     });

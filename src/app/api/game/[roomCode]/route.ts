@@ -44,7 +44,7 @@ async function updateRecords(session: GameSession, winnerId: string | null, lose
 }
 
 const TURN_LIMIT_MS = 12_000; // 10s effective spin time + ~2s for page load
-const PICK_LIMIT_MS = 24_000; // 20s effective pick time + ~2s spin animation + ~2s network
+const PICK_LIMIT_MS = 22_000; // 20s effective pick time + ~2s for spin animation
 
 async function autoSpin(session: GameSession): Promise<void> {
   const role = session.currentTurn;
