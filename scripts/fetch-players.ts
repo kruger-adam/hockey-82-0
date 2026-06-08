@@ -352,9 +352,9 @@ function accumulateSeason(
     acc.totalGP        += s.gamesPlayed;
 
     if (s.gamesPlayed >= MIN_GP_BEST_SKATER) {
-      const eraAdjPts = (s.goals + s.assists) * eraFactor;
-      if (eraAdjPts > acc.bestEraAdjPts) {
-        acc.bestEraAdjPts  = eraAdjPts;
+      const score = 3 * s.goals + 2 * s.assists;
+      if (score > acc.bestEraAdjPts) {
+        acc.bestEraAdjPts  = score;
         acc.bestGoals      = s.goals;
         acc.bestAssists    = s.assists;
         acc.bestPlusMinus  = s.plusMinus;
