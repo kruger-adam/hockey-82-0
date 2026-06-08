@@ -96,8 +96,7 @@ async function autoSpinAndPick(session: GameSession): Promise<void> {
       const loserId = session.result.seriesWinner === "p1" ? session.p2!.id : session.p1.id;
       await updateRecords(session, winnerId, loserId);
     } else {
-      // Use PICK_LIMIT_MS so the player has ample time even if async bot processing was slow
-      session.turnDeadline = Date.now() + PICK_LIMIT_MS;
+      session.turnDeadline = Date.now() + TURN_LIMIT_MS;
     }
 
     await saveSession(session);

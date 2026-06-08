@@ -5,7 +5,7 @@ import type { GameSession } from "@/lib/versus-types";
 
 const redis = Redis.fromEnv();
 
-const TURN_LIMIT_MS = 7_000;
+const TURN_LIMIT_MS = 12_000;
 
 export async function POST(req: NextRequest) {
   try {
