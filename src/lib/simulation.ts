@@ -12,12 +12,12 @@ export interface Roster {
 export type RosterSlot = keyof Roster;
 
 export const ROSTER_SLOTS: { slot: RosterSlot; label: string; positions: Position[] }[] = [
-  { slot: "C", label: "Centre", positions: ["C"] },
-  { slot: "LW", label: "Left Wing", positions: ["LW"] },
-  { slot: "RW", label: "Right Wing", positions: ["RW"] },
-  { slot: "D1", label: "Defence", positions: ["D"] },
-  { slot: "D2", label: "Defence", positions: ["D"] },
-  { slot: "G", label: "Goalie", positions: ["G"] },
+  { slot: "C", label: "C", positions: ["C"] },
+  { slot: "LW", label: "LW", positions: ["LW"] },
+  { slot: "RW", label: "RW", positions: ["RW"] },
+  { slot: "D1", label: "D", positions: ["D"] },
+  { slot: "D2", label: "D", positions: ["D"] },
+  { slot: "G", label: "G", positions: ["G"] },
 ];
 
 export function isRosterComplete(roster: Roster): boolean {

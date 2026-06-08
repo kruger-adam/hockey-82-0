@@ -128,7 +128,7 @@ function RosterPanel({
           const p = roster[slot];
           return (
             <div key={slot} className="flex items-center gap-2 py-1 text-xs">
-              <span className="text-muted-foreground/50 uppercase tracking-wide w-16 shrink-0">{slotLabel}</span>
+              <span className="text-muted-foreground/50 uppercase tracking-wide w-6 shrink-0">{slotLabel}</span>
               {p ? (
                 <div className="flex flex-col min-w-0">
                   <span className="font-medium text-sm leading-tight">{p.name}</span>
