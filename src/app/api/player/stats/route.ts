@@ -15,11 +15,14 @@ export interface NeighborEntry {
 export async function GET(req: NextRequest) {
   const playerId = req.nextUrl.searchParams.get("playerId");
   if (!playerId) return Response.json({ error: "invalid" }, { status: 400 });
+  const opponentId = req.nextUrl.searchParams.get("opponentId");
 
-  const [record, rankRaw, total] = await Promise.all([
+  const [record, rankRaw, total, oppRecordRaw, h2hRaw] = await Promise.all([
     redis.hgetall(`player:record:${playerId}`),
     redis.zrevrank("player:rankings", playerId),
     redis.zcard("player:rankings"),
+    opponentId ? redis.hgetall(`player:record:${opponentId}`) : Promise.resolve(null),
+    opponentId ? redis.hgetall(`h2h:${[playerId, opponentId].sort().join(":")}`) : Promise.resolve(null),
   ]);
 
   const wins = record ? Number((record as Record<string, string>).wins ?? 0) : 0;
@@ -92,5 +95,21 @@ export async function GET(req: NextRequest) {
     }));
   }
 
-  return Response.json({ wins, losses, rank, totalPlayers: total, neighbors });
+  let opponent: { wins: number; losses: number; name?: string } | null = null;
+  let h2h: { myWins: number; theirWins: number } | null = null;
+  if (opponentId) {
+    const o = oppRecordRaw as Record<string, string> | null;
+    opponent = {
+      wins: Number(o?.wins ?? 0),
+      losses: Number(o?.losses ?? 0),
+      name: o?.name ?? undefined,
+    };
+    const h = h2hRaw as Record<string, string> | null;
+    h2h = {
+      myWins: Number(h?.[playerId] ?? 0),
+      theirWins: Number(h?.[opponentId] ?? 0),
+    };
+  }
+
+  return Response.json({ wins, losses, rank, totalPlayers: total, neighbors, opponent, h2h });
 }

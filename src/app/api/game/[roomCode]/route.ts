@@ -40,6 +40,10 @@ async function updateRecords(session: GameSession, winnerId: string | null, lose
     pipeline.hincrby(`player:record:${loserId}`, "losses", 1);
     pipeline.zincrby("player:rankings", -1, loserId);
   }
+  // Head-to-head record between two humans — key uses sorted ids so both players hit the same hash
+  if (winnerId && loserId && winnerId !== botId && loserId !== botId) {
+    pipeline.hincrby(`h2h:${[winnerId, loserId].sort().join(":")}`, winnerId, 1);
+  }
   await pipeline.exec();
 }
 

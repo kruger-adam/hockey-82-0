@@ -21,6 +21,16 @@ function getOrCreateUserId(): string {
   } catch { return crypto.randomUUID(); }
 }
 
+interface PlayerStatsData {
+  wins: number;
+  losses: number;
+  rank: number | null;
+  totalPlayers: number;
+  neighbors: { rank: number; wins: number; losses: number; differential: number; isMe: boolean; name?: string }[];
+  opponent?: { wins: number; losses: number; name?: string } | null;
+  h2h?: { myWins: number; theirWins: number } | null;
+}
+
 const POSITION_COLORS: Record<Position, string> = {
   C:  "bg-blue-500/20 text-blue-300 border-blue-500/30",
   LW: "bg-green-500/20 text-green-300 border-green-500/30",
@@ -146,13 +156,14 @@ function RosterPanel({
 
 // ── Series result ─────────────────────────────────────────────────────────────
 
-function StatTable({ stats, title }: { stats: PlayerSeriesStats[]; title: string }) {
+function StatTable({ stats, title, record }: { stats: PlayerSeriesStats[]; title: string; record?: string }) {
   const skaters = stats.filter((s) => !s.position.includes("G")).sort((a, b) => b.points - a.points);
   const goalies = stats.filter((s) => s.position.includes("G"));
   return (
     <div className="flex flex-col gap-2">
       <p className={`text-xs font-bold uppercase tracking-widest ${title === "Your Team" ? "text-blue-400" : "text-orange-400"}`}>
         {title}
+        {record && <span className="text-muted-foreground/60 font-medium normal-case tracking-normal ml-2">{record}</span>}
       </p>
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
@@ -210,13 +221,7 @@ function SeriesResultScreen({
   vsBot: boolean;
   rematchStatus: "idle" | "requesting" | "incoming" | "expired";
   rematchCountdown: number | null;
-  playerStats: {
-    wins: number;
-    losses: number;
-    rank: number | null;
-    totalPlayers: number;
-    neighbors: { rank: number; wins: number; losses: number; differential: number; isMe: boolean; name?: string }[];
-  } | null;
+  playerStats: PlayerStatsData | null;
   onRematch: () => void;
   onAcceptRematch: () => void;
   onDeclineRematch: () => void;
@@ -224,6 +229,19 @@ function SeriesResultScreen({
   const [copied, setCopied] = useState(false);
   const iWon =
     myRole === null ? null : result.seriesWinner === myRole;
+
+  const opp = playerStats?.opponent ?? null;
+  const oppRecordStr = opp ? `${opp.wins}W–${opp.losses}L` : undefined;
+  const h2h = playerStats?.h2h ?? null;
+  // Only show all-time h2h when there was at least one prior meeting (this game is already counted)
+  const showH2h = !!h2h && h2h.myWins + h2h.theirWins >= 2;
+  const h2hLine = h2h
+    ? h2h.myWins > h2h.theirWins
+      ? `you lead ${h2h.myWins}–${h2h.theirWins}`
+      : h2h.myWins < h2h.theirWins
+      ? `you trail ${h2h.myWins}–${h2h.theirWins}`
+      : `tied ${h2h.myWins}–${h2h.theirWins}`
+    : "";
 
   const winnerWins = result.seriesWinner === "p1" ? result.p1Wins : result.p2Wins;
   const loserWins = result.seriesWinner === "p1" ? result.p2Wins : result.p1Wins;
@@ -292,6 +310,12 @@ function SeriesResultScreen({
           {headline}
         </p>
         <p className="text-xs text-muted-foreground mt-1">Series MVP: {result.mvp}</p>
+        {showH2h && (
+          <p className="text-xs text-muted-foreground mt-0.5">
+            All-time vs {opp?.name ?? "this opponent"}:{" "}
+            <span className="font-semibold text-foreground">{h2hLine}</span>
+          </p>
+        )}
         {myRole && playerStats && (
           <div className="mt-3">
             {playerStats.neighbors.length > 0 ? (
@@ -379,10 +403,12 @@ function SeriesResultScreen({
       <StatTable
         stats={result.p1Stats}
         title={myRole === "p1" ? "Your Team" : myRole === "p2" ? (vsBot ? "Bot" : "Opponent") : "Player 1"}
+        record={myRole === "p2" ? oppRecordStr : undefined}
       />
       <StatTable
         stats={result.p2Stats}
         title={myRole === "p2" ? "Your Team" : myRole === "p1" ? (vsBot ? "Bot" : "Opponent") : "Player 2"}
+        record={myRole === "p1" ? oppRecordStr : undefined}
       />
 
       {/* Rematch */}
@@ -481,13 +507,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const [rematchStatus, setRematchStatus] = useState<"idle" | "requesting" | "incoming" | "expired">("idle");
   const [rematchCountdown, setRematchCountdown] = useState<number | null>(null);
   const rematchStatusRef = useRef<"idle" | "requesting" | "incoming" | "expired">("idle");
-  const [playerStats, setPlayerStats] = useState<{
-    wins: number;
-    losses: number;
-    rank: number | null;
-    totalPlayers: number;
-    neighbors: { rank: number; wins: number; losses: number; differential: number; isMe: boolean; name?: string }[];
-  } | null>(null);
+  const [playerStats, setPlayerStats] = useState<PlayerStatsData | null>(null);
 
   // Keep refs in sync
   useEffect(() => { myRoleRef.current = myRole; }, [myRole]);
@@ -530,7 +550,8 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
       setGame(g);
       setPhase("complete");
       const userId = getOrCreateUserId();
-      fetch(`/api/player/stats?playerId=${userId}`)
+      const oppId = role && !g.botRole ? (role === "p1" ? g.p2?.id : g.p1.id) : null;
+      fetch(`/api/player/stats?playerId=${userId}${oppId ? `&opponentId=${oppId}` : ""}`)
         .then((r) => r.json())
         .then(setPlayerStats)
         .catch(() => {});
