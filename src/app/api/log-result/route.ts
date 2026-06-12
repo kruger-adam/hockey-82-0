@@ -19,7 +19,6 @@ export async function POST(req: NextRequest) {
 
     const pipeline = redis.pipeline();
     pipeline.incr("games:total");
-    pipeline.lpush("results:all", entry);
 
     if (wins === 82) {
       pipeline.incr("games:perfect");
