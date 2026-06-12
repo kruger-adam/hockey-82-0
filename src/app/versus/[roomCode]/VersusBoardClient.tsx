@@ -114,6 +114,123 @@ function groupPlayers(players: Player[], mode: "avg" | "best") {
   return { fwd, def, goa };
 }
 
+// ── Shared UI ─────────────────────────────────────────────────────────────────
+// These are module-level (not defined inside the board component) so re-renders
+// reconcile their DOM in place. Inline-defined components get a new type every
+// render, which makes React unmount/remount them — destroying buttons mid-tap
+// drops clicks on mobile. The countdowns also tick internally so the rest of
+// the board doesn't re-render every second.
+
+function CountdownBadge({ deadline, max }: { deadline: number | null; max: number }) {
+  const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
+  useEffect(() => {
+    if (!deadline) { setSecondsLeft(null); return; }
+    const d = deadline;
+    function tick() { setSecondsLeft(Math.max(0, Math.ceil((d - Date.now()) / 1000))); }
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [deadline]);
+  if (secondsLeft === null) return null;
+  const display = Math.min(secondsLeft, max);
+  return (
+    <span className={`text-xs tabular-nums font-semibold ${display <= 3 ? "text-red-400 animate-pulse" : "text-yellow-400"}`}>
+      {display}s
+    </span>
+  );
+}
+
+function RematchCountdown({ deadline }: { deadline: number | null }) {
+  const [seconds, setSeconds] = useState<number | null>(null);
+  useEffect(() => {
+    if (!deadline) { setSeconds(null); return; }
+    const d = deadline;
+    function tick() { setSeconds(Math.max(0, Math.ceil((d - Date.now()) / 1000))); }
+    tick();
+    const id = setInterval(tick, 200);
+    return () => clearInterval(id);
+  }, [deadline]);
+  return <span className="tabular-nums font-bold text-foreground">{seconds ?? "—"}s</span>;
+}
+
+function LobbyLink({ active, roomCode }: { active: boolean; roomCode: string }) {
+  const router = useRouter();
+  async function handleClick(e: React.MouseEvent) {
+    if (!active) return;
+    e.preventDefault();
+    if (confirm("Leave this game? You won't be able to re-enter.")) {
+      const userId = getOrCreateUserId();
+      await fetch(`/api/game/${roomCode}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "forfeit", playerId: userId }),
+      }).catch(() => {});
+      router.push("/versus");
+    }
+  }
+  return (
+    <a
+      href="/versus"
+      onClick={handleClick}
+      className="text-xs text-muted-foreground/60 hover:text-muted-foreground mb-3 transition-colors self-start"
+    >
+      ← Lobby
+    </a>
+  );
+}
+
+function PlayerColumn({
+  title,
+  players,
+  openPos,
+  isAnimating,
+  statsMode,
+  onSelect,
+}: {
+  title: string;
+  players: Player[];
+  openPos: Set<Position>;
+  isAnimating: boolean;
+  statsMode: "avg" | "best";
+  onSelect: (p: Player) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-1 flex-1 min-w-0">
+      <p className="text-xs text-muted-foreground/60 uppercase tracking-widest font-semibold px-1 mb-1">{title}</p>
+      {players.length === 0 && <p className="text-xs text-muted-foreground/30 px-1">—</p>}
+      {players.map((p) => {
+        const eligible = p.position.some((pos) => openPos.has(pos as Position));
+        return (
+          <button
+            key={p.name}
+            onClick={() => eligible && !isAnimating && onSelect(p)}
+            disabled={!eligible || isAnimating}
+            className={`flex flex-col px-2 py-2 rounded-lg border transition-all text-left group w-full ${
+              eligible && !isAnimating
+                ? "border-border hover:border-blue-500/60 hover:bg-blue-500/5 active:scale-95 active:bg-blue-500/15 active:border-blue-500/60 cursor-pointer"
+                : "border-border/20 opacity-30 cursor-not-allowed"
+            }`}
+          >
+            <span className="font-semibold text-xs leading-tight group-hover:text-blue-300 transition-colors">
+              {p.name}
+            </span>
+            <span className="text-xs text-muted-foreground/70 leading-tight mt-0.5">
+              {statLine(p, statsMode)}
+            </span>
+            <div className="flex gap-1 mt-0.5">
+              {p.position.map((pos) => (
+                <span key={pos} className={`text-xs px-1 py-0 rounded border leading-4 ${POSITION_COLORS[pos as Position]}`}>
+                  {pos}
+                </span>
+              ))}
+            </div>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 // ── Roster panel ──────────────────────────────────────────────────────────────
 
 function RosterPanel({
@@ -209,7 +326,7 @@ function SeriesResultScreen({
   roomCode,
   vsBot,
   rematchStatus,
-  rematchCountdown,
+  rematchDeadline,
   playerStats,
   onRematch,
   onAcceptRematch,
@@ -220,7 +337,7 @@ function SeriesResultScreen({
   roomCode: string;
   vsBot: boolean;
   rematchStatus: "idle" | "requesting" | "incoming" | "expired";
-  rematchCountdown: number | null;
+  rematchDeadline: number | null;
   playerStats: PlayerStatsData | null;
   onRematch: () => void;
   onAcceptRematch: () => void;
@@ -427,7 +544,7 @@ function SeriesResultScreen({
             </Button>
           ) : rematchStatus === "requesting" ? (
             <div className="w-full text-center py-3 text-sm text-muted-foreground">
-              Waiting for opponent to accept… <span className="tabular-nums font-bold text-foreground">{rematchCountdown ?? "—"}s</span>
+              Waiting for opponent to accept… <RematchCountdown deadline={rematchDeadline} />
             </div>
           ) : rematchStatus === "expired" ? (
             <div className="w-full text-center py-3 text-sm text-muted-foreground">
@@ -437,7 +554,7 @@ function SeriesResultScreen({
             <div className="flex flex-col items-center gap-2 py-2">
               <p className="text-sm font-bold">Opponent wants a rematch!</p>
               <p className="text-xs text-muted-foreground">
-                Respond within <span className="tabular-nums font-bold text-foreground">{rematchCountdown ?? "—"}s</span>
+                Respond within <RematchCountdown deadline={rematchDeadline} />
               </p>
               <div className="flex gap-2 w-full">
                 <Button onClick={onAcceptRematch} className="flex-1 bg-green-600 hover:bg-green-500 text-white font-bold">
@@ -505,7 +622,6 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const pickInFlightRef = useRef(false);
   const lastSubmittedPickNumberRef = useRef<number | null>(null);
   const [rematchStatus, setRematchStatus] = useState<"idle" | "requesting" | "incoming" | "expired">("idle");
-  const [rematchCountdown, setRematchCountdown] = useState<number | null>(null);
   const rematchStatusRef = useRef<"idle" | "requesting" | "incoming" | "expired">("idle");
   const [playerStats, setPlayerStats] = useState<PlayerStatsData | null>(null);
 
@@ -515,31 +631,18 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   useEffect(() => { spinComboRef.current = spinCombo; }, [spinCombo]);
   useEffect(() => { rematchStatusRef.current = rematchStatus; }, [rematchStatus]);
 
-  // Rematch countdown
+  // Ready-check countdown — draft turn countdowns tick inside CountdownBadge so
+  // they don't re-render the whole board every second (mid-tap re-renders drop
+  // clicks on mobile)
   useEffect(() => {
-    if (!game?.rematchDeadline || rematchStatus === "idle") { setRematchCountdown(null); return; }
-    const d = game.rematchDeadline;
-    function tick() { setRematchCountdown(Math.max(0, Math.ceil((d - Date.now()) / 1000))); }
-    tick();
-    const id = setInterval(tick, 200);
-    return () => clearInterval(id);
-  }, [game?.rematchDeadline, rematchStatus]);
-
-  // Countdown timer — ready_check window or turn deadline
-  useEffect(() => {
-    let deadline: number | null = null;
-    if (game?.status === "ready_check" && game?.readyDeadline) {
-      deadline = game.readyDeadline;
-    } else if (game?.status === "drafting" && game?.currentTurn === myRole && game?.turnDeadline) {
-      deadline = game.turnDeadline;
-    }
+    const deadline = game?.status === "ready_check" && game?.readyDeadline ? game.readyDeadline : null;
     if (!deadline) { setSecondsLeft(null); return; }
     const d = deadline;
     function tick() { setSecondsLeft(Math.max(0, Math.ceil((d - Date.now()) / 1000))); }
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, [game?.readyDeadline, game?.turnDeadline, game?.status, game?.currentTurn, myRole]);
+  }, [game?.readyDeadline, game?.status]);
 
   const applyGameState = useCallback((g: GameSession, role: "p1" | "p2" | null) => {
     const currentPhase = phaseRef.current;
@@ -931,31 +1034,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   // ── Render ────────────────────────────────────────────────────────────────
 
-  function LobbyLink() {
-    const isActive = game && game.status !== "complete" && game.status !== "abandoned";
-    async function handleClick(e: React.MouseEvent) {
-      if (!isActive) return;
-      e.preventDefault();
-      if (confirm("Leave this game? You won't be able to re-enter.")) {
-        const userId = getOrCreateUserId();
-        await fetch(`/api/game/${roomCode}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ action: "forfeit", playerId: userId }),
-        }).catch(() => {});
-        router.push("/versus");
-      }
-    }
-    return (
-      <a
-        href="/versus"
-        onClick={handleClick}
-        className="text-xs text-muted-foreground/60 hover:text-muted-foreground mb-3 transition-colors self-start"
-      >
-        ← Lobby
-      </a>
-    );
-  }
+  const lobbyActive = !!game && game.status !== "complete" && game.status !== "abandoned";
 
   if (fetchError) {
     return (
@@ -969,7 +1048,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   if (phase === "loading" || !game) {
     return (
       <div className="flex flex-col items-center gap-4 py-12 w-full">
-        <LobbyLink />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} />
         <p className="text-muted-foreground animate-pulse">Loading game…</p>
       </div>
     );
@@ -1022,14 +1101,14 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   if (phase === "complete" && game.result) {
     return (
       <div className="flex flex-col w-full">
-        <LobbyLink />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} />
       <SeriesResultScreen
         result={game.result}
         myRole={myRole}
         roomCode={roomCode}
         vsBot={!!game.botRole}
         rematchStatus={rematchStatus}
-        rematchCountdown={rematchCountdown}
+        rematchDeadline={game.rematchDeadline ?? null}
         playerStats={playerStats}
         onRematch={doRematch}
         onAcceptRematch={doAcceptRematch}
@@ -1041,16 +1120,6 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   // p2 is non-null whenever myRole is "p2" (we joined successfully)
   const getPS = (g: GameSession, r: "p1" | "p2") => (r === "p1" ? g.p1 : g.p2!);
-
-  function CountdownBadge({ max }: { max: number }) {
-    if (secondsLeft === null) return null;
-    const display = Math.min(secondsLeft, max);
-    return (
-      <span className={`text-xs tabular-nums font-semibold ${display <= 3 ? "text-red-400 animate-pulse" : "text-yellow-400"}`}>
-        {display}s
-      </span>
-    );
-  }
 
   const myState = myRole ? getPS(game, myRole) : null;
   const canRespinTeam = !!myState && !myState.respinTeamUsed && !!spinCombo;
@@ -1066,7 +1135,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   if (phase === "waiting_for_opponent") {
     return (
       <div className="flex flex-col gap-6 w-full max-w-lg mx-auto">
-        <LobbyLink />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} />
         <div className="text-center">
           <p className="text-xl font-bold">Room Created</p>
           <p className="text-muted-foreground text-sm mt-1">Share this code with your opponent:</p>
@@ -1100,7 +1169,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
     return (
       <div className="flex flex-col gap-6 w-full max-w-sm mx-auto text-center">
-        <LobbyLink />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} />
         <div>
           <p className="text-xl font-black">Your friend accepted the challenge!</p>
           <p className="text-muted-foreground text-sm mt-1">
@@ -1160,7 +1229,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const eligible = getEligibleSlots(selectedPlayer, getPS(game, myRole).roster);
     return (
       <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
-        <LobbyLink />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={game.statsMode} label="Opponent" />}
@@ -1191,48 +1260,9 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const { fwd, def, goa } = groupPlayers(undrafted, game.statsMode);
     const isAnimating = phase === "spinning";
 
-    function PlayerColumn({ title, players }: { title: string; players: Player[] }) {
-
-      return (
-        <div className="flex flex-col gap-1 flex-1 min-w-0">
-          <p className="text-xs text-muted-foreground/60 uppercase tracking-widest font-semibold px-1 mb-1">{title}</p>
-          {players.length === 0 && <p className="text-xs text-muted-foreground/30 px-1">—</p>}
-          {players.map((p) => {
-            const eligible = p.position.some((pos) => openPos.has(pos as Position));
-            return (
-              <button
-                key={p.name}
-                onClick={() => eligible && !isAnimating && selectPlayer(p)}
-                disabled={!eligible || isAnimating}
-                className={`flex flex-col px-2 py-2 rounded-lg border transition-all text-left group w-full ${
-                  eligible && !isAnimating
-                    ? "border-border hover:border-blue-500/60 hover:bg-blue-500/5 active:scale-95 active:bg-blue-500/15 active:border-blue-500/60 cursor-pointer"
-                    : "border-border/20 opacity-30 cursor-not-allowed"
-                }`}
-              >
-                <span className="font-semibold text-xs leading-tight group-hover:text-blue-300 transition-colors">
-                  {p.name}
-                </span>
-                <span className="text-xs text-muted-foreground/70 leading-tight mt-0.5">
-                  {statLine(p, statsMode)}
-                </span>
-                <div className="flex gap-1 mt-0.5">
-                  {p.position.map((pos) => (
-                    <span key={pos} className={`text-xs px-1 py-0 rounded border leading-4 ${POSITION_COLORS[pos as Position]}`}>
-                      {pos}
-                    </span>
-                  ))}
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      );
-    }
-
     return (
       <div className="flex flex-col gap-4 w-full max-w-2xl mx-auto">
-        <LobbyLink />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={game.statsMode} label="Opponent" />}
@@ -1243,7 +1273,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
               <p className="text-xs text-muted-foreground uppercase tracking-widest">
                 Pick {game.pickNumber + 1} of 12
               </p>
-              {!isAnimating && <CountdownBadge max={20} />}
+              {!isAnimating && <CountdownBadge deadline={game.turnDeadline} max={20} />}
             </div>
             {!isAnimating && (
               <div className="flex gap-2">
@@ -1277,9 +1307,9 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
           </p>
           {!isAnimating && (
             <div className="flex gap-3">
-              <PlayerColumn title="Forwards" players={fwd} />
-              <PlayerColumn title="Defence" players={def} />
-              <PlayerColumn title="Goalies" players={goa} />
+              <PlayerColumn title="Forwards" players={fwd} openPos={openPos} isAnimating={isAnimating} statsMode={statsMode} onSelect={selectPlayer} />
+              <PlayerColumn title="Defence" players={def} openPos={openPos} isAnimating={isAnimating} statsMode={statsMode} onSelect={selectPlayer} />
+              <PlayerColumn title="Goalies" players={goa} openPos={openPos} isAnimating={isAnimating} statsMode={statsMode} onSelect={selectPlayer} />
             </div>
           )}
         </div>
@@ -1292,14 +1322,14 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const pickNum = game.pickNumber + 1;
     return (
       <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
-        <LobbyLink />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={game.statsMode} label="Opponent" />}
         </div>
         <div className="flex items-center justify-center gap-2">
           <p className="text-xs text-muted-foreground">Pick {pickNum} of 12 · Your turn</p>
-          <CountdownBadge max={10} />
+          <CountdownBadge deadline={game.turnDeadline} max={10} />
         </div>
         <div className="flex gap-4 justify-center mt-2">
           <div className="flex-1">
@@ -1329,7 +1359,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   if (phase === "spinning" && !spinCombo) {
     return (
       <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
-        <LobbyLink />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={statsMode} label="Opponent" />}
@@ -1359,7 +1389,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const opponentSpin = game.currentSpin;
   return (
     <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
-      <LobbyLink />
+      <LobbyLink active={lobbyActive} roomCode={roomCode} />
       <div className="flex gap-3">
         <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
         {theirRoster && (
