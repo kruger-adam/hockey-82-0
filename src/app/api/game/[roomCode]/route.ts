@@ -74,12 +74,20 @@ async function autoSpinAndPick(session: GameSession): Promise<void> {
   const players = getPlayersForTeamDecade(combo.decade, combo.team)
     .filter((p) => !session.draftedNames.includes(p.name));
 
-  for (const { slot, positions } of ROSTER_SLOTS) {
-    if ((ps.roster as unknown as Record<string, unknown>)[slot] !== null) continue;
-    const eligible = players.filter((p) => p.position.some((pos) => positions.includes(pos)));
-    if (!eligible.length) continue;
+  // Greedy best-available: draft the highest-rated player who fits any open
+  // slot, rather than filling roster slots in order
+  const openSlots = ROSTER_SLOTS.filter(
+    ({ slot }) => (ps.roster as unknown as Record<string, unknown>)[slot] === null
+  );
+  const candidates = players.flatMap((p) => {
+    const open = openSlots.find(({ positions }) => p.position.some((pos) => positions.includes(pos)));
+    return open ? [{ player: p, slot: open.slot }] : [];
+  });
 
-    const picked = eligible.sort((a, b) => b.rating - a.rating)[0];
+  if (candidates.length) {
+    const { player: picked, slot } = candidates.reduce((a, b) =>
+      b.player.rating > a.player.rating ? b : a
+    );
     (ps.roster as unknown as Record<string, unknown>)[slot] = picked;
     session.draftedNames.push(picked.name);
     session.currentSpin = null;
