@@ -370,6 +370,23 @@ function SeriesResultScreen({
       ? `You win the series ${seriesLabel}! 🏆`
       : `You lose the series ${seriesLabel}`;
 
+  // Pre-render the share image so the share sheet opens within the tap's
+  // user-activation window (an await on a slow image fetch inside share()
+  // would make iOS reject the share)
+  const shareFileRef = useRef<File | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`/api/og/versus/${roomCode}`)
+      .then((res) => (res.ok ? res.blob() : null))
+      .then((blob) => {
+        if (blob && !cancelled) {
+          shareFileRef.current = new File([blob], `82-0-hockey-versus-${roomCode}.png`, { type: "image/png" });
+        }
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [roomCode]);
+
   function share() {
     const winnerWins = result.seriesWinner === "p1" ? result.p1Wins : result.p2Wins;
     const loserWins  = result.seriesWinner === "p1" ? result.p2Wins : result.p1Wins;
@@ -379,18 +396,27 @@ function SeriesResultScreen({
       : `${winnerWins}-${loserWins} series ${iWon ? "win" : "loss"}`;
     const shareHeadline = `🏒 Head-to-Head: ${seriesDesc}${iWon ? " 🏆" : ""}`;
 
+    const file = shareFileRef.current;
+    if (file && navigator.canShare?.({ files: [file] })) {
+      navigator.share({
+        files: [file],
+        text: `${shareHeadline} · Think you can beat me? · 82and0hockey.com/versus`,
+        url: "https://82and0hockey.com/versus",
+      }).catch(() => {});
+      return;
+    }
+
     const lastName = (name: string) => name.split(" ").pop() ?? name;
     const sorted = (stats: PlayerSeriesStats[]) => [
       ...stats.filter(s => !s.position.includes("G")).sort((a, b) => b.points - a.points),
       ...stats.filter(s => s.position.includes("G")),
     ];
     const formatPlayer = (s: PlayerSeriesStats) => {
-      const tag = s.name === result.mvp ? " (MVP)" : "";
       if (s.position.includes("G")) {
         const sv = s.svPct != null ? `.${Math.round(s.svPct * 1000)} SV%` : "—";
-        return `${lastName(s.name)}${tag}: ${sv}`;
+        return `${lastName(s.name)}: ${sv}`;
       }
-      return `${lastName(s.name)}${tag}: ${s.goals}G ${s.assists}A`;
+      return `${lastName(s.name)}: ${s.goals}G ${s.assists}A`;
     };
 
     const myStats    = sorted(myRole === "p2" ? result.p2Stats : result.p1Stats);

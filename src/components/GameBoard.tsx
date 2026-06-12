@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -367,8 +367,47 @@ export default function GameBoard() {
     return `🏒 I just went ${result!.record} with:\n\n${lines.join("\n")}\n\n${cta} → 82and0hockey.com`;
   }
 
+  // Pre-render the share image as soon as the result screen appears, so the
+  // share sheet opens within the tap's user-activation window (an await on a
+  // slow image fetch inside handleShare would make iOS reject the share)
+  const shareFileRef = useRef<File | null>(null);
+  useEffect(() => {
+    if (phase !== "result" || !result) { shareFileRef.current = null; return; }
+    const players = ROSTER_SLOTS.map(({ slot }) => {
+      const p = roster[slot];
+      if (!p) return null;
+      return {
+        pos: SLOT_POSITION[slot],
+        name: p.name,
+        sub: `${decadeShort(p.decade)} ${teamAbbr(p.team)} · ${statLine(p, statsMode)}`,
+      };
+    }).filter(Boolean);
+    const payload = JSON.stringify({ record: result.record, wins: result.wins, mode: statsMode, players });
+    let cancelled = false;
+    fetch(`/api/og/solo?d=${encodeURIComponent(payload)}`)
+      .then((res) => (res.ok ? res.blob() : null))
+      .then((blob) => {
+        if (blob && !cancelled) {
+          shareFileRef.current = new File([blob], `82-0-hockey-${result.record}.png`, { type: "image/png" });
+        }
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, result]);
+
   function handleShare() {
     const text = buildShareText();
+    const file = shareFileRef.current;
+    if (file && navigator.canShare?.({ files: [file] })) {
+      const cta = result!.record === "82-0" ? "I went 82-0!" : `I went ${result!.record}. Can you beat it?`;
+      navigator.share({
+        files: [file],
+        text: `🏒 ${cta} · 82and0hockey.com`,
+        url: "https://82and0hockey.com",
+      }).catch(() => {});
+      return;
+    }
     if (navigator.share) {
       navigator.share({ text }).catch(() => {});
     } else {
