@@ -376,7 +376,7 @@ function SeriesResultScreen({
   const shareFileRef = useRef<File | null>(null);
   useEffect(() => {
     let cancelled = false;
-    fetch(`/api/og/versus/${roomCode}`)
+    fetch(`/api/og/versus-card/${roomCode}${myRole ? `?role=${myRole}` : ""}`)
       .then((res) => (res.ok ? res.blob() : null))
       .then((blob) => {
         if (blob && !cancelled) {
@@ -385,7 +385,7 @@ function SeriesResultScreen({
       })
       .catch(() => {});
     return () => { cancelled = true; };
-  }, [roomCode]);
+  }, [roomCode, myRole]);
 
   function share() {
     const winnerWins = result.seriesWinner === "p1" ? result.p1Wins : result.p2Wins;
