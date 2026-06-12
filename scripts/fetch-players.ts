@@ -58,6 +58,7 @@ export const TEAMS: Record<string, string> = {
   STL: "St. Louis Blues",
   TBL: "Tampa Bay Lightning",
   UTA: "Utah Hockey Club",
+  PHX: "Phoenix/Arizona Coyotes",
   VAN: "Vancouver Canucks",
   VGK: "Vegas Golden Knights",
   WPG: "Winnipeg Jets",
@@ -89,17 +90,20 @@ export const TRICODE_BY_ERA: Record<string, Partial<Record<string, string>>> = {
   // "Colorado Avalanche": {},
 
   // New Jersey Devils were Kansas City Scouts (1974-76) → Colorado Rockies (1976-82) → NJD
-  "New Jersey Devils": { "1970s": "CLR", "1980s": "NJD", "1990s": "NJD", "2000s": "NJD", "2010s": "NJD" },
+  "New Jersey Devils": { "1970s": "CLR", "1980s": "NJD", "1990s": "NJD", "2000s": "NJD", "2010s": "NJD", "2020s": "NJD" },
 
   // Calgary Flames were Atlanta Flames through 1979-80
-  "Calgary Flames": { "1970s": "ATF", "1980s": "CGY", "1990s": "CGY", "2000s": "CGY", "2010s": "CGY" },
+  "Calgary Flames": { "1970s": "ATF", "1980s": "CGY", "1990s": "CGY", "2000s": "CGY", "2010s": "CGY", "2020s": "CGY" },
 
   // Winnipeg Jets (current) were Atlanta Thrashers through 2010-11
   "Winnipeg Jets": { "2000s": "ATL", "2010s": "WPG", "2020s": "WPG" },
 
-  // Utah Hockey Club were Arizona Coyotes (2014-24) / Phoenix Coyotes (1996-2014)
-  // Original Winnipeg Jets → Phoenix 1996. For historical data use WPO for old Jets.
-  "Utah Hockey Club": { "2020s": "UTA", "2010s": "ARI", "2000s": "PHX" },
+  // Utah Hockey Club — current franchise (relocated from Arizona 2024)
+  "Utah Hockey Club": { "2020s": "UTA" },
+
+  // Phoenix/Arizona Coyotes — same franchise pre-relocation
+  // Phoenix Coyotes 1996-2014 (PHX), Arizona Coyotes 2014-2024 (ARI)
+  "Phoenix/Arizona Coyotes": { "2000s": "PHX", "2010s": "ARI" },
 
   // Original Winnipeg Jets only existed 1979-96 (use separate WPO entry)
   "Winnipeg Jets (Orig)": { "1980s": "WPG", "1990s": "WPG" },
