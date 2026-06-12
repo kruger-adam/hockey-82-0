@@ -846,27 +846,37 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const channel = ably.channels.get(`game:${roomCode}`);
     channel.subscribe("state", (msg) => handleGameState(msg.data as GameSession));
 
-    // On reconnect, fetch current state to catch anything missed while disconnected
-    let hasConnected = false;
-    ably.connection.on("connected", async () => {
-      if (!hasConnected) { hasConnected = true; return; }
-      try {
-        const res = await fetch(`/api/game/${roomCode}`);
-        if (res.ok) handleGameState(await res.json());
-      } catch { /* ignore */ }
-    });
-
-    // 2s fallback poll — catches Ably drops and triggers bot/expiry checks
-    pollRef.current = setInterval(async () => {
+    async function pollOnce() {
       if (document.visibilityState === "hidden") return;
       try {
         const res = await fetch(`/api/game/${roomCode}`);
         if (res.ok) handleGameState(await res.json());
       } catch { /* ignore */ }
-    }, 2000);
+    }
+
+    function startPoll() {
+      if (pollRef.current) return;
+      pollRef.current = setInterval(pollOnce, 2000);
+    }
+
+    function stopPoll() {
+      if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; }
+    }
+
+    // Poll only when Ably is not connected; stop when it reconnects
+    let hasConnected = false;
+    ably.connection.on("connected", async () => {
+      stopPoll();
+      if (!hasConnected) { hasConnected = true; return; }
+      // Catch up on anything missed while disconnected
+      await pollOnce();
+    });
+    ably.connection.on("disconnected", startPoll);
+    ably.connection.on("suspended", startPoll);
+    ably.connection.on("failed", startPoll);
 
     return () => {
-      if (pollRef.current) clearInterval(pollRef.current);
+      stopPoll();
       channel.unsubscribe();
       ably.close();
     };
