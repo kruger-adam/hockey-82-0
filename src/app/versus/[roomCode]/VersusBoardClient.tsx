@@ -452,7 +452,7 @@ function SeriesResultScreen({
         <p className={`text-2xl font-black ${iWon ? "text-yellow-400" : iWon === false ? "text-red-400" : "text-foreground"}`}>
           {headline}
         </p>
-        <p className="text-xs text-muted-foreground mt-1">Series MVP: {result.mvp}</p>
+
         {showH2h && (
           <p className="text-xs text-muted-foreground mt-0.5">
             All-time vs {opp?.name ?? "this opponent"}:{" "}

@@ -16,14 +16,13 @@ function safe(str: string): string {
     .join("");
 }
 
-function formatLine(s: PlayerSeriesStats, mvp: string): string {
+function formatLine(s: PlayerSeriesStats): string {
   const last = safe(s.name).split(" ").pop() ?? safe(s.name);
-  const tag = s.name === mvp ? " MVP" : "";
   if (s.position.includes("G")) {
     const sv = s.svPct != null ? `.${Math.round(s.svPct * 1000)} SV%` : "-";
-    return `${last}${tag}: ${sv}`;
+    return `${last}: ${sv}`;
   }
-  return `${last}${tag}: ${s.goals}G ${s.assists}A`;
+  return `${last}: ${s.goals}G ${s.assists}A`;
 }
 
 function sortStats(stats: PlayerSeriesStats[]) {
@@ -49,11 +48,10 @@ export async function GET(_req: Request, { params }: { params: Promise<{ roomCod
     const loserWins = Math.min(result.p1Wins, result.p2Wins);
     const seriesLabel = loserWins === 0 ? `${winnerWins}-0 SWEEP` : `${winnerWins}-${loserWins} SERIES`;
     const winnerLabel = result.seriesWinner === "p1" ? "P1 WINS" : "P2 WINS";
-    const mvpName = safe(result.mvp);
     const p2Label = session.botRole ? "BOT" : "P2";
 
-    const p1Lines = sortStats(result.p1Stats).map((s) => formatLine(s, result.mvp));
-    const p2Lines = sortStats(result.p2Stats).map((s) => formatLine(s, result.mvp));
+    const p1Lines = sortStats(result.p1Stats).map((s) => formatLine(s));
+    const p2Lines = sortStats(result.p2Stats).map((s) => formatLine(s));
 
     // App dark theme: background=#0a0a0a, card=#1a1a1a (oklch(0.145) and oklch(0.205))
     return new ImageResponse(
@@ -72,9 +70,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ roomCod
           <div style={{ fontSize: 30, fontWeight: 900, color: "#fbbf24", marginBottom: 6 }}>
             Head-to-Head
           </div>
-          <div style={{ fontSize: 14, color: "#666", marginBottom: 24 }}>
-            {"Series MVP: " + mvpName}
-          </div>
+          <div style={{ marginBottom: 24 }} />
 
           {/* Two columns */}
           <div style={{ display: "flex", flexGrow: 1, gap: 20 }}>

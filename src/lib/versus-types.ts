@@ -45,7 +45,6 @@ export interface SeriesResult {
   games: GameScore[];
   p1Stats: PlayerSeriesStats[];
   p2Stats: PlayerSeriesStats[];
-  mvp: string;
 }
 
 export interface GameScore {
