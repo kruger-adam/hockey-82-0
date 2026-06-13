@@ -3,8 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { useUser, SignInButton, SignOutButton } from "@clerk/nextjs";
 
-function getOrCreateUserId(): string {
+function getGuestId(): string {
   try {
     let id = localStorage.getItem("hockey-user-id");
     if (!id) {
@@ -17,9 +18,15 @@ function getOrCreateUserId(): string {
   }
 }
 
+function getEffectiveUserId(clerkUserId: string | null | undefined): string {
+  if (clerkUserId) return clerkUserId;
+  return getGuestId();
+}
+
 export default function VersusLobby() {
   const router = useRouter();
-  const [mode, setMode] = useState<"menu" | "create" | "join" | "matchmaking">("menu");
+  const { user, isSignedIn, isLoaded } = useUser();
+  const [mode, setMode] = useState<"menu" | "join" | "matchmaking">("menu");
   const statsMode = "best";
   const [joinCode, setJoinCode] = useState("");
   const [loading, setLoading] = useState(false);
@@ -28,9 +35,31 @@ export default function VersusLobby() {
   const [username, setUsername] = useState("");
   const [editingName, setEditingName] = useState(false);
   const [nameDraft, setNameDraft] = useState("");
+  const [matchStatus, setMatchStatus] = useState<"searching" | "found_human" | "found_bot">("searching");
+  const [countdown, setCountdown] = useState(10);
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const matchedRef = useRef(false);
+  const migratedRef = useRef(false);
 
+  // Migrate guest record to Clerk account on sign-in
   useEffect(() => {
-    const playerId = getOrCreateUserId();
+    if (!isLoaded || !isSignedIn || !user) return;
+    if (migratedRef.current) return;
+    migratedRef.current = true;
+
+    const guestId = getGuestId();
+    fetch("/api/player/migrate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ guestId }),
+    }).catch(() => {});
+  }, [isLoaded, isSignedIn, user]);
+
+  // Load record and username
+  useEffect(() => {
+    if (!isLoaded) return;
+    const playerId = getEffectiveUserId(user?.id);
     fetch(`/api/player/stats?playerId=${playerId}`)
       .then((r) => r.json())
       .then((d) => { if (d.wins > 0 || d.losses > 0) setRecord(d); })
@@ -39,26 +68,7 @@ export default function VersusLobby() {
       const saved = localStorage.getItem("hockey-user-name");
       if (saved) setUsername(saved);
     } catch { /* ignore */ }
-  }, []);
-
-  async function saveName(name: string) {
-    const trimmed = name.trim().slice(0, 20);
-    if (!trimmed) { setEditingName(false); return; }
-    setUsername(trimmed);
-    setEditingName(false);
-    try { localStorage.setItem("hockey-user-name", trimmed); } catch { /* ignore */ }
-    const playerId = getOrCreateUserId();
-    await fetch("/api/player/name", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ playerId, name: trimmed }),
-    }).catch(() => {});
-  }
-  const [matchStatus, setMatchStatus] = useState<"searching" | "found_human" | "found_bot">("searching");
-  const [countdown, setCountdown] = useState(10);
-  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const matchedRef = useRef(false);
+  }, [isLoaded, isSignedIn, user]);
 
   useEffect(() => {
     return () => {
@@ -67,6 +77,20 @@ export default function VersusLobby() {
     };
   }, []);
 
+  async function saveName(name: string) {
+    const trimmed = name.trim().slice(0, 20);
+    if (!trimmed) { setEditingName(false); return; }
+    setUsername(trimmed);
+    setEditingName(false);
+    try { localStorage.setItem("hockey-user-name", trimmed); } catch { /* ignore */ }
+    const playerId = getEffectiveUserId(user?.id);
+    await fetch("/api/player/name", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ playerId, name: trimmed }),
+    }).catch(() => {});
+  }
+
   async function createGame() {
     setLoading(true);
     setError("");
@@ -74,12 +98,12 @@ export default function VersusLobby() {
       const res = await fetch("/api/game/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ playerId: getOrCreateUserId(), statsMode }),
+        body: JSON.stringify({ playerId: getEffectiveUserId(user?.id), statsMode }),
       });
       const data = await res.json();
       if (data.roomCode) {
         router.push(`/versus/${data.roomCode}`);
-        return; // stay in loading state until navigation takes over
+        return;
       }
       setError("Failed to create game.");
     } catch {
@@ -97,18 +121,16 @@ export default function VersusLobby() {
       const res = await fetch("/api/game/join", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ playerId: getOrCreateUserId(), roomCode: code }),
+        body: JSON.stringify({ playerId: getEffectiveUserId(user?.id), roomCode: code }),
       });
       const data = await res.json();
       if (res.ok) {
         router.push(`/versus/${code}`);
       } else {
         setError(
-          data.error === "full"
-            ? "Game is full."
-            : data.error === "not_found"
-            ? "Room not found."
-            : "Error joining game."
+          data.error === "full" ? "Game is full."
+          : data.error === "not_found" ? "Room not found."
+          : "Error joining game."
         );
       }
     } catch {
@@ -139,7 +161,7 @@ export default function VersusLobby() {
     setMatchStatus("searching");
     setCountdown(10);
     matchedRef.current = false;
-    const playerId = getOrCreateUserId();
+    const playerId = getEffectiveUserId(user?.id);
 
     try {
       const res = await fetch("/api/matchmaking", {
@@ -160,7 +182,6 @@ export default function VersusLobby() {
       return;
     }
 
-    // Start countdown — after 10s, fall back to bot
     countdownRef.current = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
@@ -175,7 +196,6 @@ export default function VersusLobby() {
       });
     }, 1000);
 
-    // Poll for a human match in parallel
     pollRef.current = setInterval(async () => {
       if (matchedRef.current) return;
       try {
@@ -195,8 +215,8 @@ export default function VersusLobby() {
   async function cancelMatchmaking() {
     if (pollRef.current) clearInterval(pollRef.current);
     if (countdownRef.current) clearInterval(countdownRef.current);
-    matchedRef.current = true; // prevent bot game from firing
-    const playerId = getOrCreateUserId();
+    matchedRef.current = true;
+    const playerId = getEffectiveUserId(user?.id);
     await fetch(`/api/matchmaking?playerId=${playerId}`, { method: "DELETE" }).catch(() => {});
     setMode("menu");
   }
@@ -207,7 +227,7 @@ export default function VersusLobby() {
         <div className="flex flex-col items-center gap-4 w-full max-w-sm mx-auto text-center">
           <div className="text-5xl">🏒</div>
           <p className="font-black text-xl text-green-400">Found a match!</p>
-          <p className="text-muted-foreground text-sm">You're playing a real opponent. Get ready…</p>
+          <p className="text-muted-foreground text-sm">You&apos;re playing a real opponent. Get ready…</p>
         </div>
       );
     }
@@ -227,14 +247,14 @@ export default function VersusLobby() {
         <div className="text-5xl animate-pulse">🏒</div>
         <p className="font-semibold text-lg">Looking for a match…</p>
         <p className="text-muted-foreground text-sm">
-          No match in <span className="tabular-nums font-bold text-foreground">{countdown}s</span>? No worries, we'll match you with a bot instead.
+          No match in <span className="tabular-nums font-bold text-foreground">{countdown}s</span>? No worries, we&apos;ll match you with a bot instead.
         </p>
         <button
           onClick={() => {
             if (pollRef.current) clearInterval(pollRef.current);
             if (countdownRef.current) clearInterval(countdownRef.current);
             matchedRef.current = true;
-            createBotGame(getOrCreateUserId());
+            createBotGame(getEffectiveUserId(user?.id));
           }}
           className="text-sm text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2"
         >
@@ -283,6 +303,7 @@ export default function VersusLobby() {
 
   return (
     <div className="flex flex-col gap-4 w-full max-w-sm mx-auto">
+      {/* Record */}
       {record && (
         <div className="text-center py-2">
           <span className="text-sm font-bold tabular-nums">{record.wins}W – {record.losses}L</span>
@@ -293,10 +314,11 @@ export default function VersusLobby() {
           )}
         </div>
       )}
-      {/* Username */}
-      <div className="text-center">
-        {editingName ? (
-          <div className="flex items-center justify-center gap-2">
+
+      {/* Auth + username row */}
+      <div className="flex items-center justify-between gap-2 py-1">
+        <div className="flex-1 min-w-0">
+          {editingName ? (
             <input
               autoFocus
               value={nameDraft}
@@ -308,18 +330,34 @@ export default function VersusLobby() {
               onBlur={() => saveName(nameDraft)}
               maxLength={20}
               placeholder="Your name"
-              className="px-2 py-1 rounded border border-border bg-card text-foreground text-sm text-center focus:outline-none focus:border-blue-500/60 w-36 text-[16px]"
+              className="px-2 py-1 rounded border border-border bg-card text-foreground text-sm text-center focus:outline-none focus:border-blue-500/60 w-full text-[16px]"
             />
-          </div>
-        ) : (
-          <button
-            onClick={() => { setNameDraft(username); setEditingName(true); }}
-            className="text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors"
-          >
-            {username ? `Playing as ${username} · edit` : "Set a display name"}
-          </button>
+          ) : (
+            <button
+              onClick={() => { setNameDraft(username); setEditingName(true); }}
+              className="text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors truncate max-w-full"
+            >
+              {username ? `Playing as ${username} · edit` : "Set a display name"}
+            </button>
+          )}
+        </div>
+        {isLoaded && (
+          isSignedIn ? (
+            <SignOutButton>
+              <button className="text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors whitespace-nowrap shrink-0">
+                Sign out
+              </button>
+            </SignOutButton>
+          ) : (
+            <SignInButton mode="modal">
+              <button className="text-xs text-blue-400 hover:text-blue-300 transition-colors whitespace-nowrap shrink-0">
+                Sign in to save record
+              </button>
+            </SignInButton>
+          )
         )}
       </div>
+
       {error && <p className="text-red-400 text-sm text-center">{error}</p>}
       <Button
         onClick={createGame}

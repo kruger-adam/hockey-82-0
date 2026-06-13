@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { GameSession, PlayerSeriesStats, SeriesResult } from "@/lib/versus-types";
@@ -13,12 +14,17 @@ import Ably from "ably";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-function getOrCreateUserId(): string {
+function getGuestId(): string {
   try {
     let id = localStorage.getItem("hockey-user-id");
     if (!id) { id = crypto.randomUUID(); localStorage.setItem("hockey-user-id", id); }
     return id;
   } catch { return crypto.randomUUID(); }
+}
+
+function getEffectiveUserId(clerkUserId: string | null | undefined): string {
+  if (clerkUserId) return clerkUserId;
+  return getGuestId();
 }
 
 interface PlayerStatsData {
@@ -153,13 +159,13 @@ function RematchCountdown({ deadline }: { deadline: number | null }) {
   return <span className="tabular-nums font-bold text-foreground">{seconds ?? "—"}s</span>;
 }
 
-function LobbyLink({ active, roomCode }: { active: boolean; roomCode: string }) {
+function LobbyLink({ active, roomCode, userIdRef }: { active: boolean; roomCode: string; userIdRef: React.RefObject<string> }) {
   const router = useRouter();
   async function handleClick(e: React.MouseEvent) {
     if (!active) return;
     e.preventDefault();
     if (confirm("Leave this game? You won't be able to re-enter.")) {
-      const userId = getOrCreateUserId();
+      const userId = userIdRef.current;
       await fetch(`/api/game/${roomCode}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -625,6 +631,13 @@ type UIPhase =
 
 export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const router = useRouter();
+  const { user, isLoaded } = useUser();
+  const userIdRef = useRef<string>(getGuestId());
+
+  useEffect(() => {
+    userIdRef.current = getEffectiveUserId(user?.id);
+  }, [user?.id]);
+
   const [game, setGame] = useState<GameSession | null>(null);
   const [myRole, setMyRole] = useState<"p1" | "p2" | null>(null);
   const [phase, setPhase] = useState<UIPhase>("loading");
@@ -678,7 +691,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     if (g.status === "complete") {
       setGame(g);
       setPhase("complete");
-      const userId = getOrCreateUserId();
+      const userId = userIdRef.current;
       const oppId = role && !g.botRole ? (role === "p1" ? g.p2?.id : g.p1.id) : null;
       fetch(`/api/player/stats?playerId=${userId}${oppId ? `&opponentId=${oppId}` : ""}`)
         .then((r) => r.json())
@@ -693,7 +706,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     if (g.status === "abandoned") {
       setGame(g);
       setPhase("complete");
-      const userId = getOrCreateUserId();
+      const userId = userIdRef.current;
       fetch(`/api/player/stats?playerId=${userId}`)
         .then((r) => r.json())
         .then(setPlayerStats)
@@ -756,7 +769,8 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   // Initial load + auto-join
   useEffect(() => {
-    const userId = getOrCreateUserId();
+    if (!isLoaded) return;
+    const userId = userIdRef.current;
 
     async function init() {
       try {
@@ -800,7 +814,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     }
 
     init();
-  }, [roomCode, applyGameState]);
+  }, [roomCode, applyGameState, isLoaded]);
 
   // Real-time sync via Ably (push) + 10s fallback poll for bot/expiry triggers
   useEffect(() => {
@@ -916,7 +930,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   async function doSpin() {
     setPhase("spinning");
-    const userId = getOrCreateUserId();
+    const userId = userIdRef.current;
     const res = await fetch(`/api/game/${roomCode}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -938,7 +952,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
   async function doRespin(type: "team" | "decade") {
     if (!game || !spinCombo) return;
-    const userId = getOrCreateUserId();
+    const userId = userIdRef.current;
     const res = await fetch(`/api/game/${roomCode}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -983,7 +997,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   }
 
   async function assignSlot(player: Player, slot: RosterSlot) {
-    const userId = getOrCreateUserId();
+    const userId = userIdRef.current;
     lastSubmittedPickNumberRef.current = game?.pickNumber ?? null;
     pickInFlightRef.current = true;
     setPhase("opponent_turn");
@@ -1016,7 +1030,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   }
 
   async function doReady() {
-    const userId = getOrCreateUserId();
+    const userId = userIdRef.current;
     await fetch(`/api/game/${roomCode}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -1031,7 +1045,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
       const res = await fetch("/api/game/bot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ playerId: getOrCreateUserId() }),
+        body: JSON.stringify({ playerId: userIdRef.current }),
       });
       const data = await res.json();
       if (data.roomCode) router.push(`/versus/${data.roomCode}`);
@@ -1041,7 +1055,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     await fetch(`/api/game/${roomCode}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "rematch_request", playerId: getOrCreateUserId() }),
+      body: JSON.stringify({ action: "rematch_request", playerId: userIdRef.current }),
     });
   }
 
@@ -1049,7 +1063,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const res = await fetch(`/api/game/${roomCode}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "rematch_accept", playerId: getOrCreateUserId() }),
+      body: JSON.stringify({ action: "rematch_accept", playerId: userIdRef.current }),
     });
     const data = await res.json();
     if (data.roomCode) router.push(`/versus/${data.roomCode}`);
@@ -1084,7 +1098,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   if (phase === "loading" || !game) {
     return (
       <div className="flex flex-col items-center gap-4 py-12 w-full">
-        <LobbyLink active={lobbyActive} roomCode={roomCode} />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} userIdRef={userIdRef} />
         <p className="text-muted-foreground animate-pulse">Loading game…</p>
       </div>
     );
@@ -1137,7 +1151,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   if (phase === "complete" && game.result) {
     return (
       <div className="flex flex-col w-full">
-        <LobbyLink active={lobbyActive} roomCode={roomCode} />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} userIdRef={userIdRef} />
       <SeriesResultScreen
         result={game.result}
         myRole={myRole}
@@ -1171,7 +1185,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   if (phase === "waiting_for_opponent") {
     return (
       <div className="flex flex-col gap-6 w-full max-w-lg mx-auto">
-        <LobbyLink active={lobbyActive} roomCode={roomCode} />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} userIdRef={userIdRef} />
         <div className="text-center">
           <p className="text-xl font-bold">Room Created</p>
           <p className="text-muted-foreground text-sm mt-1">Share this code with your opponent:</p>
@@ -1205,7 +1219,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
     return (
       <div className="flex flex-col gap-6 w-full max-w-sm mx-auto text-center">
-        <LobbyLink active={lobbyActive} roomCode={roomCode} />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} userIdRef={userIdRef} />
         <div>
           <p className="text-xl font-black">Your friend accepted the challenge!</p>
           <p className="text-muted-foreground text-sm mt-1">
@@ -1265,7 +1279,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const eligible = getEligibleSlots(selectedPlayer, getPS(game, myRole).roster);
     return (
       <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
-        <LobbyLink active={lobbyActive} roomCode={roomCode} />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} userIdRef={userIdRef} />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={game.statsMode} label="Opponent" />}
@@ -1298,7 +1312,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
 
     return (
       <div className="flex flex-col gap-4 w-full max-w-2xl mx-auto">
-        <LobbyLink active={lobbyActive} roomCode={roomCode} />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} userIdRef={userIdRef} />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={game.statsMode} label="Opponent" />}
@@ -1358,7 +1372,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
     const pickNum = game.pickNumber + 1;
     return (
       <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
-        <LobbyLink active={lobbyActive} roomCode={roomCode} />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} userIdRef={userIdRef} />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={game.statsMode} label="Opponent" />}
@@ -1395,7 +1409,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   if (phase === "spinning" && !spinCombo) {
     return (
       <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
-        <LobbyLink active={lobbyActive} roomCode={roomCode} />
+        <LobbyLink active={lobbyActive} roomCode={roomCode} userIdRef={userIdRef} />
         <div className="flex gap-3">
           <RosterPanel roster={myRoster} mode={statsMode} label="Your Team" highlight />
           {theirRoster && <RosterPanel roster={theirRoster} mode={statsMode} label="Opponent" />}
@@ -1425,7 +1439,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
   const opponentSpin = game.currentSpin;
   return (
     <div className="flex flex-col gap-4 w-full max-w-lg mx-auto">
-      <LobbyLink active={lobbyActive} roomCode={roomCode} />
+      <LobbyLink active={lobbyActive} roomCode={roomCode} userIdRef={userIdRef} />
       <div className="flex gap-3">
         <RosterPanel roster={myRoster} mode={game.statsMode} label="Your Team" highlight />
         {theirRoster && (
