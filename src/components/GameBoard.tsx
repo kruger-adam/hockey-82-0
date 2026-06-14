@@ -246,7 +246,7 @@ export default function GameBoard() {
         setLockedCard(null);
         afterSettle();
       }
-    }, 80);
+    }, 40);
   }
 
   function spin(currentRoster = roster) {
@@ -308,7 +308,8 @@ export default function GameBoard() {
     setAvailable([]);
     setSpunCombo(null);
     setRound((r) => r + 1);
-    setPhase(isRosterComplete(next) ? "ready" : "start");
+    if (isRosterComplete(next)) simulate();
+    else spin(next);
   }
 
   async function simulate() {

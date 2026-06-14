@@ -911,7 +911,7 @@ export default function VersusBoardClient({ roomCode }: { roomCode: string }) {
         setLockedCard(null);
         onDone();
       }
-    }, 80);
+    }, 40);
   }
 
   async function doSpin() {
