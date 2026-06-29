@@ -12,10 +12,10 @@ export default function FranchisePicker() {
     <main className="min-h-screen bg-background text-foreground">
       <div className="max-w-3xl mx-auto px-4 py-10">
         <div className="mb-8 text-center">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Franchise Mode</p>
+          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">GM Mode</p>
           <h1 className="text-2xl font-bold">Choose Your Team</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Pick a current NHL franchise, make trades, then simulate the season.
+            Pick a current NHL team, make trades, then simulate the season.
           </p>
         </div>
 
@@ -31,7 +31,7 @@ export default function FranchisePicker() {
                     {teams.map(team => (
                       <Link
                         key={team.abbrev}
-                        href={`/franchise/${team.abbrev}`}
+                        href={`/gm/${team.abbrev}`}
                         className="group flex flex-col items-center gap-2 p-4 rounded-xl border border-border/40 bg-card hover:border-border hover:bg-card/80 transition-all"
                       >
                         <div

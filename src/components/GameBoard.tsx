@@ -740,7 +740,7 @@ export default function GameBoard() {
             <span className="shrink-0 text-blue-400 group-hover:translate-x-0.5 transition-transform">→</span>
           </Link>
           <Link
-            href="/franchise"
+            href="/gm"
             className="w-full flex items-center justify-between gap-4 rounded-xl border border-amber-500/30 bg-amber-500/5 hover:bg-amber-500/10 hover:border-amber-500/50 transition-all px-4 py-3 group"
           >
             <div className="flex items-center gap-3 min-w-0">
@@ -748,7 +748,7 @@ export default function GameBoard() {
                 New
               </span>
               <div className="min-w-0">
-                <p className="font-bold text-sm text-foreground leading-tight">Franchise Mode</p>
+                <p className="font-bold text-sm text-foreground leading-tight">GM Mode</p>
                 <p className="text-xs text-muted-foreground leading-tight mt-0.5">
                   Pick a current NHL team, make trades, and simulate the full season &amp; playoffs.
                 </p>

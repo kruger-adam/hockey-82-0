@@ -5,6 +5,85 @@ export type { PlayerRecord, TeamRoster };
 
 export const ALL_TEAMS: TeamRoster[] = rostersData as TeamRoster[];
 
+// ── Player stats ──────────────────────────────────────────────────────────────
+
+export interface PlayerStatLine {
+  id: number;
+  name: string;
+  position: string;
+  gp: number;
+  g: number;
+  a: number;
+  pts: number;
+  // goalies only
+  w?: number;
+  svp?: number;
+  gaa?: number;
+}
+
+// Estimate per-82 production from rating when real stats aren't available
+function estimatedPer82(p: PlayerRecord): { g: number; a: number } {
+  if (p.position === "G") return { g: 0, a: 0 };
+  const isD = p.position === "D";
+  // Calibrated so a 94-rated C ~ 45G 60A, an 87-rated D ~ 10G 40A
+  const pts82 = Math.max(0, (p.rating - 50) * (isD ? 0.7 : 1.2));
+  return {
+    g: pts82 * (isD ? 0.22 : 0.42),
+    a: pts82 * (isD ? 0.78 : 0.58),
+  };
+}
+
+function jitter(base: number, pct = 0.22): number {
+  return Math.max(0, base * (1 + (Math.random() * 2 - 1) * pct));
+}
+
+export function generatePlayerStats(players: PlayerRecord[], gp: number, teamW: number): PlayerStatLine[] {
+  const scale = gp / 82;
+  const lines: PlayerStatLine[] = [];
+
+  const goalies = players.filter(p => p.position === "G");
+  const skaters = players.filter(p => p.position !== "G");
+
+  // Skaters
+  for (const p of skaters) {
+    const base = (p.goals82 != null && p.assists82 != null && (p.gamesPlayed ?? 0) > 15)
+      ? { g: p.goals82, a: p.assists82 }
+      : estimatedPer82(p);
+    const g = Math.round(jitter(base.g * scale));
+    const a = Math.round(jitter(base.a * scale));
+    lines.push({ id: p.id, name: p.name, position: p.position, gp, g, a, pts: g + a });
+  }
+
+  // Goalies — split starts by rating
+  const totalGR = goalies.reduce((s, g) => s + g.rating, 0) || 1;
+  for (const p of goalies) {
+    const share = p.rating / totalGR;
+    const starts = Math.round(gp * share);
+    const w = Math.round(teamW * share);
+    const svp = jitter(p.savePercentage ?? 0.906, 0.005);
+    const gaa = jitter(p.goalsAgainstAverage ?? 2.9, 0.08);
+    lines.push({ id: p.id, name: p.name, position: "G", gp: starts, g: 0, a: 0, pts: 0, w, svp, gaa });
+  }
+
+  return lines;
+}
+
+// Count playoff games a team played from the bracket result
+export function playoffGamesForTeam(bracket: PlayoffBracket, abbrev: string): number {
+  let games = 0;
+  const allSeries = [
+    ...bracket.east.r1, ...bracket.east.r2, bracket.east.cf,
+    ...bracket.west.r1, ...bracket.west.r2, bracket.west.cf,
+    bracket.scf,
+  ];
+  for (const s of allSeries) {
+    if (s.top.abbrev === abbrev || s.bottom.abbrev === abbrev) {
+      games += s.games;
+    }
+  }
+  return games;
+}
+
 // Best lineup for simulation: pick best C, LW, RW, 2 D, best G
 export function getTeamStrength(players: PlayerRecord[]): number {
   const pick = (pos: string[], n: number) =>

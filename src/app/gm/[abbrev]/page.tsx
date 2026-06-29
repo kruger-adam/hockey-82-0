@@ -5,10 +5,104 @@ import Link from "next/link"
 import {
   ALL_TEAMS, simulateLeagueSeason, simulatePlayoffs, isTradeFlat, tradeDiff,
   TRADE_FAIRNESS_THRESHOLD, getTeamStrength, playerAge, tradeValue,
-  type PlayerRecord, type TeamRoster, type StandingsRow, type PlayoffBracket, type BracketSeries
+  generatePlayerStats,
+  type PlayerRecord, type TeamRoster, type StandingsRow, type PlayoffBracket,
+  type BracketSeries, type PlayerStatLine,
 } from "@/lib/franchise"
 
 type Tab = "roster" | "trade" | "season"
+type SortKey = "pts" | "g" | "a" | "gp"
+
+function playoffResultForTeam(bracket: PlayoffBracket, abbrev: string): { gp: number; gameWins: number } {
+  const allSeries = [
+    ...bracket.east.r1, ...bracket.east.r2, bracket.east.cf,
+    ...bracket.west.r1, ...bracket.west.r2, bracket.west.cf,
+    bracket.scf,
+  ]
+  let gp = 0, gameWins = 0
+  for (const s of allSeries) {
+    if (s.top.abbrev === abbrev) { gp += s.games; gameWins += s.topWins }
+    if (s.bottom.abbrev === abbrev) { gp += s.games; gameWins += s.bottomWins }
+  }
+  return { gp, gameWins }
+}
+
+function StatsTable({ title, stats }: { title: string; stats: PlayerStatLine[] }) {
+  const [sort, setSort] = useState<SortKey>("pts")
+
+  const skaters = [...stats.filter(p => p.position !== "G")].sort((a, b) => b[sort] - a[sort])
+  const goalies = stats.filter(p => p.position === "G")
+
+  const Th = ({ k, label }: { k: SortKey; label: string }) => (
+    <th
+      onClick={() => setSort(k)}
+      className={["px-2 py-1.5 font-normal text-center w-8 cursor-pointer select-none transition-colors",
+        sort === k ? "text-amber-400" : "hover:text-foreground",
+      ].join(" ")}
+    >
+      {label}
+    </th>
+  )
+
+  return (
+    <div>
+      <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">{title}</p>
+      <div className="rounded-xl border border-border/30 overflow-hidden mb-4">
+        <table className="w-full text-xs">
+          <thead>
+            <tr className="border-b border-border/30 text-muted-foreground">
+              <th className="text-left px-3 py-1.5 font-normal">Player</th>
+              <Th k="gp" label="GP" />
+              <Th k="g" label="G" />
+              <Th k="a" label="A" />
+              <Th k="pts" label="PTS" />
+            </tr>
+          </thead>
+          <tbody>
+            {skaters.map((p, i) => (
+              <tr key={p.id} className={["border-t border-border/20", i % 2 === 0 ? "bg-card/30" : ""].join(" ")}>
+                <td className="px-3 py-1.5">
+                  <span className="text-foreground">{p.name}</span>
+                  <span className="ml-1.5 text-muted-foreground text-[10px]">{p.position}</span>
+                </td>
+                <td className="px-2 py-1.5 text-center text-muted-foreground">{p.gp}</td>
+                <td className="px-2 py-1.5 text-center">{p.g}</td>
+                <td className="px-2 py-1.5 text-center">{p.a}</td>
+                <td className="px-2 py-1.5 text-center font-semibold text-amber-400">{p.pts}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {goalies.length > 0 && (
+        <div className="rounded-xl border border-border/30 overflow-hidden">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-border/30 text-muted-foreground">
+                <th className="text-left px-3 py-1.5 font-normal">Goalie</th>
+                <th className="px-2 py-1.5 font-normal text-center w-8">GP</th>
+                <th className="px-2 py-1.5 font-normal text-center w-8">W</th>
+                <th className="px-2 py-1.5 font-normal text-center w-12">SV%</th>
+                <th className="px-2 py-1.5 font-normal text-center w-12">GAA</th>
+              </tr>
+            </thead>
+            <tbody>
+              {goalies.map((p, i) => (
+                <tr key={p.id} className={["border-t border-border/20", i % 2 === 0 ? "bg-card/30" : ""].join(" ")}>
+                  <td className="px-3 py-1.5 text-foreground">{p.name}</td>
+                  <td className="px-2 py-1.5 text-center text-muted-foreground">{p.gp}</td>
+                  <td className="px-2 py-1.5 text-center">{p.w ?? 0}</td>
+                  <td className="px-2 py-1.5 text-center">{p.svp?.toFixed(3) ?? "—"}</td>
+                  <td className="px-2 py-1.5 text-center">{p.gaa?.toFixed(2) ?? "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  )
+}
 
 function RatingBar({ rating }: { rating: number }) {
   const pct = ((rating - 20) / 80) * 100
@@ -372,6 +466,8 @@ export default function FranchisePage({ params }: { params: Promise<{ abbrev: st
   const [tab, setTab] = useState<Tab>("roster")
   const [standings, setStandings] = useState<StandingsRow[] | null>(null)
   const [bracket, setBracket] = useState<PlayoffBracket | null>(null)
+  const [playerStats, setPlayerStats] = useState<PlayerStatLine[] | null>(null)
+  const [playoffStats, setPlayoffStats] = useState<PlayerStatLine[] | null>(null)
   const [simulating, setSimulating] = useState(false)
   const [tradeLog, setTradeLog] = useState<string[]>([])
 
@@ -380,7 +476,7 @@ export default function FranchisePage({ params }: { params: Promise<{ abbrev: st
       <main className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <p className="text-muted-foreground">Team not found: {abbrev}</p>
-          <Link href="/franchise" className="text-amber-500 text-sm mt-2 block">← Pick a team</Link>
+          <Link href="/gm" className="text-amber-500 text-sm mt-2 block">← Pick a team</Link>
         </div>
       </main>
     )
@@ -394,6 +490,8 @@ export default function FranchisePage({ params }: { params: Promise<{ abbrev: st
     setTradeLog(prev => [msg, ...prev])
     setStandings(null)
     setBracket(null)
+    setPlayerStats(null)
+    setPlayoffStats(null)
   }
 
   const handleSimulate = () => {
@@ -401,10 +499,17 @@ export default function FranchisePage({ params }: { params: Promise<{ abbrev: st
     setTimeout(() => {
       const s = simulateLeagueSeason(ALL_TEAMS, abbrevUp, myPlayers)
       const b = simulatePlayoffs(s)
+      const userRow = s.find(r => r.abbrev === abbrevUp)
+      const regStats = generatePlayerStats(myPlayers, 82, userRow?.w ?? 41)
+      const { gp: pgp, gameWins: pw } = playoffResultForTeam(b, abbrevUp)
+      const poffStats = pgp > 0 ? generatePlayerStats(myPlayers, pgp, pw) : null
       setStandings(s)
       setBracket(b)
+      setPlayerStats(regStats)
+      setPlayoffStats(poffStats)
       setSimulating(false)
       setTab("season")
+      fetch("/api/gm/log-season", { method: "POST" }).catch(() => {})
     }, 600)
   }
 
@@ -421,7 +526,7 @@ export default function FranchisePage({ params }: { params: Promise<{ abbrev: st
       <div className="max-w-2xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <Link href="/franchise" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/gm" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
             ← Teams
           </Link>
           <div className="flex items-center gap-2">
@@ -492,6 +597,12 @@ export default function FranchisePage({ params }: { params: Promise<{ abbrev: st
         {tab === "season" && standings && bracket && (
           <div className="space-y-10">
             <BracketPanel bracket={bracket} userAbbrev={abbrevUp} />
+            {playerStats && (
+              <StatsTable title="Your Regular Season Stats" stats={playerStats} />
+            )}
+            {playoffStats && (
+              <StatsTable title="Your Playoff Stats" stats={playoffStats} />
+            )}
             <StandingsPanel standings={standings} userAbbrev={abbrevUp} />
           </div>
         )}
