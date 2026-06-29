@@ -99,9 +99,10 @@ async function main() {
       }
 
       players.push({
-        id: -(overall), // negative ID = draft pick
+        id: -(overall),
         name,
         position: pos,
+        birthDate: "2007-09-15", // approximate: most 2026 draft picks are 18
         gamesPlayed: 0,
         isDraftPick: true,
         draftYear: 2026,

@@ -203,18 +203,51 @@ export function simulatePlayoffs(standings: StandingsRow[]): PlayoffBracket {
   };
 }
 
-// Trade fairness: total rating difference threshold
-export const TRADE_FAIRNESS_THRESHOLD = 12;
+// Age-adjusted trade value — younger players are worth more.
+// Peak value is ages 24-27; youth premium for prospects, penalty for aging veterans.
+export function playerAge(p: PlayerRecord): number {
+  if (!p.birthDate) return 27; // default to peak age if unknown
+  const birth = new Date(p.birthDate);
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const m = today.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+  return age;
+}
+
+function ageBonus(age: number): number {
+  if (age <= 19) return 15;
+  if (age === 20) return 12;
+  if (age === 21) return 9;
+  if (age === 22) return 6;
+  if (age === 23) return 3;
+  if (age <= 27)  return 0;  // peak
+  if (age === 28) return -3;
+  if (age === 29) return -7;
+  if (age === 30) return -11;
+  if (age === 31) return -15;
+  if (age === 32) return -19;
+  if (age === 33) return -22;
+  if (age === 34) return -24;
+  return -26; // 35+
+}
+
+export function tradeValue(p: PlayerRecord): number {
+  return p.rating + ageBonus(playerAge(p));
+}
+
+// Fairness threshold in trade-value points (not raw rating points)
+export const TRADE_FAIRNESS_THRESHOLD = 4;
 
 export function isTradeFlat(given: PlayerRecord[], received: PlayerRecord[]): boolean {
   if (given.length === 0 || received.length === 0) return false;
-  const giveRating = given.reduce((s, p) => s + p.rating, 0);
-  const recvRating = received.reduce((s, p) => s + p.rating, 0);
-  return Math.abs(giveRating - recvRating) <= TRADE_FAIRNESS_THRESHOLD;
+  const giveVal = given.reduce((s, p) => s + tradeValue(p), 0);
+  const recvVal = received.reduce((s, p) => s + tradeValue(p), 0);
+  return Math.abs(giveVal - recvVal) <= TRADE_FAIRNESS_THRESHOLD;
 }
 
 export function tradeDiff(given: PlayerRecord[], received: PlayerRecord[]): number {
-  const giveRating = given.reduce((s, p) => s + p.rating, 0);
-  const recvRating = received.reduce((s, p) => s + p.rating, 0);
-  return recvRating - giveRating; // positive = you're winning the trade
+  const giveVal = given.reduce((s, p) => s + tradeValue(p), 0);
+  const recvVal = received.reduce((s, p) => s + tradeValue(p), 0);
+  return recvVal - giveVal;
 }

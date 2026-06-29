@@ -4,7 +4,7 @@ import { use, useState, useMemo } from "react"
 import Link from "next/link"
 import {
   ALL_TEAMS, simulateLeagueSeason, simulatePlayoffs, isTradeFlat, tradeDiff,
-  TRADE_FAIRNESS_THRESHOLD, getTeamStrength,
+  TRADE_FAIRNESS_THRESHOLD, getTeamStrength, playerAge, tradeValue,
   type PlayerRecord, type TeamRoster, type StandingsRow, type PlayoffBracket, type BracketSeries
 } from "@/lib/franchise"
 
@@ -23,12 +23,15 @@ function RatingBar({ rating }: { rating: number }) {
   )
 }
 
-function PlayerCard({ player, selected, onToggle, dimmed }: {
+function PlayerCard({ player, selected, onToggle, dimmed, showValue }: {
   player: PlayerRecord
   selected?: boolean
   onToggle?: () => void
   dimmed?: boolean
+  showValue?: boolean
 }) {
+  const age = playerAge(player)
+  const tv = tradeValue(player)
   return (
     <button
       onClick={onToggle}
@@ -44,7 +47,13 @@ function PlayerCard({ player, selected, onToggle, dimmed }: {
     >
       <div className="flex items-center justify-between gap-2 mb-1">
         <span className="text-xs font-medium text-foreground truncate">{player.name}</span>
-        <span className="text-[10px] text-muted-foreground flex-shrink-0 bg-background/60 px-1 rounded">{player.position}</span>
+        <div className="flex items-center gap-1.5 flex-shrink-0">
+          <span className="text-[10px] text-muted-foreground">{age}y</span>
+          <span className="text-[10px] text-muted-foreground bg-background/60 px-1 rounded">{player.position}</span>
+          {showValue && (
+            <span className="text-[10px] font-mono text-amber-400">TV:{tv}</span>
+          )}
+        </div>
       </div>
       <RatingBar rating={player.rating} />
     </button>
@@ -135,6 +144,7 @@ function TradePanel({ myTeam, allPlayers, onTrade }: {
               player={p}
               selected={offering.has(p.id)}
               onToggle={() => setOffering(toggle(offering, p.id))}
+              showValue
             />
           ))}
         </div>
@@ -164,6 +174,7 @@ function TradePanel({ myTeam, allPlayers, onTrade }: {
                 player={p}
                 selected={requesting.has(p.id)}
                 onToggle={() => setRequesting(toggle(requesting, p.id))}
+                showValue
               />
             ))}
           </div>
@@ -174,8 +185,8 @@ function TradePanel({ myTeam, allPlayers, onTrade }: {
       {given.length > 0 && received.length > 0 && (
         <div className="sticky bottom-4 bg-background/95 backdrop-blur border border-border/50 rounded-xl p-4 shadow-xl space-y-3">
           <div className="flex justify-between text-xs text-muted-foreground">
-            <span>You give: <span className="text-foreground font-medium">{given.reduce((s, p) => s + p.rating, 0)} rtg</span></span>
-            <span>You get: <span className="text-foreground font-medium">{received.reduce((s, p) => s + p.rating, 0)} rtg</span></span>
+            <span>You give: <span className="text-foreground font-medium">{given.reduce((s, p) => s + tradeValue(p), 0)} TV</span></span>
+            <span>You get: <span className="text-foreground font-medium">{received.reduce((s, p) => s + tradeValue(p), 0)} TV</span></span>
           </div>
           <div>
             <div className="flex justify-between text-xs mb-1">

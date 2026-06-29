@@ -114,6 +114,7 @@ async function fetchTeam(team: typeof TEAMS[0]) {
       id: p.id,
       name: `${p.firstName?.default ?? ""} ${p.lastName?.default ?? ""}`.trim(),
       position: pos,
+      birthDate: p.birthDate as string | undefined,
       gamesPlayed: gp,
       goals82: g82,
       assists82: a82,
@@ -133,6 +134,7 @@ async function fetchTeam(team: typeof TEAMS[0]) {
       id: p.id,
       name: `${p.firstName?.default ?? ""} ${p.lastName?.default ?? ""}`.trim(),
       position: "D" as const,
+      birthDate: p.birthDate as string | undefined,
       gamesPlayed: gp,
       goals82: g82,
       assists82: a82,
@@ -151,6 +153,7 @@ async function fetchTeam(team: typeof TEAMS[0]) {
       id: p.id,
       name: `${p.firstName?.default ?? ""} ${p.lastName?.default ?? ""}`.trim(),
       position: "G" as const,
+      birthDate: p.birthDate as string | undefined,
       gamesPlayed: gp,
       savePercentage: sv,
       goalsAgainstAverage: gaa,
@@ -165,6 +168,7 @@ export interface PlayerRecord {
   id: number;
   name: string;
   position: "C" | "LW" | "RW" | "D" | "G";
+  birthDate?: string; // "YYYY-MM-DD"
   gamesPlayed: number;
   goals82?: number;
   assists82?: number;
@@ -172,6 +176,11 @@ export interface PlayerRecord {
   savePercentage?: number;
   goalsAgainstAverage?: number;
   rating: number;
+  isDraftPick?: boolean;
+  draftYear?: number;
+  draftRound?: number;
+  draftPick?: number;
+  amateurLeague?: string;
 }
 
 export interface TeamRoster {
