@@ -14,7 +14,7 @@
         "goals82": 29.7,
         "assists82": 34.5,
         "plusMinus82": 23.8,
-        "rating": 71
+        "rating": 83
       },
       {
         "id": 8479591,
@@ -24,7 +24,7 @@
         "goals82": 11.7,
         "assists82": 14.6,
         "plusMinus82": -4.4,
-        "rating": 48
+        "rating": 81
       },
       {
         "id": 8479987,
@@ -34,7 +34,7 @@
         "goals82": 39.5,
         "assists82": 29.4,
         "plusMinus82": -5.1,
-        "rating": 71
+        "rating": 83
       },
       {
         "id": 8485395,
@@ -54,7 +54,7 @@
         "goals82": 6.4,
         "assists82": 17,
         "plusMinus82": -4.3,
-        "rating": 47
+        "rating": 79
       },
       {
         "id": 8480355,
@@ -64,7 +64,7 @@
         "goals82": 12,
         "assists82": 10,
         "plusMinus82": 6,
-        "rating": 47
+        "rating": 81
       },
       {
         "id": 8482177,
@@ -84,7 +84,7 @@
         "goals82": 6,
         "assists82": 16,
         "plusMinus82": 0,
-        "rating": 47
+        "rating": 81
       },
       {
         "id": 8477496,
@@ -94,7 +94,7 @@
         "goals82": 20.2,
         "assists82": 36.8,
         "plusMinus82": -8.3,
-        "rating": 64
+        "rating": 84
       },
       {
         "id": 8483489,
@@ -114,7 +114,7 @@
         "goals82": 17.3,
         "assists82": 31.2,
         "plusMinus82": 13.9,
-        "rating": 62
+        "rating": 84
       },
       {
         "id": 8477956,
@@ -124,7 +124,7 @@
         "goals82": 30.9,
         "assists82": 75.6,
         "plusMinus82": 4.3,
-        "rating": 91
+        "rating": 94
       },
       {
         "id": 8482175,
@@ -134,7 +134,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 86
       },
       {
         "id": 8482634,
@@ -144,7 +144,7 @@
         "goals82": 17.2,
         "assists82": 13.3,
         "plusMinus82": 11.4,
-        "rating": 52
+        "rating": 74
       },
       {
         "id": 8478401,
@@ -154,7 +154,7 @@
         "goals82": 31.5,
         "assists82": 36.8,
         "plusMinus82": 4.2,
-        "rating": 71
+        "rating": 84
       },
       {
         "id": 8481219,
@@ -174,7 +174,7 @@
         "goals82": 10.3,
         "assists82": 20.5,
         "plusMinus82": 0,
-        "rating": 61
+        "rating": 79
       },
       {
         "id": 8480035,
@@ -184,7 +184,7 @@
         "goals82": 4,
         "assists82": 26,
         "plusMinus82": 4,
-        "rating": 61
+        "rating": 80
       },
       {
         "id": 8476854,
@@ -194,7 +194,7 @@
         "goals82": 6.1,
         "assists82": 25.7,
         "plusMinus82": 3.7,
-        "rating": 62
+        "rating": 86
       },
       {
         "id": 8482511,
@@ -204,7 +204,7 @@
         "goals82": 7.9,
         "assists82": 21.3,
         "plusMinus82": 19.1,
-        "rating": 62
+        "rating": 84
       },
       {
         "id": 8479325,
@@ -214,7 +214,7 @@
         "goals82": 13.1,
         "assists82": 59.4,
         "plusMinus82": 15.4,
-        "rating": 97
+        "rating": 89
       },
       {
         "id": 8479369,
@@ -224,7 +224,7 @@
         "goals82": 5.3,
         "assists82": 9.6,
         "plusMinus82": -12.8,
-        "rating": 46
+        "rating": 79
       },
       {
         "id": 8477507,
@@ -234,7 +234,7 @@
         "goals82": 2,
         "assists82": 20.2,
         "plusMinus82": 18.2,
-        "rating": 56
+        "rating": 85
       },
       {
         "id": 8476914,
@@ -243,7 +243,7 @@
         "gamesPlayed": 31,
         "savePercentage": 0.894242,
         "goalsAgainstAverage": 3.152211,
-        "rating": 40
+        "rating": 82
       },
       {
         "id": 8480280,
@@ -252,7 +252,14 @@
         "gamesPlayed": 55,
         "savePercentage": 0.907702,
         "goalsAgainstAverage": 2.707645,
-        "rating": 70
+        "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Lukas Reichel",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 79
       }
     ]
   },
@@ -271,7 +278,7 @@
         "goals82": 16.4,
         "assists82": 37.8,
         "plusMinus82": 34.1,
-        "rating": 67
+        "rating": 82
       },
       {
         "id": 8475842,
@@ -281,7 +288,7 @@
         "goals82": 31.5,
         "assists82": 6.3,
         "plusMinus82": 25.2,
-        "rating": 58
+        "rating": 80
       },
       {
         "id": 8479941,
@@ -291,7 +298,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": -41,
-        "rating": 31
+        "rating": 82
       },
       {
         "id": 8482659,
@@ -301,7 +308,7 @@
         "goals82": 25,
         "assists82": 27,
         "plusMinus82": -4,
-        "rating": 62
+        "rating": 79
       },
       {
         "id": 8482623,
@@ -341,7 +348,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 82
       },
       {
         "id": 8482896,
@@ -361,7 +368,7 @@
         "goals82": 12,
         "assists82": 27,
         "plusMinus82": 13,
-        "rating": 57
+        "rating": 81
       },
       {
         "id": 8483468,
@@ -381,7 +388,7 @@
         "goals82": 7.1,
         "assists82": 7.1,
         "plusMinus82": 0,
-        "rating": 42
+        "rating": 80
       },
       {
         "id": 8480802,
@@ -391,7 +398,7 @@
         "goals82": 14.2,
         "assists82": 40.5,
         "plusMinus82": 25.3,
-        "rating": 66
+        "rating": 84
       },
       {
         "id": 8480064,
@@ -401,7 +408,7 @@
         "goals82": 24.2,
         "assists82": 39.1,
         "plusMinus82": 20.5,
-        "rating": 70
+        "rating": 85
       },
       {
         "id": 8483500,
@@ -421,7 +428,7 @@
         "goals82": 0,
         "assists82": 41,
         "plusMinus82": 41,
-        "rating": 61
+        "rating": 81
       },
       {
         "id": 8482097,
@@ -431,7 +438,7 @@
         "goals82": 20,
         "assists82": 31,
         "plusMinus82": 4,
-        "rating": 62
+        "rating": 81
       },
       {
         "id": 8479420,
@@ -441,7 +448,7 @@
         "goals82": 40.5,
         "assists82": 41.5,
         "plusMinus82": -6.1,
-        "rating": 77
+        "rating": 89
       },
       {
         "id": 8475722,
@@ -451,7 +458,7 @@
         "goals82": 31.7,
         "assists82": 27.8,
         "plusMinus82": -6.6,
-        "rating": 65
+        "rating": 83
       },
       {
         "id": 8481806,
@@ -461,7 +468,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 75
       },
       {
         "id": 8480839,
@@ -471,7 +478,7 @@
         "goals82": 20.2,
         "assists82": 58.6,
         "plusMinus82": 19.2,
-        "rating": 100
+        "rating": 92
       },
       {
         "id": 8481564,
@@ -521,7 +528,7 @@
         "goals82": 8.1,
         "assists82": 21.3,
         "plusMinus82": 9.1,
-        "rating": 61
+        "rating": 86
       },
       {
         "id": 8480807,
@@ -531,7 +538,7 @@
         "goals82": 13.7,
         "assists82": 29.4,
         "plusMinus82": 43.1,
-        "rating": 76
+        "rating": 82
       },
       {
         "id": 8474568,
@@ -541,7 +548,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": -20.5,
-        "rating": 33
+        "rating": 84
       },
       {
         "id": 8479378,
@@ -551,7 +558,7 @@
         "goals82": 0,
         "assists82": 24.1,
         "plusMinus82": 24.1,
-        "rating": 58
+        "rating": 79
       },
       {
         "id": 8479982,
@@ -561,7 +568,7 @@
         "goals82": 0,
         "assists82": 16.8,
         "plusMinus82": -16.8,
-        "rating": 47
+        "rating": 80
       },
       {
         "id": 8482803,
@@ -571,7 +578,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 82
       },
       {
         "id": 8481551,
@@ -598,7 +605,7 @@
         "gamesPlayed": 35,
         "savePercentage": 0.909677,
         "goalsAgainstAverage": 2.515082,
-        "rating": 75
+        "rating": 84
       },
       {
         "id": 8479312,
@@ -607,7 +614,42 @@
         "gamesPlayed": 36,
         "savePercentage": 0.907048,
         "goalsAgainstAverage": 2.771061,
-        "rating": 68
+        "rating": 83
+      },
+      {
+        "id": -1,
+        "name": "Alex Tuch",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 87
+      },
+      {
+        "id": -1,
+        "name": "Bowen Byram",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Michael Kesselring",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 84
+      },
+      {
+        "id": -1,
+        "name": "Jordan Greenway",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 81
+      },
+      {
+        "id": -1,
+        "name": "Zac Jones",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 80
       }
     ]
   },
@@ -626,7 +668,7 @@
         "goals82": 7.6,
         "assists82": 10.1,
         "plusMinus82": -5,
-        "rating": 44
+        "rating": 82
       },
       {
         "id": 8477456,
@@ -636,7 +678,7 @@
         "goals82": 11,
         "assists82": 17,
         "plusMinus82": -13,
-        "rating": 48
+        "rating": 83
       },
       {
         "id": 8477429,
@@ -646,7 +688,7 @@
         "goals82": 9.3,
         "assists82": 35.3,
         "plusMinus82": 3.1,
-        "rating": 59
+        "rating": 83
       },
       {
         "id": 8479337,
@@ -656,7 +698,7 @@
         "goals82": 41,
         "assists82": 44,
         "plusMinus82": 8,
-        "rating": 80
+        "rating": 88
       },
       {
         "id": 8484471,
@@ -676,7 +718,7 @@
         "goals82": 19.6,
         "assists82": 50.2,
         "plusMinus82": -1.2,
-        "rating": 71
+        "rating": 86
       },
       {
         "id": 8483464,
@@ -686,7 +728,7 @@
         "goals82": 9.1,
         "assists82": 10.1,
         "plusMinus82": -20.2,
-        "rating": 43
+        "rating": 83
       },
       {
         "id": 8477946,
@@ -696,7 +738,7 @@
         "goals82": 37.7,
         "assists82": 36.6,
         "plusMinus82": 3.3,
-        "rating": 74
+        "rating": 89
       },
       {
         "id": 8474102,
@@ -706,7 +748,7 @@
         "goals82": 15.4,
         "assists82": 0,
         "plusMinus82": -46.1,
-        "rating": 38
+        "rating": 84
       },
       {
         "id": 8479992,
@@ -716,7 +758,7 @@
         "goals82": 7.7,
         "assists82": 10.3,
         "plusMinus82": -12.8,
-        "rating": 43
+        "rating": 82
       },
       {
         "id": 8482078,
@@ -726,7 +768,7 @@
         "goals82": 25.6,
         "assists82": 52.3,
         "plusMinus82": 1,
-        "rating": 76
+        "rating": 89
       },
       {
         "id": 8474037,
@@ -736,7 +778,7 @@
         "goals82": 17.1,
         "assists82": 18.2,
         "plusMinus82": -19.4,
-        "rating": 51
+        "rating": 81
       },
       {
         "id": 8480879,
@@ -746,7 +788,7 @@
         "goals82": 1.3,
         "assists82": 5.2,
         "plusMinus82": 0,
-        "rating": 40
+        "rating": 82
       },
       {
         "id": 8475279,
@@ -756,7 +798,7 @@
         "goals82": 5,
         "assists82": 10,
         "plusMinus82": -9,
-        "rating": 47
+        "rating": 80
       },
       {
         "id": 8482762,
@@ -766,7 +808,7 @@
         "goals82": 10.3,
         "assists82": 18.2,
         "plusMinus82": 13.7,
-        "rating": 60
+        "rating": 83
       },
       {
         "id": 8475753,
@@ -776,7 +818,7 @@
         "goals82": 24.1,
         "assists82": 14.5,
         "plusMinus82": -24.1,
-        "rating": 65
+        "rating": 85
       },
       {
         "id": 8474612,
@@ -796,7 +838,7 @@
         "goals82": 3,
         "assists82": 8,
         "plusMinus82": -18,
-        "rating": 42
+        "rating": 76
       },
       {
         "id": 8481542,
@@ -806,7 +848,7 @@
         "goals82": 10,
         "assists82": 50,
         "plusMinus82": 15,
-        "rating": 87
+        "rating": 88
       },
       {
         "id": 8476434,
@@ -815,7 +857,7 @@
         "gamesPlayed": 57,
         "savePercentage": 0.901437,
         "goalsAgainstAverage": 2.715928,
-        "rating": 57
+        "rating": 84
       },
       {
         "id": 8475660,
@@ -824,7 +866,21 @@
         "gamesPlayed": 34,
         "savePercentage": 0.883312,
         "goalsAgainstAverage": 3.188237,
-        "rating": 30
+        "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Erik Gustafsson",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 83
+      },
+      {
+        "id": -1,
+        "name": "William Lagesson",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 78
       }
     ]
   },
@@ -843,7 +899,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 95
       },
       {
         "id": 8477935,
@@ -853,7 +909,7 @@
         "goals82": 28.1,
         "assists82": 34.5,
         "plusMinus82": -10.8,
-        "rating": 67
+        "rating": 87
       },
       {
         "id": 8480003,
@@ -863,7 +919,7 @@
         "goals82": 4.5,
         "assists82": 10.1,
         "plusMinus82": -12.4,
-        "rating": 41
+        "rating": 80
       },
       {
         "id": 8479981,
@@ -873,7 +929,7 @@
         "goals82": 0,
         "assists82": 24.6,
         "plusMinus82": 16.4,
-        "rating": 50
+        "rating": 77
       },
       {
         "id": 8478421,
@@ -883,7 +939,7 @@
         "goals82": 17.9,
         "assists82": 15.8,
         "plusMinus82": 14.7,
-        "rating": 54
+        "rating": 79
       },
       {
         "id": 8477903,
@@ -893,7 +949,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 81
       },
       {
         "id": 8476994,
@@ -903,7 +959,7 @@
         "goals82": 14.5,
         "assists82": 24.1,
         "plusMinus82": -19.3,
-        "rating": 53
+        "rating": 77
       },
       {
         "id": 8479316,
@@ -923,7 +979,7 @@
         "goals82": 23.1,
         "assists82": 33.3,
         "plusMinus82": -10.2,
-        "rating": 63
+        "rating": 85
       },
       {
         "id": 8480185,
@@ -933,7 +989,7 @@
         "goals82": 12.4,
         "assists82": 24.7,
         "plusMinus82": 4.5,
-        "rating": 55
+        "rating": 82
       },
       {
         "id": 8473419,
@@ -943,7 +999,7 @@
         "goals82": 42.6,
         "assists82": 42.6,
         "plusMinus82": -25.2,
-        "rating": 77
+        "rating": 89
       },
       {
         "id": 8477931,
@@ -953,7 +1009,7 @@
         "goals82": 7.8,
         "assists82": 7.8,
         "plusMinus82": -31.2,
-        "rating": 40
+        "rating": 80
       },
       {
         "id": 8481133,
@@ -963,7 +1019,7 @@
         "goals82": 32.8,
         "assists82": 10.9,
         "plusMinus82": 21.9,
-        "rating": 60
+        "rating": 74
       },
       {
         "id": 8477933,
@@ -973,7 +1029,7 @@
         "goals82": 37.2,
         "assists82": 41,
         "plusMinus82": -23.1,
-        "rating": 73
+        "rating": 93
       },
       {
         "id": 8478542,
@@ -983,7 +1039,7 @@
         "goals82": 13.1,
         "assists82": 23.8,
         "plusMinus82": -19,
-        "rating": 52
+        "rating": 84
       },
       {
         "id": 8481655,
@@ -993,7 +1049,7 @@
         "goals82": 14.1,
         "assists82": 5.7,
         "plusMinus82": 5.7,
-        "rating": 46
+        "rating": 75
       },
       {
         "id": 8480801,
@@ -1003,7 +1059,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 89
       },
       {
         "id": 8479314,
@@ -1013,7 +1069,7 @@
         "goals82": 34.4,
         "assists82": 55.5,
         "plusMinus82": -15.9,
-        "rating": 80
+        "rating": 93
       },
       {
         "id": 8477409,
@@ -1023,7 +1079,7 @@
         "goals82": 26.6,
         "assists82": 31.9,
         "plusMinus82": -14.9,
-        "rating": 64
+        "rating": 87
       },
       {
         "id": 8484304,
@@ -1033,7 +1089,7 @@
         "goals82": 7.6,
         "assists82": 15.2,
         "plusMinus82": -19.7,
-        "rating": 52
+        "rating": 79
       },
       {
         "id": 8477932,
@@ -1043,7 +1099,7 @@
         "goals82": 4.6,
         "assists82": 25.1,
         "plusMinus82": -5.7,
-        "rating": 59
+        "rating": 87
       },
       {
         "id": 8478055,
@@ -1053,7 +1109,7 @@
         "goals82": 2.1,
         "assists82": 26.7,
         "plusMinus82": -5.1,
-        "rating": 59
+        "rating": 89
       },
       {
         "id": 8477495,
@@ -1063,7 +1119,7 @@
         "goals82": 11,
         "assists82": 39.4,
         "plusMinus82": -4.7,
-        "rating": 77
+        "rating": 87
       },
       {
         "id": 8475179,
@@ -1073,7 +1129,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": -21.6,
-        "rating": 33
+        "rating": 81
       },
       {
         "id": 8478859,
@@ -1083,7 +1139,7 @@
         "goals82": 3.6,
         "assists82": 9.6,
         "plusMinus82": -1.2,
-        "rating": 46
+        "rating": 82
       },
       {
         "id": 8482131,
@@ -1093,7 +1149,7 @@
         "goals82": 0,
         "assists82": 16.4,
         "plusMinus82": -8.2,
-        "rating": 48
+        "rating": 71
       },
       {
         "id": 8475683,
@@ -1102,7 +1158,7 @@
         "gamesPlayed": 52,
         "savePercentage": 0.8768,
         "goalsAgainstAverage": 3.070124,
-        "rating": 30
+        "rating": 90
       },
       {
         "id": 8480193,
@@ -1111,7 +1167,35 @@
         "gamesPlayed": 33,
         "savePercentage": 0.895135,
         "goalsAgainstAverage": 3.054049,
-        "rating": 42
+        "rating": 79
+      },
+      {
+        "id": -1,
+        "name": "Mackie Samoskevich",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 80
+      },
+      {
+        "id": -1,
+        "name": "Nolan Foote",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 80
+      },
+      {
+        "id": -1,
+        "name": "Tobias Bjornfot",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 77
+      },
+      {
+        "id": -1,
+        "name": "Jack Studnicka",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 76
       }
     ]
   },
@@ -1130,7 +1214,7 @@
         "goals82": 15.9,
         "assists82": 10.3,
         "plusMinus82": -4.6,
-        "rating": 48
+        "rating": 82
       },
       {
         "id": 8483424,
@@ -1150,7 +1234,7 @@
         "goals82": 12.6,
         "assists82": 18.9,
         "plusMinus82": -6.3,
-        "rating": 51
+        "rating": 79
       },
       {
         "id": 8481540,
@@ -1160,7 +1244,7 @@
         "goals82": 51.6,
         "assists82": 37.5,
         "plusMinus82": 29.4,
-        "rating": 85
+        "rating": 88
       },
       {
         "id": 8481523,
@@ -1170,7 +1254,7 @@
         "goals82": 17.7,
         "assists82": 15.5,
         "plusMinus82": -4.4,
-        "rating": 52
+        "rating": 83
       },
       {
         "id": 8476479,
@@ -1180,7 +1264,7 @@
         "goals82": 10.9,
         "assists82": 10.9,
         "plusMinus82": -10.9,
-        "rating": 45
+        "rating": 86
       },
       {
         "id": 8484984,
@@ -1200,7 +1284,7 @@
         "goals82": 14.5,
         "assists82": 14.5,
         "plusMinus82": -9.6,
-        "rating": 49
+        "rating": 84
       },
       {
         "id": 8475848,
@@ -1210,7 +1294,7 @@
         "goals82": 7.5,
         "assists82": 17,
         "plusMinus82": 0,
-        "rating": 48
+        "rating": 83
       },
       {
         "id": 8482775,
@@ -1230,7 +1314,7 @@
         "goals82": 0,
         "assists82": 16.4,
         "plusMinus82": -49.2,
-        "rating": 38
+        "rating": 85
       },
       {
         "id": 8481618,
@@ -1240,11 +1324,11 @@
         "goals82": 25.4,
         "assists82": 23.4,
         "plusMinus82": 17.6,
-        "rating": 62
+        "rating": 81
       },
       {
         "id": 8483515,
-        "name": "Juraj Slafkovský",
+        "name": "Juraj Slafkovsk\u00fd",
         "position": "LW",
         "gamesPlayed": 82,
         "goals82": 30,
@@ -1260,7 +1344,7 @@
         "goals82": 29,
         "assists82": 72,
         "plusMinus82": 37,
-        "rating": 92
+        "rating": 90
       },
       {
         "id": 8480074,
@@ -1270,7 +1354,7 @@
         "goals82": 15.3,
         "assists82": 22.9,
         "plusMinus82": 17.2,
-        "rating": 57
+        "rating": 80
       },
       {
         "id": 8480813,
@@ -1300,7 +1384,7 @@
         "goals82": 7.9,
         "assists82": 16.8,
         "plusMinus82": 2.2,
-        "rating": 56
+        "rating": 82
       },
       {
         "id": 8480865,
@@ -1310,7 +1394,7 @@
         "goals82": 12.3,
         "assists82": 35.9,
         "plusMinus82": 5.1,
-        "rating": 76
+        "rating": 88
       },
       {
         "id": 8483686,
@@ -1330,7 +1414,7 @@
         "goals82": 4.2,
         "assists82": 18.9,
         "plusMinus82": 10.5,
-        "rating": 56
+        "rating": 86
       },
       {
         "id": 8483457,
@@ -1350,7 +1434,7 @@
         "goals82": 7.4,
         "assists82": 31.5,
         "plusMinus82": 9.5,
-        "rating": 69
+        "rating": 87
       },
       {
         "id": 8484220,
@@ -1370,7 +1454,7 @@
         "goals82": 2.8,
         "assists82": 13.9,
         "plusMinus82": 5.6,
-        "rating": 50
+        "rating": 78
       },
       {
         "id": 8482964,
@@ -1380,7 +1464,7 @@
         "goals82": 1.3,
         "assists82": 3.8,
         "plusMinus82": -10.1,
-        "rating": 38
+        "rating": 79
       },
       {
         "id": 8482487,
@@ -1407,7 +1491,14 @@
         "gamesPlayed": 25,
         "savePercentage": 0.872441,
         "goalsAgainstAverage": 3.426879,
-        "rating": 30
+        "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Juraj Slafkovsky",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 85
       }
     ]
   },
@@ -1426,7 +1517,7 @@
         "goals82": 15.2,
         "assists82": 20.2,
         "plusMinus82": 13.2,
-        "rating": 55
+        "rating": 80
       },
       {
         "id": 8480208,
@@ -1436,7 +1527,7 @@
         "goals82": 34.3,
         "assists82": 39.4,
         "plusMinus82": -7.3,
-        "rating": 73
+        "rating": 86
       },
       {
         "id": 8482674,
@@ -1456,7 +1547,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 83
       },
       {
         "id": 8481578,
@@ -1476,7 +1567,7 @@
         "goals82": 9.1,
         "assists82": 14.2,
         "plusMinus82": 8.1,
-        "rating": 48
+        "rating": 79
       },
       {
         "id": 8481528,
@@ -1486,7 +1577,7 @@
         "goals82": 28,
         "assists82": 31,
         "plusMinus82": -7,
-        "rating": 65
+        "rating": 85
       },
       {
         "id": 8482667,
@@ -1496,7 +1587,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 86
       },
       {
         "id": 8474189,
@@ -1506,7 +1597,7 @@
         "goals82": 6,
         "assists82": 12.1,
         "plusMinus82": 6,
-        "rating": 45
+        "rating": 82
       },
       {
         "id": 8477998,
@@ -1516,7 +1607,7 @@
         "goals82": 23.4,
         "assists82": 7.8,
         "plusMinus82": 23.4,
-        "rating": 54
+        "rating": 84
       },
       {
         "id": 8473512,
@@ -1526,7 +1617,7 @@
         "goals82": 14,
         "assists82": 35,
         "plusMinus82": 20,
-        "rating": 63
+        "rating": 86
       },
       {
         "id": 8482092,
@@ -1536,7 +1627,7 @@
         "goals82": 13.8,
         "assists82": 23.4,
         "plusMinus82": 12.8,
-        "rating": 56
+        "rating": 81
       },
       {
         "id": 8483676,
@@ -1556,7 +1647,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": -16.4,
-        "rating": 33
+        "rating": 69
       },
       {
         "id": 8481560,
@@ -1566,7 +1657,7 @@
         "goals82": 0,
         "assists82": 41,
         "plusMinus82": 0,
-        "rating": 56
+        "rating": 81
       },
       {
         "id": 8477073,
@@ -1576,7 +1667,7 @@
         "goals82": 0,
         "assists82": 4.3,
         "plusMinus82": -21.6,
-        "rating": 35
+        "rating": 77
       },
       {
         "id": 8483673,
@@ -1596,17 +1687,17 @@
         "goals82": 26.2,
         "assists82": 26.2,
         "plusMinus82": 6.8,
-        "rating": 63
+        "rating": 83
       },
       {
         "id": 8482116,
-        "name": "Tim Stützle",
+        "name": "Tim St\u00fctzle",
         "position": "C",
         "gamesPlayed": 80,
         "goals82": 34.9,
         "assists82": 50.2,
         "plusMinus82": 7.2,
-        "rating": 80
+        "rating": 90
       },
       {
         "id": 8480188,
@@ -1616,7 +1707,7 @@
         "goals82": 17,
         "assists82": 16,
         "plusMinus82": -1,
-        "rating": 52
+        "rating": 83
       },
       {
         "id": 8478469,
@@ -1626,7 +1717,7 @@
         "goals82": 10.1,
         "assists82": 34.5,
         "plusMinus82": 8.6,
-        "rating": 73
+        "rating": 87
       },
       {
         "id": 8480075,
@@ -1646,7 +1737,7 @@
         "goals82": 0,
         "assists82": 10.3,
         "plusMinus82": 0,
-        "rating": 44
+        "rating": 75
       },
       {
         "id": 8475324,
@@ -1656,7 +1747,7 @@
         "goals82": 5.4,
         "assists82": 17.5,
         "plusMinus82": -2.7,
-        "rating": 54
+        "rating": 83
       },
       {
         "id": 8482095,
@@ -1666,7 +1757,7 @@
         "goals82": 3.5,
         "assists82": 17.6,
         "plusMinus82": 2.3,
-        "rating": 53
+        "rating": 76
       },
       {
         "id": 8484321,
@@ -1676,7 +1767,7 @@
         "goals82": 0,
         "assists82": 8.2,
         "plusMinus82": -1.6,
-        "rating": 42
+        "rating": 76
       },
       {
         "id": 8482105,
@@ -1686,7 +1777,7 @@
         "goals82": 17.1,
         "assists82": 49,
         "plusMinus82": 19.6,
-        "rating": 93
+        "rating": 89
       },
       {
         "id": 8481606,
@@ -1696,7 +1787,7 @@
         "goals82": 7.9,
         "assists82": 27,
         "plusMinus82": 16.8,
-        "rating": 66
+        "rating": 83
       },
       {
         "id": 8481575,
@@ -1726,7 +1817,7 @@
         "goals82": 5.1,
         "assists82": 25.3,
         "plusMinus82": 22.3,
-        "rating": 63
+        "rating": 84
       },
       {
         "id": 8481035,
@@ -1735,16 +1826,16 @@
         "gamesPlayed": 1,
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
-        "rating": 65
+        "rating": 83
       },
       {
         "id": 8482447,
-        "name": "Leevi Meriläinen",
+        "name": "Leevi Meril\u00e4inen",
         "position": "G",
         "gamesPlayed": 20,
         "savePercentage": 0.859956,
         "goalsAgainstAverage": 3.508505,
-        "rating": 30
+        "rating": 74
       },
       {
         "id": 8473503,
@@ -1762,7 +1853,35 @@
         "gamesPlayed": 49,
         "savePercentage": 0.890651,
         "goalsAgainstAverage": 2.725886,
-        "rating": 35
+        "rating": 87
+      },
+      {
+        "id": -1,
+        "name": "Brady Tkachuk",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 89
+      },
+      {
+        "id": -1,
+        "name": "Mads Sogaard",
+        "position": "G",
+        "gamesPlayed": 0,
+        "rating": 77
+      },
+      {
+        "id": -1,
+        "name": "Garrett Pilon",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 75
+      },
+      {
+        "id": -1,
+        "name": "Wyatt Bongiovanni",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 66
       }
     ]
   },
@@ -1781,7 +1900,7 @@
         "goals82": 12.3,
         "assists82": 20.5,
         "plusMinus82": -14.3,
-        "rating": 51
+        "rating": 85
       },
       {
         "id": 8478519,
@@ -1791,7 +1910,7 @@
         "goals82": 26.6,
         "assists82": 33.5,
         "plusMinus82": 43.9,
-        "rating": 71
+        "rating": 86
       },
       {
         "id": 8483447,
@@ -1811,7 +1930,7 @@
         "goals82": 10,
         "assists82": 12.2,
         "plusMinus82": 1.1,
-        "rating": 47
+        "rating": 79
       },
       {
         "id": 8482201,
@@ -1821,7 +1940,7 @@
         "goals82": 12.2,
         "assists82": 24.4,
         "plusMinus82": 28.8,
-        "rating": 57
+        "rating": 75
       },
       {
         "id": 8476826,
@@ -1831,7 +1950,7 @@
         "goals82": 9,
         "assists82": 19,
         "plusMinus82": -6,
-        "rating": 49
+        "rating": 82
       },
       {
         "id": 8477404,
@@ -1841,7 +1960,7 @@
         "goals82": 38.5,
         "assists82": 50.6,
         "plusMinus82": 13.2,
-        "rating": 83
+        "rating": 89
       },
       {
         "id": 8479542,
@@ -1851,7 +1970,7 @@
         "goals82": 41.6,
         "assists82": 43.9,
         "plusMinus82": 39.3,
-        "rating": 84
+        "rating": 90
       },
       {
         "id": 8480995,
@@ -1861,7 +1980,7 @@
         "goals82": 12.9,
         "assists82": 12.9,
         "plusMinus82": 1.2,
-        "rating": 49
+        "rating": 79
       },
       {
         "id": 8483752,
@@ -1881,7 +2000,7 @@
         "goals82": 47.5,
         "assists82": 92.8,
         "plusMinus82": 46.4,
-        "rating": 100
+        "rating": 96
       },
       {
         "id": 8477426,
@@ -1891,7 +2010,7 @@
         "goals82": 11.3,
         "assists82": 12.9,
         "plusMinus82": -24.1,
-        "rating": 45
+        "rating": 85
       },
       {
         "id": 8470621,
@@ -1901,7 +2020,7 @@
         "goals82": 22.4,
         "assists82": 11.2,
         "plusMinus82": 3.7,
-        "rating": 53
+        "rating": 80
       },
       {
         "id": 8478010,
@@ -1911,7 +2030,7 @@
         "goals82": 23.4,
         "assists82": 41.7,
         "plusMinus82": 15.6,
-        "rating": 71
+        "rating": 92
       },
       {
         "id": 8477149,
@@ -1941,7 +2060,7 @@
         "goals82": 4,
         "assists82": 10.8,
         "plusMinus82": 4,
-        "rating": 48
+        "rating": 85
       },
       {
         "id": 8481719,
@@ -1971,7 +2090,7 @@
         "goals82": 2.5,
         "assists82": 39.8,
         "plusMinus82": -2.5,
-        "rating": 70
+        "rating": 92
       },
       {
         "id": 8482929,
@@ -1981,7 +2100,7 @@
         "goals82": 6.6,
         "assists82": 13.1,
         "plusMinus82": 24.6,
-        "rating": 54
+        "rating": 78
       },
       {
         "id": 8474151,
@@ -1991,7 +2110,7 @@
         "goals82": 10.3,
         "assists82": 25.6,
         "plusMinus82": 23.9,
-        "rating": 68
+        "rating": 85
       },
       {
         "id": 8482655,
@@ -2001,7 +2120,7 @@
         "goals82": 7.3,
         "assists82": 22.8,
         "plusMinus82": 42.6,
-        "rating": 65
+        "rating": 84
       },
       {
         "id": 8477992,
@@ -2010,7 +2129,7 @@
         "gamesPlayed": 25,
         "savePercentage": 0.883582,
         "goalsAgainstAverage": 3.287633,
-        "rating": 30
+        "rating": 80
       },
       {
         "id": 8476883,
@@ -2019,7 +2138,35 @@
         "gamesPlayed": 58,
         "savePercentage": 0.91234,
         "goalsAgainstAverage": 2.308533,
-        "rating": 81
+        "rating": 93
+      },
+      {
+        "id": -1,
+        "name": "Darren Raddysh",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 84
+      },
+      {
+        "id": -1,
+        "name": "Mitchell Chaffee",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 79
+      },
+      {
+        "id": -1,
+        "name": "Jakob Pelletier",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 77
+      },
+      {
+        "id": -1,
+        "name": "Nick Abruzzese",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 74
       }
     ]
   },
@@ -2038,7 +2185,7 @@
         "goals82": 12.3,
         "assists82": 24.6,
         "plusMinus82": -29.7,
-        "rating": 51
+        "rating": 82
       },
       {
         "id": 8480870,
@@ -2068,7 +2215,7 @@
         "goals82": 8.8,
         "assists82": 2.9,
         "plusMinus82": -22,
-        "rating": 39
+        "rating": 82
       },
       {
         "id": 8478057,
@@ -2078,7 +2225,7 @@
         "goals82": 14.9,
         "assists82": 11.9,
         "plusMinus82": -3,
-        "rating": 49
+        "rating": 81
       },
       {
         "id": 8482720,
@@ -2088,7 +2235,7 @@
         "goals82": 23.9,
         "assists82": 44.6,
         "plusMinus82": -31.1,
-        "rating": 68
+        "rating": 87
       },
       {
         "id": 8478904,
@@ -2098,7 +2245,7 @@
         "goals82": 8.1,
         "assists82": 12.7,
         "plusMinus82": -2.3,
-        "rating": 46
+        "rating": 79
       },
       {
         "id": 8481711,
@@ -2108,7 +2255,7 @@
         "goals82": 16.2,
         "assists82": 28.9,
         "plusMinus82": -26.6,
-        "rating": 56
+        "rating": 83
       },
       {
         "id": 8479318,
@@ -2118,7 +2265,7 @@
         "goals82": 36.9,
         "assists82": 35.5,
         "plusMinus82": -5.5,
-        "rating": 72
+        "rating": 94
       },
       {
         "id": 8477939,
@@ -2128,7 +2275,7 @@
         "goals82": 37.8,
         "assists82": 61.8,
         "plusMinus82": -17.7,
-        "rating": 85
+        "rating": 92
       },
       {
         "id": 8481582,
@@ -2138,7 +2285,7 @@
         "goals82": 16.8,
         "assists82": 16.8,
         "plusMinus82": -13.7,
-        "rating": 51
+        "rating": 81
       },
       {
         "id": 8475166,
@@ -2148,7 +2295,7 @@
         "goals82": 31,
         "assists82": 40,
         "plusMinus82": -28,
-        "rating": 69
+        "rating": 88
       },
       {
         "id": 8482126,
@@ -2168,7 +2315,7 @@
         "goals82": 8.4,
         "assists82": 32.6,
         "plusMinus82": -6.3,
-        "rating": 69
+        "rating": 84
       },
       {
         "id": 8476931,
@@ -2178,7 +2325,7 @@
         "goals82": 5.1,
         "assists82": 20.5,
         "plusMinus82": 3.1,
-        "rating": 57
+        "rating": 85
       },
       {
         "id": 8479026,
@@ -2188,7 +2335,7 @@
         "goals82": 0,
         "assists82": 4.2,
         "plusMinus82": -21,
-        "rating": 36
+        "rating": 75
       },
       {
         "id": 8478178,
@@ -2198,7 +2345,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 84
       },
       {
         "id": 8476853,
@@ -2208,7 +2355,7 @@
         "goals82": 11.6,
         "assists82": 26.3,
         "plusMinus82": -18.9,
-        "rating": 65
+        "rating": 87
       },
       {
         "id": 8479442,
@@ -2218,7 +2365,7 @@
         "goals82": 4.2,
         "assists82": 15.6,
         "plusMinus82": -11.3,
-        "rating": 50
+        "rating": 79
       },
       {
         "id": 8475690,
@@ -2228,7 +2375,7 @@
         "goals82": 0,
         "assists82": 14.9,
         "plusMinus82": 59.6,
-        "rating": 54
+        "rating": 85
       },
       {
         "id": 8476932,
@@ -2237,7 +2384,77 @@
         "gamesPlayed": 26,
         "savePercentage": 0.892655,
         "goalsAgainstAverage": 3.282347,
-        "rating": 36
+        "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Brandon Carlo",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 86
+      },
+      {
+        "id": -1,
+        "name": "Joseph Woll",
+        "position": "G",
+        "gamesPlayed": 0,
+        "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Travis Boyd",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 81
+      },
+      {
+        "id": -1,
+        "name": "Matt Benning",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 79
+      },
+      {
+        "id": -1,
+        "name": "Simon Benoit",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 79
+      },
+      {
+        "id": -1,
+        "name": "Dakota Mermis",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 78
+      },
+      {
+        "id": -1,
+        "name": "Dennis Hildeby",
+        "position": "G",
+        "gamesPlayed": 0,
+        "rating": 78
+      },
+      {
+        "id": -1,
+        "name": "Henry Thrun",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 78
+      },
+      {
+        "id": -1,
+        "name": "Michael Pezzetta",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 77
+      },
+      {
+        "id": -1,
+        "name": "William Villeneuve",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 72
       }
     ]
   },
@@ -2256,7 +2473,7 @@
         "goals82": 28,
         "assists82": 55,
         "plusMinus82": 11.4,
-        "rating": 80
+        "rating": 90
       },
       {
         "id": 8482809,
@@ -2266,7 +2483,7 @@
         "goals82": 22.3,
         "assists82": 31.4,
         "plusMinus82": 4,
-        "rating": 64
+        "rating": 80
       },
       {
         "id": 8477478,
@@ -2276,7 +2493,7 @@
         "goals82": 8.2,
         "assists82": 12.9,
         "plusMinus82": 5.9,
-        "rating": 47
+        "rating": 80
       },
       {
         "id": 8475235,
@@ -2286,7 +2503,7 @@
         "goals82": 0,
         "assists82": 11.7,
         "plusMinus82": 0,
-        "rating": 41
+        "rating": 78
       },
       {
         "id": 8477940,
@@ -2296,7 +2513,7 @@
         "goals82": 26,
         "assists82": 45,
         "plusMinus82": 8,
-        "rating": 73
+        "rating": 88
       },
       {
         "id": 8475791,
@@ -2306,7 +2523,7 @@
         "goals82": 18.5,
         "assists82": 30.8,
         "plusMinus82": 6.1,
-        "rating": 62
+        "rating": 84
       },
       {
         "id": 8476873,
@@ -2316,7 +2533,7 @@
         "goals82": 13.3,
         "assists82": 12.1,
         "plusMinus82": 8.4,
-        "rating": 49
+        "rating": 79
       },
       {
         "id": 8482093,
@@ -2326,7 +2543,7 @@
         "goals82": 37,
         "assists82": 39.3,
         "plusMinus82": 6.9,
-        "rating": 76
+        "rating": 88
       },
       {
         "id": 8480829,
@@ -2336,7 +2553,7 @@
         "goals82": 3.9,
         "assists82": 13.7,
         "plusMinus82": 5.9,
-        "rating": 45
+        "rating": 83
       },
       {
         "id": 8476921,
@@ -2346,7 +2563,7 @@
         "goals82": 12.8,
         "assists82": 18.1,
         "plusMinus82": 6.4,
-        "rating": 52
+        "rating": 83
       },
       {
         "id": 8480762,
@@ -2356,7 +2573,7 @@
         "goals82": 14.7,
         "assists82": 7.3,
         "plusMinus82": 8.6,
-        "rating": 47
+        "rating": 82
       },
       {
         "id": 8473533,
@@ -2366,7 +2583,7 @@
         "goals82": 21.9,
         "assists82": 17.5,
         "plusMinus82": 5.5,
-        "rating": 56
+        "rating": 83
       },
       {
         "id": 8482702,
@@ -2376,7 +2593,7 @@
         "goals82": 21.3,
         "assists82": 23.3,
         "plusMinus82": 12.1,
-        "rating": 60
+        "rating": 85
       },
       {
         "id": 8480830,
@@ -2386,7 +2603,7 @@
         "goals82": 32.2,
         "assists82": 40.5,
         "plusMinus82": 1,
-        "rating": 73
+        "rating": 87
       },
       {
         "id": 8474590,
@@ -2396,7 +2613,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 88
       },
       {
         "id": 8478970,
@@ -2406,7 +2623,7 @@
         "goals82": 2.3,
         "assists82": 17.1,
         "plusMinus82": 17.1,
-        "rating": 53
+        "rating": 81
       },
       {
         "id": 8476906,
@@ -2416,7 +2633,7 @@
         "goals82": 19.4,
         "assists82": 55.2,
         "plusMinus82": 16.4,
-        "rating": 99
+        "rating": 87
       },
       {
         "id": 8480817,
@@ -2426,7 +2643,7 @@
         "goals82": 9.1,
         "assists82": 33,
         "plusMinus82": 8,
-        "rating": 71
+        "rating": 86
       },
       {
         "id": 8482100,
@@ -2446,7 +2663,7 @@
         "goals82": 2,
         "assists82": 15.6,
         "plusMinus82": 21.5,
-        "rating": 52
+        "rating": 77
       },
       {
         "id": 8476958,
@@ -2456,7 +2673,7 @@
         "goals82": 2.1,
         "assists82": 14.7,
         "plusMinus82": 16.8,
-        "rating": 51
+        "rating": 90
       },
       {
         "id": 8480336,
@@ -2466,7 +2683,7 @@
         "goals82": 9.1,
         "assists82": 22.3,
         "plusMinus82": 6.1,
-        "rating": 62
+        "rating": 83
       },
       {
         "id": 8475883,
@@ -2475,7 +2692,7 @@
         "gamesPlayed": 35,
         "savePercentage": 0.873969,
         "goalsAgainstAverage": 3.054428,
-        "rating": 30
+        "rating": 87
       },
       {
         "id": 8483548,
@@ -2493,7 +2710,7 @@
         "gamesPlayed": 9,
         "savePercentage": 0.899471,
         "goalsAgainstAverage": 2.325819,
-        "rating": 55
+        "rating": 85
       }
     ]
   },
@@ -2512,7 +2729,7 @@
         "goals82": 20,
         "assists82": 38,
         "plusMinus82": 3,
-        "rating": 66
+        "rating": 84
       },
       {
         "id": 8484166,
@@ -2522,7 +2739,7 @@
         "goals82": 24,
         "assists82": 35,
         "plusMinus82": -13,
-        "rating": 65
+        "rating": 85
       },
       {
         "id": 8478856,
@@ -2532,7 +2749,7 @@
         "goals82": 19.5,
         "assists82": 7.8,
         "plusMinus82": -23.4,
-        "rating": 47
+        "rating": 86
       },
       {
         "id": 8478046,
@@ -2542,7 +2759,7 @@
         "goals82": 12.4,
         "assists82": 12.4,
         "plusMinus82": 14.9,
-        "rating": 50
+        "rating": 82
       },
       {
         "id": 8476432,
@@ -2552,7 +2769,7 @@
         "goals82": 15.9,
         "assists82": 30.6,
         "plusMinus82": 3.7,
-        "rating": 60
+        "rating": 83
       },
       {
         "id": 8482660,
@@ -2562,17 +2779,17 @@
         "goals82": 7.6,
         "assists82": 16.2,
         "plusMinus82": -8.6,
-        "rating": 47
+        "rating": 86
       },
       {
         "id": 8480806,
-        "name": "Isac Lundeström",
+        "name": "Isac Lundestr\u00f6m",
         "position": "C",
         "gamesPlayed": 68,
         "goals82": 4.8,
         "assists82": 9.6,
         "plusMinus82": -2.4,
-        "rating": 42
+        "rating": 80
       },
       {
         "id": 8480893,
@@ -2582,7 +2799,7 @@
         "goals82": 29.1,
         "assists82": 43.2,
         "plusMinus82": 7.6,
-        "rating": 74
+        "rating": 89
       },
       {
         "id": 8478975,
@@ -2592,7 +2809,7 @@
         "goals82": 31.5,
         "assists82": 35.7,
         "plusMinus82": 44.2,
-        "rating": 75
+        "rating": 85
       },
       {
         "id": 8477497,
@@ -2602,7 +2819,7 @@
         "goals82": 13.7,
         "assists82": 24.2,
         "plusMinus82": -1.1,
-        "rating": 55
+        "rating": 86
       },
       {
         "id": 8477501,
@@ -2612,7 +2829,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 85
       },
       {
         "id": 8479671,
@@ -2622,7 +2839,7 @@
         "goals82": 20.2,
         "assists82": 14.8,
         "plusMinus82": 17.5,
-        "rating": 55
+        "rating": 82
       },
       {
         "id": 8482705,
@@ -2632,7 +2849,7 @@
         "goals82": 8.1,
         "assists82": 25.3,
         "plusMinus82": 2,
-        "rating": 53
+        "rating": 82
       },
       {
         "id": 8481716,
@@ -2642,7 +2859,7 @@
         "goals82": 22.1,
         "assists82": 19.5,
         "plusMinus82": -1.3,
-        "rating": 57
+        "rating": 84
       },
       {
         "id": 8477425,
@@ -2652,7 +2869,7 @@
         "goals82": 12.1,
         "assists82": 9.1,
         "plusMinus82": -15.2,
-        "rating": 44
+        "rating": 80
       },
       {
         "id": 8481161,
@@ -2662,7 +2879,7 @@
         "goals82": 0,
         "assists82": 6.1,
         "plusMinus82": -14.3,
-        "rating": 39
+        "rating": 78
       },
       {
         "id": 8479371,
@@ -2672,7 +2889,7 @@
         "goals82": 5.5,
         "assists82": 6.6,
         "plusMinus82": -17.7,
-        "rating": 43
+        "rating": 82
       },
       {
         "id": 8475790,
@@ -2682,7 +2899,7 @@
         "goals82": 2.2,
         "assists82": 4.4,
         "plusMinus82": 13.3,
-        "rating": 42
+        "rating": 79
       },
       {
         "id": 8483485,
@@ -2702,7 +2919,7 @@
         "goals82": 9,
         "assists82": 22,
         "plusMinus82": 14,
-        "rating": 63
+        "rating": 85
       },
       {
         "id": 8476923,
@@ -2712,7 +2929,7 @@
         "goals82": 9.2,
         "assists82": 27.7,
         "plusMinus82": 20.8,
-        "rating": 68
+        "rating": 86
       },
       {
         "id": 8474090,
@@ -2732,7 +2949,7 @@
         "goals82": 24.1,
         "assists82": 64.5,
         "plusMinus82": 7.7,
-        "rating": 100
+        "rating": 92
       },
       {
         "id": 8481178,
@@ -2742,7 +2959,7 @@
         "goals82": 0,
         "assists82": 8.2,
         "plusMinus82": 8.2,
-        "rating": 43
+        "rating": 82
       },
       {
         "id": 8482982,
@@ -2751,7 +2968,7 @@
         "gamesPlayed": 55,
         "savePercentage": 0.907732,
         "goalsAgainstAverage": 2.600653,
-        "rating": 70
+        "rating": 73
       },
       {
         "id": 8478007,
@@ -2760,7 +2977,28 @@
         "gamesPlayed": 30,
         "savePercentage": 0.883005,
         "goalsAgainstAverage": 3.395653,
-        "rating": 30
+        "rating": 82
+      },
+      {
+        "id": -1,
+        "name": "Dysin Mayo",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 76
+      },
+      {
+        "id": -1,
+        "name": "Zachary Aston-Reese",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 76
+      },
+      {
+        "id": -1,
+        "name": "Brendan Gaunce",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 75
       }
     ]
   },
@@ -2779,7 +3017,7 @@
         "goals82": 0,
         "assists82": 6.3,
         "plusMinus82": -12.6,
-        "rating": 37
+        "rating": 83
       },
       {
         "id": 8479407,
@@ -2789,7 +3027,7 @@
         "goals82": 22,
         "assists82": 49,
         "plusMinus82": -11,
-        "rating": 71
+        "rating": 91
       },
       {
         "id": 8477015,
@@ -2799,7 +3037,7 @@
         "goals82": 19.7,
         "assists82": 27.3,
         "plusMinus82": -1.1,
-        "rating": 60
+        "rating": 79
       },
       {
         "id": 8481032,
@@ -2809,7 +3047,7 @@
         "goals82": 9.3,
         "assists82": 6.2,
         "plusMinus82": -24.9,
-        "rating": 40
+        "rating": 83
       },
       {
         "id": 8474149,
@@ -2819,7 +3057,7 @@
         "goals82": 3.4,
         "assists82": 0,
         "plusMinus82": -20.5,
-        "rating": 35
+        "rating": 82
       },
       {
         "id": 8479996,
@@ -2829,7 +3067,7 @@
         "goals82": 22.3,
         "assists82": 8.2,
         "plusMinus82": 3.5,
-        "rating": 51
+        "rating": 79
       },
       {
         "id": 8481721,
@@ -2849,7 +3087,7 @@
         "goals82": 28,
         "assists82": 38,
         "plusMinus82": -6,
-        "rating": 69
+        "rating": 89
       },
       {
         "id": 8481559,
@@ -2859,7 +3097,7 @@
         "goals82": 36.3,
         "assists82": 67.2,
         "plusMinus82": 0,
-        "rating": 89
+        "rating": 93
       },
       {
         "id": 8479772,
@@ -2869,7 +3107,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 78
       },
       {
         "id": 8478414,
@@ -2879,7 +3117,7 @@
         "goals82": 25.6,
         "assists82": 21.3,
         "plusMinus82": -17,
-        "rating": 58
+        "rating": 87
       },
       {
         "id": 8482110,
@@ -2889,7 +3127,7 @@
         "goals82": 20,
         "assists82": 22,
         "plusMinus82": -2,
-        "rating": 57
+        "rating": 83
       },
       {
         "id": 8476474,
@@ -2899,7 +3137,7 @@
         "goals82": 6.5,
         "assists82": 8.6,
         "plusMinus82": -25.9,
-        "rating": 40
+        "rating": 84
       },
       {
         "id": 8480990,
@@ -2909,7 +3147,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 78
       },
       {
         "id": 8479395,
@@ -2919,7 +3157,7 @@
         "goals82": 0,
         "assists82": 9.6,
         "plusMinus82": -28.9,
-        "rating": 40
+        "rating": 75
       },
       {
         "id": 8475455,
@@ -2929,7 +3167,7 @@
         "goals82": 3,
         "assists82": 12,
         "plusMinus82": -13,
-        "rating": 46
+        "rating": 86
       },
       {
         "id": 8476462,
@@ -2939,7 +3177,7 @@
         "goals82": 12.8,
         "assists82": 28.8,
         "plusMinus82": -2.1,
-        "rating": 70
+        "rating": 88
       },
       {
         "id": 8482684,
@@ -2949,7 +3187,7 @@
         "goals82": 7.2,
         "assists82": 35,
         "plusMinus82": -4.8,
-        "rating": 70
+        "rating": 86
       },
       {
         "id": 8480192,
@@ -2959,7 +3197,7 @@
         "goals82": 0,
         "assists82": 19.3,
         "plusMinus82": 0,
-        "rating": 51
+        "rating": 82
       },
       {
         "id": 8477488,
@@ -2969,7 +3207,7 @@
         "goals82": 2.2,
         "assists82": 13.3,
         "plusMinus82": -24.4,
-        "rating": 45
+        "rating": 86
       },
       {
         "id": 8478399,
@@ -2979,7 +3217,7 @@
         "goals82": 0,
         "assists82": 16,
         "plusMinus82": -9,
-        "rating": 47
+        "rating": 87
       },
       {
         "id": 8474596,
@@ -2988,7 +3226,7 @@
         "gamesPlayed": 37,
         "savePercentage": 0.903977,
         "goalsAgainstAverage": 2.744028,
-        "rating": 62
+        "rating": 83
       },
       {
         "id": 8474593,
@@ -2997,7 +3235,63 @@
         "gamesPlayed": 44,
         "savePercentage": 0.883199,
         "goalsAgainstAverage": 3.066018,
-        "rating": 30
+        "rating": 87
+      },
+      {
+        "id": -1,
+        "name": "Simon Nemec",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 82
+      },
+      {
+        "id": -1,
+        "name": "Nico Daws",
+        "position": "G",
+        "gamesPlayed": 0,
+        "rating": 79
+      },
+      {
+        "id": -1,
+        "name": "Thomas Bordeleau",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 77
+      },
+      {
+        "id": -1,
+        "name": "Colton White",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 76
+      },
+      {
+        "id": -1,
+        "name": "Angus Crookshank",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 75
+      },
+      {
+        "id": -1,
+        "name": "Marc McLaughlin",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 73
+      },
+      {
+        "id": -1,
+        "name": "Mike Hardman",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 72
+      },
+      {
+        "id": -1,
+        "name": "Nathan L\u00e9gar\u00e9",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 68
       }
     ]
   },
@@ -3016,7 +3310,7 @@
         "goals82": 19.2,
         "assists82": 53.7,
         "plusMinus82": 10.1,
-        "rating": 74
+        "rating": 86
       },
       {
         "id": 8475231,
@@ -3026,7 +3320,7 @@
         "goals82": 10.1,
         "assists82": 8.1,
         "plusMinus82": -3,
-        "rating": 44
+        "rating": 81
       },
       {
         "id": 8477407,
@@ -3036,7 +3330,7 @@
         "goals82": 15.9,
         "assists82": 19.8,
         "plusMinus82": 0,
-        "rating": 54
+        "rating": 83
       },
       {
         "id": 8483553,
@@ -3046,7 +3340,7 @@
         "goals82": 5,
         "assists82": 6.7,
         "plusMinus82": -5,
-        "rating": 41
+        "rating": 73
       },
       {
         "id": 8482476,
@@ -3066,7 +3360,7 @@
         "goals82": 19.7,
         "assists82": 22.8,
         "plusMinus82": 4.2,
-        "rating": 58
+        "rating": 83
       },
       {
         "id": 8477500,
@@ -3076,7 +3370,7 @@
         "goals82": 37.4,
         "assists82": 31.4,
         "plusMinus82": 9.6,
-        "rating": 72
+        "rating": 87
       },
       {
         "id": 8475314,
@@ -3086,7 +3380,7 @@
         "goals82": 19,
         "assists82": 23,
         "plusMinus82": 0,
-        "rating": 57
+        "rating": 84
       },
       {
         "id": 8481237,
@@ -3096,7 +3390,7 @@
         "goals82": 2.8,
         "assists82": 6.9,
         "plusMinus82": -8.3,
-        "rating": 39
+        "rating": 75
       },
       {
         "id": 8476419,
@@ -3106,7 +3400,7 @@
         "goals82": 18.8,
         "assists82": 19.9,
         "plusMinus82": 0,
-        "rating": 55
+        "rating": 83
       },
       {
         "id": 8476292,
@@ -3116,7 +3410,7 @@
         "goals82": 2.8,
         "assists82": 11.3,
         "plusMinus82": -17,
-        "rating": 41
+        "rating": 81
       },
       {
         "id": 8475151,
@@ -3126,7 +3420,7 @@
         "goals82": 19.7,
         "assists82": 39.4,
         "plusMinus82": -6.6,
-        "rating": 65
+        "rating": 83
       },
       {
         "id": 8475170,
@@ -3136,7 +3430,7 @@
         "goals82": 25.9,
         "assists82": 21.6,
         "plusMinus82": -21.6,
-        "rating": 58
+        "rating": 85
       },
       {
         "id": 8485702,
@@ -3156,7 +3450,7 @@
         "goals82": 0,
         "assists82": 11.7,
         "plusMinus82": -26.4,
-        "rating": 42
+        "rating": 81
       },
       {
         "id": 8477950,
@@ -3166,7 +3460,7 @@
         "goals82": 5.4,
         "assists82": 32.4,
         "plusMinus82": -5.4,
-        "rating": 66
+        "rating": 80
       },
       {
         "id": 8476429,
@@ -3176,7 +3470,7 @@
         "goals82": 2.1,
         "assists82": 13.3,
         "plusMinus82": -11.3,
-        "rating": 47
+        "rating": 81
       },
       {
         "id": 8476917,
@@ -3186,7 +3480,7 @@
         "goals82": 4,
         "assists82": 12,
         "plusMinus82": 4,
-        "rating": 49
+        "rating": 87
       },
       {
         "id": 8477506,
@@ -3196,7 +3490,7 @@
         "goals82": 3.2,
         "assists82": 25.9,
         "plusMinus82": 9.7,
-        "rating": 60
+        "rating": 87
       },
       {
         "id": 8481014,
@@ -3206,7 +3500,7 @@
         "goals82": 0,
         "assists82": 5.5,
         "plusMinus82": -38.3,
-        "rating": 35
+        "rating": 84
       },
       {
         "id": 8485366,
@@ -3226,7 +3520,7 @@
         "goals82": 5.5,
         "assists82": 5.5,
         "plusMinus82": -27.3,
-        "rating": 41
+        "rating": 81
       },
       {
         "id": 8479496,
@@ -3235,7 +3529,7 @@
         "gamesPlayed": 30,
         "savePercentage": 0.894444,
         "goalsAgainstAverage": 2.761377,
-        "rating": 43
+        "rating": 80
       },
       {
         "id": 8478009,
@@ -3244,7 +3538,7 @@
         "gamesPlayed": 55,
         "savePercentage": 0.905882,
         "goalsAgainstAverage": 2.678101,
-        "rating": 66
+        "rating": 91
       },
       {
         "id": 8473575,
@@ -3253,7 +3547,14 @@
         "gamesPlayed": 1,
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
-        "rating": 65
+        "rating": 82
+      },
+      {
+        "id": -1,
+        "name": "Pierre Engvall",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 80
       }
     ]
   },
@@ -3272,7 +3573,7 @@
         "goals82": 8.9,
         "assists82": 14.9,
         "plusMinus82": -1.5,
-        "rating": 47
+        "rating": 80
       },
       {
         "id": 8482877,
@@ -3292,7 +3593,7 @@
         "goals82": 20,
         "assists82": 18,
         "plusMinus82": -12,
-        "rating": 54
+        "rating": 85
       },
       {
         "id": 8481604,
@@ -3302,7 +3603,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 86
       },
       {
         "id": 8481789,
@@ -3312,7 +3613,7 @@
         "goals82": 17.1,
         "assists82": 30.8,
         "plusMinus82": 0,
-        "rating": 60
+        "rating": 80
       },
       {
         "id": 8483690,
@@ -3326,13 +3627,13 @@
       },
       {
         "id": 8482109,
-        "name": "Alexis Lafrenière",
+        "name": "Alexis Lafreni\u00e8re",
         "position": "LW",
         "gamesPlayed": 82,
         "goals82": 24,
         "assists82": 33,
         "plusMinus82": -7,
-        "rating": 64
+        "rating": 85
       },
       {
         "id": 8476468,
@@ -3342,7 +3643,7 @@
         "goals82": 20.5,
         "assists82": 43.4,
         "plusMinus82": -36.2,
-        "rating": 65
+        "rating": 89
       },
       {
         "id": 8484210,
@@ -3362,7 +3663,7 @@
         "goals82": 10.9,
         "assists82": 12.1,
         "plusMinus82": 6,
-        "rating": 48
+        "rating": 82
       },
       {
         "id": 8482460,
@@ -3372,7 +3673,7 @@
         "goals82": 3.2,
         "assists82": 0,
         "plusMinus82": -12.6,
-        "rating": 35
+        "rating": 77
       },
       {
         "id": 8477839,
@@ -3402,7 +3703,7 @@
         "goals82": 19.6,
         "assists82": 45.3,
         "plusMinus82": -19.6,
-        "rating": 67
+        "rating": 88
       },
       {
         "id": 8476459,
@@ -3422,7 +3723,7 @@
         "goals82": 5.5,
         "assists82": 10.9,
         "plusMinus82": 3.3,
-        "rating": 49
+        "rating": 81
       },
       {
         "id": 8484169,
@@ -3442,7 +3743,7 @@
         "goals82": 13.4,
         "assists82": 65.6,
         "plusMinus82": 7.5,
-        "rating": 100
+        "rating": 90
       },
       {
         "id": 8478882,
@@ -3452,7 +3753,7 @@
         "goals82": 14,
         "assists82": 21,
         "plusMinus82": -8,
-        "rating": 63
+        "rating": 85
       },
       {
         "id": 8482861,
@@ -3482,7 +3783,7 @@
         "goals82": 2,
         "assists82": 16,
         "plusMinus82": -5,
-        "rating": 50
+        "rating": 86
       },
       {
         "id": 8480001,
@@ -3492,7 +3793,7 @@
         "goals82": 0,
         "assists82": 14.5,
         "plusMinus82": 0,
-        "rating": 47
+        "rating": 79
       },
       {
         "id": 8482193,
@@ -3510,7 +3811,7 @@
         "gamesPlayed": 25,
         "savePercentage": 0.891207,
         "goalsAgainstAverage": 3.088858,
-        "rating": 34
+        "rating": 83
       },
       {
         "id": 8478048,
@@ -3519,7 +3820,28 @@
         "gamesPlayed": 51,
         "savePercentage": 0.911579,
         "goalsAgainstAverage": 2.499821,
-        "rating": 79
+        "rating": 92
+      },
+      {
+        "id": -1,
+        "name": "Juuso Parssinen",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 80
+      },
+      {
+        "id": -1,
+        "name": "Justin Dowling",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 75
+      },
+      {
+        "id": -1,
+        "name": "Scott Morrow",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 75
       }
     ]
   },
@@ -3568,7 +3890,7 @@
         "goals82": 18,
         "assists82": 29,
         "plusMinus82": 26,
-        "rating": 62
+        "rating": 83
       },
       {
         "id": 8476461,
@@ -3578,7 +3900,7 @@
         "goals82": 12.6,
         "assists82": 25.2,
         "plusMinus82": -5.3,
-        "rating": 54
+        "rating": 85
       },
       {
         "id": 8477989,
@@ -3588,7 +3910,7 @@
         "goals82": 18.5,
         "assists82": 33.8,
         "plusMinus82": 11.3,
-        "rating": 64
+        "rating": 80
       },
       {
         "id": 8484928,
@@ -3608,7 +3930,7 @@
         "goals82": 36.8,
         "assists82": 11.3,
         "plusMinus82": 22.6,
-        "rating": 63
+        "rating": 81
       },
       {
         "id": 8481848,
@@ -3648,7 +3970,7 @@
         "goals82": 15.7,
         "assists82": 7,
         "plusMinus82": 12.2,
-        "rating": 48
+        "rating": 79
       },
       {
         "id": 8478439,
@@ -3658,7 +3980,7 @@
         "goals82": 28.8,
         "assists82": 43.7,
         "plusMinus82": 14.9,
-        "rating": 75
+        "rating": 88
       },
       {
         "id": 8484779,
@@ -3698,7 +4020,7 @@
         "goals82": 28.3,
         "assists82": 23.3,
         "plusMinus82": -6.1,
-        "rating": 61
+        "rating": 84
       },
       {
         "id": 8475253,
@@ -3718,7 +4040,7 @@
         "goals82": 26.3,
         "assists82": 41.5,
         "plusMinus82": 0,
-        "rating": 71
+        "rating": 83
       },
       {
         "id": 8481122,
@@ -3728,7 +4050,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 79
       },
       {
         "id": 8484148,
@@ -3748,7 +4070,7 @@
         "goals82": 8.4,
         "assists82": 25.2,
         "plusMinus82": -3.2,
-        "rating": 63
+        "rating": 82
       },
       {
         "id": 8482169,
@@ -3778,7 +4100,7 @@
         "goals82": 1.6,
         "assists82": 14.2,
         "plusMinus82": 4.7,
-        "rating": 49
+        "rating": 75
       },
       {
         "id": 8483760,
@@ -3798,7 +4120,7 @@
         "goals82": 1.9,
         "assists82": 24.2,
         "plusMinus82": 18.6,
-        "rating": 59
+        "rating": 81
       },
       {
         "id": 8477948,
@@ -3808,7 +4130,7 @@
         "goals82": 11.1,
         "assists82": 26.3,
         "plusMinus82": 12.1,
-        "rating": 68
+        "rating": 88
       },
       {
         "id": 8476372,
@@ -3818,7 +4140,7 @@
         "goals82": 4.1,
         "assists82": 6.1,
         "plusMinus82": 1,
-        "rating": 44
+        "rating": 82
       },
       {
         "id": 8481546,
@@ -3828,7 +4150,7 @@
         "goals82": 4.4,
         "assists82": 24.4,
         "plusMinus82": 5.5,
-        "rating": 60
+        "rating": 84
       },
       {
         "id": 8484147,
@@ -3855,7 +4177,7 @@
         "gamesPlayed": 52,
         "savePercentage": 0.90569,
         "goalsAgainstAverage": 2.423865,
-        "rating": 67
+        "rating": 82
       },
       {
         "id": 8479361,
@@ -3864,7 +4186,35 @@
         "gamesPlayed": 1,
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
-        "rating": 65
+        "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Samuel Ersson",
+        "position": "G",
+        "gamesPlayed": 0,
+        "rating": 83
+      },
+      {
+        "id": -1,
+        "name": "Garnet Hathaway",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 81
+      },
+      {
+        "id": -1,
+        "name": "Ivan Fedotov",
+        "position": "G",
+        "gamesPlayed": 0,
+        "rating": 80
+      },
+      {
+        "id": -1,
+        "name": "Ryan Ellis",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 70
       }
     ]
   },
@@ -3883,7 +4233,7 @@
         "goals82": 15.9,
         "assists82": 14.7,
         "plusMinus82": 17.1,
-        "rating": 53
+        "rating": 78
       },
       {
         "id": 8479638,
@@ -3893,7 +4243,7 @@
         "goals82": 21.8,
         "assists82": 21.8,
         "plusMinus82": 6.4,
-        "rating": 59
+        "rating": 82
       },
       {
         "id": 8482475,
@@ -3903,7 +4253,7 @@
         "goals82": 34.3,
         "assists82": 34.3,
         "plusMinus82": 7.6,
-        "rating": 72
+        "rating": 84
       },
       {
         "id": 8471675,
@@ -3913,7 +4263,7 @@
         "goals82": 35,
         "assists82": 54.3,
         "plusMinus82": 0,
-        "rating": 82
+        "rating": 94
       },
       {
         "id": 8480980,
@@ -3923,7 +4273,7 @@
         "goals82": 14.7,
         "assists82": 16.8,
         "plusMinus82": 16.8,
-        "rating": 53
+        "rating": 79
       },
       {
         "id": 8480842,
@@ -3943,7 +4293,7 @@
         "goals82": 11.7,
         "assists82": 11.7,
         "plusMinus82": -2.9,
-        "rating": 47
+        "rating": 83
       },
       {
         "id": 8485414,
@@ -3983,7 +4333,7 @@
         "goals82": 10.4,
         "assists82": 17.9,
         "plusMinus82": 8.9,
-        "rating": 51
+        "rating": 80
       },
       {
         "id": 8471215,
@@ -3993,7 +4343,7 @@
         "goals82": 27.8,
         "assists82": 61.5,
         "plusMinus82": 19,
-        "rating": 84
+        "rating": 88
       },
       {
         "id": 8477511,
@@ -4003,7 +4353,7 @@
         "goals82": 33.4,
         "assists82": 31.4,
         "plusMinus82": 10.1,
-        "rating": 70
+        "rating": 82
       },
       {
         "id": 8478438,
@@ -4013,7 +4363,7 @@
         "goals82": 16,
         "assists82": 26,
         "plusMinus82": 1,
-        "rating": 57
+        "rating": 82
       },
       {
         "id": 8476483,
@@ -4023,7 +4373,7 @@
         "goals82": 32.8,
         "assists82": 32.8,
         "plusMinus82": -2.7,
-        "rating": 69
+        "rating": 85
       },
       {
         "id": 8475810,
@@ -4033,7 +4383,7 @@
         "goals82": 33,
         "assists82": 41,
         "plusMinus82": 0,
-        "rating": 74
+        "rating": 85
       },
       {
         "id": 8481725,
@@ -4053,7 +4403,7 @@
         "goals82": 3.3,
         "assists82": 6.6,
         "plusMinus82": 8.2,
-        "rating": 44
+        "rating": 82
       },
       {
         "id": 8479398,
@@ -4063,7 +4413,7 @@
         "goals82": 0,
         "assists82": 28.7,
         "plusMinus82": 20.5,
-        "rating": 61
+        "rating": 86
       },
       {
         "id": 8477435,
@@ -4073,7 +4423,7 @@
         "goals82": 3.7,
         "assists82": 0,
         "plusMinus82": -11.2,
-        "rating": 37
+        "rating": 81
       },
       {
         "id": 8474578,
@@ -4083,7 +4433,7 @@
         "goals82": 16.4,
         "assists82": 55.8,
         "plusMinus82": 8.7,
-        "rating": 96
+        "rating": 88
       },
       {
         "id": 8471724,
@@ -4093,7 +4443,7 @@
         "goals82": 3.3,
         "assists82": 34.4,
         "plusMinus82": -4.4,
-        "rating": 66
+        "rating": 86
       },
       {
         "id": 8486169,
@@ -4113,7 +4463,7 @@
         "goals82": 6.1,
         "assists82": 29.7,
         "plusMinus82": 30.8,
-        "rating": 68
+        "rating": 76
       },
       {
         "id": 8482470,
@@ -4123,7 +4473,7 @@
         "goals82": 0,
         "assists82": 29.3,
         "plusMinus82": 5.9,
-        "rating": 60
+        "rating": 73
       },
       {
         "id": 8481030,
@@ -4143,7 +4493,7 @@
         "goals82": 3.1,
         "assists82": 27.7,
         "plusMinus82": 17.4,
-        "rating": 63
+        "rating": 77
       },
       {
         "id": 8481668,
@@ -4161,7 +4511,49 @@
         "gamesPlayed": 27,
         "savePercentage": 0.885222,
         "goalsAgainstAverage": 2.990095,
-        "rating": 30
+        "rating": 84
+      },
+      {
+        "id": -1,
+        "name": "Matt Dumba",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 82
+      },
+      {
+        "id": -1,
+        "name": "Philip Tomasino",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 80
+      },
+      {
+        "id": -1,
+        "name": "Alexander Alexeyev",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 78
+      },
+      {
+        "id": -1,
+        "name": "Caleb Jones",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 76
+      },
+      {
+        "id": -1,
+        "name": "Bokondji Imama",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 75
+      },
+      {
+        "id": -1,
+        "name": "Philip Kemp",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 72
       }
     ]
   },
@@ -4180,7 +4572,7 @@
         "goals82": 15,
         "assists82": 13,
         "plusMinus82": 7,
-        "rating": 50
+        "rating": 81
       },
       {
         "id": 8479400,
@@ -4190,7 +4582,7 @@
         "goals82": 14.1,
         "assists82": 39.6,
         "plusMinus82": -11.3,
-        "rating": 62
+        "rating": 86
       },
       {
         "id": 8479520,
@@ -4200,7 +4592,7 @@
         "goals82": 4,
         "assists82": 5,
         "plusMinus82": -2,
-        "rating": 40
+        "rating": 80
       },
       {
         "id": 8483573,
@@ -4210,7 +4602,7 @@
         "goals82": 15.9,
         "assists82": 15.9,
         "plusMinus82": 10.6,
-        "rating": 53
+        "rating": 71
       },
       {
         "id": 8479385,
@@ -4220,7 +4612,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 88
       },
       {
         "id": 8484186,
@@ -4250,7 +4642,7 @@
         "goals82": 32,
         "assists82": 32,
         "plusMinus82": -5,
-        "rating": 68
+        "rating": 90
       },
       {
         "id": 8481656,
@@ -4260,7 +4652,7 @@
         "goals82": 27,
         "assists82": 29.1,
         "plusMinus82": 21.6,
-        "rating": 67
+        "rating": 87
       },
       {
         "id": 8484999,
@@ -4280,7 +4672,7 @@
         "goals82": 15.8,
         "assists82": 21,
         "plusMinus82": 17.9,
-        "rating": 56
+        "rating": 68
       },
       {
         "id": 8478440,
@@ -4290,7 +4682,7 @@
         "goals82": 19.5,
         "assists82": 40,
         "plusMinus82": 2.1,
-        "rating": 66
+        "rating": 89
       },
       {
         "id": 8477949,
@@ -4300,7 +4692,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 87
       },
       {
         "id": 8476880,
@@ -4310,7 +4702,7 @@
         "goals82": 34.2,
         "assists82": 36.4,
         "plusMinus82": 17.1,
-        "rating": 74
+        "rating": 86
       },
       {
         "id": 8479345,
@@ -4320,17 +4712,17 @@
         "goals82": 26.7,
         "assists82": 34.9,
         "plusMinus82": 20.5,
-        "rating": 89
+        "rating": 87
       },
       {
         "id": 8480796,
-        "name": "Martin Fehérváry",
+        "name": "Martin Feh\u00e9rv\u00e1ry",
         "position": "D",
         "gamesPlayed": 81,
         "goals82": 5.1,
         "assists82": 22.3,
         "plusMinus82": 15.2,
-        "rating": 60
+        "rating": 86
       },
       {
         "id": 8484873,
@@ -4350,7 +4742,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 82
       },
       {
         "id": 8475795,
@@ -4360,7 +4752,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": -6.3,
-        "rating": 34
+        "rating": 75
       },
       {
         "id": 8478911,
@@ -4370,7 +4762,7 @@
         "goals82": 2.1,
         "assists82": 17.6,
         "plusMinus82": 18.7,
-        "rating": 54
+        "rating": 84
       },
       {
         "id": 8480873,
@@ -4380,7 +4772,7 @@
         "goals82": 5.6,
         "assists82": 27,
         "plusMinus82": 4.5,
-        "rating": 63
+        "rating": 84
       },
       {
         "id": 8477845,
@@ -4390,7 +4782,7 @@
         "goals82": 3.6,
         "assists82": 13.3,
         "plusMinus82": 7.2,
-        "rating": 50
+        "rating": 82
       },
       {
         "id": 8479292,
@@ -4399,7 +4791,7 @@
         "gamesPlayed": 21,
         "savePercentage": 0.878738,
         "goalsAgainstAverage": 3.515155,
-        "rating": 30
+        "rating": 83
       },
       {
         "id": 8483532,
@@ -4417,7 +4809,35 @@
         "gamesPlayed": 58,
         "savePercentage": 0.911783,
         "goalsAgainstAverage": 2.438281,
-        "rating": 79
+        "rating": 86
+      },
+      {
+        "id": -1,
+        "name": "Connor McMichael",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 86
+      },
+      {
+        "id": -1,
+        "name": "David Kampf",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 82
+      },
+      {
+        "id": -1,
+        "name": "Sonny Milano",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 81
+      },
+      {
+        "id": -1,
+        "name": "Declan Chisholm",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 78
       }
     ]
   },
@@ -4436,7 +4856,7 @@
         "goals82": 35.7,
         "assists82": 53.5,
         "plusMinus82": -21.4,
-        "rating": 79
+        "rating": 88
       },
       {
         "id": 8477479,
@@ -4446,7 +4866,7 @@
         "goals82": 33.2,
         "assists82": 27,
         "plusMinus82": -16.6,
-        "rating": 65
+        "rating": 82
       },
       {
         "id": 8484793,
@@ -4466,7 +4886,7 @@
         "goals82": 15,
         "assists82": 15,
         "plusMinus82": -16,
-        "rating": 49
+        "rating": 84
       },
       {
         "id": 8485391,
@@ -4496,7 +4916,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 81
       },
       {
         "id": 8478043,
@@ -4506,7 +4926,7 @@
         "goals82": 2.8,
         "assists82": 2.8,
         "plusMinus82": -5.7,
-        "rating": 37
+        "rating": 79
       },
       {
         "id": 8484185,
@@ -4526,7 +4946,7 @@
         "goals82": 8.2,
         "assists82": 8.2,
         "plusMinus82": -16.4,
-        "rating": 42
+        "rating": 82
       },
       {
         "id": 8481624,
@@ -4536,7 +4956,7 @@
         "goals82": 19.2,
         "assists82": 19.2,
         "plusMinus82": 2.1,
-        "rating": 55
+        "rating": 81
       },
       {
         "id": 8484197,
@@ -4556,7 +4976,7 @@
         "goals82": 18.6,
         "assists82": 32.3,
         "plusMinus82": -26.1,
-        "rating": 59
+        "rating": 82
       },
       {
         "id": 8482172,
@@ -4566,7 +4986,7 @@
         "goals82": 4.6,
         "assists82": 6.2,
         "plusMinus82": -3.1,
-        "rating": 40
+        "rating": 75
       },
       {
         "id": 8476882,
@@ -4576,7 +4996,7 @@
         "goals82": 15.3,
         "assists82": 23,
         "plusMinus82": -32.8,
-        "rating": 52
+        "rating": 84
       },
       {
         "id": 8476952,
@@ -4586,7 +5006,7 @@
         "goals82": 0,
         "assists82": 10.3,
         "plusMinus82": 0,
-        "rating": 40
+        "rating": 77
       },
       {
         "id": 8481524,
@@ -4596,7 +5016,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 85
       },
       {
         "id": 8482807,
@@ -4626,7 +5046,7 @@
         "goals82": 6.4,
         "assists82": 11.7,
         "plusMinus82": -17,
-        "rating": 48
+        "rating": 76
       },
       {
         "id": 8483466,
@@ -4666,7 +5086,7 @@
         "goals82": 2,
         "assists82": 19.2,
         "plusMinus82": -16.2,
-        "rating": 51
+        "rating": 84
       },
       {
         "id": 8481519,
@@ -4675,7 +5095,7 @@
         "gamesPlayed": 55,
         "savePercentage": 0.902085,
         "goalsAgainstAverage": 2.823958,
-        "rating": 58
+        "rating": 83
       },
       {
         "id": 8482821,
@@ -4684,7 +5104,21 @@
         "gamesPlayed": 26,
         "savePercentage": 0.879845,
         "goalsAgainstAverage": 3.799494,
-        "rating": 30
+        "rating": 82
+      },
+      {
+        "id": -1,
+        "name": "Andre Burakovsky",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 83
+      },
+      {
+        "id": -1,
+        "name": "Louis Crevier",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 75
       }
     ]
   },
@@ -4713,7 +5147,7 @@
         "goals82": 20.5,
         "assists82": 25.6,
         "plusMinus82": -15.4,
-        "rating": 57
+        "rating": 87
       },
       {
         "id": 8480448,
@@ -4723,7 +5157,7 @@
         "goals82": 21,
         "assists82": 14,
         "plusMinus82": 18,
-        "rating": 55
+        "rating": 78
       },
       {
         "id": 8481641,
@@ -4743,7 +5177,7 @@
         "goals82": 19.1,
         "assists82": 28.7,
         "plusMinus82": 39.6,
-        "rating": 64
+        "rating": 85
       },
       {
         "id": 8477476,
@@ -4753,7 +5187,7 @@
         "goals82": 24.6,
         "assists82": 31.6,
         "plusMinus82": 37.5,
-        "rating": 69
+        "rating": 85
       },
       {
         "id": 8477492,
@@ -4763,7 +5197,7 @@
         "goals82": 54.3,
         "assists82": 75.9,
         "plusMinus82": 58.4,
-        "rating": 100
+        "rating": 96
       },
       {
         "id": 8480039,
@@ -4773,7 +5207,7 @@
         "goals82": 39.9,
         "assists82": 65.2,
         "plusMinus82": 49.4,
-        "rating": 95
+        "rating": 90
       },
       {
         "id": 8475754,
@@ -4783,7 +5217,7 @@
         "goals82": 33.4,
         "assists82": 32.4,
         "plusMinus82": 15.2,
-        "rating": 71
+        "rating": 86
       },
       {
         "id": 8481186,
@@ -4803,7 +5237,7 @@
         "goals82": 16.4,
         "assists82": 10.9,
         "plusMinus82": 0,
-        "rating": 49
+        "rating": 83
       },
       {
         "id": 8482768,
@@ -4823,7 +5257,7 @@
         "goals82": 13.7,
         "assists82": 6.8,
         "plusMinus82": 6.8,
-        "rating": 53
+        "rating": 78
       },
       {
         "id": 8470613,
@@ -4833,7 +5267,7 @@
         "goals82": 12,
         "assists82": 23,
         "plusMinus82": 33,
-        "rating": 68
+        "rating": 85
       },
       {
         "id": 8476967,
@@ -4843,7 +5277,7 @@
         "goals82": 0,
         "assists82": 9.1,
         "plusMinus82": 3,
-        "rating": 43
+        "rating": 82
       },
       {
         "id": 8480069,
@@ -4853,7 +5287,7 @@
         "goals82": 21.9,
         "assists82": 64.5,
         "plusMinus82": 35,
-        "rating": 100
+        "rating": 95
       },
       {
         "id": 8484258,
@@ -4863,7 +5297,7 @@
         "goals82": 8,
         "assists82": 32,
         "plusMinus82": 43,
-        "rating": 73
+        "rating": 79
       },
       {
         "id": 8476312,
@@ -4873,7 +5307,7 @@
         "goals82": 5.2,
         "assists82": 27,
         "plusMinus82": 43.6,
-        "rating": 67
+        "rating": 85
       },
       {
         "id": 8478038,
@@ -4883,7 +5317,7 @@
         "goals82": 3.6,
         "assists82": 25.3,
         "plusMinus82": 44.6,
-        "rating": 64
+        "rating": 89
       },
       {
         "id": 8478406,
@@ -4892,7 +5326,7 @@
         "gamesPlayed": 39,
         "savePercentage": 0.903537,
         "goalsAgainstAverage": 2.505006,
-        "rating": 62
+        "rating": 86
       },
       {
         "id": 8475809,
@@ -4901,7 +5335,42 @@
         "gamesPlayed": 45,
         "savePercentage": 0.921317,
         "goalsAgainstAverage": 2.02427,
-        "rating": 100
+        "rating": 81
+      },
+      {
+        "id": -1,
+        "name": "Valeri Nichushkin",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Ross Colton",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 84
+      },
+      {
+        "id": -1,
+        "name": "Logan O&#8217;Connor",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 81
+      },
+      {
+        "id": -1,
+        "name": "Jack Drury",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 80
+      },
+      {
+        "id": -1,
+        "name": "Keaton Middleton",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 74
       }
     ]
   },
@@ -4930,7 +5399,7 @@
         "goals82": 20.5,
         "assists82": 28.7,
         "plusMinus82": 10.9,
-        "rating": 62
+        "rating": 85
       },
       {
         "id": 8476278,
@@ -4940,7 +5409,7 @@
         "goals82": 4.7,
         "assists82": 12.9,
         "plusMinus82": -2.3,
-        "rating": 44
+        "rating": 80
       },
       {
         "id": 8482145,
@@ -4950,7 +5419,7 @@
         "goals82": 20,
         "assists82": 21,
         "plusMinus82": 6,
-        "rating": 57
+        "rating": 81
       },
       {
         "id": 8478047,
@@ -4960,11 +5429,11 @@
         "goals82": 6.3,
         "assists82": 6.3,
         "plusMinus82": -44.2,
-        "rating": 37
+        "rating": 82
       },
       {
         "id": 8480840,
-        "name": "Oskar Bäck",
+        "name": "Oskar B\u00e4ck",
         "position": "C",
         "gamesPlayed": 72,
         "goals82": 5.7,
@@ -4980,7 +5449,7 @@
         "goals82": 23,
         "assists82": 41.7,
         "plusMinus82": -4.3,
-        "rating": 68
+        "rating": 89
       },
       {
         "id": 8477454,
@@ -5000,7 +5469,7 @@
         "goals82": 2.8,
         "assists82": 21.2,
         "plusMinus82": 2.8,
-        "rating": 48
+        "rating": 82
       },
       {
         "id": 8478449,
@@ -5010,7 +5479,7 @@
         "goals82": 23.2,
         "assists82": 44.9,
         "plusMinus82": 24.8,
-        "rating": 73
+        "rating": 87
       },
       {
         "id": 8484829,
@@ -5040,7 +5509,7 @@
         "goals82": 45,
         "assists82": 41,
         "plusMinus82": -5,
-        "rating": 80
+        "rating": 86
       },
       {
         "id": 8478420,
@@ -5050,7 +5519,7 @@
         "goals82": 28.2,
         "assists82": 70.5,
         "plusMinus82": 0,
-        "rating": 87
+        "rating": 93
       },
       {
         "id": 8480027,
@@ -5060,7 +5529,7 @@
         "goals82": 45,
         "assists82": 51,
         "plusMinus82": 22,
-        "rating": 88
+        "rating": 89
       },
       {
         "id": 8475794,
@@ -5070,7 +5539,7 @@
         "goals82": 21.3,
         "assists82": 30.4,
         "plusMinus82": 30.4,
-        "rating": 65
+        "rating": 86
       },
       {
         "id": 8479351,
@@ -5080,7 +5549,7 @@
         "goals82": 13.5,
         "assists82": 23.6,
         "plusMinus82": 3.4,
-        "rating": 55
+        "rating": 81
       },
       {
         "id": 8483425,
@@ -5110,7 +5579,7 @@
         "goals82": 7,
         "assists82": 35.1,
         "plusMinus82": 3.5,
-        "rating": 71
+        "rating": 88
       },
       {
         "id": 8480036,
@@ -5120,7 +5589,7 @@
         "goals82": 9.6,
         "assists82": 57.5,
         "plusMinus82": 9.6,
-        "rating": 92
+        "rating": 91
       },
       {
         "id": 8476902,
@@ -5130,7 +5599,7 @@
         "goals82": 6,
         "assists82": 26,
         "plusMinus82": 30,
-        "rating": 65
+        "rating": 87
       },
       {
         "id": 8480878,
@@ -5140,7 +5609,7 @@
         "goals82": 4.7,
         "assists82": 12.6,
         "plusMinus82": 18.9,
-        "rating": 52
+        "rating": 79
       },
       {
         "id": 8480950,
@@ -5150,7 +5619,7 @@
         "goals82": 1.5,
         "assists82": 12.4,
         "plusMinus82": 1.5,
-        "rating": 47
+        "rating": 82
       },
       {
         "id": 8474574,
@@ -5160,7 +5629,7 @@
         "goals82": 0,
         "assists82": 15.4,
         "plusMinus82": 10.3,
-        "rating": 49
+        "rating": 84
       },
       {
         "id": 8475755,
@@ -5179,7 +5648,7 @@
         "gamesPlayed": 30,
         "savePercentage": 0.906579,
         "goalsAgainstAverage": 2.42735,
-        "rating": 69
+        "rating": 83
       },
       {
         "id": 8479979,
@@ -5188,7 +5657,14 @@
         "gamesPlayed": 54,
         "savePercentage": 0.899417,
         "goalsAgainstAverage": 2.592212,
-        "rating": 54
+        "rating": 90
+      },
+      {
+        "id": -1,
+        "name": "Vladislav Kolyachonok",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 76
       }
     ]
   },
@@ -5207,7 +5683,7 @@
         "goals82": 0,
         "assists82": 27.3,
         "plusMinus82": 13.7,
-        "rating": 51
+        "rating": 80
       },
       {
         "id": 8481557,
@@ -5217,7 +5693,7 @@
         "goals82": 45.3,
         "assists82": 46.4,
         "plusMinus82": 19.4,
-        "rating": 85
+        "rating": 89
       },
       {
         "id": 8481553,
@@ -5227,7 +5703,7 @@
         "goals82": 12.6,
         "assists82": 12.6,
         "plusMinus82": -12.6,
-        "rating": 47
+        "rating": 83
       },
       {
         "id": 8478493,
@@ -5237,7 +5713,7 @@
         "goals82": 22.3,
         "assists82": 37.5,
         "plusMinus82": 18.7,
-        "rating": 68
+        "rating": 86
       },
       {
         "id": 8477952,
@@ -5257,7 +5733,7 @@
         "goals82": 11.7,
         "assists82": 7.3,
         "plusMinus82": -17.6,
-        "rating": 43
+        "rating": 83
       },
       {
         "id": 8473422,
@@ -5267,7 +5743,7 @@
         "goals82": 4.8,
         "assists82": 14.5,
         "plusMinus82": 0,
-        "rating": 45
+        "rating": 82
       },
       {
         "id": 8483452,
@@ -5287,7 +5763,7 @@
         "goals82": 24.8,
         "assists82": 21.6,
         "plusMinus82": -1.1,
-        "rating": 59
+        "rating": 82
       },
       {
         "id": 8475149,
@@ -5297,7 +5773,7 @@
         "goals82": 16.4,
         "assists82": 37.2,
         "plusMinus82": 19.7,
-        "rating": 65
+        "rating": 81
       },
       {
         "id": 8480259,
@@ -5307,7 +5783,7 @@
         "goals82": 2.9,
         "assists82": 5.9,
         "plusMinus82": -29.3,
-        "rating": 36
+        "rating": 70
       },
       {
         "id": 8478864,
@@ -5317,7 +5793,7 @@
         "goals82": 47.3,
         "assists82": 46.3,
         "plusMinus82": 10.5,
-        "rating": 85
+        "rating": 94
       },
       {
         "id": 8477446,
@@ -5327,7 +5803,7 @@
         "goals82": 12.3,
         "assists82": 8.2,
         "plusMinus82": -4.1,
-        "rating": 45
+        "rating": 79
       },
       {
         "id": 8481477,
@@ -5337,7 +5813,7 @@
         "goals82": 8.4,
         "assists82": 10,
         "plusMinus82": 0,
-        "rating": 45
+        "rating": 80
       },
       {
         "id": 8475765,
@@ -5347,7 +5823,7 @@
         "goals82": 25.1,
         "assists82": 26.2,
         "plusMinus82": -12,
-        "rating": 61
+        "rating": 83
       },
       {
         "id": 8478508,
@@ -5357,7 +5833,7 @@
         "goals82": 6,
         "assists82": 17,
         "plusMinus82": 13,
-        "rating": 48
+        "rating": 80
       },
       {
         "id": 8483525,
@@ -5377,7 +5853,7 @@
         "goals82": 20.8,
         "assists82": 54.2,
         "plusMinus82": -6.9,
-        "rating": 74
+        "rating": 87
       },
       {
         "id": 8474567,
@@ -5387,7 +5863,7 @@
         "goals82": 4,
         "assists82": 8,
         "plusMinus82": 16,
-        "rating": 47
+        "rating": 81
       },
       {
         "id": 8476463,
@@ -5397,7 +5873,7 @@
         "goals82": 5.3,
         "assists82": 18.5,
         "plusMinus82": 25.1,
-        "rating": 58
+        "rating": 88
       },
       {
         "id": 8482122,
@@ -5407,7 +5883,7 @@
         "goals82": 15.4,
         "assists82": 36.9,
         "plusMinus82": 18.5,
-        "rating": 81
+        "rating": 87
       },
       {
         "id": 8486166,
@@ -5427,7 +5903,7 @@
         "goals82": 8.5,
         "assists82": 82,
         "plusMinus82": 10.3,
-        "rating": 100
+        "rating": 95
       },
       {
         "id": 8482094,
@@ -5467,7 +5943,7 @@
         "goals82": 2.2,
         "assists82": 15.3,
         "plusMinus82": 2.2,
-        "rating": 50
+        "rating": 84
       },
       {
         "id": 8473507,
@@ -5477,7 +5953,7 @@
         "goals82": 0,
         "assists82": 9.1,
         "plusMinus82": -45.6,
-        "rating": 38
+        "rating": 82
       },
       {
         "id": 8483766,
@@ -5497,7 +5973,7 @@
         "goals82": 6.2,
         "assists82": 16.6,
         "plusMinus82": 2.1,
-        "rating": 54
+        "rating": 85
       },
       {
         "id": 8479406,
@@ -5506,7 +5982,7 @@
         "gamesPlayed": 50,
         "savePercentage": 0.904139,
         "goalsAgainstAverage": 2.688755,
-        "rating": 63
+        "rating": 89
       },
       {
         "id": 8483918,
@@ -5533,7 +6009,7 @@
         "gamesPlayed": 35,
         "savePercentage": 0.915686,
         "goalsAgainstAverage": 2.614379,
-        "rating": 86
+        "rating": 80
       },
       {
         "id": 8485037,
@@ -5561,7 +6037,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 84
       },
       {
         "id": 8480835,
@@ -5571,7 +6047,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 80
       },
       {
         "id": 8481726,
@@ -5591,7 +6067,7 @@
         "goals82": 12.1,
         "assists82": 44.5,
         "plusMinus82": 1,
-        "rating": 65
+        "rating": 82
       },
       {
         "id": 8484494,
@@ -5611,7 +6087,7 @@
         "goals82": 40,
         "assists82": 35,
         "plusMinus82": -2,
-        "rating": 74
+        "rating": 89
       },
       {
         "id": 8475287,
@@ -5621,7 +6097,7 @@
         "goals82": 14.2,
         "assists82": 24.3,
         "plusMinus82": -15.2,
-        "rating": 54
+        "rating": 82
       },
       {
         "id": 8479370,
@@ -5631,7 +6107,7 @@
         "goals82": 9.5,
         "assists82": 9.5,
         "plusMinus82": -25,
-        "rating": 42
+        "rating": 79
       },
       {
         "id": 8476539,
@@ -5641,7 +6117,7 @@
         "goals82": 15.9,
         "assists82": 25.1,
         "plusMinus82": -23.8,
-        "rating": 54
+        "rating": 86
       },
       {
         "id": 8475158,
@@ -5661,7 +6137,7 @@
         "goals82": 42,
         "assists82": 24,
         "plusMinus82": -17,
-        "rating": 68
+        "rating": 86
       },
       {
         "id": 8482103,
@@ -5691,7 +6167,7 @@
         "goals82": 0,
         "assists82": 14.2,
         "plusMinus82": -1.6,
-        "rating": 47
+        "rating": 81
       },
       {
         "id": 8479980,
@@ -5701,7 +6177,7 @@
         "goals82": 4,
         "assists82": 15.9,
         "plusMinus82": -13.2,
-        "rating": 50
+        "rating": 84
       },
       {
         "id": 8474600,
@@ -5711,7 +6187,7 @@
         "goals82": 15.7,
         "assists82": 50.6,
         "plusMinus82": -18.1,
-        "rating": 89
+        "rating": 92
       },
       {
         "id": 8480246,
@@ -5721,7 +6197,7 @@
         "goals82": 3.1,
         "assists82": 10.4,
         "plusMinus82": -14.5,
-        "rating": 45
+        "rating": 82
       },
       {
         "id": 8476869,
@@ -5731,7 +6207,7 @@
         "goals82": 3,
         "assists82": 23,
         "plusMinus82": -7,
-        "rating": 56
+        "rating": 87
       },
       {
         "id": 8482482,
@@ -5741,7 +6217,7 @@
         "goals82": 1.4,
         "assists82": 21.2,
         "plusMinus82": 2.8,
-        "rating": 54
+        "rating": 71
       },
       {
         "id": 8481020,
@@ -5750,7 +6226,7 @@
         "gamesPlayed": 28,
         "savePercentage": 0.907173,
         "goalsAgainstAverage": 2.679047,
-        "rating": 69
+        "rating": 80
       },
       {
         "id": 8477424,
@@ -5759,7 +6235,28 @@
         "gamesPlayed": 59,
         "savePercentage": 0.893529,
         "goalsAgainstAverage": 3.163829,
-        "rating": 38
+        "rating": 88
+      },
+      {
+        "id": -1,
+        "name": "Ryan O&#8217;Reilly",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Jordan Oesterle",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 77
+      },
+      {
+        "id": -1,
+        "name": "Andreas Englund",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 76
       }
     ]
   },
@@ -5778,7 +6275,7 @@
         "goals82": 13.7,
         "assists82": 22.8,
         "plusMinus82": -4.6,
-        "rating": 54
+        "rating": 80
       },
       {
         "id": 8477402,
@@ -5788,7 +6285,7 @@
         "goals82": 20.2,
         "assists82": 28.3,
         "plusMinus82": -10.1,
-        "rating": 59
+        "rating": 85
       },
       {
         "id": 8477494,
@@ -5798,7 +6295,7 @@
         "goals82": 9.1,
         "assists82": 18.2,
         "plusMinus82": -18.2,
-        "rating": 47
+        "rating": 84
       },
       {
         "id": 8484164,
@@ -5828,7 +6325,7 @@
         "goals82": 30.6,
         "assists82": 40.3,
         "plusMinus82": 18.1,
-        "rating": 74
+        "rating": 86
       },
       {
         "id": 8481580,
@@ -5838,7 +6335,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 86
       },
       {
         "id": 8482745,
@@ -5848,7 +6345,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 85
       },
       {
         "id": 8482089,
@@ -5858,7 +6355,7 @@
         "goals82": 17.8,
         "assists82": 25,
         "plusMinus82": -8.3,
-        "rating": 57
+        "rating": 84
       },
       {
         "id": 8483516,
@@ -5878,7 +6375,7 @@
         "goals82": 7.9,
         "assists82": 18.9,
         "plusMinus82": -28.4,
-        "rating": 46
+        "rating": 82
       },
       {
         "id": 8480459,
@@ -5888,7 +6385,7 @@
         "goals82": 16.7,
         "assists82": 20.5,
         "plusMinus82": 16.7,
-        "rating": 56
+        "rating": 83
       },
       {
         "id": 8480023,
@@ -5898,7 +6395,7 @@
         "goals82": 32,
         "assists82": 50,
         "plusMinus82": 28.2,
-        "rating": 81
+        "rating": 89
       },
       {
         "id": 8480281,
@@ -5908,7 +6405,7 @@
         "goals82": 5,
         "assists82": 8.8,
         "plusMinus82": -13.9,
-        "rating": 41
+        "rating": 80
       },
       {
         "id": 8477573,
@@ -5918,7 +6415,7 @@
         "goals82": 7.1,
         "assists82": 12.5,
         "plusMinus82": -16,
-        "rating": 44
+        "rating": 78
       },
       {
         "id": 8481598,
@@ -5928,7 +6425,7 @@
         "goals82": 6.1,
         "assists82": 28.3,
         "plusMinus82": 14.2,
-        "rating": 65
+        "rating": 84
       },
       {
         "id": 8478443,
@@ -5938,7 +6435,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 86
       },
       {
         "id": 8475764,
@@ -5948,7 +6445,7 @@
         "goals82": 4,
         "assists82": 26,
         "plusMinus82": -11,
-        "rating": 59
+        "rating": 84
       },
       {
         "id": 8475718,
@@ -5958,7 +6455,7 @@
         "goals82": 9.1,
         "assists82": 9.1,
         "plusMinus82": 45.6,
-        "rating": 55
+        "rating": 80
       },
       {
         "id": 8482516,
@@ -5968,7 +6465,7 @@
         "goals82": 5.7,
         "assists82": 2.8,
         "plusMinus82": 2.8,
-        "rating": 42
+        "rating": 74
       },
       {
         "id": 8482733,
@@ -5988,7 +6485,7 @@
         "goals82": 4.3,
         "assists82": 14.9,
         "plusMinus82": -6.4,
-        "rating": 50
+        "rating": 88
       },
       {
         "id": 8481006,
@@ -5998,7 +6495,7 @@
         "goals82": 3.6,
         "assists82": 16.6,
         "plusMinus82": -4.8,
-        "rating": 51
+        "rating": 77
       },
       {
         "id": 8476412,
@@ -6007,7 +6504,7 @@
         "gamesPlayed": 41,
         "savePercentage": 0.873267,
         "goalsAgainstAverage": 3.327845,
-        "rating": 30
+        "rating": 86
       },
       {
         "id": 8480981,
@@ -6016,7 +6513,14 @@
         "gamesPlayed": 46,
         "savePercentage": 0.9096,
         "goalsAgainstAverage": 2.606062,
-        "rating": 74
+        "rating": 82
+      },
+      {
+        "id": -1,
+        "name": "Jordan Kyrou",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 88
       }
     ]
   },
@@ -6055,7 +6559,7 @@
         "goals82": 16.6,
         "assists82": 15.6,
         "plusMinus82": 4.2,
-        "rating": 52
+        "rating": 80
       },
       {
         "id": 8483431,
@@ -6065,7 +6569,7 @@
         "goals82": 36.4,
         "assists82": 28.9,
         "plusMinus82": 4.6,
-        "rating": 70
+        "rating": 88
       },
       {
         "id": 8478474,
@@ -6075,7 +6579,7 @@
         "goals82": 24.3,
         "assists82": 20.2,
         "plusMinus82": 20.2,
-        "rating": 61
+        "rating": 82
       },
       {
         "id": 8482699,
@@ -6085,7 +6589,7 @@
         "goals82": 41.5,
         "assists82": 34.3,
         "plusMinus82": 7.3,
-        "rating": 76
+        "rating": 87
       },
       {
         "id": 8480849,
@@ -6095,7 +6599,7 @@
         "goals82": 12.2,
         "assists82": 18.4,
         "plusMinus82": 3.7,
-        "rating": 51
+        "rating": 83
       },
       {
         "id": 8479656,
@@ -6115,7 +6619,7 @@
         "goals82": 26,
         "assists82": 62,
         "plusMinus82": 21,
-        "rating": 83
+        "rating": 90
       },
       {
         "id": 8477021,
@@ -6125,7 +6629,7 @@
         "goals82": 16.9,
         "assists82": 14.5,
         "plusMinus82": 0,
-        "rating": 51
+        "rating": 83
       },
       {
         "id": 8480855,
@@ -6135,7 +6639,7 @@
         "goals82": 9.8,
         "assists82": 17.5,
         "plusMinus82": 12,
-        "rating": 51
+        "rating": 82
       },
       {
         "id": 8481827,
@@ -6175,7 +6679,7 @@
         "goals82": 33,
         "assists82": 41,
         "plusMinus82": 17,
-        "rating": 76
+        "rating": 86
       },
       {
         "id": 8478831,
@@ -6185,7 +6689,7 @@
         "goals82": 4.1,
         "assists82": 14.4,
         "plusMinus82": -9.2,
-        "rating": 44
+        "rating": 80
       },
       {
         "id": 8479293,
@@ -6195,7 +6699,7 @@
         "goals82": 0,
         "assists82": 4.4,
         "plusMinus82": -22,
-        "rating": 35
+        "rating": 83
       },
       {
         "id": 8479977,
@@ -6215,7 +6719,7 @@
         "goals82": 3,
         "assists82": 20,
         "plusMinus82": 16,
-        "rating": 56
+        "rating": 82
       },
       {
         "id": 8480084,
@@ -6225,7 +6729,7 @@
         "goals82": 4.1,
         "assists82": 12.3,
         "plusMinus82": 8.2,
-        "rating": 50
+        "rating": 76
       },
       {
         "id": 8480434,
@@ -6235,7 +6739,7 @@
         "goals82": 6.8,
         "assists82": 30.1,
         "plusMinus82": -16.4,
-        "rating": 64
+        "rating": 85
       },
       {
         "id": 8483472,
@@ -6255,7 +6759,7 @@
         "goals82": 4.1,
         "assists82": 32.8,
         "plusMinus82": 43.1,
-        "rating": 71
+        "rating": 84
       },
       {
         "id": 8481059,
@@ -6265,7 +6769,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 80
       },
       {
         "id": 8477220,
@@ -6275,7 +6779,7 @@
         "goals82": 5,
         "assists82": 17,
         "plusMinus82": 31,
-        "rating": 57
+        "rating": 82
       },
       {
         "id": 8479410,
@@ -6285,7 +6789,7 @@
         "goals82": 10.5,
         "assists82": 51.5,
         "plusMinus82": 2.1,
-        "rating": 87
+        "rating": 88
       },
       {
         "id": 8484386,
@@ -6315,7 +6819,7 @@
         "goals82": 4.3,
         "assists82": 25.9,
         "plusMinus82": 8.6,
-        "rating": 61
+        "rating": 88
       },
       {
         "id": 8483530,
@@ -6333,7 +6837,7 @@
         "gamesPlayed": 22,
         "savePercentage": 0.883399,
         "goalsAgainstAverage": 2.934715,
-        "rating": 30
+        "rating": 81
       },
       {
         "id": 8478872,
@@ -6342,7 +6846,7 @@
         "gamesPlayed": 64,
         "savePercentage": 0.896679,
         "goalsAgainstAverage": 2.745921,
-        "rating": 47
+        "rating": 85
       },
       {
         "id": 8480191,
@@ -6352,6 +6856,20 @@
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
         "rating": 65
+      },
+      {
+        "id": -1,
+        "name": "JJ Peterka",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 86
+      },
+      {
+        "id": -1,
+        "name": "Liam O&#8217;Brien",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 78
       }
     ]
   },
@@ -6370,7 +6888,7 @@
         "goals82": 13.9,
         "assists82": 15.1,
         "plusMinus82": 6.3,
-        "rating": 51
+        "rating": 80
       },
       {
         "id": 8482787,
@@ -6390,7 +6908,7 @@
         "goals82": 39,
         "assists82": 53,
         "plusMinus82": -2,
-        "rating": 83
+        "rating": 92
       },
       {
         "id": 8480113,
@@ -6400,7 +6918,7 @@
         "goals82": 13.5,
         "assists82": 16.6,
         "plusMinus82": 3.1,
-        "rating": 51
+        "rating": 82
       },
       {
         "id": 8481043,
@@ -6420,7 +6938,7 @@
         "goals82": 5.9,
         "assists82": 18.7,
         "plusMinus82": -7,
-        "rating": 47
+        "rating": 84
       },
       {
         "id": 8476480,
@@ -6430,7 +6948,7 @@
         "goals82": 10.9,
         "assists82": 8.2,
         "plusMinus82": -17.8,
-        "rating": 43
+        "rating": 83
       },
       {
         "id": 8475799,
@@ -6440,7 +6958,7 @@
         "goals82": 10.8,
         "assists82": 14.8,
         "plusMinus82": -9.4,
-        "rating": 47
+        "rating": 84
       },
       {
         "id": 8474679,
@@ -6450,7 +6968,7 @@
         "goals82": 1.6,
         "assists82": 17.7,
         "plusMinus82": -12.9,
-        "rating": 44
+        "rating": 83
       },
       {
         "id": 8482149,
@@ -6460,7 +6978,7 @@
         "goals82": 14.5,
         "assists82": 24.1,
         "plusMinus82": -10.9,
-        "rating": 54
+        "rating": 84
       },
       {
         "id": 8482765,
@@ -6480,7 +6998,7 @@
         "goals82": 36,
         "assists82": 67,
         "plusMinus82": 0,
-        "rating": 89
+        "rating": 91
       },
       {
         "id": 8473604,
@@ -6500,7 +7018,7 @@
         "goals82": 30,
         "assists82": 39,
         "plusMinus82": -12,
-        "rating": 70
+        "rating": 86
       },
       {
         "id": 8480196,
@@ -6510,7 +7028,7 @@
         "goals82": 0,
         "assists82": 16.4,
         "plusMinus82": -43.7,
-        "rating": 44
+        "rating": 79
       },
       {
         "id": 8476331,
@@ -6520,7 +7038,7 @@
         "goals82": 3,
         "assists82": 16,
         "plusMinus82": 7,
-        "rating": 52
+        "rating": 84
       },
       {
         "id": 8477938,
@@ -6530,7 +7048,7 @@
         "goals82": 4.3,
         "assists82": 4.3,
         "plusMinus82": -38.8,
-        "rating": 38
+        "rating": 79
       },
       {
         "id": 8481572,
@@ -6540,7 +7058,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 77
       },
       {
         "id": 8476525,
@@ -6550,7 +7068,7 @@
         "goals82": 0,
         "assists82": 9.1,
         "plusMinus82": -36.4,
-        "rating": 39
+        "rating": 81
       },
       {
         "id": 8477504,
@@ -6560,7 +7078,7 @@
         "goals82": 14.9,
         "assists82": 43.7,
         "plusMinus82": 6.4,
-        "rating": 85
+        "rating": 90
       },
       {
         "id": 8480145,
@@ -6570,7 +7088,7 @@
         "goals82": 4.8,
         "assists82": 14.5,
         "plusMinus82": 1.6,
-        "rating": 51
+        "rating": 87
       },
       {
         "id": 8480049,
@@ -6580,7 +7098,7 @@
         "goals82": 1.2,
         "assists82": 16.2,
         "plusMinus82": 6.2,
-        "rating": 50
+        "rating": 84
       },
       {
         "id": 8477480,
@@ -6589,7 +7107,7 @@
         "gamesPlayed": 25,
         "savePercentage": 0.889908,
         "goalsAgainstAverage": 3.127036,
-        "rating": 31
+        "rating": 81
       },
       {
         "id": 8476945,
@@ -6598,7 +7116,49 @@
         "gamesPlayed": 57,
         "savePercentage": 0.895281,
         "goalsAgainstAverage": 2.857605,
-        "rating": 44
+        "rating": 94
+      },
+      {
+        "id": -1,
+        "name": "David Gustafsson",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 79
+      },
+      {
+        "id": -1,
+        "name": "Rasmus Kupari",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 78
+      },
+      {
+        "id": -1,
+        "name": "Jaret Anderson-Dolan",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 77
+      },
+      {
+        "id": -1,
+        "name": "Mason Shaw",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 77
+      },
+      {
+        "id": -1,
+        "name": "Isaak Phillips",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 76
+      },
+      {
+        "id": -1,
+        "name": "Isaac Poulter",
+        "position": "G",
+        "gamesPlayed": 0,
+        "rating": 75
       }
     ]
   },
@@ -6617,7 +7177,7 @@
         "goals82": 34,
         "assists82": 44.5,
         "plusMinus82": 4.7,
-        "rating": 77
+        "rating": 84
       },
       {
         "id": 8483444,
@@ -6637,7 +7197,7 @@
         "goals82": 44.2,
         "assists82": 30.2,
         "plusMinus82": -2.2,
-        "rating": 74
+        "rating": 84
       },
       {
         "id": 8475798,
@@ -6647,7 +7207,7 @@
         "goals82": 26.9,
         "assists82": 31.1,
         "plusMinus82": -12.7,
-        "rating": 64
+        "rating": 87
       },
       {
         "id": 8478424,
@@ -6657,7 +7217,7 @@
         "goals82": 5.6,
         "assists82": 9.3,
         "plusMinus82": -11.2,
-        "rating": 42
+        "rating": 77
       },
       {
         "id": 8477527,
@@ -6667,7 +7227,7 @@
         "goals82": 4,
         "assists82": 14.5,
         "plusMinus82": 0,
-        "rating": 45
+        "rating": 76
       },
       {
         "id": 8473986,
@@ -6677,7 +7237,7 @@
         "goals82": 15,
         "assists82": 18,
         "plusMinus82": -2,
-        "rating": 52
+        "rating": 82
       },
       {
         "id": 8475184,
@@ -6687,7 +7247,7 @@
         "goals82": 24.1,
         "assists82": 30.6,
         "plusMinus82": -4.4,
-        "rating": 63
+        "rating": 84
       },
       {
         "id": 8484201,
@@ -6707,7 +7267,7 @@
         "goals82": 12,
         "assists82": 27.3,
         "plusMinus82": 8.7,
-        "rating": 57
+        "rating": 80
       },
       {
         "id": 8484762,
@@ -6727,7 +7287,7 @@
         "goals82": 25.5,
         "assists82": 51.1,
         "plusMinus82": 14.8,
-        "rating": 77
+        "rating": 86
       },
       {
         "id": 8478366,
@@ -6737,7 +7297,7 @@
         "goals82": 8.2,
         "assists82": 6.6,
         "plusMinus82": -24.6,
-        "rating": 40
+        "rating": 84
       },
       {
         "id": 8479705,
@@ -6777,7 +7337,7 @@
         "goals82": 2.9,
         "assists82": 16.1,
         "plusMinus82": -2.9,
-        "rating": 51
+        "rating": 84
       },
       {
         "id": 8481563,
@@ -6787,7 +7347,7 @@
         "goals82": 2.7,
         "assists82": 17.8,
         "plusMinus82": -5.5,
-        "rating": 52
+        "rating": 75
       },
       {
         "id": 8482731,
@@ -6807,7 +7367,7 @@
         "goals82": 10,
         "assists82": 48,
         "plusMinus82": -2,
-        "rating": 83
+        "rating": 85
       },
       {
         "id": 8483490,
@@ -6817,7 +7377,7 @@
         "goals82": 9,
         "assists82": 15.7,
         "plusMinus82": -3.4,
-        "rating": 55
+        "rating": 82
       },
       {
         "id": 8482178,
@@ -6837,7 +7397,7 @@
         "goals82": 10.1,
         "assists82": 25.3,
         "plusMinus82": -1,
-        "rating": 65
+        "rating": 86
       },
       {
         "id": 8483521,
@@ -6865,7 +7425,7 @@
         "gamesPlayed": 56,
         "savePercentage": 0.888301,
         "goalsAgainstAverage": 3.102878,
-        "rating": 30
+        "rating": 85
       },
       {
         "id": 8478024,
@@ -6874,7 +7434,7 @@
         "gamesPlayed": 20,
         "savePercentage": 0.883895,
         "goalsAgainstAverage": 3.247112,
-        "rating": 30
+        "rating": 84
       },
       {
         "id": 8475852,
@@ -6883,7 +7443,49 @@
         "gamesPlayed": 10,
         "savePercentage": 0.8583,
         "goalsAgainstAverage": 4.070688,
-        "rating": 30
+        "rating": 84
+      },
+      {
+        "id": -1,
+        "name": "John Carlson",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 88
+      },
+      {
+        "id": -1,
+        "name": "Mason McTavish",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Olen Zellweger",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 82
+      },
+      {
+        "id": -1,
+        "name": "Sam Colangelo",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 79
+      },
+      {
+        "id": -1,
+        "name": "Tristan Luneau",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 77
+      },
+      {
+        "id": -1,
+        "name": "Nikita Nesterenko",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 74
       }
     ]
   },
@@ -6902,7 +7504,7 @@
         "goals82": 17,
         "assists82": 26,
         "plusMinus82": 7,
-        "rating": 58
+        "rating": 84
       },
       {
         "id": 8481556,
@@ -6912,7 +7514,7 @@
         "goals82": 5.7,
         "assists82": 11.3,
         "plusMinus82": -14.1,
-        "rating": 42
+        "rating": 80
       },
       {
         "id": 8476399,
@@ -6922,7 +7524,7 @@
         "goals82": 23.8,
         "assists82": 17.8,
         "plusMinus82": 14.3,
-        "rating": 58
+        "rating": 84
       },
       {
         "id": 8482679,
@@ -6932,7 +7534,7 @@
         "goals82": 18.5,
         "assists82": 27.7,
         "plusMinus82": -29.7,
-        "rating": 56
+        "rating": 84
       },
       {
         "id": 8480797,
@@ -6942,7 +7544,7 @@
         "goals82": 20,
         "assists82": 18,
         "plusMinus82": -9,
-        "rating": 54
+        "rating": 81
       },
       {
         "id": 8480028,
@@ -6952,7 +7554,7 @@
         "goals82": 22,
         "assists82": 21,
         "plusMinus82": -16,
-        "rating": 56
+        "rating": 83
       },
       {
         "id": 8484860,
@@ -6992,7 +7594,7 @@
         "goals82": 16.4,
         "assists82": 24.6,
         "plusMinus82": -14.8,
-        "rating": 55
+        "rating": 86
       },
       {
         "id": 8482209,
@@ -7022,7 +7624,7 @@
         "goals82": 5.8,
         "assists82": 7.2,
         "plusMinus82": -5.8,
-        "rating": 41
+        "rating": 79
       },
       {
         "id": 8478109,
@@ -7042,7 +7644,7 @@
         "goals82": 3.7,
         "assists82": 7.5,
         "plusMinus82": -14.9,
-        "rating": 39
+        "rating": 80
       },
       {
         "id": 8481068,
@@ -7052,7 +7654,7 @@
         "goals82": 15.8,
         "assists82": 14.7,
         "plusMinus82": -21,
-        "rating": 49
+        "rating": 83
       },
       {
         "id": 8476458,
@@ -7062,7 +7664,7 @@
         "goals82": 21.6,
         "assists82": 30.2,
         "plusMinus82": -12.9,
-        "rating": 61
+        "rating": 84
       },
       {
         "id": 8484234,
@@ -7092,7 +7694,7 @@
         "goals82": 13.3,
         "assists82": 14.4,
         "plusMinus82": -10,
-        "rating": 48
+        "rating": 82
       },
       {
         "id": 8480860,
@@ -7102,7 +7704,7 @@
         "goals82": 4.3,
         "assists82": 15.1,
         "plusMinus82": 2.2,
-        "rating": 52
+        "rating": 84
       },
       {
         "id": 8479402,
@@ -7112,7 +7714,7 @@
         "goals82": 5.1,
         "assists82": 5.1,
         "plusMinus82": -35.9,
-        "rating": 40
+        "rating": 81
       },
       {
         "id": 8484150,
@@ -7132,7 +7734,7 @@
         "goals82": 0,
         "assists82": 8.4,
         "plusMinus82": -6,
-        "rating": 41
+        "rating": 78
       },
       {
         "id": 8482165,
@@ -7152,7 +7754,7 @@
         "goals82": 7.8,
         "assists82": 46.9,
         "plusMinus82": -3.9,
-        "rating": 80
+        "rating": 81
       },
       {
         "id": 8483495,
@@ -7162,7 +7764,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 82
       },
       {
         "id": 8481167,
@@ -7172,7 +7774,7 @@
         "goals82": 2.1,
         "assists82": 12.6,
         "plusMinus82": -2.1,
-        "rating": 47
+        "rating": 78
       },
       {
         "id": 8484768,
@@ -7192,7 +7794,7 @@
         "goals82": 0,
         "assists82": 26.5,
         "plusMinus82": 5.3,
-        "rating": 58
+        "rating": 82
       },
       {
         "id": 8483709,
@@ -7220,7 +7822,35 @@
         "gamesPlayed": 57,
         "savePercentage": 0.89923,
         "goalsAgainstAverage": 3.010256,
-        "rating": 51
+        "rating": 87
+      },
+      {
+        "id": -1,
+        "name": "Daniil Miromanov",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 80
+      },
+      {
+        "id": -1,
+        "name": "Justin Kirkland",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 78
+      },
+      {
+        "id": -1,
+        "name": "Ivan Prosvetov",
+        "position": "G",
+        "gamesPlayed": 0,
+        "rating": 76
+      },
+      {
+        "id": -1,
+        "name": "Nick Cicek",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 76
       }
     ]
   },
@@ -7249,7 +7879,7 @@
         "goals82": 4.8,
         "assists82": 14.5,
         "plusMinus82": -14.5,
-        "rating": 44
+        "rating": 82
       },
       {
         "id": 8477934,
@@ -7259,7 +7889,7 @@
         "goals82": 44.2,
         "assists82": 78.2,
         "plusMinus82": 16.4,
-        "rating": 100
+        "rating": 96
       },
       {
         "id": 8479365,
@@ -7269,7 +7899,7 @@
         "goals82": 4.4,
         "assists82": 3.3,
         "plusMinus82": -16.6,
-        "rating": 37
+        "rating": 82
       },
       {
         "id": 8474641,
@@ -7279,7 +7909,7 @@
         "goals82": 3.8,
         "assists82": 15.1,
         "plusMinus82": -15.1,
-        "rating": 43
+        "rating": 81
       },
       {
         "id": 8475786,
@@ -7289,7 +7919,7 @@
         "goals82": 43.8,
         "assists82": 29.7,
         "plusMinus82": 18.4,
-        "rating": 76
+        "rating": 87
       },
       {
         "id": 8477406,
@@ -7299,7 +7929,7 @@
         "goals82": 1.9,
         "assists82": 13.3,
         "plusMinus82": -15.3,
-        "rating": 41
+        "rating": 80
       },
       {
         "id": 8479368,
@@ -7309,7 +7939,7 @@
         "goals82": 11.7,
         "assists82": 7.8,
         "plusMinus82": 11.7,
-        "rating": 46
+        "rating": 79
       },
       {
         "id": 8477953,
@@ -7319,7 +7949,7 @@
         "goals82": 16,
         "assists82": 18,
         "plusMinus82": 10,
-        "rating": 54
+        "rating": 81
       },
       {
         "id": 8477508,
@@ -7329,7 +7959,7 @@
         "goals82": 7.3,
         "assists82": 3.6,
         "plusMinus82": -5.5,
-        "rating": 40
+        "rating": 79
       },
       {
         "id": 8478402,
@@ -7339,7 +7969,7 @@
         "goals82": 48,
         "assists82": 90,
         "plusMinus82": 17,
-        "rating": 100
+        "rating": 97
       },
       {
         "id": 8476454,
@@ -7349,7 +7979,7 @@
         "goals82": 22.8,
         "assists82": 41,
         "plusMinus82": -10.2,
-        "rating": 67
+        "rating": 86
       },
       {
         "id": 8481617,
@@ -7359,7 +7989,7 @@
         "goals82": 19,
         "assists82": 18,
         "plusMinus82": 16,
-        "rating": 56
+        "rating": 79
       },
       {
         "id": 8478458,
@@ -7399,7 +8029,7 @@
         "goals82": 21,
         "assists82": 74,
         "plusMinus82": 25,
-        "rating": 100
+        "rating": 88
       },
       {
         "id": 8475218,
@@ -7409,7 +8039,7 @@
         "goals82": 6,
         "assists82": 35,
         "plusMinus82": 32,
-        "rating": 73
+        "rating": 87
       },
       {
         "id": 8480834,
@@ -7419,7 +8049,7 @@
         "goals82": 2.3,
         "assists82": 11.4,
         "plusMinus82": -1.1,
-        "rating": 46
+        "rating": 78
       },
       {
         "id": 8476473,
@@ -7429,7 +8059,7 @@
         "goals82": 4.1,
         "assists82": 12.3,
         "plusMinus82": 4.1,
-        "rating": 49
+        "rating": 83
       },
       {
         "id": 8477498,
@@ -7439,7 +8069,7 @@
         "goals82": 7,
         "assists82": 17,
         "plusMinus82": -12,
-        "rating": 54
+        "rating": 85
       },
       {
         "id": 8481056,
@@ -7459,7 +8089,7 @@
         "goals82": 12.4,
         "assists82": 18.6,
         "plusMinus82": -26.3,
-        "rating": 58
+        "rating": 87
       },
       {
         "id": 8478971,
@@ -7477,7 +8107,7 @@
         "gamesPlayed": 19,
         "savePercentage": 0.857798,
         "goalsAgainstAverage": 3.863463,
-        "rating": 30
+        "rating": 86
       },
       {
         "id": 8475717,
@@ -7486,7 +8116,28 @@
         "gamesPlayed": 16,
         "savePercentage": 0.870732,
         "goalsAgainstAverage": 3.679988,
-        "rating": 30
+        "rating": 79
+      },
+      {
+        "id": -1,
+        "name": "Joshua Brown",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 77
+      },
+      {
+        "id": -1,
+        "name": "James Hamblin",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 75
+      },
+      {
+        "id": -1,
+        "name": "Cam Dineen",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 74
       }
     ]
   },
@@ -7505,7 +8156,7 @@
         "goals82": 15.9,
         "assists82": 14.7,
         "plusMinus82": 1.2,
-        "rating": 51
+        "rating": 81
       },
       {
         "id": 8482124,
@@ -7515,7 +8166,7 @@
         "goals82": 24.9,
         "assists82": 25.9,
         "plusMinus82": -2.1,
-        "rating": 61
+        "rating": 86
       },
       {
         "id": 8477942,
@@ -7525,7 +8176,7 @@
         "goals82": 26.4,
         "assists82": 32.2,
         "plusMinus82": -16.1,
-        "rating": 64
+        "rating": 87
       },
       {
         "id": 8482726,
@@ -7535,7 +8186,7 @@
         "goals82": 7.7,
         "assists82": 6.2,
         "plusMinus82": -9.3,
-        "rating": 41
+        "rating": 74
       },
       {
         "id": 8478472,
@@ -7545,7 +8196,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": -13.7,
-        "rating": 34
+        "rating": 81
       },
       {
         "id": 8477960,
@@ -7555,7 +8206,7 @@
         "goals82": 36.4,
         "assists82": 37.5,
         "plusMinus82": 14.2,
-        "rating": 75
+        "rating": 88
       },
       {
         "id": 8471685,
@@ -7565,7 +8216,7 @@
         "goals82": 14.7,
         "assists82": 31.8,
         "plusMinus82": 23.3,
-        "rating": 62
+        "rating": 88
       },
       {
         "id": 8483808,
@@ -7575,7 +8226,7 @@
         "goals82": 20.5,
         "assists82": 18.9,
         "plusMinus82": -6.3,
-        "rating": 55
+        "rating": 82
       },
       {
         "id": 8482155,
@@ -7585,7 +8236,7 @@
         "goals82": 21,
         "assists82": 23,
         "plusMinus82": 3,
-        "rating": 58
+        "rating": 83
       },
       {
         "id": 8476872,
@@ -7595,7 +8246,7 @@
         "goals82": 19.5,
         "assists82": 11.7,
         "plusMinus82": -7.8,
-        "rating": 51
+        "rating": 83
       },
       {
         "id": 8482408,
@@ -7615,7 +8266,7 @@
         "goals82": 15.4,
         "assists82": 22.6,
         "plusMinus82": 0,
-        "rating": 55
+        "rating": 84
       },
       {
         "id": 8478550,
@@ -7625,7 +8276,7 @@
         "goals82": 28.4,
         "assists82": 56.8,
         "plusMinus82": 28.4,
-        "rating": 83
+        "rating": 92
       },
       {
         "id": 8481532,
@@ -7635,7 +8286,7 @@
         "goals82": 4,
         "assists82": 14.5,
         "plusMinus82": -10.6,
-        "rating": 44
+        "rating": 80
       },
       {
         "id": 8483406,
@@ -7645,7 +8296,7 @@
         "goals82": 6.8,
         "assists82": 9.1,
         "plusMinus82": 0,
-        "rating": 43
+        "rating": 73
       },
       {
         "id": 8479998,
@@ -7655,7 +8306,7 @@
         "goals82": 4.1,
         "assists82": 16.4,
         "plusMinus82": 8.2,
-        "rating": 53
+        "rating": 85
       },
       {
         "id": 8476879,
@@ -7665,7 +8316,7 @@
         "goals82": 1,
         "assists82": 8,
         "plusMinus82": -10,
-        "rating": 41
+        "rating": 81
       },
       {
         "id": 8482730,
@@ -7675,7 +8326,7 @@
         "goals82": 8,
         "assists82": 32,
         "plusMinus82": 11,
-        "rating": 70
+        "rating": 85
       },
       {
         "id": 8474563,
@@ -7685,7 +8336,7 @@
         "goals82": 5.7,
         "assists82": 20.5,
         "plusMinus82": 4.6,
-        "rating": 57
+        "rating": 88
       },
       {
         "id": 8475208,
@@ -7695,7 +8346,7 @@
         "goals82": 2,
         "assists82": 15,
         "plusMinus82": -1,
-        "rating": 49
+        "rating": 82
       },
       {
         "id": 8476441,
@@ -7705,7 +8356,7 @@
         "goals82": 2,
         "assists82": 21,
         "plusMinus82": 14,
-        "rating": 56
+        "rating": 81
       },
       {
         "id": 8479421,
@@ -7715,7 +8366,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": -21.9,
-        "rating": 33
+        "rating": 75
       },
       {
         "id": 8476341,
@@ -7724,7 +8375,7 @@
         "gamesPlayed": 36,
         "savePercentage": 0.909664,
         "goalsAgainstAverage": 2.568771,
-        "rating": 74
+        "rating": 81
       },
       {
         "id": 8475311,
@@ -7733,7 +8384,28 @@
         "gamesPlayed": 50,
         "savePercentage": 0.89141,
         "goalsAgainstAverage": 2.78403,
-        "rating": 37
+        "rating": 87
+      },
+      {
+        "id": -1,
+        "name": "Pheonix Copley",
+        "position": "G",
+        "gamesPlayed": 0,
+        "rating": 80
+      },
+      {
+        "id": -1,
+        "name": "Kyle Burroughs",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 79
+      },
+      {
+        "id": -1,
+        "name": "Akil Thomas",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 76
       }
     ]
   },
@@ -7762,7 +8434,7 @@
         "goals82": 3.6,
         "assists82": 16,
         "plusMinus82": -32.1,
-        "rating": 42
+        "rating": 79
       },
       {
         "id": 8478874,
@@ -7772,7 +8444,7 @@
         "goals82": 21.1,
         "assists82": 9.9,
         "plusMinus82": -11.2,
-        "rating": 50
+        "rating": 81
       },
       {
         "id": 8476624,
@@ -7782,7 +8454,7 @@
         "goals82": 5,
         "assists82": 7,
         "plusMinus82": -18,
-        "rating": 39
+        "rating": 80
       },
       {
         "id": 8484911,
@@ -7802,7 +8474,7 @@
         "goals82": 13.3,
         "assists82": 24.8,
         "plusMinus82": 1.9,
-        "rating": 55
+        "rating": 80
       },
       {
         "id": 8485402,
@@ -7832,7 +8504,7 @@
         "goals82": 4.9,
         "assists82": 0,
         "plusMinus82": -19.7,
-        "rating": 35
+        "rating": 75
       },
       {
         "id": 8483630,
@@ -7852,7 +8524,7 @@
         "goals82": 17.6,
         "assists82": 20.5,
         "plusMinus82": -23.4,
-        "rating": 52
+        "rating": 82
       },
       {
         "id": 8484227,
@@ -7872,7 +8544,7 @@
         "goals82": 19.7,
         "assists82": 31.1,
         "plusMinus82": -12.5,
-        "rating": 60
+        "rating": 85
       },
       {
         "id": 8477505,
@@ -7882,7 +8554,7 @@
         "goals82": 18.5,
         "assists82": 37.9,
         "plusMinus82": -25.6,
-        "rating": 62
+        "rating": 83
       },
       {
         "id": 8479576,
@@ -7892,7 +8564,7 @@
         "goals82": 1.5,
         "assists82": 9.3,
         "plusMinus82": 10.8,
-        "rating": 45
+        "rating": 79
       },
       {
         "id": 8484806,
@@ -7912,7 +8584,7 @@
         "goals82": 7,
         "assists82": 16,
         "plusMinus82": -1,
-        "rating": 54
+        "rating": 83
       },
       {
         "id": 8480891,
@@ -7922,7 +8594,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 84
       },
       {
         "id": 8475906,
@@ -7932,7 +8604,7 @@
         "goals82": 14.6,
         "assists82": 24.9,
         "plusMinus82": -19,
-        "rating": 66
+        "rating": 78
       },
       {
         "id": 8475181,
@@ -7942,7 +8614,7 @@
         "goals82": 2.6,
         "assists82": 15.4,
         "plusMinus82": -23.1,
-        "rating": 48
+        "rating": 82
       },
       {
         "id": 8482166,
@@ -7952,7 +8624,7 @@
         "goals82": 8.2,
         "assists82": 11.5,
         "plusMinus82": -4.9,
-        "rating": 51
+        "rating": 77
       },
       {
         "id": 8475200,
@@ -7962,7 +8634,7 @@
         "goals82": 3,
         "assists82": 34,
         "plusMinus82": -28,
-        "rating": 63
+        "rating": 85
       },
       {
         "id": 8482137,
@@ -7980,7 +8652,28 @@
         "gamesPlayed": 40,
         "savePercentage": 0.896092,
         "goalsAgainstAverage": 2.870981,
-        "rating": 45
+        "rating": 81
+      },
+      {
+        "id": -1,
+        "name": "William Eklund",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 86
+      },
+      {
+        "id": -1,
+        "name": "Jeff Skinner",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 82
+      },
+      {
+        "id": -1,
+        "name": "Oskar Olausson",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "rating": 73
       }
     ]
   },
@@ -7999,7 +8692,7 @@
         "goals82": 20,
         "assists82": 30,
         "plusMinus82": -8,
-        "rating": 60
+        "rating": 85
       },
       {
         "id": 8484800,
@@ -8019,7 +8712,7 @@
         "goals82": 26.7,
         "assists82": 29.7,
         "plusMinus82": 2.1,
-        "rating": 65
+        "rating": 85
       },
       {
         "id": 8477919,
@@ -8029,7 +8722,7 @@
         "goals82": 8.4,
         "assists82": 20.5,
         "plusMinus82": -1.2,
-        "rating": 50
+        "rating": 83
       },
       {
         "id": 8481554,
@@ -8039,7 +8732,7 @@
         "goals82": 16.4,
         "assists82": 34.1,
         "plusMinus82": 17.7,
-        "rating": 63
+        "rating": 83
       },
       {
         "id": 8477955,
@@ -8049,7 +8742,7 @@
         "goals82": 31.5,
         "assists82": 31.5,
         "plusMinus82": -11,
-        "rating": 67
+        "rating": 86
       },
       {
         "id": 8482259,
@@ -8059,7 +8752,7 @@
         "goals82": 45.6,
         "assists82": 18.2,
         "plusMinus82": 0,
-        "rating": 68
+        "rating": 81
       },
       {
         "id": 8483570,
@@ -8079,7 +8772,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 80
       },
       {
         "id": 8475768,
@@ -8089,7 +8782,7 @@
         "goals82": 18,
         "assists82": 24.6,
         "plusMinus82": 8.2,
-        "rating": 58
+        "rating": 84
       },
       {
         "id": 8476905,
@@ -8099,7 +8792,7 @@
         "goals82": 16.4,
         "assists82": 33.8,
         "plusMinus82": -24.6,
-        "rating": 59
+        "rating": 85
       },
       {
         "id": 8480009,
@@ -8109,7 +8802,7 @@
         "goals82": 12.6,
         "assists82": 25.2,
         "plusMinus82": -18.9,
-        "rating": 53
+        "rating": 84
       },
       {
         "id": 8482751,
@@ -8129,7 +8822,7 @@
         "goals82": 13.3,
         "assists82": 16.6,
         "plusMinus82": 6.6,
-        "rating": 51
+        "rating": 82
       },
       {
         "id": 8478407,
@@ -8139,7 +8832,7 @@
         "goals82": 11.1,
         "assists82": 33.4,
         "plusMinus82": -24.3,
-        "rating": 70
+        "rating": 87
       },
       {
         "id": 8482858,
@@ -8149,7 +8842,7 @@
         "goals82": 9.8,
         "assists82": 11,
         "plusMinus82": 6.1,
-        "rating": 53
+        "rating": 84
       },
       {
         "id": 8479985,
@@ -8159,7 +8852,7 @@
         "goals82": 3.6,
         "assists82": 7.1,
         "plusMinus82": 3.6,
-        "rating": 44
+        "rating": 78
       },
       {
         "id": 8476457,
@@ -8169,7 +8862,7 @@
         "goals82": 7,
         "assists82": 18,
         "plusMinus82": 0,
-        "rating": 56
+        "rating": 84
       },
       {
         "id": 8479324,
@@ -8179,7 +8872,7 @@
         "goals82": 2.2,
         "assists82": 7.6,
         "plusMinus82": -2.2,
-        "rating": 43
+        "rating": 84
       },
       {
         "id": 8479372,
@@ -8189,7 +8882,7 @@
         "goals82": 3.6,
         "assists82": 7.1,
         "plusMinus82": 28.5,
-        "rating": 47
+        "rating": 78
       },
       {
         "id": 8477986,
@@ -8199,7 +8892,7 @@
         "goals82": 14.1,
         "assists82": 26.9,
         "plusMinus82": -26.9,
-        "rating": 66
+        "rating": 87
       },
       {
         "id": 8476467,
@@ -8209,7 +8902,7 @@
         "goals82": 5.3,
         "assists82": 10.5,
         "plusMinus82": 9.5,
-        "rating": 49
+        "rating": 85
       },
       {
         "id": 8478916,
@@ -8218,7 +8911,7 @@
         "gamesPlayed": 47,
         "savePercentage": 0.897475,
         "goalsAgainstAverage": 3.029834,
-        "rating": 47
+        "rating": 85
       },
       {
         "id": 8475831,
@@ -8227,7 +8920,7 @@
         "gamesPlayed": 32,
         "savePercentage": 0.908776,
         "goalsAgainstAverage": 2.646418,
-        "rating": 72
+        "rating": 83
       },
       {
         "id": 8476899,
@@ -8236,7 +8929,14 @@
         "gamesPlayed": 5,
         "savePercentage": 0.921569,
         "goalsAgainstAverage": 2.213171,
-        "rating": 100
+        "rating": 80
+      },
+      {
+        "id": -1,
+        "name": "John Hayden",
+        "position": "C",
+        "gamesPlayed": 0,
+        "rating": 75
       }
     ]
   },
@@ -8255,7 +8955,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 78
       },
       {
         "id": 8476927,
@@ -8265,7 +8965,7 @@
         "goals82": 21.1,
         "assists82": 18.7,
         "plusMinus82": -28.1,
-        "rating": 53
+        "rating": 81
       },
       {
         "id": 8478444,
@@ -8275,7 +8975,7 @@
         "goals82": 24.1,
         "assists82": 28.4,
         "plusMinus82": -52.5,
-        "rating": 57
+        "rating": 86
       },
       {
         "id": 8480078,
@@ -8285,7 +8985,7 @@
         "goals82": 20.5,
         "assists82": 0,
         "plusMinus82": -47.8,
-        "rating": 41
+        "rating": 84
       },
       {
         "id": 8478498,
@@ -8295,7 +8995,7 @@
         "goals82": 23.3,
         "assists82": 19.2,
         "plusMinus82": -31.4,
-        "rating": 54
+        "rating": 85
       },
       {
         "id": 8480876,
@@ -8315,7 +9015,7 @@
         "goals82": 4.3,
         "assists82": 6.5,
         "plusMinus82": -8.6,
-        "rating": 40
+        "rating": 82
       },
       {
         "id": 8475169,
@@ -8325,7 +9025,7 @@
         "goals82": 15,
         "assists82": 20.8,
         "plusMinus82": -23.1,
-        "rating": 51
+        "rating": 84
       },
       {
         "id": 8481024,
@@ -8355,7 +9055,7 @@
         "goals82": 12.9,
         "assists82": 16.1,
         "plusMinus82": -25.7,
-        "rating": 47
+        "rating": 79
       },
       {
         "id": 8480012,
@@ -8365,11 +9065,11 @@
         "goals82": 16.6,
         "assists82": 39.9,
         "plusMinus82": -33.2,
-        "rating": 61
+        "rating": 87
       },
       {
         "id": 8482691,
-        "name": "Aatu Räty",
+        "name": "Aatu R\u00e4ty",
         "position": "C",
         "gamesPlayed": 66,
         "goals82": 5,
@@ -8385,7 +9085,7 @@
         "goals82": 19.9,
         "assists82": 34.8,
         "plusMinus82": -49.7,
-        "rating": 58
+        "rating": 86
       },
       {
         "id": 8484136,
@@ -8415,7 +9115,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 80
       },
       {
         "id": 8479425,
@@ -8425,7 +9125,7 @@
         "goals82": 8,
         "assists82": 41,
         "plusMinus82": -23,
-        "rating": 74
+        "rating": 86
       },
       {
         "id": 8480058,
@@ -8435,7 +9135,7 @@
         "goals82": 2.6,
         "assists82": 13.2,
         "plusMinus82": -42.3,
-        "rating": 44
+        "rating": 83
       },
       {
         "id": 8483768,
@@ -8455,7 +9155,7 @@
         "goals82": 3.5,
         "assists82": 8.2,
         "plusMinus82": -18.7,
-        "rating": 43
+        "rating": 87
       },
       {
         "id": 8477969,
@@ -8465,7 +9165,7 @@
         "goals82": 3,
         "assists82": 15,
         "plusMinus82": -19,
-        "rating": 48
+        "rating": 85
       },
       {
         "id": 8484240,
@@ -8484,7 +9184,7 @@
         "gamesPlayed": 20,
         "savePercentage": 0.896887,
         "goalsAgainstAverage": 2.903573,
-        "rating": 47
+        "rating": 88
       },
       {
         "id": 8480947,
@@ -8493,7 +9193,7 @@
         "gamesPlayed": 47,
         "savePercentage": 0.875486,
         "goalsAgainstAverage": 3.703204,
-        "rating": 30
+        "rating": 84
       },
       {
         "id": 8484268,
@@ -8503,6 +9203,13 @@
         "savePercentage": 0.881443,
         "goalsAgainstAverage": 3.613564,
         "rating": 30
+      },
+      {
+        "id": -1,
+        "name": "Drew O&#8217;Connor",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 81
       }
     ]
   },
@@ -8521,7 +9228,7 @@
         "goals82": 23,
         "assists82": 38,
         "plusMinus82": 20,
-        "rating": 69
+        "rating": 86
       },
       {
         "id": 8483890,
@@ -8551,7 +9258,7 @@
         "goals82": 4.1,
         "assists82": 16.4,
         "plusMinus82": 8.2,
-        "rating": 47
+        "rating": 81
       },
       {
         "id": 8478403,
@@ -8561,7 +9268,7 @@
         "goals82": 29.9,
         "assists82": 69.8,
         "plusMinus82": 25.5,
-        "rating": 90
+        "rating": 94
       },
       {
         "id": 8476881,
@@ -8571,7 +9278,7 @@
         "goals82": 24,
         "assists82": 34,
         "plusMinus82": -17,
-        "rating": 64
+        "rating": 86
       },
       {
         "id": 8482125,
@@ -8581,7 +9288,7 @@
         "goals82": 8.8,
         "assists82": 17.6,
         "plusMinus82": -2.9,
-        "rating": 49
+        "rating": 80
       },
       {
         "id": 8479353,
@@ -8591,7 +9298,7 @@
         "goals82": 17,
         "assists82": 14.1,
         "plusMinus82": -12.7,
-        "rating": 50
+        "rating": 81
       },
       {
         "id": 8476448,
@@ -8601,7 +9308,7 @@
         "goals82": 23.4,
         "assists82": 17.6,
         "plusMinus82": -5.9,
-        "rating": 56
+        "rating": 84
       },
       {
         "id": 8478434,
@@ -8611,7 +9318,7 @@
         "goals82": 6,
         "assists82": 11,
         "plusMinus82": -14,
-        "rating": 42
+        "rating": 80
       },
       {
         "id": 8479550,
@@ -8621,7 +9328,7 @@
         "goals82": 0,
         "assists82": 41,
         "plusMinus82": 0,
-        "rating": 56
+        "rating": 75
       },
       {
         "id": 8481534,
@@ -8631,7 +9338,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 76
       },
       {
         "id": 8478483,
@@ -8641,7 +9348,7 @@
         "goals82": 24.3,
         "assists82": 56.7,
         "plusMinus82": 17.2,
-        "rating": 79
+        "rating": 92
       },
       {
         "id": 8480007,
@@ -8651,7 +9358,7 @@
         "goals82": 0,
         "assists82": 20.5,
         "plusMinus82": -41,
-        "rating": 41
+        "rating": 76
       },
       {
         "id": 8476438,
@@ -8661,7 +9368,7 @@
         "goals82": 5,
         "assists82": 10,
         "plusMinus82": -11.7,
-        "rating": 42
+        "rating": 80
       },
       {
         "id": 8476925,
@@ -8671,7 +9378,7 @@
         "goals82": 7.5,
         "assists82": 6.2,
         "plusMinus82": -13.7,
-        "rating": 41
+        "rating": 82
       },
       {
         "id": 8482062,
@@ -8681,7 +9388,7 @@
         "goals82": 7.8,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 39
+        "rating": 80
       },
       {
         "id": 8475191,
@@ -8691,7 +9398,7 @@
         "goals82": 19,
         "assists82": 11.9,
         "plusMinus82": -10.7,
-        "rating": 50
+        "rating": 84
       },
       {
         "id": 8475913,
@@ -8701,7 +9408,7 @@
         "goals82": 38.3,
         "assists82": 61.5,
         "plusMinus82": 35.5,
-        "rating": 91
+        "rating": 89
       },
       {
         "id": 8485251,
@@ -8721,7 +9428,7 @@
         "goals82": 17.4,
         "assists82": 24.8,
         "plusMinus82": 2.5,
-        "rating": 71
+        "rating": 88
       },
       {
         "id": 8479639,
@@ -8731,7 +9438,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 27.3,
-        "rating": 38
+        "rating": 78
       },
       {
         "id": 8479602,
@@ -8751,7 +9458,7 @@
         "goals82": 3.5,
         "assists82": 28.9,
         "plusMinus82": 0,
-        "rating": 62
+        "rating": 89
       },
       {
         "id": 8477018,
@@ -8761,7 +9468,7 @@
         "goals82": 8.9,
         "assists82": 13.4,
         "plusMinus82": 3,
-        "rating": 54
+        "rating": 78
       },
       {
         "id": 8481527,
@@ -8771,7 +9478,7 @@
         "goals82": 3.2,
         "assists82": 13.7,
         "plusMinus82": 6.3,
-        "rating": 50
+        "rating": 78
       },
       {
         "id": 8478468,
@@ -8781,7 +9488,7 @@
         "goals82": 1.2,
         "assists82": 14.5,
         "plusMinus82": -3.6,
-        "rating": 48
+        "rating": 81
       },
       {
         "id": 8475188,
@@ -8791,7 +9498,7 @@
         "goals82": 6.5,
         "assists82": 9.1,
         "plusMinus82": 2.6,
-        "rating": 48
+        "rating": 85
       },
       {
         "id": 8477034,
@@ -8801,7 +9508,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": -102.5,
-        "rating": 24
+        "rating": 75
       },
       {
         "id": 8477447,
@@ -8811,7 +9518,7 @@
         "goals82": 11.7,
         "assists82": 34,
         "plusMinus82": 22.3,
-        "rating": 76
+        "rating": 88
       },
       {
         "id": 8479394,
@@ -8829,7 +9536,7 @@
         "gamesPlayed": 27,
         "savePercentage": 0.870528,
         "goalsAgainstAverage": 3.044431,
-        "rating": 30
+        "rating": 84
       },
       {
         "id": 8482761,
@@ -8847,7 +9554,21 @@
         "gamesPlayed": 34,
         "savePercentage": 0.892541,
         "goalsAgainstAverage": 2.594386,
-        "rating": 40
+        "rating": 80
+      },
+      {
+        "id": -1,
+        "name": "Pavel Dorofeyev",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "rating": 86
+      },
+      {
+        "id": -1,
+        "name": "Lukas Cormier",
+        "position": "D",
+        "gamesPlayed": 0,
+        "rating": 75
       }
     ]
   }
