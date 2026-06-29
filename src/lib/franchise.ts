@@ -37,12 +37,14 @@ function jitter(base: number, pct = 0.22): number {
   return Math.max(0, base * (1 + (Math.random() * 2 - 1) * pct));
 }
 
-function skaterGP(seasonGP: number): number {
-  // Box-Muller normal distribution, mean=72, sd=8, clamped to [20, seasonGP]
+function skaterGP(maxGP: number): number {
+  // Box-Muller normal, scaled to [20, maxGP] with mean at ~88% of maxGP
   const u1 = Math.random() + 1e-10;
   const u2 = Math.random();
   const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
-  return Math.max(20, Math.min(seasonGP, Math.round(72 + z * 8)));
+  const mean = maxGP * 0.88;
+  const sd = maxGP * 0.1;
+  return Math.max(Math.round(maxGP * 0.25), Math.min(maxGP, Math.round(mean + z * sd)));
 }
 
 export function generatePlayerStats(players: PlayerRecord[], seasonGP: number, teamW: number): PlayerStatLine[] {
