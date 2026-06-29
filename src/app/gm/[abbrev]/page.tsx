@@ -104,15 +104,15 @@ function StatsTable({ title, stats }: { title: string; stats: PlayerStatLine[] }
   )
 }
 
-function RatingBar({ rating }: { rating: number }) {
-  const pct = ((rating - 20) / 80) * 100
-  const color = rating >= 80 ? "#22c55e" : rating >= 65 ? "#f59e0b" : "#ef4444"
+function RatingBar({ value }: { value: number }) {
+  const pct = Math.max(0, Math.min(100, ((value - 20) / 80) * 100))
+  const color = value >= 80 ? "#22c55e" : value >= 65 ? "#f59e0b" : "#ef4444"
   return (
     <div className="flex items-center gap-2">
       <div className="flex-1 h-1 bg-border/50 rounded-full overflow-hidden">
         <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: color }} />
       </div>
-      <span className="text-xs font-mono w-6 text-right" style={{ color }}>{rating}</span>
+      <span className="text-xs font-mono w-6 text-right" style={{ color }}>{value}</span>
     </div>
   )
 }
@@ -144,12 +144,9 @@ function PlayerCard({ player, selected, onToggle, dimmed, showValue }: {
         <div className="flex items-center gap-1.5 flex-shrink-0">
           <span className="text-[10px] text-muted-foreground">{age}y</span>
           <span className="text-[10px] text-muted-foreground bg-background/60 px-1 rounded">{player.position}</span>
-          {showValue && (
-            <span className="text-[10px] font-mono text-amber-400">TV:{tv}</span>
-          )}
-        </div>
+          </div>
       </div>
-      <RatingBar rating={player.rating} />
+      <RatingBar value={showValue ? tv : player.rating} />
     </button>
   )
 }
