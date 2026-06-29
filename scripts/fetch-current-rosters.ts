@@ -101,14 +101,19 @@ async function fetchTeam(team: typeof TEAMS[0]) {
   // Forwards
   for (const p of roster.forwards ?? []) {
     const s = statsMap.get(p.id) ?? {};
-    const gp = s.gamesPlayed ?? 1;
+    // Use full season GP (gamesPlayed from stats) but fall back to 1 only if truly missing
+    // This avoids inflating per-82 for players traded mid-season with few games on this team
+    const gp = Math.max(s.gamesPlayed ?? 0, 1);
     const g82 = per82(s.goals ?? 0, gp);
     const a82 = per82(s.assists ?? 0, gp);
     const pm82 = per82(s.plusMinus ?? 0, gp);
+    // Normalize NHL API position codes: L→LW, R→RW
+    const rawPos = (p.positionCode ?? "C") as string;
+    const pos: "C" | "LW" | "RW" = rawPos === "L" ? "LW" : rawPos === "R" ? "RW" : "C";
     players.push({
       id: p.id,
       name: `${p.firstName?.default ?? ""} ${p.lastName?.default ?? ""}`.trim(),
-      position: p.positionCode as "C" | "LW" | "RW",
+      position: pos,
       gamesPlayed: gp,
       goals82: g82,
       assists82: a82,

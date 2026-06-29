@@ -9,7 +9,7 @@
       {
         "id": 8478042,
         "name": "Viktor Arvidsson",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 69,
         "goals82": 29.7,
         "assists82": 34.5,
@@ -49,7 +49,7 @@
       {
         "id": 8479661,
         "name": "Tanner Jeannot",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 77,
         "goals82": 6.4,
         "assists82": 17,
@@ -119,7 +119,7 @@
       {
         "id": 8477956,
         "name": "David Pastrnak",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 77,
         "goals82": 30.9,
         "assists82": 75.6,
@@ -129,7 +129,7 @@
       {
         "id": 8482175,
         "name": "JJ Peterka",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -266,7 +266,7 @@
       {
         "id": 8484145,
         "name": "Zach Benson",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 65,
         "goals82": 16.4,
         "assists82": 37.8,
@@ -286,7 +286,7 @@
       {
         "id": 8479941,
         "name": "Justin Danforth",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 4,
         "goals82": 0,
         "assists82": 0,
@@ -296,7 +296,7 @@
       {
         "id": 8482659,
         "name": "Josh Doan",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 25,
         "assists82": 27,
@@ -376,7 +376,7 @@
       {
         "id": 8479359,
         "name": "Beck Malenstyn",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 81,
         "goals82": 7.1,
         "assists82": 7.1,
@@ -416,7 +416,7 @@
       {
         "id": 8476871,
         "name": "Tanner Pearson",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 4,
         "goals82": 0,
         "assists82": 41,
@@ -426,7 +426,7 @@
       {
         "id": 8482097,
         "name": "Jack Quinn",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 20,
         "assists82": 31,
@@ -446,7 +446,7 @@
       {
         "id": 8475722,
         "name": "Jason Zucker",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 62,
         "goals82": 31.7,
         "assists82": 27.8,
@@ -631,7 +631,7 @@
       {
         "id": 8477456,
         "name": "J.T. Compher",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 11,
         "assists82": 17,
@@ -651,7 +651,7 @@
       {
         "id": 8479337,
         "name": "Alex DeBrincat",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 41,
         "assists82": 44,
@@ -671,7 +671,7 @@
       {
         "id": 8474141,
         "name": "Patrick Kane",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 67,
         "goals82": 19.6,
         "assists82": 50.2,
@@ -701,7 +701,7 @@
       {
         "id": 8474102,
         "name": "David Perron",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 16,
         "goals82": 15.4,
         "assists82": 0,
@@ -721,7 +721,7 @@
       {
         "id": 8482078,
         "name": "Lucas Raymond",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 80,
         "goals82": 25.6,
         "assists82": 52.3,
@@ -731,7 +731,7 @@
       {
         "id": 8474037,
         "name": "James van Riemsdyk",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 72,
         "goals82": 17.1,
         "assists82": 18.2,
@@ -868,7 +868,7 @@
       {
         "id": 8479981,
         "name": "Jonah Gadjovich",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 10,
         "goals82": 0,
         "assists82": 24.6,
@@ -878,7 +878,7 @@
       {
         "id": 8478421,
         "name": "A.J. Greer",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 78,
         "goals82": 17.9,
         "assists82": 15.8,
@@ -888,7 +888,7 @@
       {
         "id": 8477903,
         "name": "Garnet Hathaway",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -938,7 +938,7 @@
       {
         "id": 8473419,
         "name": "Brad Marchand",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 52,
         "goals82": 42.6,
         "assists82": 42.6,
@@ -948,7 +948,7 @@
       {
         "id": 8477931,
         "name": "Tomas Nosek",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 21,
         "goals82": 7.8,
         "assists82": 7.8,
@@ -958,7 +958,7 @@
       {
         "id": 8481133,
         "name": "Cole Reinhardt",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 15,
         "goals82": 32.8,
         "assists82": 10.9,
@@ -998,7 +998,7 @@
       {
         "id": 8480801,
         "name": "Brady Tkachuk",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -1008,7 +1008,7 @@
       {
         "id": 8479314,
         "name": "Matthew Tkachuk",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 31,
         "goals82": 34.4,
         "assists82": 55.5,
@@ -1125,7 +1125,7 @@
       {
         "id": 8476981,
         "name": "Josh Anderson",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 72,
         "goals82": 15.9,
         "assists82": 10.3,
@@ -1145,7 +1145,7 @@
       {
         "id": 8482737,
         "name": "Zachary Bolduc",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 78,
         "goals82": 12.6,
         "assists82": 18.9,
@@ -1155,7 +1155,7 @@
       {
         "id": 8481540,
         "name": "Cole Caufield",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 81,
         "goals82": 51.6,
         "assists82": 37.5,
@@ -1185,7 +1185,7 @@
       {
         "id": 8484984,
         "name": "Ivan Demidov",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 19,
         "assists82": 43,
@@ -1205,7 +1205,7 @@
       {
         "id": 8475848,
         "name": "Brendan Gallagher",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 77,
         "goals82": 7.5,
         "assists82": 17,
@@ -1225,7 +1225,7 @@
       {
         "id": 8479339,
         "name": "Patrik Laine",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 5,
         "goals82": 0,
         "assists82": 16.4,
@@ -1245,7 +1245,7 @@
       {
         "id": 8483515,
         "name": "Juraj Slafkovský",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 30,
         "assists82": 43,
@@ -1265,7 +1265,7 @@
       {
         "id": 8480074,
         "name": "Alexandre Texier",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 43,
         "goals82": 15.3,
         "assists82": 22.9,
@@ -1285,7 +1285,7 @@
       {
         "id": 8484403,
         "name": "Florian Xhekaj",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 5,
         "goals82": 0,
         "assists82": 16.4,
@@ -1421,7 +1421,7 @@
       {
         "id": 8478020,
         "name": "Michael Amadio",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 81,
         "goals82": 15.2,
         "assists82": 20.2,
@@ -1431,7 +1431,7 @@
       {
         "id": 8480208,
         "name": "Drake Batherson",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 79,
         "goals82": 34.3,
         "assists82": 39.4,
@@ -1441,7 +1441,7 @@
       {
         "id": 8482674,
         "name": "Tyler Boucher",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -1451,7 +1451,7 @@
       {
         "id": 8477444,
         "name": "Andre Burakovsky",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -1461,7 +1461,7 @@
       {
         "id": 8481578,
         "name": "Graeme Clarke",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -1491,7 +1491,7 @@
       {
         "id": 8482667,
         "name": "William Eklund",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -1511,7 +1511,7 @@
       {
         "id": 8477998,
         "name": "Warren Foegele",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 21,
         "goals82": 23.4,
         "assists82": 7.8,
@@ -1521,7 +1521,7 @@
       {
         "id": 8473512,
         "name": "Claude Giroux",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 14,
         "assists82": 35,
@@ -1551,7 +1551,7 @@
       {
         "id": 8478173,
         "name": "Hayden Hodgson",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 10,
         "goals82": 0,
         "assists82": 0,
@@ -1561,7 +1561,7 @@
       {
         "id": 8481560,
         "name": "Arthur Kaliyev",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 2,
         "goals82": 0,
         "assists82": 41,
@@ -1571,7 +1571,7 @@
       {
         "id": 8477073,
         "name": "Kurtis MacDermid",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 19,
         "goals82": 0,
         "assists82": 4.3,
@@ -1581,7 +1581,7 @@
       {
         "id": 8483673,
         "name": "Oskar Pettersson",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -1611,7 +1611,7 @@
       {
         "id": 8480188,
         "name": "Fabian Zetterlund",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 17,
         "assists82": 16,
@@ -1776,7 +1776,7 @@
       {
         "id": 8477416,
         "name": "Oliver Bjorkstrand",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 80,
         "goals82": 12.3,
         "assists82": 20.5,
@@ -1846,7 +1846,7 @@
       {
         "id": 8479542,
         "name": "Brandon Hagel",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 71,
         "goals82": 41.6,
         "assists82": 43.9,
@@ -1856,7 +1856,7 @@
       {
         "id": 8480995,
         "name": "Pontus Holmberg",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 70,
         "goals82": 12.9,
         "assists82": 12.9,
@@ -1876,7 +1876,7 @@
       {
         "id": 8476453,
         "name": "Nikita Kucherov",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 76,
         "goals82": 47.5,
         "assists82": 92.8,
@@ -1886,7 +1886,7 @@
       {
         "id": 8477426,
         "name": "Nick Paul",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 51,
         "goals82": 11.3,
         "assists82": 12.9,
@@ -1896,7 +1896,7 @@
       {
         "id": 8470621,
         "name": "Corey Perry",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 22,
         "goals82": 22.4,
         "assists82": 11.2,
@@ -1916,7 +1916,7 @@
       {
         "id": 8477149,
         "name": "Scott Sabourin",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 26,
         "goals82": 3.2,
         "assists82": 12.6,
@@ -2083,7 +2083,7 @@
       {
         "id": 8482720,
         "name": "Matthew Knies",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 79,
         "goals82": 23.9,
         "assists82": 44.6,
@@ -2103,7 +2103,7 @@
       {
         "id": 8481711,
         "name": "Matias Maccelli",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 71,
         "goals82": 16.2,
         "assists82": 28.9,
@@ -2123,7 +2123,7 @@
       {
         "id": 8477939,
         "name": "William Nylander",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 65,
         "goals82": 37.8,
         "assists82": 61.8,
@@ -2133,7 +2133,7 @@
       {
         "id": 8481582,
         "name": "Nicholas Robertson",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 78,
         "goals82": 16.8,
         "assists82": 16.8,
@@ -2261,7 +2261,7 @@
       {
         "id": 8482809,
         "name": "Jackson Blake",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 81,
         "goals82": 22.3,
         "assists82": 31.4,
@@ -2271,7 +2271,7 @@
       {
         "id": 8477478,
         "name": "William Carrier",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 70,
         "goals82": 8.2,
         "assists82": 12.9,
@@ -2281,7 +2281,7 @@
       {
         "id": 8475235,
         "name": "Nicolas Deslauriers",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 7,
         "goals82": 0,
         "assists82": 11.7,
@@ -2291,7 +2291,7 @@
       {
         "id": 8477940,
         "name": "Nikolaj Ehlers",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 26,
         "assists82": 45,
@@ -2301,7 +2301,7 @@
       {
         "id": 8475791,
         "name": "Taylor Hall",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 80,
         "goals82": 18.5,
         "assists82": 30.8,
@@ -2311,7 +2311,7 @@
       {
         "id": 8476873,
         "name": "Mark Jankowski",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 68,
         "goals82": 13.3,
         "assists82": 12.1,
@@ -2321,7 +2321,7 @@
       {
         "id": 8482093,
         "name": "Seth Jarvis",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 71,
         "goals82": 37,
         "assists82": 39.3,
@@ -2341,7 +2341,7 @@
       {
         "id": 8476921,
         "name": "Jordan Martinook",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 77,
         "goals82": 12.8,
         "assists82": 18.1,
@@ -2351,7 +2351,7 @@
       {
         "id": 8480762,
         "name": "Eric Robinson",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 67,
         "goals82": 14.7,
         "assists82": 7.3,
@@ -2381,7 +2381,7 @@
       {
         "id": 8480830,
         "name": "Andrei Svechnikov",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 79,
         "goals82": 32.2,
         "assists82": 40.5,
@@ -2527,7 +2527,7 @@
       {
         "id": 8478856,
         "name": "Conor Garland",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 21,
         "goals82": 19.5,
         "assists82": 7.8,
@@ -2537,7 +2537,7 @@
       {
         "id": 8478046,
         "name": "Danton Heinen",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 33,
         "goals82": 12.4,
         "assists82": 12.4,
@@ -2577,7 +2577,7 @@
       {
         "id": 8480893,
         "name": "Kirill Marchenko",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 76,
         "goals82": 29.1,
         "assists82": 43.2,
@@ -2587,7 +2587,7 @@
       {
         "id": 8478975,
         "name": "Mason Marchment",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 39,
         "goals82": 31.5,
         "assists82": 35.7,
@@ -2607,7 +2607,7 @@
       {
         "id": 8477501,
         "name": "Valeri Nichushkin",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -2617,7 +2617,7 @@
       {
         "id": 8479671,
         "name": "Mathieu Olivier",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 61,
         "goals82": 20.2,
         "assists82": 14.8,
@@ -2637,7 +2637,7 @@
       {
         "id": 8481716,
         "name": "Dmitri Voronkov",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 63,
         "goals82": 22.1,
         "assists82": 19.5,
@@ -2647,7 +2647,7 @@
       {
         "id": 8477425,
         "name": "Miles Wood",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 54,
         "goals82": 12.1,
         "assists82": 9.1,
@@ -2784,7 +2784,7 @@
       {
         "id": 8479407,
         "name": "Jesper Bratt",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 22,
         "assists82": 49,
@@ -2794,7 +2794,7 @@
       {
         "id": 8477015,
         "name": "Connor Brown",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 75,
         "goals82": 19.7,
         "assists82": 27.3,
@@ -2804,7 +2804,7 @@
       {
         "id": 8481032,
         "name": "Paul Cotter",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 79,
         "goals82": 9.3,
         "assists82": 6.2,
@@ -2814,7 +2814,7 @@
       {
         "id": 8474149,
         "name": "Evgenii Dadonov",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 24,
         "goals82": 3.4,
         "assists82": 0,
@@ -2834,7 +2834,7 @@
       {
         "id": 8481721,
         "name": "Arseny Gritsyuk",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 66,
         "goals82": 16.2,
         "assists82": 22.4,
@@ -2864,7 +2864,7 @@
       {
         "id": 8479772,
         "name": "Zack MacEwen",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 3,
         "goals82": 0,
         "assists82": 0,
@@ -2874,7 +2874,7 @@
       {
         "id": 8478414,
         "name": "Timo Meier",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 77,
         "goals82": 25.6,
         "assists82": 21.3,
@@ -2894,7 +2894,7 @@
       {
         "id": 8476474,
         "name": "Stefan Noesen",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 38,
         "goals82": 6.5,
         "assists82": 8.6,
@@ -3031,7 +3031,7 @@
       {
         "id": 8477407,
         "name": "Anthony Duclair",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 62,
         "goals82": 15.9,
         "assists82": 19.8,
@@ -3051,7 +3051,7 @@
       {
         "id": 8482476,
         "name": "Emil Heineman",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 22,
         "assists82": 9,
@@ -3061,7 +3061,7 @@
       {
         "id": 8481601,
         "name": "Simon Holmstrom",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 79,
         "goals82": 19.7,
         "assists82": 22.8,
@@ -3081,7 +3081,7 @@
       {
         "id": 8475314,
         "name": "Anders Lee",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 19,
         "assists82": 23,
@@ -3111,7 +3111,7 @@
       {
         "id": 8476292,
         "name": "Ondrej Palat",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 29,
         "goals82": 2.8,
         "assists82": 11.3,
@@ -3141,7 +3141,7 @@
       {
         "id": 8485702,
         "name": "Max Shabanov",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 44,
         "goals82": 9.3,
         "assists82": 24.2,
@@ -3277,7 +3277,7 @@
       {
         "id": 8482877,
         "name": "Jaroslav Chmelar",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 28,
         "goals82": 11.7,
         "assists82": 5.9,
@@ -3287,7 +3287,7 @@
       {
         "id": 8482157,
         "name": "Will Cuylle",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 20,
         "assists82": 18,
@@ -3297,7 +3297,7 @@
       {
         "id": 8481604,
         "name": "Pavel Dorofeyev",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -3307,7 +3307,7 @@
       {
         "id": 8481789,
         "name": "Tye Kartye",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 24,
         "goals82": 17.1,
         "assists82": 30.8,
@@ -3327,7 +3327,7 @@
       {
         "id": 8482109,
         "name": "Alexis Lafrenière",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 24,
         "assists82": 33,
@@ -3347,7 +3347,7 @@
       {
         "id": 8484210,
         "name": "Gabe Perreault",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 49,
         "goals82": 20.1,
         "assists82": 25.1,
@@ -3357,7 +3357,7 @@
       {
         "id": 8479390,
         "name": "Taylor Raddysh",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 68,
         "goals82": 10.9,
         "assists82": 12.1,
@@ -3377,7 +3377,7 @@
       {
         "id": 8477839,
         "name": "Conor Sheary",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 62,
         "goals82": 9.3,
         "assists82": 14.5,
@@ -3387,7 +3387,7 @@
       {
         "id": 8483669,
         "name": "Adam Sykora",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 11,
         "goals82": 22.4,
         "assists82": 7.5,
@@ -3553,7 +3553,7 @@
       {
         "id": 8483731,
         "name": "Alex Bump",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 17,
         "goals82": 24.1,
         "assists82": 19.3,
@@ -3563,7 +3563,7 @@
       {
         "id": 8480220,
         "name": "Noah Cates",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 18,
         "assists82": 29,
@@ -3593,7 +3593,7 @@
       {
         "id": 8484928,
         "name": "Oscar Eklind",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -3603,7 +3603,7 @@
       {
         "id": 8482159,
         "name": "Tyson Foerster",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 29,
         "goals82": 36.8,
         "assists82": 11.3,
@@ -3633,7 +3633,7 @@
       {
         "id": 8483733,
         "name": "Nikita Grebenkin",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 55,
         "goals82": 6,
         "assists82": 14.9,
@@ -3643,7 +3643,7 @@
       {
         "id": 8479336,
         "name": "Carl Grundstrom",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 47,
         "goals82": 15.7,
         "assists82": 7,
@@ -3653,7 +3653,7 @@
       {
         "id": 8478439,
         "name": "Travis Konecny",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 77,
         "goals82": 28.8,
         "assists82": 43.7,
@@ -3673,7 +3673,7 @@
       {
         "id": 8485406,
         "name": "Porter Martone",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 9,
         "goals82": 36.4,
         "assists82": 54.7,
@@ -3683,7 +3683,7 @@
       {
         "id": 8484387,
         "name": "Matvei Michkov",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 81,
         "goals82": 20.2,
         "assists82": 31.4,
@@ -3693,7 +3693,7 @@
       {
         "id": 8480015,
         "name": "Owen Tippett",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 81,
         "goals82": 28.3,
         "assists82": 23.3,
@@ -3703,7 +3703,7 @@
       {
         "id": 8475253,
         "name": "Garrett Wilson",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 3,
         "goals82": 0,
         "assists82": 0,
@@ -3888,7 +3888,7 @@
       {
         "id": 8479638,
         "name": "Justin Brazeau",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 64,
         "goals82": 21.8,
         "assists82": 21.8,
@@ -3898,7 +3898,7 @@
       {
         "id": 8482475,
         "name": "Egor Chinakhov",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 43,
         "goals82": 34.3,
         "assists82": 34.3,
@@ -3938,7 +3938,7 @@
       {
         "id": 8475763,
         "name": "Kevin Hayes",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 28,
         "goals82": 11.7,
         "assists82": 11.7,
@@ -3958,7 +3958,7 @@
       {
         "id": 8482758,
         "name": "Ville Koivunen",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 39,
         "goals82": 4.2,
         "assists82": 10.5,
@@ -3998,7 +3998,7 @@
       {
         "id": 8477511,
         "name": "Anthony Mantha",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 81,
         "goals82": 33.4,
         "assists82": 31.4,
@@ -4018,7 +4018,7 @@
       {
         "id": 8476483,
         "name": "Rickard Rakell",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 60,
         "goals82": 32.8,
         "assists82": 32.8,
@@ -4028,7 +4028,7 @@
       {
         "id": 8475810,
         "name": "Bryan Rust",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 72,
         "goals82": 33,
         "assists82": 41,
@@ -4038,7 +4038,7 @@
       {
         "id": 8481725,
         "name": "Elmer Soderblom",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 20,
         "goals82": 20.5,
         "assists82": 20.5,
@@ -4175,7 +4175,7 @@
       {
         "id": 8478463,
         "name": "Anthony Beauvillier",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 15,
         "assists82": 13,
@@ -4195,7 +4195,7 @@
       {
         "id": 8479520,
         "name": "Brandon Duhaime",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 4,
         "assists82": 5,
@@ -4205,7 +4205,7 @@
       {
         "id": 8483573,
         "name": "Ethen Frank",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 62,
         "goals82": 15.9,
         "assists82": 15.9,
@@ -4215,7 +4215,7 @@
       {
         "id": 8479385,
         "name": "Jordan Kyrou",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -4225,7 +4225,7 @@
       {
         "id": 8484186,
         "name": "Ryan Leonard",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 75,
         "goals82": 21.9,
         "assists82": 27.3,
@@ -4235,7 +4235,7 @@
       {
         "id": 8483491,
         "name": "Ivan Miroshnichenko",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 13,
         "goals82": 12.6,
         "assists82": 6.3,
@@ -4245,7 +4245,7 @@
       {
         "id": 8471214,
         "name": "Alex Ovechkin",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 32,
         "assists82": 32,
@@ -4255,7 +4255,7 @@
       {
         "id": 8481656,
         "name": "Aliaksei Protas",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 76,
         "goals82": 27,
         "assists82": 29.1,
@@ -4265,7 +4265,7 @@
       {
         "id": 8484999,
         "name": "Ilya Protas",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 4,
         "goals82": 20.5,
         "assists82": 61.5,
@@ -4295,7 +4295,7 @@
       {
         "id": 8477949,
         "name": "Alex Tuch",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -4305,7 +4305,7 @@
       {
         "id": 8476880,
         "name": "Tom Wilson",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 72,
         "goals82": 34.2,
         "assists82": 36.4,
@@ -4441,7 +4441,7 @@
       {
         "id": 8477479,
         "name": "Tyler Bertuzzi",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 79,
         "goals82": 33.2,
         "assists82": 27,
@@ -4491,7 +4491,7 @@
       {
         "id": 8478413,
         "name": "Jordan Greenway",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -4511,7 +4511,7 @@
       {
         "id": 8484185,
         "name": "Nick Lardis",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 41,
         "goals82": 20,
         "assists82": 10,
@@ -4521,7 +4521,7 @@
       {
         "id": 8478233,
         "name": "Andrew Mangiapane",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 10,
         "goals82": 8.2,
         "assists82": 8.2,
@@ -4531,7 +4531,7 @@
       {
         "id": 8481624,
         "name": "Ilya Mikheyev",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 77,
         "goals82": 19.2,
         "assists82": 19.2,
@@ -4561,7 +4561,7 @@
       {
         "id": 8482172,
         "name": "Landon Slaggert",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 53,
         "goals82": 4.6,
         "assists82": 6.2,
@@ -4728,7 +4728,7 @@
       {
         "id": 8481641,
         "name": "Joel Kiviranta",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 51,
         "goals82": 4.8,
         "assists82": 9.6,
@@ -4738,7 +4738,7 @@
       {
         "id": 8476455,
         "name": "Gabriel Landeskog",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 60,
         "goals82": 19.1,
         "assists82": 28.7,
@@ -4748,7 +4748,7 @@
       {
         "id": 8477476,
         "name": "Artturi Lehkonen",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 70,
         "goals82": 24.6,
         "assists82": 31.6,
@@ -4788,7 +4788,7 @@
       {
         "id": 8481186,
         "name": "Logan O'Connor",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 13,
         "goals82": 0,
         "assists82": 12.6,
@@ -4915,7 +4915,7 @@
       {
         "id": 8479414,
         "name": "Nathan Bastian",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 36,
         "goals82": 13.7,
         "assists82": 2.3,
@@ -4925,7 +4925,7 @@
       {
         "id": 8473994,
         "name": "Jamie Benn",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 60,
         "goals82": 20.5,
         "assists82": 28.7,
@@ -4955,7 +4955,7 @@
       {
         "id": 8478047,
         "name": "Michael Bunting",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 13,
         "goals82": 6.3,
         "assists82": 6.3,
@@ -4985,7 +4985,7 @@
       {
         "id": 8477454,
         "name": "Adam Erne",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 45,
         "goals82": 10.9,
         "assists82": 3.6,
@@ -5025,7 +5025,7 @@
       {
         "id": 8484938,
         "name": "Arttu Hyry",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 20,
         "goals82": 12.3,
         "assists82": 8.2,
@@ -5045,7 +5045,7 @@
       {
         "id": 8478420,
         "name": "Mikko Rantanen",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 64,
         "goals82": 28.2,
         "assists82": 70.5,
@@ -5055,7 +5055,7 @@
       {
         "id": 8480027,
         "name": "Jason Robertson",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 45,
         "assists82": 51,
@@ -5202,7 +5202,7 @@
       {
         "id": 8477979,
         "name": "Nicolas Aube-Kubel",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 6,
         "goals82": 0,
         "assists82": 27.3,
@@ -5212,7 +5212,7 @@
       {
         "id": 8481557,
         "name": "Matt Boldy",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 76,
         "goals82": 45.3,
         "assists82": 46.4,
@@ -5222,7 +5222,7 @@
       {
         "id": 8481553,
         "name": "Bobby Brink",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 13,
         "goals82": 12.6,
         "assists82": 12.6,
@@ -5252,7 +5252,7 @@
       {
         "id": 8475220,
         "name": "Marcus Foligno",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 56,
         "goals82": 11.7,
         "assists82": 7.3,
@@ -5262,7 +5262,7 @@
       {
         "id": 8473422,
         "name": "Nick Foligno",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 17,
         "goals82": 4.8,
         "assists82": 14.5,
@@ -5282,7 +5282,7 @@
       {
         "id": 8477451,
         "name": "Ryan Hartman",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 76,
         "goals82": 24.8,
         "assists82": 21.6,
@@ -5292,7 +5292,7 @@
       {
         "id": 8475149,
         "name": "Marcus Johansson",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 75,
         "goals82": 16.4,
         "assists82": 37.2,
@@ -5312,7 +5312,7 @@
       {
         "id": 8478864,
         "name": "Kirill Kaprizov",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 78,
         "goals82": 47.3,
         "assists82": 46.3,
@@ -5342,7 +5342,7 @@
       {
         "id": 8475765,
         "name": "Vladimir Tarasenko",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 75,
         "goals82": 25.1,
         "assists82": 26.2,
@@ -5362,7 +5362,7 @@
       {
         "id": 8483525,
         "name": "Danila Yurov",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 73,
         "goals82": 13.5,
         "assists82": 16.8,
@@ -5372,7 +5372,7 @@
       {
         "id": 8475692,
         "name": "Mats Zuccarello",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 59,
         "goals82": 20.8,
         "assists82": 54.2,
@@ -5586,7 +5586,7 @@
       {
         "id": 8482146,
         "name": "Luke Evangelista",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 81,
         "goals82": 12.1,
         "assists82": 44.5,
@@ -5596,7 +5596,7 @@
       {
         "id": 8484494,
         "name": "Aiden Fink",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -5606,7 +5606,7 @@
       {
         "id": 8476887,
         "name": "Filip Forsberg",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 40,
         "assists82": 35,
@@ -5616,7 +5616,7 @@
       {
         "id": 8475287,
         "name": "Erik Haula",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 81,
         "goals82": 14.2,
         "assists82": 24.3,
@@ -5676,7 +5676,7 @@
       {
         "id": 8484241,
         "name": "Matthew Wood",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 71,
         "goals82": 19.6,
         "assists82": 15,
@@ -5773,7 +5773,7 @@
       {
         "id": 8481013,
         "name": "Jonatan Berggren",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 36,
         "goals82": 13.7,
         "assists82": 22.8,
@@ -5783,7 +5783,7 @@
       {
         "id": 8477402,
         "name": "Pavel Buchnevich",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 81,
         "goals82": 20.2,
         "assists82": 28.3,
@@ -5793,7 +5793,7 @@
       {
         "id": 8477494,
         "name": "Jonathan Drouin",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 9,
         "goals82": 9.1,
         "assists82": 18.2,
@@ -5803,7 +5803,7 @@
       {
         "id": 8484164,
         "name": "Dalibor Dvorsky",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 71,
         "goals82": 13.9,
         "assists82": 10.4,
@@ -5823,7 +5823,7 @@
       {
         "id": 8482077,
         "name": "Dylan Holloway",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 59,
         "goals82": 30.6,
         "assists82": 40.3,
@@ -5833,7 +5833,7 @@
       {
         "id": 8481580,
         "name": "Connor McMichael",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -5853,7 +5853,7 @@
       {
         "id": 8482089,
         "name": "Jake Neighbours",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 69,
         "goals82": 17.8,
         "assists82": 25,
@@ -5863,7 +5863,7 @@
       {
         "id": 8483516,
         "name": "Jimmy Snuggerud",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 70,
         "goals82": 24.6,
         "assists82": 35.1,
@@ -5903,7 +5903,7 @@
       {
         "id": 8480281,
         "name": "Alexey Toropchenko",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 65,
         "goals82": 5,
         "assists82": 8.8,
@@ -5913,7 +5913,7 @@
       {
         "id": 8477573,
         "name": "Nathan Walker",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 46,
         "goals82": 7.1,
         "assists82": 12.5,
@@ -6030,7 +6030,7 @@
       {
         "id": 8475461,
         "name": "Andrew Agozzino",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 2,
         "goals82": 0,
         "assists82": 0,
@@ -6040,7 +6040,7 @@
       {
         "id": 8484388,
         "name": "Daniil But",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 29,
         "goals82": 8.5,
         "assists82": 11.3,
@@ -6050,7 +6050,7 @@
       {
         "id": 8479619,
         "name": "Michael Carcone",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 79,
         "goals82": 16.6,
         "assists82": 15.6,
@@ -6070,7 +6070,7 @@
       {
         "id": 8478474,
         "name": "Lawson Crouse",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 81,
         "goals82": 24.3,
         "assists82": 20.2,
@@ -6080,7 +6080,7 @@
       {
         "id": 8482699,
         "name": "Dylan Guenther",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 79,
         "goals82": 41.5,
         "assists82": 34.3,
@@ -6110,7 +6110,7 @@
       {
         "id": 8479343,
         "name": "Clayton Keller",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 26,
         "assists82": 62,
@@ -6140,7 +6140,7 @@
       {
         "id": 8481827,
         "name": "Ben McCartney",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -6190,7 +6190,7 @@
       {
         "id": 8479293,
         "name": "Brandon Tanev",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 56,
         "goals82": 0,
         "assists82": 4.4,
@@ -6200,7 +6200,7 @@
       {
         "id": 8479977,
         "name": "Kailer Yamamoto",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 59,
         "goals82": 18.1,
         "assists82": 13.9,
@@ -6375,7 +6375,7 @@
       {
         "id": 8482787,
         "name": "Nikita Chibrikov",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 11,
         "goals82": 0,
         "assists82": 0,
@@ -6385,7 +6385,7 @@
       {
         "id": 8478398,
         "name": "Kyle Connor",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 39,
         "assists82": 53,
@@ -6395,7 +6395,7 @@
       {
         "id": 8480113,
         "name": "Alex Iafallo",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 79,
         "goals82": 13.5,
         "assists82": 16.6,
@@ -6405,7 +6405,7 @@
       {
         "id": 8481043,
         "name": "Cole Koepke",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 66,
         "goals82": 9.9,
         "assists82": 11.2,
@@ -6435,7 +6435,7 @@
       {
         "id": 8475799,
         "name": "Nino Niederreiter",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 61,
         "goals82": 10.8,
         "assists82": 14.8,
@@ -6445,7 +6445,7 @@
       {
         "id": 8474679,
         "name": "Gustav Nyquist",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 51,
         "goals82": 1.6,
         "assists82": 17.7,
@@ -6465,7 +6465,7 @@
       {
         "id": 8482765,
         "name": "Isak Rosen",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 21,
         "goals82": 11.7,
         "assists82": 0,
@@ -6632,7 +6632,7 @@
       {
         "id": 8483445,
         "name": "Cutter Gauthier",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 76,
         "goals82": 44.2,
         "assists82": 30.2,
@@ -6662,7 +6662,7 @@
       {
         "id": 8477527,
         "name": "Ross Johnston",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 62,
         "goals82": 4,
         "assists82": 14.5,
@@ -6672,7 +6672,7 @@
       {
         "id": 8473986,
         "name": "Alex Killorn",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 15,
         "assists82": 18,
@@ -6682,7 +6682,7 @@
       {
         "id": 8475184,
         "name": "Chris Kreider",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 75,
         "goals82": 24.1,
         "assists82": 30.6,
@@ -6692,7 +6692,7 @@
       {
         "id": 8484201,
         "name": "Nico Myatovic",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -6712,7 +6712,7 @@
       {
         "id": 8484762,
         "name": "Beckett Sennecke",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 23,
         "assists82": 37,
@@ -6722,7 +6722,7 @@
       {
         "id": 8478873,
         "name": "Troy Terry",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 61,
         "goals82": 25.5,
         "assists82": 51.1,
@@ -6732,7 +6732,7 @@
       {
         "id": 8478366,
         "name": "Frank Vatrano",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 50,
         "goals82": 8.2,
         "assists82": 6.6,
@@ -6742,7 +6742,7 @@
       {
         "id": 8479705,
         "name": "Jeffrey Viel",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 35,
         "goals82": 7,
         "assists82": 16.4,
@@ -6917,7 +6917,7 @@
       {
         "id": 8476399,
         "name": "Blake Coleman",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 69,
         "goals82": 23.8,
         "assists82": 17.8,
@@ -6927,7 +6927,7 @@
       {
         "id": 8482679,
         "name": "Matt Coronato",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 80,
         "goals82": 18.5,
         "assists82": 27.7,
@@ -6937,7 +6937,7 @@
       {
         "id": 8480797,
         "name": "Joel Farabee",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 20,
         "assists82": 18,
@@ -6957,7 +6957,7 @@
       {
         "id": 8484860,
         "name": "Matvei Gridin",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 37,
         "goals82": 13.3,
         "assists82": 31,
@@ -6977,7 +6977,7 @@
       {
         "id": 8484180,
         "name": "Samuel Honzek",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 18,
         "goals82": 9.1,
         "assists82": 9.1,
@@ -6987,7 +6987,7 @@
       {
         "id": 8476456,
         "name": "Jonathan Huberdeau",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 50,
         "goals82": 16.4,
         "assists82": 24.6,
@@ -7007,7 +7007,7 @@
       {
         "id": 8483609,
         "name": "Adam Klapka",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 79,
         "goals82": 6.2,
         "assists82": 12.5,
@@ -7017,7 +7017,7 @@
       {
         "id": 8479066,
         "name": "Ryan Lomberg",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 57,
         "goals82": 5.8,
         "assists82": 7.2,
@@ -7027,7 +7027,7 @@
       {
         "id": 8478109,
         "name": "Victor Olofsson",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 18,
         "goals82": 9.1,
         "assists82": 18.2,
@@ -7067,7 +7067,7 @@
       {
         "id": 8484234,
         "name": "Aydar Suniev",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 6,
         "goals82": 0,
         "assists82": 13.7,
@@ -7077,7 +7077,7 @@
       {
         "id": 8484958,
         "name": "Maxim Tsyplakov",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -7284,7 +7284,7 @@
       {
         "id": 8475786,
         "name": "Zach Hyman",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 58,
         "goals82": 43.8,
         "assists82": 29.7,
@@ -7304,7 +7304,7 @@
       {
         "id": 8479368,
         "name": "Max Jones",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 21,
         "goals82": 11.7,
         "assists82": 7.8,
@@ -7314,7 +7314,7 @@
       {
         "id": 8477953,
         "name": "Kasperi Kapanen",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 41,
         "goals82": 16,
         "assists82": 18,
@@ -7354,7 +7354,7 @@
       {
         "id": 8481617,
         "name": "Vasily Podkolzin",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 19,
         "assists82": 18,
@@ -7500,7 +7500,7 @@
       {
         "id": 8476469,
         "name": "Joel Armia",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 67,
         "goals82": 15.9,
         "assists82": 14.7,
@@ -7510,7 +7510,7 @@
       {
         "id": 8482124,
         "name": "Quinton Byfield",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 79,
         "goals82": 24.9,
         "assists82": 25.9,
@@ -7520,7 +7520,7 @@
       {
         "id": 8477942,
         "name": "Kevin Fiala",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 56,
         "goals82": 26.4,
         "assists82": 32.2,
@@ -7540,7 +7540,7 @@
       {
         "id": 8478472,
         "name": "Mathieu Joseph",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 12,
         "goals82": 0,
         "assists82": 0,
@@ -7550,7 +7550,7 @@
       {
         "id": 8477960,
         "name": "Adrian Kempe",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 81,
         "goals82": 36.4,
         "assists82": 37.5,
@@ -7570,7 +7570,7 @@
       {
         "id": 8483808,
         "name": "Andrei Kuzmenko",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 52,
         "goals82": 20.5,
         "assists82": 18.9,
@@ -7580,7 +7580,7 @@
       {
         "id": 8482155,
         "name": "Alex Laferriere",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 21,
         "assists82": 23,
@@ -7600,7 +7600,7 @@
       {
         "id": 8482408,
         "name": "Jeff Malott",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 58,
         "goals82": 4.2,
         "assists82": 8.5,
@@ -7610,7 +7610,7 @@
       {
         "id": 8479675,
         "name": "Trevor Moore",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 69,
         "goals82": 15.4,
         "assists82": 22.6,
@@ -7620,7 +7620,7 @@
       {
         "id": 8478550,
         "name": "Artemi Panarin",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 26,
         "goals82": 28.4,
         "assists82": 56.8,
@@ -7640,7 +7640,7 @@
       {
         "id": 8483406,
         "name": "Taylor Ward",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 36,
         "goals82": 6.8,
         "assists82": 9.1,
@@ -7767,7 +7767,7 @@
       {
         "id": 8478874,
         "name": "Adam Gaudette",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 66,
         "goals82": 21.1,
         "assists82": 9.9,
@@ -7787,7 +7787,7 @@
       {
         "id": 8484911,
         "name": "Collin Graf",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 81,
         "goals82": 21.3,
         "assists82": 25.3,
@@ -7827,7 +7827,7 @@
       {
         "id": 8471817,
         "name": "Ryan Reaves",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 50,
         "goals82": 4.9,
         "assists82": 0,
@@ -7837,7 +7837,7 @@
       {
         "id": 8483630,
         "name": "Pavol Regenda",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 24,
         "goals82": 30.8,
         "assists82": 3.4,
@@ -7847,7 +7847,7 @@
       {
         "id": 8480748,
         "name": "Kiefer Sherwood",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 28,
         "goals82": 17.6,
         "assists82": 20.5,
@@ -8014,7 +8014,7 @@
       {
         "id": 8474586,
         "name": "Jordan Eberle",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 80,
         "goals82": 26.7,
         "assists82": 29.7,
@@ -8034,7 +8034,7 @@
       {
         "id": 8481554,
         "name": "Kaapo Kakko",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 65,
         "goals82": 16.4,
         "assists82": 34.1,
@@ -8044,7 +8044,7 @@
       {
         "id": 8477955,
         "name": "Jared McCann",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 52,
         "goals82": 31.5,
         "assists82": 31.5,
@@ -8074,7 +8074,7 @@
       {
         "id": 8482713,
         "name": "Mackie Samoskevich",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -8084,7 +8084,7 @@
       {
         "id": 8475768,
         "name": "Jaden Schwartz",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 50,
         "goals82": 18,
         "assists82": 24.6,
@@ -8104,7 +8104,7 @@
       {
         "id": 8480009,
         "name": "Eeli Tolvanen",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 78,
         "goals82": 12.6,
         "assists82": 25.2,
@@ -8270,7 +8270,7 @@
       {
         "id": 8478444,
         "name": "Brock Boeser",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 75,
         "goals82": 24.1,
         "assists82": 28.4,
@@ -8290,7 +8290,7 @@
       {
         "id": 8478498,
         "name": "Jake DeBrusk",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 81,
         "goals82": 23.3,
         "assists82": 19.2,
@@ -8310,7 +8310,7 @@
       {
         "id": 8481535,
         "name": "Nils Hoglander",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 38,
         "goals82": 4.3,
         "assists82": 6.5,
@@ -8320,7 +8320,7 @@
       {
         "id": 8475169,
         "name": "Evander Kane",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 71,
         "goals82": 15,
         "assists82": 20.8,
@@ -8340,7 +8340,7 @@
       {
         "id": 8482055,
         "name": "Drew O'Connor",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 17,
         "assists82": 12,
@@ -8350,7 +8350,7 @@
       {
         "id": 8483499,
         "name": "Liam Ohgren",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 51,
         "goals82": 12.9,
         "assists82": 16.1,
@@ -8516,7 +8516,7 @@
       {
         "id": 8477964,
         "name": "Ivan Barbashev",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 82,
         "goals82": 23,
         "assists82": 38,
@@ -8526,7 +8526,7 @@
       {
         "id": 8483890,
         "name": "Braeden Bowman",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 54,
         "goals82": 12.1,
         "assists82": 27.3,
@@ -8536,7 +8536,7 @@
       {
         "id": 8484803,
         "name": "Trevor Connelly",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 1,
         "goals82": 0,
         "assists82": 0,
@@ -8576,7 +8576,7 @@
       {
         "id": 8482125,
         "name": "Alexander Holtz",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 28,
         "goals82": 8.8,
         "assists82": 17.6,
@@ -8606,7 +8606,7 @@
       {
         "id": 8478434,
         "name": "Keegan Kolesar",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 82,
         "goals82": 6,
         "assists82": 11,
@@ -8636,7 +8636,7 @@
       {
         "id": 8478483,
         "name": "Mitch Marner",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 81,
         "goals82": 24.3,
         "assists82": 56.7,
@@ -8646,7 +8646,7 @@
       {
         "id": 8480007,
         "name": "Jonas Rondbjerg",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 4,
         "goals82": 0,
         "assists82": 20.5,
@@ -8656,7 +8656,7 @@
       {
         "id": 8476438,
         "name": "Brandon Saad",
-        "position": "L",
+        "position": "LW",
         "gamesPlayed": 49,
         "goals82": 5,
         "assists82": 10,
@@ -8676,7 +8676,7 @@
       {
         "id": 8482062,
         "name": "Cole Smith",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 21,
         "goals82": 7.8,
         "assists82": 0,
@@ -8686,7 +8686,7 @@
       {
         "id": 8475191,
         "name": "Reilly Smith",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 69,
         "goals82": 19,
         "assists82": 11.9,
@@ -8696,7 +8696,7 @@
       {
         "id": 8475913,
         "name": "Mark Stone",
-        "position": "R",
+        "position": "RW",
         "gamesPlayed": 60,
         "goals82": 38.3,
         "assists82": 61.5,
