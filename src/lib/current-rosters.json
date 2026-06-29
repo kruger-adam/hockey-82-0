@@ -253,6 +253,18 @@
         "savePercentage": 0.907702,
         "goalsAgainstAverage": 2.707645,
         "rating": 85
+      },
+      {
+        "id": -56,
+        "name": "Yuri Ivanov",
+        "position": "G",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 56,
+        "amateurLeague": "RUSSIA-JR.",
+        "rating": 60
       }
     ]
   },
@@ -608,6 +620,30 @@
         "savePercentage": 0.907048,
         "goalsAgainstAverage": 2.771061,
         "rating": 83
+      },
+      {
+        "id": -4,
+        "name": "Daxon Rudolph",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 4,
+        "amateurLeague": "WHL",
+        "rating": 73
+      },
+      {
+        "id": -20,
+        "name": "Ilia Morozov",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 20,
+        "amateurLeague": "NCHC",
+        "rating": 67
       }
     ]
   },
@@ -825,6 +861,30 @@
         "savePercentage": 0.883312,
         "goalsAgainstAverage": 3.188237,
         "rating": 85
+      },
+      {
+        "id": -23,
+        "name": "Jeffrey (JP) Hurlbert",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 23,
+        "amateurLeague": "WHL",
+        "rating": 67
+      },
+      {
+        "id": -47,
+        "name": "Victor Plante",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 47,
+        "amateurLeague": "NTDP - USHL",
+        "rating": 61
       }
     ]
   },
@@ -1112,6 +1172,30 @@
         "savePercentage": 0.895135,
         "goalsAgainstAverage": 3.054049,
         "rating": 79
+      },
+      {
+        "id": -40,
+        "name": "Simas Ignatavicius",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 40,
+        "amateurLeague": "SWISS",
+        "rating": 62
+      },
+      {
+        "id": -48,
+        "name": "Ryder Cali",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 48,
+        "amateurLeague": "OHL",
+        "rating": 61
       }
     ]
   },
@@ -1244,7 +1328,7 @@
       },
       {
         "id": 8483515,
-        "name": "Juraj Slafkovsk\u00fd",
+        "name": "Juraj Slafkovský",
         "position": "LW",
         "gamesPlayed": 82,
         "goals82": 30,
@@ -1408,6 +1492,30 @@
         "savePercentage": 0.872441,
         "goalsAgainstAverage": 3.426879,
         "rating": 85
+      },
+      {
+        "id": -26,
+        "name": "Gleb Pugachyov",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 26,
+        "amateurLeague": "RUSSIA-JR.",
+        "rating": 66
+      },
+      {
+        "id": -57,
+        "name": "Timofei Runtso",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 57,
+        "amateurLeague": "WHL",
+        "rating": 60
       }
     ]
   },
@@ -1600,7 +1708,7 @@
       },
       {
         "id": 8482116,
-        "name": "Tim St\u00fctzle",
+        "name": "Tim Stützle",
         "position": "C",
         "gamesPlayed": 80,
         "goals82": 34.9,
@@ -1739,7 +1847,7 @@
       },
       {
         "id": 8482447,
-        "name": "Leevi Meril\u00e4inen",
+        "name": "Leevi Meriläinen",
         "position": "G",
         "gamesPlayed": 20,
         "savePercentage": 0.859956,
@@ -1763,6 +1871,30 @@
         "savePercentage": 0.890651,
         "goalsAgainstAverage": 2.725886,
         "rating": 87
+      },
+      {
+        "id": -25,
+        "name": "Jonas Lagerberg Hoen",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 25,
+        "amateurLeague": "SWEDEN-JR.",
+        "rating": 66
+      },
+      {
+        "id": -32,
+        "name": "Jaxon Cover",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 32,
+        "amateurLeague": "OHL",
+        "rating": 65
       }
     ]
   },
@@ -2020,6 +2152,18 @@
         "savePercentage": 0.91234,
         "goalsAgainstAverage": 2.308533,
         "rating": 93
+      },
+      {
+        "id": -52,
+        "name": "Oleg Kulebiakin",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 52,
+        "amateurLeague": "QMJHL",
+        "rating": 61
       }
     ]
   },
@@ -2238,6 +2382,30 @@
         "savePercentage": 0.892655,
         "goalsAgainstAverage": 3.282347,
         "rating": 85
+      },
+      {
+        "id": -1,
+        "name": "Gavin McKenna",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 1,
+        "amateurLeague": "BIG10",
+        "rating": 79
+      },
+      {
+        "id": -60,
+        "name": "Alexander Bilecki",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 60,
+        "amateurLeague": "OHL",
+        "rating": 59
       }
     ]
   },
@@ -2494,6 +2662,30 @@
         "savePercentage": 0.899471,
         "goalsAgainstAverage": 2.325819,
         "rating": 85
+      },
+      {
+        "id": -51,
+        "name": "William Hakansson",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 51,
+        "amateurLeague": "SWEDEN",
+        "rating": 61
+      },
+      {
+        "id": -61,
+        "name": "Wiggo Sorensson",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 61,
+        "amateurLeague": "SWEDEN-4",
+        "rating": 59
       }
     ]
   },
@@ -2566,7 +2758,7 @@
       },
       {
         "id": 8480806,
-        "name": "Isac Lundestr\u00f6m",
+        "name": "Isac Lundeström",
         "position": "C",
         "gamesPlayed": 68,
         "goals82": 4.8,
@@ -2761,6 +2953,18 @@
         "savePercentage": 0.883005,
         "goalsAgainstAverage": 3.395653,
         "rating": 82
+      },
+      {
+        "id": -14,
+        "name": "Oscar Hemming",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 14,
+        "amateurLeague": "H-EAST",
+        "rating": 68
       }
     ]
   },
@@ -2998,6 +3202,42 @@
         "savePercentage": 0.883199,
         "goalsAgainstAverage": 3.066018,
         "rating": 87
+      },
+      {
+        "id": -12,
+        "name": "Alexander Command",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 12,
+        "amateurLeague": "SWEDEN-JR.",
+        "rating": 69
+      },
+      {
+        "id": -37,
+        "name": "Matias Vanhanen",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 37,
+        "amateurLeague": "WHL",
+        "rating": 62
+      },
+      {
+        "id": -44,
+        "name": "Nikita Shcherbakov",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 44,
+        "amateurLeague": "RUSSIA-JR.",
+        "rating": 62
       }
     ]
   },
@@ -3254,6 +3494,18 @@
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
         "rating": 82
+      },
+      {
+        "id": -13,
+        "name": "Malte Gustafsson",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 13,
+        "amateurLeague": "SWEDEN",
+        "rating": 68
       }
     ]
   },
@@ -3326,7 +3578,7 @@
       },
       {
         "id": 8482109,
-        "name": "Alexis Lafreni\u00e8re",
+        "name": "Alexis Lafrenière",
         "position": "LW",
         "gamesPlayed": 82,
         "goals82": 24,
@@ -3520,6 +3772,30 @@
         "savePercentage": 0.911579,
         "goalsAgainstAverage": 2.499821,
         "rating": 92
+      },
+      {
+        "id": -5,
+        "name": "Alberts Smits",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 5,
+        "amateurLeague": "GERMANY",
+        "rating": 72
+      },
+      {
+        "id": -64,
+        "name": "Benjamin MacBeath",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 64,
+        "amateurLeague": "WHL",
+        "rating": 59
       }
     ]
   },
@@ -3865,6 +4141,42 @@
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
         "rating": 85
+      },
+      {
+        "id": -27,
+        "name": "Maksim Sokolovskii",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 27,
+        "amateurLeague": "OHL",
+        "rating": 66
+      },
+      {
+        "id": -53,
+        "name": "Brek Liske",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 53,
+        "amateurLeague": "WHL",
+        "rating": 60
+      },
+      {
+        "id": -62,
+        "name": "Martin Psohlavec",
+        "position": "G",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 62,
+        "amateurLeague": "CZECHIA-JR.",
+        "rating": 59
       }
     ]
   },
@@ -4162,6 +4474,42 @@
         "savePercentage": 0.885222,
         "goalsAgainstAverage": 2.990095,
         "rating": 84
+      },
+      {
+        "id": -22,
+        "name": "Liam Ruck",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 22,
+        "amateurLeague": "WHL",
+        "rating": 67
+      },
+      {
+        "id": -39,
+        "name": "Markus Ruck",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 39,
+        "amateurLeague": "WHL",
+        "rating": 62
+      },
+      {
+        "id": -54,
+        "name": "Tomas Galvas",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 54,
+        "amateurLeague": "CZECHIA",
+        "rating": 60
       }
     ]
   },
@@ -4324,7 +4672,7 @@
       },
       {
         "id": 8480796,
-        "name": "Martin Feh\u00e9rv\u00e1ry",
+        "name": "Martin Fehérváry",
         "position": "D",
         "gamesPlayed": 81,
         "goals82": 5.1,
@@ -4418,6 +4766,18 @@
         "savePercentage": 0.911783,
         "goalsAgainstAverage": 2.438281,
         "rating": 86
+      },
+      {
+        "id": -18,
+        "name": "Oliver Suvanto",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 18,
+        "amateurLeague": "FINLAND",
+        "rating": 68
       }
     ]
   },
@@ -4685,6 +5045,30 @@
         "savePercentage": 0.879845,
         "goalsAgainstAverage": 3.799494,
         "rating": 82
+      },
+      {
+        "id": -34,
+        "name": "Xavier Villeneuve",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 34,
+        "amateurLeague": "QMJHL",
+        "rating": 63
+      },
+      {
+        "id": -35,
+        "name": "Ryan Roobroeck",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 35,
+        "amateurLeague": "OHL",
+        "rating": 63
       }
     ]
   },
@@ -4902,6 +5286,18 @@
         "savePercentage": 0.921317,
         "goalsAgainstAverage": 2.02427,
         "rating": 81
+      },
+      {
+        "id": -43,
+        "name": "Egor Shilov",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 43,
+        "amateurLeague": "QMJHL",
+        "rating": 62
       }
     ]
   },
@@ -4964,7 +5360,7 @@
       },
       {
         "id": 8480840,
-        "name": "Oskar B\u00e4ck",
+        "name": "Oskar Bäck",
         "position": "C",
         "gamesPlayed": 72,
         "goals82": 5.7,
@@ -5189,6 +5585,18 @@
         "savePercentage": 0.899417,
         "goalsAgainstAverage": 2.592212,
         "rating": 90
+      },
+      {
+        "id": -59,
+        "name": "Jakub Vanecek",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 59,
+        "amateurLeague": "WHL",
+        "rating": 60
       }
     ]
   },
@@ -5760,6 +6168,30 @@
         "savePercentage": 0.893529,
         "goalsAgainstAverage": 3.163829,
         "rating": 88
+      },
+      {
+        "id": -10,
+        "name": "Wyatt Cullen",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 10,
+        "amateurLeague": "NTDP - USHL",
+        "rating": 69
+      },
+      {
+        "id": -31,
+        "name": "Thomas Bleyl",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 31,
+        "amateurLeague": "QMJHL",
+        "rating": 65
       }
     ]
   },
@@ -6017,6 +6449,30 @@
         "savePercentage": 0.9096,
         "goalsAgainstAverage": 2.606062,
         "rating": 82
+      },
+      {
+        "id": -11,
+        "name": "Tynan Lawrence",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 11,
+        "amateurLeague": "H-EAST",
+        "rating": 69
+      },
+      {
+        "id": -16,
+        "name": "Maddox Dagenais",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 16,
+        "amateurLeague": "QMJHL",
+        "rating": 68
       }
     ]
   },
@@ -6352,6 +6808,18 @@
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
         "rating": 65
+      },
+      {
+        "id": -17,
+        "name": "Ethan Belchetz",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 17,
+        "amateurLeague": "OHL",
+        "rating": 68
       }
     ]
   },
@@ -6599,6 +7067,18 @@
         "savePercentage": 0.895281,
         "goalsAgainstAverage": 2.857605,
         "rating": 94
+      },
+      {
+        "id": -8,
+        "name": "Viggo Bjorck",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 8,
+        "amateurLeague": "SWEDEN",
+        "rating": 70
       }
     ]
   },
@@ -6884,6 +7364,54 @@
         "savePercentage": 0.8583,
         "goalsAgainstAverage": 4.070688,
         "rating": 84
+      },
+      {
+        "id": -15,
+        "name": "Nikita Klepov",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 15,
+        "amateurLeague": "OHL",
+        "rating": 68
+      },
+      {
+        "id": -28,
+        "name": "Marcus Nordmark",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 28,
+        "amateurLeague": "SWEDEN-JR.",
+        "rating": 66
+      },
+      {
+        "id": -45,
+        "name": "Jayden Kurtz",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 45,
+        "amateurLeague": "HIGH-MN",
+        "rating": 61
+      },
+      {
+        "id": -50,
+        "name": "Mathis Preston",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 50,
+        "amateurLeague": "WHL",
+        "rating": 61
       }
     ]
   },
@@ -7221,6 +7749,66 @@
         "savePercentage": 0.89923,
         "goalsAgainstAverage": 3.010256,
         "rating": 87
+      },
+      {
+        "id": -6,
+        "name": "Carson Carels",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 6,
+        "amateurLeague": "WHL",
+        "rating": 71
+      },
+      {
+        "id": -30,
+        "name": "Jack Hextall",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 30,
+        "amateurLeague": "USHL",
+        "rating": 65
+      },
+      {
+        "id": -36,
+        "name": "Chase Harrington",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 36,
+        "amateurLeague": "WHL",
+        "rating": 63
+      },
+      {
+        "id": -42,
+        "name": "Tobias Trejbal",
+        "position": "G",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 42,
+        "amateurLeague": "USHL",
+        "rating": 62
+      },
+      {
+        "id": -55,
+        "name": "Alan Shaikhlislamov",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 55,
+        "amateurLeague": "RUSSIA-JR.",
+        "rating": 60
       }
     ]
   },
@@ -7487,6 +8075,18 @@
         "savePercentage": 0.870732,
         "goalsAgainstAverage": 3.679988,
         "rating": 79
+      },
+      {
+        "id": -58,
+        "name": "Rudolfs Berzkalns",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 58,
+        "amateurLeague": "USHL",
+        "rating": 60
       }
     ]
   },
@@ -7734,6 +8334,42 @@
         "savePercentage": 0.89141,
         "goalsAgainstAverage": 2.78403,
         "rating": 87
+      },
+      {
+        "id": -19,
+        "name": "Elton Hermansson",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 19,
+        "amateurLeague": "SWEDEN-2",
+        "rating": 67
+      },
+      {
+        "id": -46,
+        "name": "Liam Lefebvre",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 46,
+        "amateurLeague": "QMJHL",
+        "rating": 61
+      },
+      {
+        "id": -49,
+        "name": "Adam Goljer",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 49,
+        "amateurLeague": "SLOVAKIA",
+        "rating": 61
       }
     ]
   },
@@ -7981,6 +8617,42 @@
         "savePercentage": 0.896092,
         "goalsAgainstAverage": 2.870981,
         "rating": 81
+      },
+      {
+        "id": -2,
+        "name": "Ivar Stenberg",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 2,
+        "amateurLeague": "SWEDEN",
+        "rating": 75
+      },
+      {
+        "id": -9,
+        "name": "Keaton Verhoeff",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 9,
+        "amateurLeague": "NCHC",
+        "rating": 70
+      },
+      {
+        "id": -21,
+        "name": "Ryan Lin",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 21,
+        "amateurLeague": "WHL",
+        "rating": 67
       }
     ]
   },
@@ -8237,6 +8909,30 @@
         "savePercentage": 0.921569,
         "goalsAgainstAverage": 2.213171,
         "rating": 80
+      },
+      {
+        "id": -7,
+        "name": "Chase Reid",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 7,
+        "amateurLeague": "OHL",
+        "rating": 71
+      },
+      {
+        "id": -38,
+        "name": "Casey Mutryn",
+        "position": "RW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 38,
+        "amateurLeague": "NTDP - USHL",
+        "rating": 62
       }
     ]
   },
@@ -8369,7 +9065,7 @@
       },
       {
         "id": 8482691,
-        "name": "Aatu R\u00e4ty",
+        "name": "Aatu Räty",
         "position": "C",
         "gamesPlayed": 66,
         "goals82": 5,
@@ -8503,6 +9199,54 @@
         "savePercentage": 0.881443,
         "goalsAgainstAverage": 3.613564,
         "rating": 30
+      },
+      {
+        "id": -3,
+        "name": "Caleb Malhotra",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 3,
+        "amateurLeague": "OHL",
+        "rating": 74
+      },
+      {
+        "id": -24,
+        "name": "Adam Novotny",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 24,
+        "amateurLeague": "OHL",
+        "rating": 66
+      },
+      {
+        "id": -33,
+        "name": "Brooks Rogowski",
+        "position": "C",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 33,
+        "amateurLeague": "OHL",
+        "rating": 63
+      },
+      {
+        "id": -41,
+        "name": "Niklas Aaram-Olsen",
+        "position": "LW",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 2,
+        "draftPick": 41,
+        "amateurLeague": "SWEDEN-JR.",
+        "rating": 62
       }
     ]
   },
@@ -8848,6 +9592,18 @@
         "savePercentage": 0.892541,
         "goalsAgainstAverage": 2.594386,
         "rating": 80
+      },
+      {
+        "id": -29,
+        "name": "Juho Piiparinen",
+        "position": "D",
+        "gamesPlayed": 0,
+        "isDraftPick": true,
+        "draftYear": 2026,
+        "draftRound": 1,
+        "draftPick": 29,
+        "amateurLeague": "FINLAND",
+        "rating": 66
       }
     ]
   }
