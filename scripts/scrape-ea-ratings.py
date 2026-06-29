@@ -119,102 +119,60 @@ def main():
     total_unmatched_ea = 0
     total_unmatched_roster = 0
 
-    for team in rosters:
-        abbrev = team["abbrev"]
-        slug = TEAM_SLUGS.get(abbrev)
-        if not slug:
-            print(f"  {abbrev}: no slug mapping, skipping")
-            continue
+    # Phase 1: scrape all EA ratings into a global map BEFORE touching roster data.
+    # This lets us do cross-team lookups (e.g. Woll traded to PHI but EA still lists him on TOR).
+    global_ea: dict[str, int] = {}  # normalized name → EA OVR
 
+    for abbrev, slug in TEAM_SLUGS.items():
         sys.stdout.write(f"Scraping {abbrev}... ")
         sys.stdout.flush()
-
         try:
             ea_players = fetch_team(slug)
+            for ea in ea_players:
+                norm = normalize(ea["name"])
+                # Keep highest rating seen across all teams (handles duplicate listings)
+                if norm not in global_ea or ea["eaRating"] > global_ea[norm]:
+                    global_ea[norm] = ea["eaRating"]
+            print(f"{len(ea_players)} players")
         except Exception as e:
             print(f"FAILED: {e}")
-            continue
+        time.sleep(0.3)
 
+    print(f"\nGlobal EA map: {len(global_ea)} unique players\n")
+
+    # Phase 2: apply EA ratings to NHL API rosters.
+    for team in rosters:
         roster_players = team["players"]
         matched = 0
-        unmatched_ea = []
+        unmatched_roster = []
 
-        for ea in ea_players:
-            total_ea += 1
-            p = match_player(ea["name"], roster_players)
-            if p:
-                p["rating"] = ea["eaRating"]
+        for p in roster_players:
+            norm = normalize(p["name"])
+            if norm in global_ea:
+                p["rating"] = global_ea[norm]
                 matched += 1
                 total_matched += 1
             else:
-                unmatched_ea.append(ea["name"])
-                total_unmatched_ea += 1
+                # Try last-name-only as fallback
+                last = last_name(p["name"])
+                last_matches = [(k, v) for k, v in global_ea.items() if k.split()[-1] == last]
+                if len(last_matches) == 1:
+                    p["rating"] = last_matches[0][1]
+                    matched += 1
+                    total_matched += 1
+                else:
+                    unmatched_roster.append(p["name"])
+                    total_unmatched_roster += 1
 
-        # Players in our roster with no EA match (keep computed rating)
-        ea_names_norm = {normalize(e["name"]) for e in ea_players}
-        unmatched_roster = [p["name"] for p in roster_players
-                            if normalize(p["name"]) not in ea_names_norm
-                            and last_name(p["name"]) not in {last_name(e["name"]) for e in ea_players}]
-        total_unmatched_roster += len(unmatched_roster)
-
-        print(f"{matched}/{len(ea_players)} matched", end="")
-        if unmatched_ea:
-            print(f" | EA-only: {', '.join(unmatched_ea[:3])}", end="")
+        total_ea += len(roster_players)
+        print(f"{team['abbrev']}: {matched}/{len(roster_players)} matched EA ratings", end="")
         if unmatched_roster:
-            print(f" | roster-only: {', '.join(unmatched_roster[:2])}", end="")
+            print(f" | kept computed: {', '.join(unmatched_roster[:3])}", end="")
         print()
 
-        # Also add EA-only players (players EA has that aren't in our NHL roster fetch)
-        ea_names_set = {normalize(e["name"]) for e in ea_players}
-        for ea in ea_players:
-            if not match_player(ea["name"], roster_players):
-                # Add as new player
-                roster_players.append({
-                    "id": -1,
-                    "name": ea["name"],
-                    "position": ea["position"],
-                    "gamesPlayed": 0,
-                    "rating": ea["eaRating"],
-                })
-
-        time.sleep(0.3)
-
-    # Second pass: cross-team lookup for traded players still using computed ratings.
-    # Build global map of normalized-name → EA rating from all players we collected.
-    global_ea: dict[str, int] = {}
-    global_ea_last: dict[str, list[tuple[str, int]]] = {}
-    for team in rosters:
-        for p in team["players"]:
-            if "eaRating" in p or p.get("gamesPlayed", 1) == 0:
-                # Only index players whose rating came from EA (heuristic: gamesPlayed==0 means EA-added)
-                pass
-        for p in team["players"]:
-            norm = normalize(p["name"])
-            last = last_name(p["name"])
-            # We track all players regardless; we'll use the highest rating seen
-            # (since a player on two teams means they were traded, prefer EA's current team rating)
-            if norm not in global_ea or p["rating"] > global_ea[norm]:
-                global_ea[norm] = p["rating"]
-            if last not in global_ea_last:
-                global_ea_last[last] = []
-            global_ea_last[last].append((norm, p["rating"]))
-
-    cross_fixed = 0
-    for team in rosters:
-        for p in team["players"]:
-            # If this player appears twice in the data (once with EA rating, once with computed),
-            # find their best rating from any team
-            norm = normalize(p["name"])
-            last = last_name(p["name"])
-            if norm in global_ea and global_ea[norm] > p["rating"]:
-                p["rating"] = global_ea[norm]
-                cross_fixed += 1
-
     roster_path.write_text(json.dumps(rosters, indent=2))
-    print(f"\nDone. EA matched: {total_matched}/{total_ea} | "
-          f"EA-only added: {total_unmatched_ea} | "
-          f"roster-only (kept computed): {total_unmatched_roster} | "
-          f"cross-team fixed: {cross_fixed}")
+    print(f"\nDone. EA matched: {total_matched}/{total_ea} roster slots | "
+          f"kept computed: {total_unmatched_roster}")
     print(f"Wrote {roster_path}")
 
 if __name__ == "__main__":

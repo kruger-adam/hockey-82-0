@@ -253,13 +253,6 @@
         "savePercentage": 0.907702,
         "goalsAgainstAverage": 2.707645,
         "rating": 85
-      },
-      {
-        "id": -1,
-        "name": "Lukas Reichel",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 79
       }
     ]
   },
@@ -338,7 +331,7 @@
         "goals82": 9.1,
         "assists82": 27.3,
         "plusMinus82": 9.1,
-        "rating": 55
+        "rating": 74
       },
       {
         "id": 8480144,
@@ -488,7 +481,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 86
       },
       {
         "id": 8483732,
@@ -587,7 +580,7 @@
         "gamesPlayed": 16,
         "savePercentage": 0.903297,
         "goalsAgainstAverage": 2.896854,
-        "rating": 60
+        "rating": 70
       },
       {
         "id": 8482221,
@@ -615,41 +608,6 @@
         "savePercentage": 0.907048,
         "goalsAgainstAverage": 2.771061,
         "rating": 83
-      },
-      {
-        "id": -1,
-        "name": "Alex Tuch",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 87
-      },
-      {
-        "id": -1,
-        "name": "Bowen Byram",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 85
-      },
-      {
-        "id": -1,
-        "name": "Michael Kesselring",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 84
-      },
-      {
-        "id": -1,
-        "name": "Jordan Greenway",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 81
-      },
-      {
-        "id": -1,
-        "name": "Zac Jones",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 80
       }
     ]
   },
@@ -867,20 +825,6 @@
         "savePercentage": 0.883312,
         "goalsAgainstAverage": 3.188237,
         "rating": 85
-      },
-      {
-        "id": -1,
-        "name": "Erik Gustafsson",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 83
-      },
-      {
-        "id": -1,
-        "name": "William Lagesson",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 78
       }
     ]
   },
@@ -1168,34 +1112,6 @@
         "savePercentage": 0.895135,
         "goalsAgainstAverage": 3.054049,
         "rating": 79
-      },
-      {
-        "id": -1,
-        "name": "Mackie Samoskevich",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 80
-      },
-      {
-        "id": -1,
-        "name": "Nolan Foote",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 80
-      },
-      {
-        "id": -1,
-        "name": "Tobias Bjornfot",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 77
-      },
-      {
-        "id": -1,
-        "name": "Jack Studnicka",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 76
       }
     ]
   },
@@ -1304,7 +1220,7 @@
         "goals82": 22,
         "assists82": 15,
         "plusMinus82": 4,
-        "rating": 55
+        "rating": 81
       },
       {
         "id": 8479339,
@@ -1374,7 +1290,7 @@
         "goals82": 0,
         "assists82": 16.4,
         "plusMinus82": -16.4,
-        "rating": 42
+        "rating": 79
       },
       {
         "id": 8478851,
@@ -1482,7 +1398,7 @@
         "gamesPlayed": 17,
         "savePercentage": 0.908482,
         "goalsAgainstAverage": 2.433957,
-        "rating": 73
+        "rating": 84
       },
       {
         "id": 8478470,
@@ -1491,13 +1407,6 @@
         "gamesPlayed": 25,
         "savePercentage": 0.872441,
         "goalsAgainstAverage": 3.426879,
-        "rating": 85
-      },
-      {
-        "id": -1,
-        "name": "Juraj Slafkovsky",
-        "position": "LW",
-        "gamesPlayed": 0,
         "rating": 85
       }
     ]
@@ -1557,7 +1466,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 85
       },
       {
         "id": 8476393,
@@ -1854,34 +1763,6 @@
         "savePercentage": 0.890651,
         "goalsAgainstAverage": 2.725886,
         "rating": 87
-      },
-      {
-        "id": -1,
-        "name": "Brady Tkachuk",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 89
-      },
-      {
-        "id": -1,
-        "name": "Mads Sogaard",
-        "position": "G",
-        "gamesPlayed": 0,
-        "rating": 77
-      },
-      {
-        "id": -1,
-        "name": "Garrett Pilon",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 75
-      },
-      {
-        "id": -1,
-        "name": "Wyatt Bongiovanni",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 66
       }
     ]
   },
@@ -1920,7 +1801,7 @@
         "goals82": 5.9,
         "assists82": 11.7,
         "plusMinus82": -17.6,
-        "rating": 42
+        "rating": 83
       },
       {
         "id": 8476878,
@@ -2139,34 +2020,6 @@
         "savePercentage": 0.91234,
         "goalsAgainstAverage": 2.308533,
         "rating": 93
-      },
-      {
-        "id": -1,
-        "name": "Darren Raddysh",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 84
-      },
-      {
-        "id": -1,
-        "name": "Mitchell Chaffee",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 79
-      },
-      {
-        "id": -1,
-        "name": "Jakob Pelletier",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 77
-      },
-      {
-        "id": -1,
-        "name": "Nick Abruzzese",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 74
       }
     ]
   },
@@ -2385,76 +2238,6 @@
         "savePercentage": 0.892655,
         "goalsAgainstAverage": 3.282347,
         "rating": 85
-      },
-      {
-        "id": -1,
-        "name": "Brandon Carlo",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 86
-      },
-      {
-        "id": -1,
-        "name": "Joseph Woll",
-        "position": "G",
-        "gamesPlayed": 0,
-        "rating": 85
-      },
-      {
-        "id": -1,
-        "name": "Travis Boyd",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 81
-      },
-      {
-        "id": -1,
-        "name": "Matt Benning",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 79
-      },
-      {
-        "id": -1,
-        "name": "Simon Benoit",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 79
-      },
-      {
-        "id": -1,
-        "name": "Dakota Mermis",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 78
-      },
-      {
-        "id": -1,
-        "name": "Dennis Hildeby",
-        "position": "G",
-        "gamesPlayed": 0,
-        "rating": 78
-      },
-      {
-        "id": -1,
-        "name": "Henry Thrun",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 78
-      },
-      {
-        "id": -1,
-        "name": "Michael Pezzetta",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 77
-      },
-      {
-        "id": -1,
-        "name": "William Villeneuve",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 72
       }
     ]
   },
@@ -2643,7 +2426,7 @@
         "goals82": 9.1,
         "assists82": 33,
         "plusMinus82": 8,
-        "rating": 86
+        "rating": 71
       },
       {
         "id": 8482100,
@@ -2978,27 +2761,6 @@
         "savePercentage": 0.883005,
         "goalsAgainstAverage": 3.395653,
         "rating": 82
-      },
-      {
-        "id": -1,
-        "name": "Dysin Mayo",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 76
-      },
-      {
-        "id": -1,
-        "name": "Zachary Aston-Reese",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 76
-      },
-      {
-        "id": -1,
-        "name": "Brendan Gaunce",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 75
       }
     ]
   },
@@ -3236,62 +2998,6 @@
         "savePercentage": 0.883199,
         "goalsAgainstAverage": 3.066018,
         "rating": 87
-      },
-      {
-        "id": -1,
-        "name": "Simon Nemec",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 82
-      },
-      {
-        "id": -1,
-        "name": "Nico Daws",
-        "position": "G",
-        "gamesPlayed": 0,
-        "rating": 79
-      },
-      {
-        "id": -1,
-        "name": "Thomas Bordeleau",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 77
-      },
-      {
-        "id": -1,
-        "name": "Colton White",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 76
-      },
-      {
-        "id": -1,
-        "name": "Angus Crookshank",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 75
-      },
-      {
-        "id": -1,
-        "name": "Marc McLaughlin",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 73
-      },
-      {
-        "id": -1,
-        "name": "Mike Hardman",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 72
-      },
-      {
-        "id": -1,
-        "name": "Nathan L\u00e9gar\u00e9",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 68
       }
     ]
   },
@@ -3548,13 +3254,6 @@
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
         "rating": 82
-      },
-      {
-        "id": -1,
-        "name": "Pierre Engvall",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 80
       }
     ]
   },
@@ -3821,27 +3520,6 @@
         "savePercentage": 0.911579,
         "goalsAgainstAverage": 2.499821,
         "rating": 92
-      },
-      {
-        "id": -1,
-        "name": "Juuso Parssinen",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 80
-      },
-      {
-        "id": -1,
-        "name": "Justin Dowling",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 75
-      },
-      {
-        "id": -1,
-        "name": "Scott Morrow",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 75
       }
     ]
   },
@@ -4030,7 +3708,7 @@
         "goals82": 0,
         "assists82": 0,
         "plusMinus82": 0,
-        "rating": 35
+        "rating": 86
       },
       {
         "id": 8481533,
@@ -4187,34 +3865,6 @@
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
         "rating": 85
-      },
-      {
-        "id": -1,
-        "name": "Samuel Ersson",
-        "position": "G",
-        "gamesPlayed": 0,
-        "rating": 83
-      },
-      {
-        "id": -1,
-        "name": "Garnet Hathaway",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 81
-      },
-      {
-        "id": -1,
-        "name": "Ivan Fedotov",
-        "position": "G",
-        "gamesPlayed": 0,
-        "rating": 80
-      },
-      {
-        "id": -1,
-        "name": "Ryan Ellis",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 70
       }
     ]
   },
@@ -4393,7 +4043,7 @@
         "goals82": 20.5,
         "assists82": 20.5,
         "plusMinus82": 12.3,
-        "rating": 58
+        "rating": 82
       },
       {
         "id": 8477365,
@@ -4512,48 +4162,6 @@
         "savePercentage": 0.885222,
         "goalsAgainstAverage": 2.990095,
         "rating": 84
-      },
-      {
-        "id": -1,
-        "name": "Matt Dumba",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 82
-      },
-      {
-        "id": -1,
-        "name": "Philip Tomasino",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 80
-      },
-      {
-        "id": -1,
-        "name": "Alexander Alexeyev",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 78
-      },
-      {
-        "id": -1,
-        "name": "Caleb Jones",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 76
-      },
-      {
-        "id": -1,
-        "name": "Bokondji Imama",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 75
-      },
-      {
-        "id": -1,
-        "name": "Philip Kemp",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 72
       }
     ]
   },
@@ -4662,7 +4270,7 @@
         "goals82": 20.5,
         "assists82": 61.5,
         "plusMinus82": 20.5,
-        "rating": 80
+        "rating": 87
       },
       {
         "id": 8482088,
@@ -4810,34 +4418,6 @@
         "savePercentage": 0.911783,
         "goalsAgainstAverage": 2.438281,
         "rating": 86
-      },
-      {
-        "id": -1,
-        "name": "Connor McMichael",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 86
-      },
-      {
-        "id": -1,
-        "name": "David Kampf",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 82
-      },
-      {
-        "id": -1,
-        "name": "Sonny Milano",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 81
-      },
-      {
-        "id": -1,
-        "name": "Declan Chisholm",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 78
       }
     ]
   },
@@ -4966,7 +4546,7 @@
         "goals82": 8,
         "assists82": 22.5,
         "plusMinus82": -24.1,
-        "rating": 48
+        "rating": 84
       },
       {
         "id": 8483493,
@@ -5105,20 +4685,6 @@
         "savePercentage": 0.879845,
         "goalsAgainstAverage": 3.799494,
         "rating": 82
-      },
-      {
-        "id": -1,
-        "name": "Andre Burakovsky",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 83
-      },
-      {
-        "id": -1,
-        "name": "Louis Crevier",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 75
       }
     ]
   },
@@ -5336,41 +4902,6 @@
         "savePercentage": 0.921317,
         "goalsAgainstAverage": 2.02427,
         "rating": 81
-      },
-      {
-        "id": -1,
-        "name": "Valeri Nichushkin",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 85
-      },
-      {
-        "id": -1,
-        "name": "Ross Colton",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 84
-      },
-      {
-        "id": -1,
-        "name": "Logan O&#8217;Connor",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 81
-      },
-      {
-        "id": -1,
-        "name": "Jack Drury",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 80
-      },
-      {
-        "id": -1,
-        "name": "Keaton Middleton",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 74
       }
     ]
   },
@@ -5658,13 +5189,6 @@
         "savePercentage": 0.899417,
         "goalsAgainstAverage": 2.592212,
         "rating": 90
-      },
-      {
-        "id": -1,
-        "name": "Vladislav Kolyachonok",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 76
       }
     ]
   },
@@ -5991,7 +5515,7 @@
         "gamesPlayed": 1,
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
-        "rating": 65
+        "rating": 83
       },
       {
         "id": 8477361,
@@ -6157,7 +5681,7 @@
         "goals82": 19.6,
         "assists82": 15,
         "plusMinus82": -3.5,
-        "rating": 53
+        "rating": 80
       },
       {
         "id": 8482111,
@@ -6236,27 +5760,6 @@
         "savePercentage": 0.893529,
         "goalsAgainstAverage": 3.163829,
         "rating": 88
-      },
-      {
-        "id": -1,
-        "name": "Ryan O&#8217;Reilly",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 85
-      },
-      {
-        "id": -1,
-        "name": "Jordan Oesterle",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 77
-      },
-      {
-        "id": -1,
-        "name": "Andreas Englund",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 76
       }
     ]
   },
@@ -6514,13 +6017,6 @@
         "savePercentage": 0.9096,
         "goalsAgainstAverage": 2.606062,
         "rating": 82
-      },
-      {
-        "id": -1,
-        "name": "Jordan Kyrou",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 88
       }
     ]
   },
@@ -6856,20 +6352,6 @@
         "savePercentage": 0.906,
         "goalsAgainstAverage": 2.9,
         "rating": 65
-      },
-      {
-        "id": -1,
-        "name": "JJ Peterka",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 86
-      },
-      {
-        "id": -1,
-        "name": "Liam O&#8217;Brien",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 78
       }
     ]
   },
@@ -7008,7 +6490,7 @@
         "goals82": 11,
         "assists82": 18,
         "plusMinus82": -20,
-        "rating": 48
+        "rating": 89
       },
       {
         "id": 8480014,
@@ -7117,48 +6599,6 @@
         "savePercentage": 0.895281,
         "goalsAgainstAverage": 2.857605,
         "rating": 94
-      },
-      {
-        "id": -1,
-        "name": "David Gustafsson",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 79
-      },
-      {
-        "id": -1,
-        "name": "Rasmus Kupari",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 78
-      },
-      {
-        "id": -1,
-        "name": "Jaret Anderson-Dolan",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 77
-      },
-      {
-        "id": -1,
-        "name": "Mason Shaw",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 77
-      },
-      {
-        "id": -1,
-        "name": "Isaak Phillips",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 76
-      },
-      {
-        "id": -1,
-        "name": "Isaac Poulter",
-        "position": "G",
-        "gamesPlayed": 0,
-        "rating": 75
       }
     ]
   },
@@ -7387,7 +6827,7 @@
         "goals82": 4.9,
         "assists82": 9.8,
         "plusMinus82": -17.1,
-        "rating": 45
+        "rating": 84
       },
       {
         "id": 8476885,
@@ -7444,48 +6884,6 @@
         "savePercentage": 0.8583,
         "goalsAgainstAverage": 4.070688,
         "rating": 84
-      },
-      {
-        "id": -1,
-        "name": "John Carlson",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 88
-      },
-      {
-        "id": -1,
-        "name": "Mason McTavish",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 85
-      },
-      {
-        "id": -1,
-        "name": "Olen Zellweger",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 82
-      },
-      {
-        "id": -1,
-        "name": "Sam Colangelo",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 79
-      },
-      {
-        "id": -1,
-        "name": "Tristan Luneau",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 77
-      },
-      {
-        "id": -1,
-        "name": "Nikita Nesterenko",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 74
       }
     ]
   },
@@ -7823,34 +7221,6 @@
         "savePercentage": 0.89923,
         "goalsAgainstAverage": 3.010256,
         "rating": 87
-      },
-      {
-        "id": -1,
-        "name": "Daniil Miromanov",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 80
-      },
-      {
-        "id": -1,
-        "name": "Justin Kirkland",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 78
-      },
-      {
-        "id": -1,
-        "name": "Ivan Prosvetov",
-        "position": "G",
-        "gamesPlayed": 0,
-        "rating": 76
-      },
-      {
-        "id": -1,
-        "name": "Nick Cicek",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 76
       }
     ]
   },
@@ -7869,7 +7239,7 @@
         "goals82": 20.5,
         "assists82": 20.5,
         "plusMinus82": 0,
-        "rating": 56
+        "rating": 83
       },
       {
         "id": 8477450,
@@ -8117,27 +7487,6 @@
         "savePercentage": 0.870732,
         "goalsAgainstAverage": 3.679988,
         "rating": 79
-      },
-      {
-        "id": -1,
-        "name": "Joshua Brown",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 77
-      },
-      {
-        "id": -1,
-        "name": "James Hamblin",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 75
-      },
-      {
-        "id": -1,
-        "name": "Cam Dineen",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 74
       }
     ]
   },
@@ -8385,27 +7734,6 @@
         "savePercentage": 0.89141,
         "goalsAgainstAverage": 2.78403,
         "rating": 87
-      },
-      {
-        "id": -1,
-        "name": "Pheonix Copley",
-        "position": "G",
-        "gamesPlayed": 0,
-        "rating": 80
-      },
-      {
-        "id": -1,
-        "name": "Kyle Burroughs",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 79
-      },
-      {
-        "id": -1,
-        "name": "Akil Thomas",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 76
       }
     ]
   },
@@ -8574,7 +7902,7 @@
         "goals82": 1.1,
         "assists82": 14.8,
         "plusMinus82": -5.7,
-        "rating": 48
+        "rating": 82
       },
       {
         "id": 8479983,
@@ -8653,27 +7981,6 @@
         "savePercentage": 0.896092,
         "goalsAgainstAverage": 2.870981,
         "rating": 81
-      },
-      {
-        "id": -1,
-        "name": "William Eklund",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 86
-      },
-      {
-        "id": -1,
-        "name": "Jeff Skinner",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 82
-      },
-      {
-        "id": -1,
-        "name": "Oskar Olausson",
-        "position": "RW",
-        "gamesPlayed": 0,
-        "rating": 73
       }
     ]
   },
@@ -8930,13 +8237,6 @@
         "savePercentage": 0.921569,
         "goalsAgainstAverage": 2.213171,
         "rating": 80
-      },
-      {
-        "id": -1,
-        "name": "John Hayden",
-        "position": "C",
-        "gamesPlayed": 0,
-        "rating": 75
       }
     ]
   },
@@ -9203,13 +8503,6 @@
         "savePercentage": 0.881443,
         "goalsAgainstAverage": 3.613564,
         "rating": 30
-      },
-      {
-        "id": -1,
-        "name": "Drew O&#8217;Connor",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 81
       }
     ]
   },
@@ -9555,20 +8848,6 @@
         "savePercentage": 0.892541,
         "goalsAgainstAverage": 2.594386,
         "rating": 80
-      },
-      {
-        "id": -1,
-        "name": "Pavel Dorofeyev",
-        "position": "LW",
-        "gamesPlayed": 0,
-        "rating": 86
-      },
-      {
-        "id": -1,
-        "name": "Lukas Cormier",
-        "position": "D",
-        "gamesPlayed": 0,
-        "rating": 75
       }
     ]
   }
