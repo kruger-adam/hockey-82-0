@@ -37,15 +37,24 @@ function jitter(base: number, pct = 0.22): number {
   return Math.max(0, base * (1 + (Math.random() * 2 - 1) * pct));
 }
 
-export function generatePlayerStats(players: PlayerRecord[], gp: number, teamW: number): PlayerStatLine[] {
-  const scale = gp / 82;
+function skaterGP(seasonGP: number): number {
+  // Box-Muller normal distribution, mean=72, sd=8, clamped to [20, seasonGP]
+  const u1 = Math.random() + 1e-10;
+  const u2 = Math.random();
+  const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+  return Math.max(20, Math.min(seasonGP, Math.round(72 + z * 8)));
+}
+
+export function generatePlayerStats(players: PlayerRecord[], seasonGP: number, teamW: number): PlayerStatLine[] {
   const lines: PlayerStatLine[] = [];
 
   const goalies = players.filter(p => p.position === "G");
   const skaters = players.filter(p => p.position !== "G");
 
-  // Skaters
+  // Skaters — each gets their own injury-adjusted GP
   for (const p of skaters) {
+    const gp = skaterGP(seasonGP);
+    const scale = gp / 82;
     const base = (p.goals82 != null && p.assists82 != null && (p.gamesPlayed ?? 0) > 15)
       ? { g: p.goals82, a: p.assists82 }
       : estimatedPer82(p);
@@ -58,7 +67,7 @@ export function generatePlayerStats(players: PlayerRecord[], gp: number, teamW: 
   const totalGR = goalies.reduce((s, g) => s + g.rating, 0) || 1;
   for (const p of goalies) {
     const share = p.rating / totalGR;
-    const starts = Math.round(gp * share);
+    const starts = Math.round(seasonGP * share);
     const w = Math.round(teamW * share);
     const svp = jitter(p.savePercentage ?? 0.906, 0.005);
     const gaa = jitter(p.goalsAgainstAverage ?? 2.9, 0.08);
